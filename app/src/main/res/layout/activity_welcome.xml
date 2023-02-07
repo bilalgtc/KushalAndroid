@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Welcome_activity"
+    android:background="@drawable/welcomescreen_bg">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:fontFamily="@font/encode_sans_semibold"
+        android:text="@string/sign_in"
+        android:textColor="#4552CB"
+        android:textSize="@dimen/_10ssp" />
+
+
+    <androidx.viewpager.widget.ViewPager
+
+        android:id="@+id/pagerIntroSlider"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_500sdp"
+        android:layout_marginTop="@dimen/_60sdp">
+    </androidx.viewpager.widget.ViewPager>
+
+    <com.google.android.material.tabs.TabLayout
+        android:layout_marginBottom="@dimen/_280sdp"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/tab"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_10sdp"
+        app:tabBackground="@drawable/dot_selector"
+        app:tabGravity="center"
+        app:tabIndicatorHeight="0dp" />
+
+    <Button
+        android:layout_below="@+id/pagerIntroSlider"
+        android:id="@+id/next_btn"
+        style="@style/btn"
+        android:layout_width="@dimen/_200sdp"
+        android:layout_height="@dimen/_35sdp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="@string/next"
+
+        />
+
+
+
+</RelativeLayout>

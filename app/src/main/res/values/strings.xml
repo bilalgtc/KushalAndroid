@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Pet Care</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="next">Next</string>
+    <string name="getStarted">Get Started</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="s1">Welcome to Pet Care</string>
+    <string name="s2">Proven experts</string>
+    <string name="s3">Reliable reviews</string>
+    <string name="s11">All types of services for your pet in one
+ place, instantly searchable.</string>
+    <string name="s22">We interview every specialist before
+they get to work.</string>
+    <string name="s33">A review can be left only by a user
+who used the service.</string>
+    <string name="welcome">Welcome</string>
+    <string name="to">to</string>
+    <string name="pet_care">Pet Care</string>
+    <string name="continue_with">Continue with </string>
+    <string name="fb">Facebook</string>
+    <string name="google">Google</string>
+    <string name="registration">Registration</string>
+    <string name="register_with_gmail">Register with Email</string>
+    <string name="login_descreption">Already have an account?</string>
+    <string name="full_name">Full name</string>
+    <string name="email">Email</string>
+    <string name="mobile">Mobile</string>
+    <string name="password">Password</string>
+    <string name="i_agree_with">I agree with the rules</string>
+
+
+</resources>
