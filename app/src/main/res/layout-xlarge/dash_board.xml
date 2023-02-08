@@ -171,9 +171,9 @@
 
 
         <TextView
-            android:id="@+id/sign_in"
+            android:id="@+id/dashboard_sign_in"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginStart="@dimen/_3sdp"
             android:fontFamily="@font/encode_sans_semibold"
             android:text="@string/sign_in"

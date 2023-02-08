@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
 
@@ -21,6 +23,8 @@ public class Welcome_activity extends AppCompatActivity {
     private ViewPager viewPager;
     private Button button;
     private sliderPagerAdapter adapter;
+    TextView singIn;
+
 
 
     @Override
@@ -36,7 +40,7 @@ public class Welcome_activity extends AppCompatActivity {
 
 
         viewPager = findViewById(R.id.pagerIntroSlider);
-
+        singIn = findViewById(R.id.welcome_sign_in);
         TabLayout tabLayout = findViewById(R.id.tab);
         button = findViewById(R.id.next_btn);
 
@@ -51,6 +55,14 @@ public class Welcome_activity extends AppCompatActivity {
         changeStatusBarColor();
 
 
+        singIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Welcome_activity.this ,SignIn.class);
+                startActivity(intent);
+            }
+        });
+
 
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -59,11 +71,7 @@ public class Welcome_activity extends AppCompatActivity {
                 if (getitem(viewPager.getCurrentItem())<adapter.getCount()){
                     viewPager.setCurrentItem(viewPager.getCurrentItem() + 1);
                 }
-//                if (viewPager.getCurrentItem()  < adapter.getCount()) {
-////
-//                    viewPager.setCurrentItem(viewPager.getCurrentItem() + 1);
-//
-//                }
+
                 else {
 
                     SharedPreferences pref = getSharedPreferences("login", MODE_PRIVATE);

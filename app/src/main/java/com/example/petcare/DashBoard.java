@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class DashBoard extends AppCompatActivity {
-    LinearLayout cwf;
+
     Button r_w_gmail;
     TextView sign_in;
 
@@ -18,9 +18,8 @@ public class DashBoard extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dash_board);
-        cwf = findViewById(R.id.c_with_fb);
         r_w_gmail = findViewById(R.id.register_with_mail);
-        sign_in = findViewById(R.id.sign_in);
+        sign_in = findViewById(R.id.dashboard_sign_in);
 
 
 
