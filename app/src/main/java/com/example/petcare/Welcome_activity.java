@@ -38,22 +38,17 @@ public class Welcome_activity extends AppCompatActivity {
                             View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         }
 
-
         viewPager = findViewById(R.id.pagerIntroSlider);
         singIn = findViewById(R.id.welcome_sign_in);
         TabLayout tabLayout = findViewById(R.id.tab);
         button = findViewById(R.id.next_btn);
 
-
         adapter = new sliderPagerAdapter(getSupportFragmentManager(),
                 FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         viewPager.setAdapter(adapter);
-
-
         tabLayout.setupWithViewPager(viewPager);
 
         changeStatusBarColor();
-
 
         singIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,7 +105,7 @@ public class Welcome_activity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(Color.TRANSPARENT);
+                window.setStatusBarColor(Color.TRANSPARENT);
         }
     }
 

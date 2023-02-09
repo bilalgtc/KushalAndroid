@@ -2,6 +2,8 @@
 <resources>
     <array name="preloaded_fonts" translatable="false">
         <item>@font/encode_sans</item>
+        <item>@font/encode_sans_bold</item>
+        <item>@font/encode_sans_extrabold</item>
         <item>@font/encode_sans_semibold</item>
     </array>
 </resources>

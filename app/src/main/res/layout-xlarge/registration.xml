@@ -139,7 +139,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_marginHorizontal="@dimen/_20sdp"
-        android:layout_height="@dimen/_250sdp"
+        android:layout_height="@dimen/_255sdp"
         android:layout_marginTop="@dimen/_85sdp"
         style="@style/registration_card"
         android:outlineAmbientShadowColor="@color/black">
@@ -273,38 +273,99 @@
 
             </LinearLayout>
 
-            <TextView
+            <LinearLayout
                 android:id="@+id/check1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/pass"
-                android:text="@string/i_agree_with"
-                android:fontFamily="@font/encode_sans"
-                android:textSize="@dimen/_10sdp"
-                android:textColor="@color/black"
                 android:layout_marginHorizontal="@dimen/_20sdp"
+                android:layout_below="@id/pass"
                 android:layout_marginTop="@dimen/_7sdp"
-                app:drawableStartCompat="@drawable/checkbox_unchecked"
-                android:drawablePadding="@dimen/_8sdp"/>
+                android:orientation="horizontal"
+                >
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/checkbox_unchecked"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/i_agree_with"
+                    android:fontFamily="@font/encode_sans"
+                    android:textSize="@dimen/_10sdp"
+                    android:textColor="@color/black"
+                    android:layout_marginStart="@dimen/_8sdp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/the_rules"
+                    android:textColor="#4552CB"
+                    android:textSize="@dimen/_10sdp"
+                    android:layout_marginStart="@dimen/_2sdp"
+                    android:fontFamily="@font/encode_sans"
+                    android:textStyle=""
+                    />
 
-            <TextView
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/check2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_20sdp"
                 android:layout_below="@id/check1"
                 android:layout_marginTop="@dimen/_8sdp"
-                android:text="@string/i_do_not_want"
-                android:fontFamily="@font/encode_sans"
-                android:textSize="@dimen/_10sdp"
-                android:textColor="@color/black"
-                android:drawablePadding="@dimen/_8sdp"
-                android:layout_marginHorizontal="@dimen/_20sdp"
-                app:drawableStartCompat="@drawable/checkbox_unchecked" />
+                android:orientation="horizontal"
+                >
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/checkbox_unchecked"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/i_do_not_want"
+                    android:fontFamily="@font/encode_sans"
+                    android:textSize="@dimen/_10sdp"
+                    android:textColor="@color/black"
+                    android:layout_marginStart="@dimen/_8sdp"/>
+
+
+
+            </LinearLayout>
+
+<!--            <TextView-->
+<!--                android:id="@+id/check1"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_below="@id/pass"-->
+<!--                android:text="@string/i_agree_with"-->
+<!--                android:fontFamily="@font/encode_sans"-->
+<!--                android:textSize="@dimen/_10sdp"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:layout_marginHorizontal="@dimen/_20sdp"-->
+<!--                android:layout_marginTop="@dimen/_7sdp"-->
+<!--                app:drawableStartCompat="@drawable/checkbox_unchecked"-->
+<!--                android:drawablePadding="@dimen/_8sdp"/>-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/check2"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_below="@id/check1"-->
+<!--                android:layout_marginTop="@dimen/_3sdp"-->
+<!--                android:text="@string/i_do_not_want"-->
+<!--                android:fontFamily="@font/encode_sans"-->
+<!--                android:textSize="@dimen/_10sdp"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:drawablePadding="@dimen/_8sdp"-->
+<!--                android:layout_marginHorizontal="@dimen/_20sdp"-->
+<!--                app:drawableStartCompat="@drawable/checkbox_unchecked" />-->
 
             <Button
                 android:layout_marginHorizontal="@dimen/_20sdp"
                 android:layout_below="@+id/check2"
-                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
                 android:id="@+id/sign_up"
                 style="@style/btn"
                 android:layout_width="@dimen/_180sdp"

@@ -15,6 +15,7 @@
     <color name="text_yellow">#FFCF6F</color>
     <color name="text_blue">#4552CB</color>
     <color name="text_gray">#BBC3CE</color>
+    <color name="bg">#F5F5F5</color>
 
 
 </resources>
