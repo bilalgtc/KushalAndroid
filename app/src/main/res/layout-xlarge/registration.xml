@@ -9,28 +9,28 @@
     <RelativeLayout
         android:id="@+id/r1"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_225sdp"
+        android:layout_height="@dimen/_170sdp"
         android:background="@drawable/header_bg"
         >
         <ImageView
-            android:id="@+id/back_button"
-            android:layout_width="@dimen/_25sdp"
-            android:layout_height="@dimen/_25sdp"
+            android:id="@+id/registration_back_button"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
             android:src="@drawable/arrow_left"
             android:layout_marginTop="@dimen/_15sdp"
-            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginStart="@dimen/_11sdp"
             />
 
         <TextView
-            android:layout_marginTop="@dimen/_3sdp"
+            android:layout_marginTop="@dimen/_6sdp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/registration"
-            android:layout_below="@+id/back_button"
-            android:textSize="@dimen/_25sdp"
+            android:layout_below="@+id/registration_back_button"
+            android:textSize="@dimen/_19sdp"
             android:textColor="@color/white"
-            android:fontFamily="@font/encode_sans_semibold"
-            android:layout_marginStart="@dimen/_40sdp"/>
+            android:fontFamily="@font/encode_sans_bold"
+            android:layout_marginStart="@dimen/_30sdp"/>
 
     </RelativeLayout>
 
@@ -41,38 +41,40 @@
         android:background="#F5F5F5"
         >
         <LinearLayout
-            android:layout_marginHorizontal="@dimen/_30sdp"
+            android:layout_marginHorizontal="@dimen/_15sdp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:id="@+id/text_ocw"
-            android:layout_marginTop="@dimen/_115sdp"
+            android:layout_marginTop="@dimen/_153sdp"
             >
             <View
+                android:layout_weight="1"
                 android:layout_gravity="center_vertical"
                 android:layout_width="@dimen/_65sdp"
                 android:layout_height="2dp"
-                android:background="#D1D1D6"
-                android:layout_marginStart="@dimen/_5sdp"
+                android:background="#F0F0F8"
                 />
 
             <TextView
 
+                android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/or_continue_with"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_11ssp"
+                android:textSize="@dimen/_9ssp"
                 android:fontFamily="@font/encode_sans"
-                android:layout_marginStart="@dimen/_15sdp"
+                android:gravity="center_horizontal"
                 />
 
             <View
+                android:layout_weight="1"
                 android:layout_gravity="center_vertical"
                 android:layout_width="@dimen/_65sdp"
                 android:layout_height="2dp"
-                android:background="#D1D1D6"
-                android:layout_marginStart="@dimen/_15sdp"/>
+                android:background="#F0F0F8"
+                />
 
         </LinearLayout>
 
@@ -80,23 +82,28 @@
         <LinearLayout
             android:id="@+id/fb_g_btns"
             android:layout_below="@+id/text_ocw"
-            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_9sdp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center"
             >
             <ImageView
-                android:layout_width="@dimen/_20sdp"
-                android:layout_height="@dimen/_20sdp"
+                android:layout_weight="1"
+                android:id="@+id/registration_using_fb"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
                 android:src="@drawable/fb_round"
-                android:layout_marginRight="@dimen/_50sdp"
-                />
+                android:paddingStart="@dimen/_90sdp"
+                tools:ignore="RtlSymmetry" />
+
             <ImageView
-                android:layout_width="@dimen/_20sdp"
-                android:layout_height="@dimen/_20sdp"
+                android:layout_weight="1"
+                android:id="@+id/registration_using_google"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
                 android:src="@drawable/google_round"
-                />
+                android:paddingEnd="@dimen/_87sdp"
+                tools:ignore="RtlSymmetry" />
         </LinearLayout>
 
         <LinearLayout
@@ -104,7 +111,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/fb_g_btns"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_12sdp"
             android:orientation="horizontal">
 
             <TextView
@@ -114,7 +121,7 @@
                 android:text="@string/login_descreption"
                 android:textColor="@color/black"
                 android:fontFamily="@font/encode_sans"
-                android:textSize="@dimen/_11ssp" />
+                android:textSize="@dimen/_8ssp" />
 
 
             <TextView
@@ -125,7 +132,7 @@
                 android:fontFamily="@font/encode_sans_semibold"
                 android:text="@string/sign_in"
                 android:textColor="@color/text_blue"
-                android:textSize="@dimen/_11ssp"
+                android:textSize="@dimen/_8ssp"
 
 
                 />
@@ -138,26 +145,26 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_marginHorizontal="@dimen/_20sdp"
-        android:layout_height="@dimen/_255sdp"
-        android:layout_marginTop="@dimen/_85sdp"
+        android:layout_marginHorizontal="@dimen/_15sdp"
+        android:layout_height="@dimen/_230sdp"
+        android:layout_marginTop="@dimen/_82sdp"
         style="@style/registration_card"
         android:outlineAmbientShadowColor="@color/black">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="@dimen/_10sdp">
 
             <TextView
                 android:id="@+id/f_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/_20sdp"
                 android:text="@string/full_name"
                 android:textColor="@color/text_gray"
-                android:fontFamily="@font/encode_sans"
-                android:textSize="@dimen/_10ssp"
-                android:layout_marginTop="@dimen/_22sdp"
+                android:fontFamily="@font/encode_sans_semibold"
+                android:textSize="@dimen/_7ssp"
+                android:layout_marginTop="@dimen/_14sdp"
                 />
             <EditText
                 android:id="@+id/fullName"
@@ -165,23 +172,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:textSize="@dimen/_10sdp"
-
-                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:textSize="@dimen/_9ssp"
                 android:backgroundTint="#F0F0F8"
                 android:textColor="@color/black"/>
 
             <TextView
                 android:id="@+id/maill"
                 android:layout_below="@+id/fullName"
-                android:layout_marginTop="@dimen/_5sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/_20sdp"
                 android:text="@string/email"
                 android:textColor="@color/text_gray"
-                android:fontFamily="@font/encode_sans"
-                android:textSize="@dimen/_10ssp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:fontFamily="@font/encode_sans_semibold"
+                android:textSize="@dimen/_7ssp"
 
                 />
             <EditText
@@ -190,9 +194,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
-                android:textSize="@dimen/_10sdp"
-
-                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:textSize="@dimen/_9ssp"
                 android:backgroundTint="#F0F0F8"
                 android:textColor="@color/black"/>
 
@@ -201,24 +203,21 @@
                 android:layout_below="@+id/email_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/_20sdp"
                 android:text="@string/mobile"
                 android:textColor="@color/text_gray"
-                android:fontFamily="@font/encode_sans"
-                android:textSize="@dimen/_10ssp"
                 android:layout_marginTop="@dimen/_5sdp"
+                android:fontFamily="@font/encode_sans_semibold"
+                android:textSize="@dimen/_7ssp"
                 />
             <EditText
                 android:id="@+id/mobile_no"
                 android:layout_below="@id/m_no"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:textSize="@dimen/_9ssp"
                 android:backgroundTint="#F0F0F8"
                 android:inputType="number"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_10sdp"
-                />
+                android:textColor="@color/black"/>
 
             <LinearLayout
                 android:id="@+id/pass"
@@ -226,43 +225,37 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                style="@style/password"
-                android:layout_marginHorizontal="@dimen/_15sdp"
-                android:layout_marginTop="@dimen/_5sdp">
+                >
 
                 <TextView
                     android:id="@+id/pwd"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
                     android:text="@string/password"
                     android:textColor="@color/text_gray"
-                    android:fontFamily="@font/encode_sans"
-                    android:textSize="@dimen/_10ssp"
-                    android:layout_marginTop="@dimen/_5sdp"
+                    android:fontFamily="@font/encode_sans_semibold"
+                    android:textSize="@dimen/_7ssp"
                     />
                 <LinearLayout
-                    android:layout_marginTop="@dimen/_3sdp"
                     android:layout_width="wrap_content"
-                    android:layout_marginHorizontal="@dimen/_5sdp"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <EditText
                         android:id="@+id/registration_password"
-                        android:layout_width="@dimen/_200sdp"
+                        android:layout_width="@dimen/_221sdp"
                         android:layout_height="wrap_content"
                         android:inputType="textPassword"
                         tools:ignore="MissingConstraints"
-                        tools:layout_editor_absoluteX="16dp"
-                        android:backgroundTint="#F0F0F8"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/_10sdp"
+                        android:textSize="@dimen/_9ssp"
+                        android:backgroundTint="#F0F0F8"
                         />
 
                     <ImageView
                         android:id="@+id/registration_pass_eye"
-                        android:layout_width="@dimen/_16sdp"
+                        android:layout_width="@dimen/_8sdp"
                         android:layout_height="match_parent"
                         android:src="@drawable/eye_visibility"
                         tools:layout_editor_absoluteX="280dp"
@@ -277,7 +270,6 @@
                 android:id="@+id/check1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/_20sdp"
                 android:layout_below="@id/pass"
                 android:layout_marginTop="@dimen/_7sdp"
                 android:orientation="horizontal"
@@ -291,7 +283,7 @@
                     android:layout_height="match_parent"
                     android:text="@string/i_agree_with"
                     android:fontFamily="@font/encode_sans"
-                    android:textSize="@dimen/_10sdp"
+                    android:textSize="@dimen/_8sdp"
                     android:textColor="@color/black"
                     android:layout_marginStart="@dimen/_8sdp"/>
                 <TextView
@@ -299,7 +291,7 @@
                     android:layout_height="match_parent"
                     android:text="@string/the_rules"
                     android:textColor="#4552CB"
-                    android:textSize="@dimen/_10sdp"
+                    android:textSize="@dimen/_8sdp"
                     android:layout_marginStart="@dimen/_2sdp"
                     android:fontFamily="@font/encode_sans"
                     android:textStyle=""
@@ -312,9 +304,8 @@
                 android:id="@+id/check2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/_20sdp"
                 android:layout_below="@id/check1"
-                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_5sdp"
                 android:orientation="horizontal"
                 >
                 <ImageView
@@ -326,7 +317,7 @@
                     android:layout_height="match_parent"
                     android:text="@string/i_do_not_want"
                     android:fontFamily="@font/encode_sans"
-                    android:textSize="@dimen/_10sdp"
+                    android:textSize="@dimen/_8sdp"
                     android:textColor="@color/black"
                     android:layout_marginStart="@dimen/_8sdp"/>
 
@@ -334,42 +325,42 @@
 
             </LinearLayout>
 
-<!--            <TextView-->
-<!--                android:id="@+id/check1"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_below="@id/pass"-->
-<!--                android:text="@string/i_agree_with"-->
-<!--                android:fontFamily="@font/encode_sans"-->
-<!--                android:textSize="@dimen/_10sdp"-->
-<!--                android:textColor="@color/black"-->
-<!--                android:layout_marginHorizontal="@dimen/_20sdp"-->
-<!--                android:layout_marginTop="@dimen/_7sdp"-->
-<!--                app:drawableStartCompat="@drawable/checkbox_unchecked"-->
-<!--                android:drawablePadding="@dimen/_8sdp"/>-->
+            <!--            <TextView-->
+            <!--                android:id="@+id/check1"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_below="@id/pass"-->
+            <!--                android:text="@string/i_agree_with"-->
+            <!--                android:fontFamily="@font/encode_sans"-->
+            <!--                android:textSize="@dimen/_11sdp"-->
+            <!--                android:textColor="@color/black"-->
+            <!--                android:layout_marginHorizontal="@dimen/_20sdp"-->
+            <!--                android:layout_marginTop="@dimen/_7sdp"-->
+            <!--                app:drawableStartCompat="@drawable/checkbox_unchecked"-->
+            <!--                android:drawablePadding="@dimen/_8sdp"/>-->
 
-<!--            <TextView-->
-<!--                android:id="@+id/check2"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_below="@id/check1"-->
-<!--                android:layout_marginTop="@dimen/_3sdp"-->
-<!--                android:text="@string/i_do_not_want"-->
-<!--                android:fontFamily="@font/encode_sans"-->
-<!--                android:textSize="@dimen/_10sdp"-->
-<!--                android:textColor="@color/black"-->
-<!--                android:drawablePadding="@dimen/_8sdp"-->
-<!--                android:layout_marginHorizontal="@dimen/_20sdp"-->
-<!--                app:drawableStartCompat="@drawable/checkbox_unchecked" />-->
+            <!--            <TextView-->
+            <!--                android:id="@+id/check2"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_below="@id/check1"-->
+            <!--                android:layout_marginTop="@dimen/_8sdp"-->
+            <!--                android:text="@string/i_do_not_want"-->
+            <!--                android:fontFamily="@font/encode_sans"-->
+            <!--                android:textSize="@dimen/_11sdp"-->
+            <!--                android:textColor="@color/black"-->
+            <!--                android:drawablePadding="@dimen/_8sdp"-->
+            <!--                android:layout_marginHorizontal="@dimen/_20sdp"-->
+            <!--                app:drawableStartCompat="@drawable/checkbox_unchecked" />-->
 
             <Button
-                android:layout_marginHorizontal="@dimen/_20sdp"
                 android:layout_below="@+id/check2"
-                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_15sdp"
                 android:id="@+id/sign_up"
                 style="@style/btn"
-                android:layout_width="@dimen/_180sdp"
-                android:layout_height="@dimen/_25sdp"
+                android:textSize="@dimen/_9ssp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_23sdp"
                 android:layout_centerHorizontal="true"
                 android:text="@string/sign_up"
 

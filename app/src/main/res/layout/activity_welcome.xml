@@ -13,12 +13,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="@dimen/_30sdp"
-        android:layout_marginEnd="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_40sdp"
+        android:layout_marginEnd="@dimen/_15sdp"
         android:fontFamily="@font/encode_sans_semibold"
         android:text="@string/sign_in"
         android:textColor="#4552CB"
-        android:textSize="@dimen/_10ssp" />
+        android:textSize="@dimen/_11ssp" />
 
 
     <androidx.viewpager.widget.ViewPager
@@ -26,11 +26,24 @@
         android:id="@+id/pagerIntroSlider"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/_500sdp"
-        android:layout_marginTop="@dimen/_60sdp">
+        android:layout_marginTop="@dimen/_56sdp">
     </androidx.viewpager.widget.ViewPager>
 
+
+<!--    <com.tbuonomo.viewpagerdotsindicator.DotsIndicator-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_marginBottom="@dimen/_247sdp"-->
+<!--        android:id="@+id/dots_indicator"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        app:dotsColor="#F1A852"-->
+<!--        app:dotsSize="16dp"-->
+<!--        app:dotsWidthFactor="3"-->
+<!--        />-->
+
     <com.google.android.material.tabs.TabLayout
-        android:layout_marginBottom="@dimen/_280sdp"
+        android:layout_marginBottom="@dimen/_247sdp"
         android:layout_alignParentBottom="true"
         android:id="@+id/tab"
         android:layout_width="match_parent"
@@ -40,13 +53,14 @@
         app:tabIndicatorHeight="0dp" />
 
     <Button
-        android:layout_below="@+id/pagerIntroSlider"
         android:id="@+id/next_btn"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/_67sdp"
         style="@style/btn"
+        android:textSize="@dimen/_14ssp"
         android:layout_width="@dimen/_200sdp"
         android:layout_height="@dimen/_35sdp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/_10sdp"
         android:text="@string/next"
 
         />

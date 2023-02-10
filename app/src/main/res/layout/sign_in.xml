@@ -52,11 +52,10 @@
             >
             <View
                 android:layout_weight="1"
-                android:layout_marginStart="@dimen/_8sdp"
                 android:layout_gravity="center_vertical"
                 android:layout_width="@dimen/_65sdp"
                 android:layout_height="2dp"
-                android:background="#D1D1D6"
+                android:background="#F0F0F8"
                 />
 
             <TextView
@@ -76,7 +75,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_width="@dimen/_65sdp"
                 android:layout_height="2dp"
-                android:background="#D1D1D6"
+                android:background="#F0F0F8"
                 />
 
         </LinearLayout>
@@ -96,7 +95,7 @@
                 android:layout_width="@dimen/_45sdp"
                 android:layout_height="@dimen/_45sdp"
                 android:src="@drawable/fb_round"
-                android:paddingStart="@dimen/_75sdp"
+                android:paddingStart="@dimen/_65sdp"
                 tools:ignore="RtlSymmetry" />
 
             <ImageView
@@ -165,7 +164,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/email"
                 android:textColor="@color/text_gray"
-                android:fontFamily="@font/encode_sans"
+                android:fontFamily="@font/encode_sans_bold"
                 android:textSize="@dimen/_11ssp"
                 android:layout_marginTop="@dimen/_15sdp"
                 />
@@ -193,7 +192,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/password"
                     android:textColor="@color/text_gray"
-                    android:fontFamily="@font/encode_sans"
+                    android:fontFamily="@font/encode_sans_bold"
                     android:textSize="@dimen/_11ssp"
                     android:layout_marginTop="@dimen/_5sdp"
                     />
@@ -218,7 +217,7 @@
 
                     <ImageView
                         android:id="@+id/signIn_pass_eye"
-                        android:layout_width="wrap_content"
+                        android:layout_width="@dimen/_12sdp"
                         android:layout_height="match_parent"
                         android:src="@drawable/eye_visibility"
                         tools:layout_editor_absoluteX="280dp"
@@ -256,6 +255,7 @@
                 android:id="@+id/sign_up"
                 style="@style/btn"
                 android:layout_width="match_parent"
+                android:textSize="@dimen/_14sdp"
                 android:layout_height="@dimen/_35sdp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/_19sdp"

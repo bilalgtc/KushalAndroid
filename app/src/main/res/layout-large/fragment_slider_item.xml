@@ -6,9 +6,10 @@
     tools:context=".SliderItemFragment">
 
    <ImageView
+
        android:id="@+id/imageView"
-       android:layout_width="match_parent"
-       android:layout_height="@dimen/_300sdp"
+       android:layout_width="wrap_content"
+       android:layout_height="@dimen/_302sdp"
        android:src="@drawable/welcome_s1_img" />
 
    <TextView

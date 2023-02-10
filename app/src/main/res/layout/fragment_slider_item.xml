@@ -7,13 +7,13 @@
 
    <ImageView
        android:layout_width="match_parent"
-       android:layout_height="@dimen/_320sdp"
+       android:layout_height="@dimen/_315sdp"
        android:src="@drawable/welcome_s1_img"
        android:id="@+id/imageView"
        />
 
    <TextView
-       android:layout_marginTop="@dimen/_60sdp"
+       android:layout_marginTop="@dimen/_35sdp"
        android:layout_centerHorizontal="true"
        android:layout_below="@+id/imageView"
        android:id="@+id/text_dis1"
@@ -21,8 +21,8 @@
        android:layout_height="wrap_content"
        android:textStyle="bold"
        android:textColor="@color/black"
-       android:fontFamily="@font/encode_sans_semibold"
-       android:textSize="@dimen/_18ssp"
+       android:fontFamily="@font/encode_sans_bold"
+       android:textSize="@dimen/_20ssp"
        android:layout_gravity="center_horizontal"
        android:text="@string/hello_blank_fragment" />
 
@@ -37,7 +37,7 @@
        android:fontFamily="@font/encode_sans"
        android:layout_marginTop="@dimen/_5sdp"
        android:textColor="@color/black"
-       android:textSize="@dimen/_12ssp"
+       android:textSize="@dimen/_13ssp"
        android:layout_gravity="center_horizontal"
        android:text="@string/hello_blank_fragment" />
 
