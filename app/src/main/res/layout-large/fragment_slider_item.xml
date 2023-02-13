@@ -8,20 +8,22 @@
    <ImageView
 
        android:id="@+id/imageView"
-       android:layout_width="wrap_content"
-       android:layout_height="@dimen/_302sdp"
+       android:layout_width="match_parent"
+       android:scaleType="fitXY"
+       android:layout_height="@dimen/_225sdp"
        android:src="@drawable/welcome_s1_img" />
 
    <TextView
        android:layout_centerHorizontal="true"
        android:layout_below="@+id/imageView"
+       android:layout_marginTop="@dimen/_33sdp"
        android:id="@+id/text_dis1"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
        android:textStyle="bold"
        android:textColor="@color/black"
-       android:fontFamily="@font/encode_sans_semibold"
-       android:textSize="@dimen/_18ssp"
+       android:fontFamily="@font/encode_sans_bold"
+       android:textSize="@dimen/_15ssp"
        android:layout_gravity="center_horizontal"
        android:text="@string/hello_blank_fragment" />
 
@@ -30,13 +32,13 @@
        android:layout_below="@+id/text_dis1"
        android:textAlignment="center"
        android:id="@+id/text_dis2"
-       android:layout_marginHorizontal="@dimen/_30sdp"
+       android:layout_marginHorizontal="@dimen/_60sdp"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
        android:fontFamily="@font/encode_sans"
        android:layout_marginTop="@dimen/_5sdp"
        android:textColor="@color/black"
-       android:textSize="@dimen/_12ssp"
+       android:textSize="@dimen/_10ssp"
        android:layout_gravity="center_horizontal"
        android:text="@string/hello_blank_fragment" />
 

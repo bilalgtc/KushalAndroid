@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
+import com.tbuonomo.viewpagerdotsindicator.DotsIndicator;
 
 public class Welcome_activity extends AppCompatActivity {
 
@@ -24,6 +25,7 @@ public class Welcome_activity extends AppCompatActivity {
     private Button button;
     private sliderPagerAdapter adapter;
     TextView singIn;
+    DotsIndicator dotsIndicator;
 
 
 
@@ -40,13 +42,15 @@ public class Welcome_activity extends AppCompatActivity {
 
         viewPager = findViewById(R.id.pagerIntroSlider);
         singIn = findViewById(R.id.welcome_sign_in);
-        TabLayout tabLayout = findViewById(R.id.tab);
+//        TabLayout tabLayout = findViewById(R.id.tab);
         button = findViewById(R.id.next_btn);
+        dotsIndicator = findViewById(R.id.dots_indicator);
 
         adapter = new sliderPagerAdapter(getSupportFragmentManager(),
                 FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         viewPager.setAdapter(adapter);
-        tabLayout.setupWithViewPager(viewPager);
+//        tabLayout.setupWithViewPager(viewPager);
+        dotsIndicator.attachTo(viewPager);
 
         changeStatusBarColor();
 
@@ -106,6 +110,7 @@ public class Welcome_activity extends AppCompatActivity {
             Window window = getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
                 window.setStatusBarColor(Color.TRANSPARENT);
+//            window.setNavigationBarColor(getResources().getColor(R.color.black));
         }
     }
 

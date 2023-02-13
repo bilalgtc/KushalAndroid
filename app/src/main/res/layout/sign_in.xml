@@ -159,7 +159,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/f_name"
+                android:id="@+id/e_mail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/email"
@@ -170,13 +170,20 @@
                 />
             <EditText
                 android:id="@+id/email_id"
-                android:layout_below="@id/f_name"
+                android:layout_below="@id/e_mail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
                 android:textSize="@dimen/_11ssp"
-                android:backgroundTint="#F0F0F8"
+                android:backgroundTint="@color/white"
                 android:textColor="@color/black"/>
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/email_id_divider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/email_id"
+                android:layout_marginTop="-10dp"
+                app:dividerColor="#F0F0F8" />
 
             <LinearLayout
                 android:id="@+id/pass"
@@ -211,31 +218,23 @@
                         tools:ignore="MissingConstraints"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_11ssp"
-                        tools:layout_editor_absoluteX="16dp"
-                        android:backgroundTint="#F0F0F8"
+                        android:backgroundTint="@color/white"
                         />
 
                     <ImageView
                         android:id="@+id/signIn_pass_eye"
                         android:layout_width="@dimen/_12sdp"
                         android:layout_height="match_parent"
-                        android:src="@drawable/eye_visibility"
-                        tools:layout_editor_absoluteX="280dp"
-                        tools:layout_editor_absoluteY="21dp"
+                        android:src="@drawable/password_visible_eye"
                         android:layout_gravity="center_vertical"
                         />
                 </LinearLayout>
-
-<!--                <EditText-->
-<!--                    android:drawableEnd="@drawable/eye"-->
-<!--                    android:paddingEnd="@dimen/_10sdp"-->
-<!--                    android:id="@+id/password"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginHorizontal="@dimen/_5sdp"-->
-<!--                    android:backgroundTint="#F0F0F8"-->
-<!--                    android:inputType="textPassword"-->
-<!--                    android:textColor="@color/black"/>-->
+                <com.google.android.material.divider.MaterialDivider
+                    android:id="@+id/pass_divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-7dp"
+                    app:dividerColor="#F0F0F8" />
             </LinearLayout>
 
             <TextView

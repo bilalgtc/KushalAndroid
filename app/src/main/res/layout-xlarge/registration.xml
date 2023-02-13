@@ -175,6 +175,13 @@
                 android:textSize="@dimen/_9ssp"
                 android:backgroundTint="#F0F0F8"
                 android:textColor="@color/black"/>
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/name_div"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/fullName"
+                android:layout_marginTop="-10dp"
+                app:dividerColor="#F0F0F8" />
 
             <TextView
                 android:id="@+id/maill"
@@ -197,6 +204,13 @@
                 android:textSize="@dimen/_9ssp"
                 android:backgroundTint="#F0F0F8"
                 android:textColor="@color/black"/>
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/email_div"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/email_id"
+                android:layout_marginTop="-10dp"
+                app:dividerColor="#F0F0F8" />
 
             <TextView
                 android:id="@+id/m_no"
@@ -218,6 +232,13 @@
                 android:backgroundTint="#F0F0F8"
                 android:inputType="number"
                 android:textColor="@color/black"/>
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/mNo_div"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/mobile_no"
+                android:layout_marginTop="-10dp"
+                app:dividerColor="#F0F0F8" />
 
             <LinearLayout
                 android:id="@+id/pass"
@@ -244,26 +265,31 @@
 
                     <EditText
                         android:id="@+id/registration_password"
-                        android:layout_width="@dimen/_221sdp"
+                        android:layout_width="@dimen/_242sdp"
                         android:layout_height="wrap_content"
                         android:inputType="textPassword"
                         tools:ignore="MissingConstraints"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_9ssp"
-                        android:backgroundTint="#F0F0F8"
+                        android:backgroundTint="@color/white"
                         />
 
                     <ImageView
                         android:id="@+id/registration_pass_eye"
                         android:layout_width="@dimen/_8sdp"
                         android:layout_height="match_parent"
-                        android:src="@drawable/eye_visibility"
+                        android:src="@drawable/password_visible_eye"
                         tools:layout_editor_absoluteX="280dp"
                         tools:layout_editor_absoluteY="21dp"
                         android:layout_gravity="center_vertical"
                         />
                 </LinearLayout>
-
+                <com.google.android.material.divider.MaterialDivider
+                    android:id="@+id/pwd_div"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-8dp"
+                    app:dividerColor="#F0F0F8" />
             </LinearLayout>
 
             <LinearLayout
@@ -320,38 +346,7 @@
                     android:textSize="@dimen/_8sdp"
                     android:textColor="@color/black"
                     android:layout_marginStart="@dimen/_8sdp"/>
-
-
-
             </LinearLayout>
-
-            <!--            <TextView-->
-            <!--                android:id="@+id/check1"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_below="@id/pass"-->
-            <!--                android:text="@string/i_agree_with"-->
-            <!--                android:fontFamily="@font/encode_sans"-->
-            <!--                android:textSize="@dimen/_11sdp"-->
-            <!--                android:textColor="@color/black"-->
-            <!--                android:layout_marginHorizontal="@dimen/_20sdp"-->
-            <!--                android:layout_marginTop="@dimen/_7sdp"-->
-            <!--                app:drawableStartCompat="@drawable/checkbox_unchecked"-->
-            <!--                android:drawablePadding="@dimen/_8sdp"/>-->
-
-            <!--            <TextView-->
-            <!--                android:id="@+id/check2"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_below="@id/check1"-->
-            <!--                android:layout_marginTop="@dimen/_8sdp"-->
-            <!--                android:text="@string/i_do_not_want"-->
-            <!--                android:fontFamily="@font/encode_sans"-->
-            <!--                android:textSize="@dimen/_11sdp"-->
-            <!--                android:textColor="@color/black"-->
-            <!--                android:drawablePadding="@dimen/_8sdp"-->
-            <!--                android:layout_marginHorizontal="@dimen/_20sdp"-->
-            <!--                app:drawableStartCompat="@drawable/checkbox_unchecked" />-->
 
             <Button
                 android:layout_below="@+id/check2"
@@ -359,18 +354,12 @@
                 android:id="@+id/sign_up"
                 style="@style/btn"
                 android:textSize="@dimen/_9ssp"
-                android:layout_width="match_parent"
+                android:layout_width="@dimen/_140sdp"
                 android:layout_height="@dimen/_23sdp"
                 android:layout_centerHorizontal="true"
                 android:text="@string/sign_up"
 
                 />
-
-
-
         </RelativeLayout>
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </RelativeLayout>

@@ -14,15 +14,15 @@
         >
         <ImageView
             android:id="@+id/singIn_back_button"
-            android:layout_width="@dimen/_23sdp"
-            android:layout_height="@dimen/_23sdp"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
             android:src="@drawable/arrow_left"
-            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_27sdp"
             android:layout_marginStart="@dimen/_13sdp"
             />
 
         <TextView
-            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_12sdp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/sign_in"
@@ -30,7 +30,7 @@
             android:textSize="@dimen/_20sdp"
             android:textColor="@color/white"
             android:fontFamily="@font/encode_sans_bold"
-            android:layout_marginStart="@dimen/_33sdp"/>
+            android:layout_marginStart="@dimen/_30sdp"/>
 
     </RelativeLayout>
 
@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:id="@+id/text_ocw"
-            android:layout_marginTop="@dimen/_98sdp"
+            android:layout_marginTop="@dimen/_109sdp"
             >
             <View
                 android:layout_weight="1"
@@ -144,9 +144,9 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_marginHorizontal="@dimen/_20sdp"
+        android:layout_marginHorizontal="@dimen/_15sdp"
         android:layout_height="@dimen/_159sdp"
-        android:layout_marginTop="@dimen/_90sdp"
+        android:layout_marginTop="@dimen/_102sdp"
         style="@style/registration_card"
         android:outlineAmbientShadowColor="@color/black">
 
@@ -156,7 +156,7 @@
             android:layout_marginHorizontal="@dimen/_15sdp">
 
             <TextView
-                android:id="@+id/f_name"
+                android:id="@+id/e_mail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/email"
@@ -167,18 +167,21 @@
                 />
             <EditText
                 android:id="@+id/email_id"
-                android:layout_below="@id/f_name"
+                android:layout_below="@id/e_mail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
+                android:backgroundTint="@color/white"
                 android:textSize="@dimen/_9ssp"
-
-                android:backgroundTint="#F0F0F8"
                 android:textColor="@color/black"/>
 
-
-
-
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/email_id_divider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/email_id"
+                android:layout_marginTop="-10dp"
+                app:dividerColor="#F0F0F8" />
 
             <LinearLayout
                 android:id="@+id/pass"
@@ -209,35 +212,30 @@
                         android:layout_width="@dimen/_220sdp"
                         android:layout_height="wrap_content"
                         android:inputType="textPassword"
-                        tools:ignore="MissingConstraints"
                         android:textColor="@color/black"
+                        android:backgroundTint="@color/white"
                         android:textSize="@dimen/_9ssp"
-                        android:backgroundTint="#F0F0F8"
-                        />
+                        android:importantForAutofill="no" />
+
 
                     <ImageView
                         android:id="@+id/signIn_pass_eye"
                         android:layout_width="@dimen/_10sdp"
                         android:layout_height="match_parent"
-                        android:src="@drawable/eye_visibility"
+                        android:src="@drawable/password_visible_eye"
                         tools:layout_editor_absoluteX="280dp"
                         tools:layout_editor_absoluteY="21dp"
                         android:layout_gravity="center_vertical"
                         />
                 </LinearLayout>
-
-
-<!--                <EditText-->
-<!--                    android:drawableEnd="@drawable/eye"-->
-<!--                    android:paddingEnd="@dimen/_10sdp"-->
-<!--                    android:id="@+id/password"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginHorizontal="@dimen/_5sdp"-->
-<!--                    android:backgroundTint="#F0F0F8"-->
-<!--                    android:inputType="textPassword"-->
-<!--                    android:textColor="@color/black"/>-->
+                <com.google.android.material.divider.MaterialDivider
+                    android:id="@+id/pass_divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-7dp"
+                    app:dividerColor="#F0F0F8" />
             </LinearLayout>
+
 
             <TextView
                 android:id="@+id/singIn_forgot_pass"
@@ -257,19 +255,13 @@
                 android:id="@+id/sign_up"
                 style="@style/btn"
                 android:textSize="@dimen/_10ssp"
-                android:layout_width="match_parent"
+                android:layout_width="@dimen/_140sdp"
                 android:layout_height="@dimen/_26sdp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/_16sdp"
                 android:text="@string/sign_in"
 
                 />
-
-
-
         </RelativeLayout>
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </RelativeLayout>

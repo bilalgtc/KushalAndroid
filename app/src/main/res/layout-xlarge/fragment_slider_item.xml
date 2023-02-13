@@ -7,38 +7,39 @@
 
    <ImageView
        android:layout_width="wrap_content"
-       android:layout_height="@dimen/_300sdp"
+       android:layout_height="@dimen/_200sdp"
        android:src="@drawable/welcome_s1_img"
        android:id="@+id/imageView"
+       android:scaleType="fitXY"
        />
 
    <TextView
-       android:layout_alignParentBottom="true"
+       android:layout_below="@+id/imageView"
+       android:layout_marginTop="@dimen/_26sdp"
        android:layout_centerHorizontal="true"
-       android:layout_marginBottom="@dimen/_90sdp"
        android:id="@+id/text_dis1"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
        android:textStyle="bold"
        android:textColor="@color/black"
-       android:fontFamily="@font/encode_sans_semibold"
-       android:textSize="@dimen/_18ssp"
+       android:fontFamily="@font/encode_sans_bold"
+       android:textSize="@dimen/_13ssp"
        android:layout_gravity="center_horizontal"
        android:text="@string/hello_blank_fragment" />
 
    <TextView
-       android:layout_alignParentBottom="true"
-       android:layout_marginBottom="@dimen/_55sdp"
+       android:layout_below="@+id/text_dis1"
+       android:layout_marginTop="@dimen/_5sdp"
        android:id="@+id/text_dis2"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
        android:layout_centerHorizontal="true"
        android:layout_gravity="center_horizontal"
-       android:layout_marginHorizontal="@dimen/_30sdp"
+       android:layout_marginHorizontal="@dimen/_58sdp"
        android:fontFamily="@font/encode_sans"
        android:text="@string/hello_blank_fragment"
        android:textAlignment="center"
        android:textColor="@color/black"
-       android:textSize="@dimen/_12ssp" />
+       android:textSize="@dimen/_8ssp" />
 
 </RelativeLayout>

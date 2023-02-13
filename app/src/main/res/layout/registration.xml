@@ -233,8 +233,15 @@
                 android:layout_height="wrap_content"
                 android:inputType="text"
                 android:textSize="@dimen/_12ssp"
-                android:backgroundTint="#F0F0F8"
+                android:backgroundTint="@color/white"
                 android:textColor="@color/black"/>
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/name_div"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/fullName"
+                android:layout_marginTop="-10dp"
+                app:dividerColor="#F0F0F8" />
 
             <TextView
                 android:id="@+id/maill"
@@ -254,10 +261,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
-                android:backgroundTint="#F0F0F8"
+                android:backgroundTint="@color/white"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_12ssp"
                 />
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/email_div"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/email_id"
+                android:layout_marginTop="-10dp"
+                app:dividerColor="#F0F0F8" />
 
             <TextView
                 android:id="@+id/m_no"
@@ -275,11 +289,18 @@
                 android:layout_below="@id/m_no"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#F0F0F8"
+                android:backgroundTint="@color/white"
                 android:inputType="number"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_12ssp"
                 />
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/mNo_div"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/mobile_no"
+                android:layout_marginTop="-10dp"
+                app:dividerColor="#F0F0F8" />
 
             <LinearLayout
                 android:id="@+id/pass"
@@ -306,29 +327,36 @@
                     android:orientation="horizontal">
 
                     <EditText
+                        android:layout_weight="1"
                         android:id="@+id/registration_password"
-                        android:layout_width="@dimen/_222sdp"
+                        android:layout_width="@dimen/_240sdp"
                         android:layout_height="wrap_content"
+                        android:backgroundTint="@color/white"
                         android:inputType="textPassword"
-                        tools:ignore="MissingConstraints"
                         android:textColor="@color/black"
-                        tools:layout_editor_absoluteX="16dp"
                         android:textSize="@dimen/_12ssp"
-                        android:backgroundTint="#F0F0F8"
-                         />
+                        tools:ignore="MissingConstraints"
+                        tools:layout_editor_absoluteX="16dp" />
 
                     <ImageView
+                        android:layout_weight="1"
                         android:id="@+id/registration_pass_eye"
-                        android:layout_width="@dimen/_16sdp"
+                        android:layout_width="@dimen/_25sdp"
+                        android:scaleType="centerInside"
                         android:layout_height="match_parent"
-                        android:src="@drawable/eye_visibility"
+                        android:src="@drawable/password_visible_eye"
                         tools:layout_editor_absoluteX="280dp"
                         tools:layout_editor_absoluteY="21dp"
                         android:layout_gravity="center_vertical"
                          />
                 </LinearLayout>
-
-
+                <com.google.android.material.divider.MaterialDivider
+                    android:id="@+id/pwd_div"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/pass"
+                    android:layout_marginTop="-10dp"
+                    app:dividerColor="#F0F0F8" />
             </LinearLayout>
 
             <LinearLayout

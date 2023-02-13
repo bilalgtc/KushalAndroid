@@ -10,44 +10,52 @@
 
     <TextView
         android:id="@+id/welcome_sign_in"
-
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginEnd="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_28sdp"
+        android:layout_marginEnd="@dimen/_15sdp"
         android:fontFamily="@font/encode_sans_semibold"
         android:text="@string/sign_in"
         android:textColor="#4552CB"
-        android:textSize="@dimen/_10ssp" />
+        android:textSize="@dimen/_7ssp" />
 
 
     <androidx.viewpager.widget.ViewPager
 
         android:id="@+id/pagerIntroSlider"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_10sdp">
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_500sdp"
+        android:layout_marginTop="@dimen/_45sdp">
     </androidx.viewpager.widget.ViewPager>
 
-    <com.google.android.material.tabs.TabLayout
-        android:layout_marginBottom="@dimen/_120sdp"
-        android:layout_alignParentBottom="true"
-        android:id="@+id/tab"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_10sdp"
-        app:tabBackground="@drawable/dot_selector"
-        app:tabGravity="center"
-        app:tabIndicatorHeight="0dp" />
+
+    <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
+        android:id="@+id/dots_indicator"
+        android:layout_below="@id/welcome_sign_in"
+        android:layout_marginTop="@dimen/_208sdp"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:dotsColor="#E6E7F8"
+        app:dotsCornerRadius="@dimen/_6sdp"
+        app:dotsSize="@dimen/_5sdp"
+        app:dotsSpacing="@dimen/_2sdp"
+        app:dotsWidthFactor="2.8"
+        app:selectedDotColor="#F1A852"
+        />
+
+
 
     <Button
         android:id="@+id/next_btn"
+        android:layout_below="@id/dots_indicator"
+        android:layout_marginTop="@dimen/_95sdp"
         style="@style/btn"
-        android:layout_width="@dimen/_200sdp"
-        android:layout_height="@dimen/_25sdp"
+        android:textSize="@dimen/_9ssp"
+        android:layout_width="@dimen/_130sdp"
+        android:layout_height="@dimen/_24sdp"
         android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="@dimen/_10sdp"
         android:text="@string/next"
 
         />
