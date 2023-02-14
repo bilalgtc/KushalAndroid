@@ -42,64 +42,6 @@
         android:background="#F5F5F5"
         >
 
-<!--        <LinearLayout-->
-<!--            android:layout_marginHorizontal="@dimen/_20sdp"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:orientation="horizontal"-->
-<!--            android:id="@+id/text_ocw"-->
-<!--            android:layout_marginTop="@dimen/_240sdp"-->
-<!--            >-->
-<!--            <View-->
-<!--                android:layout_gravity="center_vertical"-->
-<!--                android:layout_width="@dimen/_65sdp"-->
-<!--                android:layout_height="2dp"-->
-<!--                android:background="#D1D1D6"-->
-<!--                />-->
-
-<!--            <TextView-->
-
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="@string/or_continue_with"-->
-<!--                android:textColor="@color/black"-->
-<!--                android:textSize="@dimen/_16ssp"-->
-<!--                android:fontFamily="@font/encode_sans"-->
-<!--                android:layout_marginStart="@dimen/_13sdp"-->
-<!--                />-->
-
-<!--            <View-->
-<!--                android:layout_gravity="center_vertical"-->
-<!--                android:layout_width="@dimen/_65sdp"-->
-<!--                android:layout_height="2dp"-->
-<!--                android:background="#D1D1D6"-->
-<!--                android:layout_marginStart="@dimen/_13sdp"/>-->
-
-<!--        </LinearLayout>-->
-
-
-
-<!--        <LinearLayout-->
-<!--            android:id="@+id/fb_g_btns"-->
-<!--            android:layout_below="@+id/text_ocw"-->
-<!--            android:layout_marginTop="@dimen/_10sdp"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:orientation="horizontal"-->
-<!--            android:gravity="center"-->
-<!--            >-->
-<!--            <ImageView-->
-<!--                android:layout_width="@dimen/_50sdp"-->
-<!--                android:layout_height="@dimen/_50sdp"-->
-<!--                android:src="@drawable/fb_round"-->
-<!--                android:layout_marginRight="@dimen/_50sdp"-->
-<!--                />-->
-<!--            <ImageView-->
-<!--                android:layout_width="@dimen/_50sdp"-->
-<!--                android:layout_height="@dimen/_50sdp"-->
-<!--                android:src="@drawable/google_round"-->
-<!--                />-->
-<!--        </LinearLayout>-->
         <LinearLayout
             android:layout_marginHorizontal="@dimen/_15sdp"
             android:layout_width="match_parent"

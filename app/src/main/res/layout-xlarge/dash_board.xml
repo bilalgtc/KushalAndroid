@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginHorizontal="@dimen/_40sdp"
-        android:layout_marginTop="@dimen/_55sdp"
+        android:layout_marginTop="@dimen/_62sdp"
         android:id="@+id/l1"
         >
         <TextView

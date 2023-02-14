@@ -9,20 +9,20 @@
     <RelativeLayout
         android:id="@+id/r1"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_170sdp"
+        android:layout_height="@dimen/_177sdp"
         android:background="@drawable/header_bg"
         >
         <ImageView
             android:id="@+id/registration_back_button"
-            android:layout_width="@dimen/_20sdp"
-            android:layout_height="@dimen/_20sdp"
+            android:layout_width="@dimen/_18sdp"
+            android:layout_height="@dimen/_18sdp"
             android:src="@drawable/arrow_left"
-            android:layout_marginTop="@dimen/_15sdp"
-            android:layout_marginStart="@dimen/_11sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginStart="@dimen/_9sdp"
             />
 
         <TextView
-            android:layout_marginTop="@dimen/_6sdp"
+            android:layout_marginTop="@dimen/_12sdp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/registration"
@@ -30,7 +30,7 @@
             android:textSize="@dimen/_19sdp"
             android:textColor="@color/white"
             android:fontFamily="@font/encode_sans_bold"
-            android:layout_marginStart="@dimen/_30sdp"/>
+            android:layout_marginStart="@dimen/_28sdp"/>
 
     </RelativeLayout>
 
@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:id="@+id/text_ocw"
-            android:layout_marginTop="@dimen/_153sdp"
+            android:layout_marginTop="@dimen/_155sdp"
             >
             <View
                 android:layout_weight="1"
@@ -145,9 +145,9 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_marginHorizontal="@dimen/_15sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
         android:layout_height="@dimen/_230sdp"
-        android:layout_marginTop="@dimen/_82sdp"
+        android:layout_marginTop="@dimen/_89sdp"
         style="@style/registration_card"
         android:outlineAmbientShadowColor="@color/black">
 
