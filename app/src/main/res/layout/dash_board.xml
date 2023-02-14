@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginHorizontal="@dimen/_30sdp"
-        android:layout_marginTop="@dimen/_80sdp"
+        android:layout_marginTop="@dimen/_95sdp"
         android:id="@+id/l1"
         >
         <TextView
@@ -54,13 +54,15 @@
     </LinearLayout>
 
     <LinearLayout
+        android:clickable="true"
         android:layout_below="@+id/l1"
         android:id="@+id/c_with_fb"
         style="@style/dashboard_btn"
+        android:background="@drawable/ripple_dashbord_btns"
         android:layout_width="@dimen/_250sdp"
         android:layout_height="@dimen/_35sdp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/_35sdp"
+        android:layout_marginTop="@dimen/_38sdp"
         android:orientation="horizontal"
         >
 
@@ -80,6 +82,7 @@
                 android:fontFamily="@font/encode_sans"
                 android:textColor="@color/text_blue"
                 android:layout_gravity="center_vertical"
+                android:gravity="center_vertical|center_horizontal"
                 android:textSize="@dimen/_13sdp"
                 android:layout_marginStart="@dimen/_10sdp"
                 />
@@ -90,6 +93,7 @@
                 android:fontFamily="@font/encode_sans_bold"
                 android:textColor="@color/text_blue"
                 android:layout_gravity="center_vertical"
+                android:gravity="center_vertical|center_horizontal"
                 android:textSize="@dimen/_13sdp"
                 android:layout_marginStart="@dimen/_2sdp"
                 android:layout_marginEnd="@dimen/_20sdp"
@@ -97,9 +101,11 @@
         </LinearLayout>
 
     <LinearLayout
+        android:clickable="true"
         android:layout_below="@+id/c_with_fb"
         android:id="@+id/c_with_google"
         style="@style/dashboard_btn"
+        android:background="@drawable/ripple_dashbord_btns"
         android:layout_width="@dimen/_250sdp"
         android:layout_height="@dimen/_35sdp"
         android:layout_centerHorizontal="true"
@@ -123,6 +129,7 @@
             android:fontFamily="@font/encode_sans"
             android:textColor="@color/text_blue"
             android:layout_gravity="center_vertical"
+            android:gravity="center_vertical|center_horizontal"
             android:textSize="@dimen/_12sdp"
             android:layout_marginStart="@dimen/_10sdp"
             />
@@ -133,6 +140,7 @@
             android:fontFamily="@font/encode_sans_bold"
             android:textColor="@color/text_blue"
             android:layout_gravity="center_vertical"
+            android:gravity="center_vertical|center_horizontal"
             android:textSize="@dimen/_13sdp"
             android:layout_marginStart="@dimen/_2sdp"
             android:layout_marginEnd="@dimen/_20sdp"
@@ -143,9 +151,11 @@
         android:layout_below="@+id/c_with_google"
         android:id="@+id/register_with_mail"
         style="@style/dashboard_btn1"
+        android:background="@drawable/ripple_register_with_email"
         android:layout_width="@dimen/_250sdp"
         android:layout_height="@dimen/_35sdp"
         android:layout_centerHorizontal="true"
+        android:gravity="center_vertical|center_horizontal"
         android:textSize="@dimen/_13ssp"
         android:layout_marginTop="@dimen/_41sdp"
         android:text="@string/register_with_gmail"

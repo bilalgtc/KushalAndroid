@@ -265,7 +265,7 @@
 
                     <EditText
                         android:id="@+id/registration_password"
-                        android:layout_width="@dimen/_242sdp"
+                        android:layout_width="@dimen/_250sdp"
                         android:layout_height="wrap_content"
                         android:inputType="textPassword"
                         tools:ignore="MissingConstraints"
@@ -295,15 +295,20 @@
             <LinearLayout
                 android:id="@+id/check1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_10sdp"
                 android:layout_below="@id/pass"
                 android:layout_marginTop="@dimen/_7sdp"
                 android:orientation="horizontal"
                 >
-                <ImageView
+                <CheckBox
+                    android:layout_gravity="center_vertical"
+                    android:id="@+id/checkBox1"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/checkbox_unchecked"/>
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/checkbox_selcetor"
+                    android:stateListAnimator="@null"
+                    android:background="@null"
+                    />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -329,15 +334,19 @@
             <LinearLayout
                 android:id="@+id/check2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_10sdp"
                 android:layout_below="@id/check1"
                 android:layout_marginTop="@dimen/_5sdp"
                 android:orientation="horizontal"
                 >
-                <ImageView
+                <CheckBox
+                    android:layout_gravity="center_vertical"
+                    android:id="@+id/checkBox2"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/checkbox_unchecked"/>
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/checkbox_selcetor"
+                    android:background="@null"
+                    />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -349,6 +358,8 @@
             </LinearLayout>
 
             <Button
+                android:background="@drawable/ripple"
+                android:stateListAnimator="@null"
                 android:layout_below="@+id/check2"
                 android:layout_marginTop="@dimen/_15sdp"
                 android:id="@+id/sign_up"

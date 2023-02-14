@@ -8,15 +8,19 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.text.method.PasswordTransformationMethod;
 import android.text.method.SingleLineTransformationMethod;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.divider.MaterialDivider;
 
@@ -28,6 +32,8 @@ public class Registration extends AppCompatActivity {
     MaterialDivider div1,div2,div3,div4;
     Button sign_up;
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+    CheckBox check1,check2;
+
 
 
 
@@ -97,43 +103,115 @@ public class Registration extends AppCompatActivity {
         });
 
 
+        full_name.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (full_name.getText().toString().trim().length()==0){
+                    full_name.setCompoundDrawablesRelativeWithIntrinsicBounds(null,null,null,null);
+                }
+                else if(!full_name.getText().toString().trim().equalsIgnoreCase("")){
+                    full_name.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.success_icon, 0);
+
+                }
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        email.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(!email.getText().toString().matches(emailPattern) ) {
+                    email.setCompoundDrawablesRelativeWithIntrinsicBounds(null,null,null,null);
+                }
+                else if (email.getText().toString().matches(emailPattern)){
+                    email.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.success_icon, 0);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+        phone_no.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (phone_no.getText().toString().length() == 10){
+                    phone_no.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.success_icon,0);
+                }
+                else if (phone_no.getText().toString().length() < 10){
+                    phone_no.setCompoundDrawablesRelativeWithIntrinsicBounds(null,null,null,null);
+                }
+                else if (phone_no.getText().toString().length() >10){
+                    phone_no.setCompoundDrawablesRelativeWithIntrinsicBounds(null,null,null,null);
+                }
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+
+
         sign_up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String mail = email.getText().toString();
-                Drawable myIcon = getResources().getDrawable(R.drawable.sucess_icon);
-                myIcon.setBounds(0, 0, myIcon.getIntrinsicWidth(), myIcon.getIntrinsicHeight());
+
 
                 if(full_name.getText().toString().trim().equalsIgnoreCase("")){
-                    full_name.setError("please enter name");
+                    Toast.makeText(Registration.this, "pls enter name", Toast.LENGTH_SHORT).show();
                 }
-                else {
-                    full_name.setError("good",myIcon);
-                }
-                 if( email.getText().toString().trim().equalsIgnoreCase("")) {
-                    email.setError("email address required");
+                else if( email.getText().toString().trim().equalsIgnoreCase("")) {
+                    Toast.makeText(Registration.this, "email is empty!", Toast.LENGTH_SHORT).show();
                 }
                 else if(!mail.matches(emailPattern) ) {
-                    email.setError("Please enter a valid email address");
+                    Toast.makeText(Registration.this, "enter a valid email address", Toast.LENGTH_SHORT).show();
                 }
-                else {
-                     email.setError( "good",myIcon);
-                }
-
-                 if (phone_no.getText().toString().trim().equals("")){
-                    phone_no.setError("please enter phone no");
+                else if (phone_no.getText().toString().trim().equals("")){
+                    Toast.makeText(Registration.this, "phone no is empty!", Toast.LENGTH_SHORT).show();
                 }
                 else if (phone_no.getText().toString().length() < 10){
-                    phone_no.setError("please enter valid phone no");
+                    Toast.makeText(Registration.this, "enter valid phone no", Toast.LENGTH_SHORT).show();
+                }
+                else if (phone_no.getText().toString().length() > 10){
+                    Toast.makeText(Registration.this, "enter valid phone no", Toast.LENGTH_SHORT).show();
+                }
+                else if (password.getText().toString().length() < 7){
+                    Toast.makeText(Registration.this, "enter strong password", Toast.LENGTH_SHORT).show();
+                }
+                else if (!check1.isChecked()){
+                    Toast.makeText(Registration.this, "pls check the terms", Toast.LENGTH_SHORT).show();
+                }
+                else if (!check2.isChecked()){
+                    Toast.makeText(Registration.this, "pls check the terms", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    //validation is true, so what to put here?
-
-                    phone_no.setError("good",myIcon);
-
+                    Toast.makeText(Registration.this, "now you can pass intent", Toast.LENGTH_SHORT).show();
                 }
+
             }
         });
+
+
 
 
         password_eye.setOnClickListener(new View.OnClickListener() {
@@ -188,7 +266,8 @@ public class Registration extends AppCompatActivity {
         signIn = findViewById(R.id.registration_signIn);
         password_eye = findViewById(R.id.registration_pass_eye);
         password = findViewById(R.id.registration_password);
-
+        check1 = findViewById(R.id.checkBox1);
+        check2 = findViewById(R.id.checkBox2);
         email = findViewById(R.id.email_id);
         phone_no = findViewById(R.id.mobile_no);
         full_name = findViewById(R.id.fullName);

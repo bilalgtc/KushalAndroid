@@ -9,7 +9,7 @@
     <RelativeLayout
         android:id="@+id/r1"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_246sdp"
+        android:layout_height="@dimen/_267sdp"
         android:background="@drawable/header_bg"
         >
         <ImageView
@@ -17,7 +17,7 @@
             android:layout_width="@dimen/_25sdp"
             android:layout_height="@dimen/_25sdp"
             android:src="@drawable/arrow_left"
-            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_36sdp"
             android:layout_marginStart="@dimen/_14sdp"
             />
 
@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/registration_back_button"
             android:layout_marginStart="@dimen/_38sdp"
-            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_13sdp"
             android:fontFamily="@font/encode_sans_bold"
             android:text="@string/registration"
             android:textColor="@color/white"
@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:id="@+id/text_ocw"
-            android:layout_marginTop="@dimen/_232sdp"
+            android:layout_marginTop="@dimen/_230sdp"
             >
             <View
                 android:layout_weight="1"
@@ -148,8 +148,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_marginHorizontal="@dimen/_15sdp"
-        android:layout_height="@dimen/_348sdp"
-        android:layout_marginTop="@dimen/_113sdp"
+        android:layout_height="@dimen/_347sdp"
+        android:layout_marginTop="@dimen/_133sdp"
         style="@style/registration_card"
         android:outlineAmbientShadowColor="@color/black">
 
@@ -166,7 +166,7 @@
                 android:textColor="@color/text_gray"
                 android:fontFamily="@font/encode_sans_bold"
                 android:textSize="@dimen/_11ssp"
-                android:layout_marginTop="@dimen/_22sdp"
+                android:layout_marginTop="@dimen/_16sdp"
                 />
             <EditText
                 android:id="@+id/fullName"
@@ -269,9 +269,9 @@
                     android:orientation="horizontal">
 
                     <EditText
-                        android:layout_weight="1"
+                        android:layout_weight="8"
                         android:id="@+id/registration_password"
-                        android:layout_width="@dimen/_240sdp"
+                        android:layout_width="@dimen/_244sdp"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/white"
                         android:inputType="textPassword"
@@ -283,7 +283,7 @@
                     <ImageView
                         android:layout_weight="1"
                         android:id="@+id/registration_pass_eye"
-                        android:layout_width="@dimen/_25sdp"
+                        android:layout_width="@dimen/_12sdp"
                         android:scaleType="centerInside"
                         android:layout_height="match_parent"
                         android:src="@drawable/password_visible_eye"
@@ -309,10 +309,19 @@
                 android:layout_marginTop="@dimen/_7sdp"
                 android:orientation="horizontal"
                 >
-                <ImageView
+                <CheckBox
+                    android:id="@+id/checkBox1"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/checkbox_unchecked"/>
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/checkbox_selcetor"
+                    android:stateListAnimator="@null"
+                    android:background="@null"
+                    />
+<!--                <ImageView-->
+<!--                    android:id="@+id/checkBox1"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:src="@drawable/checkbox_unchecked"/>-->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -343,10 +352,19 @@
                 android:layout_marginTop="@dimen/_8sdp"
                 android:orientation="horizontal"
                 >
-                <ImageView
+
+                <CheckBox
+                    android:id="@+id/checkBox2"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/checkbox_unchecked"/>
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/checkbox_selcetor"
+                    android:background="@null"
+                    />
+<!--                <ImageView-->
+<!--                    android:id="@+id/checkbox2"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:src="@drawable/checkbox_unchecked"/>-->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -365,12 +383,15 @@
                 android:layout_below="@+id/check2"
                 android:id="@+id/sign_up"
                 style="@style/btn"
+                android:background="@drawable/ripple"
                 android:layout_width="match_parent"
-                android:textSize="@dimen/_14sdp"
-                android:layout_height="@dimen/_34sdp"
+                android:textSize="@dimen/_13sdp"
+                android:layout_height="@dimen/_36sdp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/_22sdp"
+                android:gravity="center_vertical|center_horizontal"
+                android:layout_marginTop="@dimen/_24sdp"
                 android:text="@string/sign_up"
+                android:stateListAnimator="@null"
 
                 />
 

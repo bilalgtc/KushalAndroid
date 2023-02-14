@@ -9,7 +9,7 @@
     <RelativeLayout
         android:id="@+id/r1"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_188sdp"
+        android:layout_height="@dimen/_201sdp"
         android:background="@drawable/header_bg"
         >
         <ImageView
@@ -18,7 +18,7 @@
             android:layout_height="@dimen/_20sdp"
             android:src="@drawable/arrow_left"
             android:layout_marginTop="@dimen/_27sdp"
-            android:layout_marginStart="@dimen/_13sdp"
+            android:layout_marginStart="@dimen/_9sdp"
             />
 
         <TextView
@@ -30,7 +30,7 @@
             android:textSize="@dimen/_20sdp"
             android:textColor="@color/white"
             android:fontFamily="@font/encode_sans_bold"
-            android:layout_marginStart="@dimen/_30sdp"/>
+            android:layout_marginStart="@dimen/_27sdp"/>
 
     </RelativeLayout>
 
@@ -144,7 +144,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_marginHorizontal="@dimen/_15sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
         android:layout_height="@dimen/_159sdp"
         android:layout_marginTop="@dimen/_102sdp"
         style="@style/registration_card"
@@ -209,7 +209,7 @@
 
                     <EditText
                         android:id="@+id/signIn_password"
-                        android:layout_width="@dimen/_220sdp"
+                        android:layout_width="@dimen/_240sdp"
                         android:layout_height="wrap_content"
                         android:inputType="textPassword"
                         android:textColor="@color/black"
@@ -251,12 +251,15 @@
 
 
             <Button
+                android:background="@drawable/ripple"
+                android:stateListAnimator="@null"
                 android:layout_below="@+id/singIn_forgot_pass"
-                android:id="@+id/sign_up"
+                android:id="@+id/sign_in"
                 style="@style/btn"
                 android:textSize="@dimen/_10ssp"
-                android:layout_width="@dimen/_140sdp"
-                android:layout_height="@dimen/_26sdp"
+                android:layout_width="@dimen/_180sdp"
+                android:layout_height="@dimen/_28sdp"
+                android:textAlignment="center"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/_16sdp"
                 android:text="@string/sign_in"

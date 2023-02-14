@@ -10,25 +10,30 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.text.method.PasswordTransformationMethod;
 import android.text.method.SingleLineTransformationMethod;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.divider.MaterialDivider;
 
 public class SignIn extends AppCompatActivity {
 
     EditText email, password;
-
     TextView registration,mail,pass;
     ImageView back_button;
     ImageView password_eye;
+    Button sing_in;
     MaterialDivider divi1, divi2;
+    String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -45,6 +50,7 @@ public class SignIn extends AppCompatActivity {
         password_eye = findViewById(R.id.signIn_pass_eye);
         password = findViewById(R.id.signIn_password);
         email = findViewById(R.id.email_id);
+        sing_in = findViewById(R.id.sign_in);
 
         changeStatusBarColor();
 //        setEditTextDrawables(email, R.drawable.sucess_icon);
@@ -73,6 +79,42 @@ public class SignIn extends AppCompatActivity {
                 else {
                     pass.setTextColor(getColor(R.color.text_blue));
                     divi2.setDividerColor(getColor(R.color.text_blue));
+                }
+            }
+        });
+
+        email.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(!email.getText().toString().matches(emailPattern) ) {
+                    email.setCompoundDrawablesRelativeWithIntrinsicBounds(null,null,null,null);
+                }
+                else if (email.getText().toString().matches(emailPattern)){
+                    email.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.success_icon, 0);
+                }
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        sing_in.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if( email.getText().toString().trim().equalsIgnoreCase("")) {
+                    Toast.makeText(SignIn.this, "email is empty!", Toast.LENGTH_SHORT).show();
+                }
+                else if(!email.getText().toString().trim().matches(emailPattern) ) {
+                    Toast.makeText(SignIn.this, "email not found", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    //pass intent
+                    Toast.makeText(SignIn.this, "if id&pass match do something", Toast.LENGTH_SHORT).show();
                 }
             }
         });

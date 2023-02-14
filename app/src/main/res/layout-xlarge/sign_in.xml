@@ -208,7 +208,7 @@
 
                     <EditText
                         android:id="@+id/signIn_password"
-                        android:layout_width="@dimen/_240sdp"
+                        android:layout_width="@dimen/_250sdp"
                         android:layout_height="wrap_content"
                         android:inputType="textPassword"
                         tools:ignore="MissingConstraints"
@@ -219,7 +219,7 @@
 
                     <ImageView
                         android:id="@+id/signIn_pass_eye"
-                        android:layout_width="@dimen/_10sdp"
+                        android:layout_width="@dimen/_8sdp"
                         android:layout_height="match_parent"
                         android:src="@drawable/password_visible_eye"
                         tools:layout_editor_absoluteX="280dp"
@@ -249,12 +249,13 @@
 
 
             <Button
+                android:background="@drawable/ripple"
+                android:stateListAnimator="@null"
                 android:layout_below="@+id/singIn_forgot_pass"
-                android:id="@+id/sign_up"
+                android:id="@+id/sign_in"
                 style="@style/btn"
                 android:textSize="@dimen/_9ssp"
                 android:layout_width="@dimen/_140sdp"
-
                 android:layout_height="@dimen/_22sdp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/_12sdp"

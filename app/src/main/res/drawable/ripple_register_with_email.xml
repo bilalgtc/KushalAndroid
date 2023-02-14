@@ -1,0 +1,4 @@
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/text_gray">
+    <item android:drawable="@drawable/dashboard_btn1_border" />
+</ripple>
