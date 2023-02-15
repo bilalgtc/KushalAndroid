@@ -41,7 +41,6 @@ public class SignIn extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_in);
-
         registration = findViewById(R.id.signIn_registration);
         back_button = findViewById(R.id.singIn_back_button);
         mail = findViewById(R.id.e_mail);
@@ -121,13 +120,11 @@ public class SignIn extends AppCompatActivity {
             }
         });
 
-
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().getDecorView()
                     .setSystemUiVisibility(
                             View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         }
-
         password_eye.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -159,8 +156,6 @@ public class SignIn extends AppCompatActivity {
                 onBackPressed();
             }
         });
-
-
     }
     private void changeStatusBarColor() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -169,28 +164,4 @@ public class SignIn extends AppCompatActivity {
             window.setStatusBarColor(Color.TRANSPARENT);
         }
     }
-
-//    public Drawable setTint(Drawable d, int color) {
-//        Drawable wrappedDrawable = DrawableCompat.wrap(d);
-//        DrawableCompat.setTint(wrappedDrawable, color);
-//        return wrappedDrawable;
-//    }
-//    public void setEditTextDrawables(final EditText editText, final int drawable) {
-//        editText.setCompoundDrawablesWithIntrinsicBounds(0, 0, drawable, 0);
-//        editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-//            @Override
-//            public void onFocusChange(View view, boolean b) {
-//                if (b){
-//                    Drawable icon = getResources().getDrawable(drawable);
-//                    editText.setCompoundDrawablesWithIntrinsicBounds(setTint(icon,
-//                            getResources().getColor(R.color.text_blue)), null, null, null);
-//                }else if (!b){
-//                    Drawable icon = getResources().getDrawable(drawable);
-//                    editText.setCompoundDrawablesWithIntrinsicBounds(setTint(icon,
-//                            getResources().getColor(R.color.text_gray)), null, null, null);
-//                }
-//            }
-//        });
-//    }
-
 }

@@ -23,9 +23,8 @@ public class DashBoard extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dash_board);
-        r_w_gmail = findViewById(R.id.register_with_mail);
-        sign_in = findViewById(R.id.dashboard_sign_in);
 
+        init();
         changeStatusBarColor();
 
         if (Build.VERSION.SDK_INT >= 21) {
@@ -49,10 +48,8 @@ public class DashBoard extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
-
     }
+
     private void changeStatusBarColor() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
@@ -61,4 +58,9 @@ public class DashBoard extends AppCompatActivity {
         }
     }
 
+    public void init(){
+        r_w_gmail = findViewById(R.id.register_with_mail);
+        sign_in = findViewById(R.id.dashboard_sign_in);
+
+    }
 }

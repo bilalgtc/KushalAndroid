@@ -24,9 +24,7 @@ public class Loader extends AppCompatActivity {
                     .setSystemUiVisibility(
                             View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         }
-
         changeStatusBarColor();
-
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -36,19 +34,16 @@ public class Loader extends AppCompatActivity {
                 Intent i_next;
 
                 if (check ){ // for true (when user logged in)
-
                     i_next = new Intent(Loader.this, DashBoard.class);
-
-                }else {     // for true (for either first time or user is logged out)
+                }
+                else {     // for true (for either first time or user is logged out)
                     i_next = new Intent(Loader.this, Welcome_activity.class);
-
                 }
                 startActivity(i_next);
             }
         },2000    );
 
     }
-
     private void changeStatusBarColor() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();

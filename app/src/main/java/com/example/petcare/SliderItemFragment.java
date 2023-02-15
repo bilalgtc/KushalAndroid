@@ -14,14 +14,7 @@ import android.widget.TextView;
 
 
 public class SliderItemFragment extends Fragment {
-
-
     private static final String ARG_PARAM1 = "slider-position";
-//    private static final String ARG_PARAM2 = "param2";
-
-
-    private String mParam1;
-    private String mParam2;
 
     private static final int[] PAGE_IMAGE =
             new int[] {
@@ -33,14 +26,13 @@ public class SliderItemFragment extends Fragment {
 
     private static final int[] PAGE_TEXT =
             new int[] {
-                    R.string.s11, R.string.s22, R.string.s33};
-
+                    R.string.s11, R.string.s22, R.string.s33
+            };
     private int position;
 
     public SliderItemFragment() {
         // Required empty public constructor
     }
-
 
     public static SliderItemFragment newInstance(int position) {
         SliderItemFragment fragment = new SliderItemFragment();

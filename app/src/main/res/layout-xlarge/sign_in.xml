@@ -9,7 +9,7 @@
     <RelativeLayout
         android:id="@+id/r1"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_177sdp"
+        android:layout_height="@dimen/_168sdp"
         android:background="@drawable/header_bg"
         >
         <ImageView
@@ -30,7 +30,7 @@
             android:textSize="@dimen/_18sdp"
             android:textColor="@color/white"
             android:fontFamily="@font/encode_sans_bold"
-            android:layout_marginStart="@dimen/_27sdp"/>
+            android:layout_marginStart="@dimen/_75sdp"/>
 
     </RelativeLayout>
 
@@ -41,17 +41,17 @@
         android:background="#F5F5F5"
         >
         <LinearLayout
-            android:layout_marginHorizontal="@dimen/_15sdp"
+            android:layout_marginHorizontal="@dimen/_65sdp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:id="@+id/text_ocw"
-            android:layout_marginTop="@dimen/_88sdp"
+            android:layout_marginTop="@dimen/_85sdp"
             >
             <View
                 android:layout_weight="1"
                 android:layout_gravity="center_vertical"
-                android:layout_width="@dimen/_65sdp"
+                android:layout_width="@dimen/_45sdp"
                 android:layout_height="2dp"
                 android:background="#F0F0F8"
                 />
@@ -63,7 +63,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/or_continue_with"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_9ssp"
+                android:textSize="@dimen/_8ssp"
+                android:textFontWeight="400"
                 android:fontFamily="@font/encode_sans"
                 android:gravity="center_horizontal"
                 />
@@ -71,7 +72,7 @@
             <View
                 android:layout_weight="1"
                 android:layout_gravity="center_vertical"
-                android:layout_width="@dimen/_65sdp"
+                android:layout_width="@dimen/_45sdp"
                 android:layout_height="2dp"
                 android:background="#F0F0F8"
                 />
@@ -110,13 +111,14 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/fb_g_btns"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/_51sdp"
+            android:layout_marginTop="@dimen/_45sdp"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/do_you_have"
+                android:textFontWeight="400"
                 android:textColor="@color/black"
                 android:fontFamily="@font/encode_sans"
                 android:textSize="@dimen/_9ssp" />
@@ -130,22 +132,15 @@
                 android:fontFamily="@font/encode_sans_bold"
                 android:text="@string/registration"
                 android:textColor="@color/text_blue"
-                android:textSize="@dimen/_9ssp"
-
-
-                />
-
+                android:textSize="@dimen/_9ssp" />
         </LinearLayout>
-
-
-
     </RelativeLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_marginHorizontal="@dimen/_10sdp"
-        android:layout_height="@dimen/_140sdp"
-        android:layout_marginTop="@dimen/_90sdp"
+        android:layout_marginHorizontal="@dimen/_65sdp"
+        android:layout_height="@dimen/_136sdp"
+        android:layout_marginTop="@dimen/_88sdp"
         style="@style/registration_card"
         android:outlineAmbientShadowColor="@color/black">
 
@@ -162,7 +157,7 @@
                 android:textColor="@color/text_gray"
                 android:fontFamily="@font/encode_sans_semibold"
                 android:textSize="@dimen/_7ssp"
-                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_8sdp"
                 />
             <EditText
                 android:id="@+id/email_id"
@@ -170,7 +165,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
-                android:textSize="@dimen/_9ssp"
+                android:textSize="@dimen/_8ssp"
                 android:backgroundTint="#F0F0F8"
                 android:textColor="@color/black"/>
             <com.google.android.material.divider.MaterialDivider
@@ -186,6 +181,7 @@
                 android:layout_below="@id/email_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_4sdp"
                 android:orientation="vertical"
                 >
 
@@ -195,7 +191,6 @@
                     android:layout_height="wrap_content"
                     android:text="@string/password"
                     android:textColor="@color/text_gray"
-                    android:layout_marginTop="@dimen/_5sdp"
                     android:fontFamily="@font/encode_sans_semibold"
                     android:textSize="@dimen/_7ssp"
                     />
@@ -207,13 +202,14 @@
                     android:orientation="horizontal">
 
                     <EditText
+                        android:layout_weight="8"
                         android:id="@+id/signIn_password"
                         android:layout_width="@dimen/_250sdp"
                         android:layout_height="wrap_content"
                         android:inputType="textPassword"
                         tools:ignore="MissingConstraints"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/_9ssp"
+                        android:textSize="@dimen/_8ssp"
                         android:backgroundTint="@color/white"
                         />
 
@@ -240,12 +236,12 @@
                 android:layout_below="@+id/pass"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_4sdp"
+                android:layout_marginTop="@dimen/_3sdp"
                 android:text="@string/do_not_remember"
                 android:layout_alignParentEnd="true"
                 android:textColor="@color/text_blue"
                 android:fontFamily="@font/encode_sans"
-                android:textSize="@dimen/_7ssp" />
+                android:textSize="@dimen/_6ssp" />
 
 
             <Button
@@ -253,11 +249,11 @@
                 android:layout_below="@+id/singIn_forgot_pass"
                 android:id="@+id/sign_in"
                 style="@style/btn"
-                android:textSize="@dimen/_9ssp"
-                android:layout_width="@dimen/_140sdp"
-                android:layout_height="@dimen/_22sdp"
+                android:textSize="@dimen/_8ssp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_23sdp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_16sdp"
                 android:text="@string/sign_in"
 
                 />

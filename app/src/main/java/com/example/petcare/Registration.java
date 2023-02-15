@@ -45,12 +45,11 @@ public class Registration extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.registration);
 
+        init();
+        changeStatusBarColor();
 
         Drawable dr = ContextCompat.getDrawable(Registration.this, R.drawable.success_icon);
         dr.setBounds(0,0,30,30);
-
-        init();
-        changeStatusBarColor();
 
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().getDecorView()
@@ -214,9 +213,6 @@ public class Registration extends AppCompatActivity {
 
             }
         });
-
-
-
 
         password_eye.setOnClickListener(new View.OnClickListener() {
             @Override

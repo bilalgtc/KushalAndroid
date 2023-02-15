@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginHorizontal="@dimen/_40sdp"
+        android:layout_marginHorizontal="@dimen/_75sdp"
         android:layout_marginTop="@dimen/_62sdp"
         android:id="@+id/l1"
         >
@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/welcome"
-            android:textSize="@dimen/_24sdp"
+            android:textSize="@dimen/_23sdp"
             android:fontFamily="@font/encode_sans_bold"
             android:textColor="@color/white"
             />
@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/to"
                 android:fontFamily="@font/encode_sans_bold"
-                android:textSize="@dimen/_24sdp"
+                android:textSize="@dimen/_23sdp"
                 android:layout_marginEnd="@dimen/_7sdp"
                 android:textColor="@color/white"
 
@@ -47,7 +47,7 @@
                 android:fontFamily="@font/encode_sans_bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/_24sdp"
+                android:textSize="@dimen/_23sdp"
                 android:text="@string/pet_care"
                 android:textColor="@color/text_yellow"
                 />
@@ -59,20 +59,20 @@
         android:layout_below="@+id/l1"
         android:id="@+id/c_with_fb"
         style="@style/dashboard_btn"
-        android:layout_width="@dimen/_220sdp"
-        android:layout_height="@dimen/_24sdp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/_25sdp"
+        android:layout_marginHorizontal="@dimen/_75sdp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_23sdp"
+        android:layout_marginTop="@dimen/_22sdp"
         android:orientation="horizontal"
+        android:gravity="center"
         >
 
         <ImageView
-            android:layout_width="@dimen/_14sdp"
-            android:layout_height="@dimen/_14sdp"
+            android:layout_width="@dimen/_13sdp"
+            android:layout_height="@dimen/_13sdp"
             android:src="@drawable/fb_icon"
             android:layout_gravity="center_vertical"
 
-            android:layout_marginStart="@dimen/_30sdp"
 
             />
         <TextView
@@ -83,7 +83,7 @@
             android:textColor="@color/text_blue"
             android:layout_gravity="center_vertical"
             android:textSize="@dimen/_9sdp"
-            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_5sdp"
             />
         <TextView
             android:layout_width="wrap_content"
@@ -94,7 +94,6 @@
             android:layout_gravity="center_vertical"
             android:textSize="@dimen/_9sdp"
             android:layout_marginStart="@dimen/_2sdp"
-            android:layout_marginEnd="@dimen/_20sdp"
             />
     </LinearLayout>
 
@@ -103,21 +102,20 @@
         android:layout_below="@+id/c_with_fb"
         android:id="@+id/c_with_google"
         style="@style/dashboard_btn"
-        android:layout_width="@dimen/_220sdp"
-        android:layout_height="@dimen/_24sdp"
+        android:layout_marginHorizontal="@dimen/_75sdp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_23sdp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/_13sdp"
+        android:layout_marginTop="@dimen/_10sdp"
         android:orientation="horizontal"
         >
 
         <ImageView
-            android:layout_width="@dimen/_14sdp"
-            android:layout_height="@dimen/_14sdp"
+            android:layout_width="@dimen/_13sdp"
+            android:layout_height="@dimen/_13sdp"
             android:src="@drawable/vector"
             android:layout_gravity="center_vertical"
-
-            android:layout_marginStart="@dimen/_30sdp"
-
+            android:layout_marginStart="@dimen/_22sdp"
             />
         <TextView
             android:layout_width="wrap_content"
@@ -127,7 +125,7 @@
             android:textColor="@color/text_blue"
             android:layout_gravity="center_vertical"
             android:textSize="@dimen/_9sdp"
-            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_5sdp"
             />
         <TextView
             android:layout_width="wrap_content"
@@ -138,7 +136,6 @@
             android:layout_gravity="center_vertical"
             android:textSize="@dimen/_9sdp"
             android:layout_marginStart="@dimen/_2sdp"
-            android:layout_marginEnd="@dimen/_20sdp"
             />
     </LinearLayout>
 
@@ -146,11 +143,11 @@
         android:layout_below="@+id/c_with_google"
         android:id="@+id/register_with_mail"
         style="@style/dashboard_btn1"
-        android:layout_width="@dimen/_220sdp"
-        android:layout_height="@dimen/_24sdp"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="@dimen/_75sdp"
+        android:layout_height="@dimen/_23sdp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/_25sdp"
-        android:textSize="@dimen/_9sdp"
+        android:layout_marginTop="@dimen/_27sdp"
         android:text="@string/register_with_gmail"
 
         />
@@ -160,7 +157,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/register_with_mail"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/_40sdp"
+        android:layout_marginTop="@dimen/_35sdp"
         android:orientation="horizontal">
 
         <TextView
