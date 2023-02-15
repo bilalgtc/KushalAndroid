@@ -383,7 +383,6 @@
                 android:layout_below="@+id/check2"
                 android:id="@+id/sign_up"
                 style="@style/btn"
-                android:background="@drawable/ripple"
                 android:layout_width="match_parent"
                 android:textSize="@dimen/_13sdp"
                 android:layout_height="@dimen/_36sdp"

@@ -1,6 +1,7 @@
 package com.example.petcare;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -43,6 +44,10 @@ public class Registration extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.registration);
+
+
+        Drawable dr = ContextCompat.getDrawable(Registration.this, R.drawable.success_icon);
+        dr.setBounds(0,0,30,30);
 
         init();
         changeStatusBarColor();
@@ -105,6 +110,7 @@ public class Registration extends AppCompatActivity {
 
         full_name.addTextChangedListener(new TextWatcher() {
 
+
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -115,8 +121,7 @@ public class Registration extends AppCompatActivity {
                     full_name.setCompoundDrawablesRelativeWithIntrinsicBounds(null,null,null,null);
                 }
                 else if(!full_name.getText().toString().trim().equalsIgnoreCase("")){
-                    full_name.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.success_icon, 0);
-
+                    full_name.setCompoundDrawables(null, null,dr, null);
                 }
             }
             @Override
@@ -137,10 +142,9 @@ public class Registration extends AppCompatActivity {
                     email.setCompoundDrawablesRelativeWithIntrinsicBounds(null,null,null,null);
                 }
                 else if (email.getText().toString().matches(emailPattern)){
-                    email.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.success_icon, 0);
+                    email.setCompoundDrawables(null, null,dr, null);
                 }
             }
-
             @Override
             public void afterTextChanged(Editable s) {
 
@@ -154,7 +158,7 @@ public class Registration extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (phone_no.getText().toString().length() == 10){
-                    phone_no.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.success_icon,0);
+                    phone_no.setCompoundDrawables(null, null,dr, null);
                 }
                 else if (phone_no.getText().toString().length() < 10){
                     phone_no.setCompoundDrawablesRelativeWithIntrinsicBounds(null,null,null,null);

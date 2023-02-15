@@ -52,7 +52,7 @@
         android:layout_below="@id/dots_indicator"
         android:layout_marginTop="@dimen/_110sdp"
         style="@style/btn"
-        android:background="@drawable/ripple"
+        android:stateListAnimator="@null"
         android:textSize="@dimen/_9ssp"
         android:layout_width="@dimen/_170sdp"
         android:layout_height="@dimen/_27sdp"

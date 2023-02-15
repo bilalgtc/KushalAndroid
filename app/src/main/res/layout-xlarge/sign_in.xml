@@ -249,7 +249,6 @@
 
 
             <Button
-                android:background="@drawable/ripple"
                 android:stateListAnimator="@null"
                 android:layout_below="@+id/singIn_forgot_pass"
                 android:id="@+id/sign_in"

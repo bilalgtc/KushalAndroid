@@ -1,6 +1,7 @@
 package com.example.petcare;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
 
@@ -52,9 +53,10 @@ public class SignIn extends AppCompatActivity {
         email = findViewById(R.id.email_id);
         sing_in = findViewById(R.id.sign_in);
 
-        changeStatusBarColor();
-//        setEditTextDrawables(email, R.drawable.sucess_icon);
+        Drawable dr = ContextCompat.getDrawable(SignIn.this, R.drawable.success_icon);
+        dr.setBounds(0,0,30,30);
 
+        changeStatusBarColor();
         email.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -94,7 +96,7 @@ public class SignIn extends AppCompatActivity {
                     email.setCompoundDrawablesRelativeWithIntrinsicBounds(null,null,null,null);
                 }
                 else if (email.getText().toString().matches(emailPattern)){
-                    email.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.success_icon, 0);
+                    email.setCompoundDrawables(null, null,dr, null);
                 }
             }
             @Override

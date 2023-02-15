@@ -1,4 +1,9 @@
 <ripple xmlns:android="http://schemas.android.com/apk/res/android"
 android:color="#65969BA1">
-<item android:drawable="@drawable/dashboard_btn_border" />
+    <item >
+        <shape android:shape="rectangle"  >
+            <corners android:radius="@dimen/_20sdp" />
+            <solid  android:color="@color/white"  />
+        </shape>
+    </item>
 </ripple>

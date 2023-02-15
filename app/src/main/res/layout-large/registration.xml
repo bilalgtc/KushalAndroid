@@ -146,7 +146,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_marginHorizontal="@dimen/_10sdp"
-        android:layout_height="@dimen/_262sdp"
+        android:layout_height="@dimen/_264sdp"
         android:layout_marginTop="@dimen/_98sdp"
         style="@style/registration_card"
         android:outlineAmbientShadowColor="@color/black">
@@ -307,8 +307,8 @@
                 >
                 <CheckBox
                     android:id="@+id/checkBox1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/_12sdp"
+                    android:layout_height="@dimen/_12sdp"
                     android:button="@drawable/checkbox_selcetor"
                     android:stateListAnimator="@null"
                     android:background="@null"
@@ -346,8 +346,8 @@
                 >
                 <CheckBox
                     android:id="@+id/checkBox2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/_12sdp"
+                    android:layout_height="@dimen/_12sdp"
                     android:button="@drawable/checkbox_selcetor"
                     android:background="@null"
                     />
@@ -394,7 +394,6 @@
 <!--                app:drawableStartCompat="@drawable/checkbox_unchecked" />-->
 
             <Button
-                android:background="@drawable/ripple"
                 android:stateListAnimator="@null"
                 android:layout_below="@+id/check2"
                 android:layout_marginTop="@dimen/_15sdp"
