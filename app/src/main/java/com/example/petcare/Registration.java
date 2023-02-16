@@ -168,6 +168,10 @@ public class Registration extends AppCompatActivity {
         sign_up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Intent i_to_home = new Intent(Registration.this, Home.class);
+                startActivity(i_to_home);
+
                 String mail = email.getText().toString();
                 if(full_name.getText().toString().trim().equalsIgnoreCase("")){
                     Toast.makeText(Registration.this, "pls enter name", Toast.LENGTH_SHORT).show();
@@ -198,6 +202,7 @@ public class Registration extends AppCompatActivity {
                 }
                 else {
                     Toast.makeText(Registration.this, "now you can pass intent", Toast.LENGTH_SHORT).show();
+
                 }
             }
         });

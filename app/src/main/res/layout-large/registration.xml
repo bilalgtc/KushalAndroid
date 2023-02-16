@@ -151,6 +151,7 @@
         android:layout_height="@dimen/_245sdp"
         android:layout_marginTop="@dimen/_95sdp"
         style="@style/registration_card"
+        android:elevation="@dimen/_5sdp"
         android:outlineAmbientShadowColor="@color/black">
 
         <RelativeLayout
