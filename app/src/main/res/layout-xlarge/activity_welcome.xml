@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Welcome_activity"
+    tools:context=".welcomeActivity"
     android:background="@drawable/welcomescreen_bg">
 
     <TextView
@@ -33,13 +33,13 @@
     <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
         android:id="@+id/dots_indicator"
         android:layout_below="@id/welcome_sign_in"
-        android:layout_marginTop="@dimen/_208sdp"
+        android:layout_marginTop="@dimen/_250sdp"
         android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:dotsColor="#E6E7F8"
         app:dotsCornerRadius="@dimen/_6sdp"
-        app:dotsSize="@dimen/_5sdp"
+        app:dotsSize="@dimen/_4sdp"
         app:dotsSpacing="@dimen/_2sdp"
         app:dotsWidthFactor="2.8"
         app:selectedDotColor="#F1A852"
@@ -50,12 +50,12 @@
     <Button
         android:id="@+id/next_btn"
         android:layout_below="@id/dots_indicator"
-        android:layout_marginTop="@dimen/_95sdp"
+        android:layout_marginTop="@dimen/_65sdp"
         style="@style/btn"
         android:stateListAnimator="@null"
         android:textSize="@dimen/_9ssp"
         android:layout_width="@dimen/_130sdp"
-        android:layout_height="@dimen/_24sdp"
+        android:layout_height="@dimen/_23sdp"
         android:layout_centerHorizontal="true"
         android:text="@string/next"
 

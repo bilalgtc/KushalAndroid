@@ -1,13 +1,9 @@
 package com.example.petcare;
 
-import static android.view.WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -19,10 +15,9 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.google.android.material.tabs.TabLayout;
 import com.tbuonomo.viewpagerdotsindicator.DotsIndicator;
 
-public class Welcome_activity extends AppCompatActivity {
+public class welcomeActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
     private Button button;
@@ -52,7 +47,7 @@ public class Welcome_activity extends AppCompatActivity {
         singIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Welcome_activity.this ,SignIn.class);
+                Intent intent = new Intent(welcomeActivity.this ,SignIn.class);
                 startActivity(intent);
             }
         });
@@ -68,7 +63,7 @@ public class Welcome_activity extends AppCompatActivity {
                     editor.putBoolean("flag",true);
                     editor.apply();
 
-                    Intent i_home = new Intent(Welcome_activity.this , DashBoard.class);
+                    Intent i_home = new Intent(welcomeActivity.this , DashBoard.class);
                     startActivity(i_home);
                 }
             }

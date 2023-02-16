@@ -26,7 +26,6 @@ import android.widget.Toast;
 import com.google.android.material.divider.MaterialDivider;
 
 public class Registration extends AppCompatActivity {
-
     ImageView back_btn, password_eye;
     EditText password, email, phone_no, full_name;
     TextView signIn, f_name,mail,mNo,pwd;
@@ -34,10 +33,7 @@ public class Registration extends AppCompatActivity {
     Button sign_up;
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     CheckBox check1,check2;
-
-
-
-
+    Drawable dr;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -47,9 +43,7 @@ public class Registration extends AppCompatActivity {
 
         init();
         changeStatusBarColor();
-
-        Drawable dr = ContextCompat.getDrawable(Registration.this, R.drawable.success_icon);
-        dr.setBounds(0,0,30,30);
+        imageSizeSet();
 
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().getDecorView()
@@ -108,8 +102,6 @@ public class Registration extends AppCompatActivity {
 
 
         full_name.addTextChangedListener(new TextWatcher() {
-
-
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -149,6 +141,7 @@ public class Registration extends AppCompatActivity {
 
             }
         });
+
         phone_no.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -172,14 +165,10 @@ public class Registration extends AppCompatActivity {
             }
         });
 
-
-
         sign_up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String mail = email.getText().toString();
-
-
                 if(full_name.getText().toString().trim().equalsIgnoreCase("")){
                     Toast.makeText(Registration.this, "pls enter name", Toast.LENGTH_SHORT).show();
                 }
@@ -210,7 +199,6 @@ public class Registration extends AppCompatActivity {
                 else {
                     Toast.makeText(Registration.this, "now you can pass intent", Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
 
@@ -272,6 +260,10 @@ public class Registration extends AppCompatActivity {
         phone_no = findViewById(R.id.mobile_no);
         full_name = findViewById(R.id.fullName);
         sign_up = findViewById(R.id.sign_up);
-
+    }
+    private void imageSizeSet() {
+        dr = ContextCompat.getDrawable(Registration.this, R.drawable.success_icon);
+        assert dr != null;
+        dr.setBounds(0,0,30,30);
     }
 }

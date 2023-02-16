@@ -37,7 +37,7 @@ public class Loader extends AppCompatActivity {
                     i_next = new Intent(Loader.this, DashBoard.class);
                 }
                 else {     // for true (for either first time or user is logged out)
-                    i_next = new Intent(Loader.this, Welcome_activity.class);
+                    i_next = new Intent(Loader.this, welcomeActivity.class);
                 }
                 startActivity(i_next);
             }

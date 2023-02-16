@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Welcome_activity"
+    tools:context=".welcomeActivity"
     android:background="@drawable/welcomescreen_bg">
 
     <TextView
@@ -22,26 +22,27 @@
 
 
     <androidx.viewpager.widget.ViewPager
-
+        android:layout_below="@+id/welcome_sign_in"
+        android:layout_marginTop="@dimen/_5sdp"
         android:id="@+id/pagerIntroSlider"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_400sdp"
-        android:layout_marginTop="@dimen/_50sdp">
+      >
     </androidx.viewpager.widget.ViewPager>
 
 
     <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
         android:id="@+id/dots_indicator"
         android:layout_below="@id/welcome_sign_in"
-        android:layout_marginTop="@dimen/_235sdp"
+        android:layout_marginTop="@dimen/_250sdp"
         android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:dotsColor="#E6E7F8"
         app:dotsCornerRadius="@dimen/_8sdp"
-        app:dotsSize="@dimen/_5sdp"
+        app:dotsSize="@dimen/_4sdp"
         app:dotsSpacing="@dimen/_4sdp"
-        app:dotsWidthFactor="2.7"
+        app:dotsWidthFactor="2.9"
         app:selectedDotColor="#F1A852"
         />
 
@@ -50,13 +51,13 @@
     <Button
         android:id="@+id/next_btn"
         android:layout_below="@id/dots_indicator"
-        android:layout_marginTop="@dimen/_110sdp"
+        android:layout_marginTop="@dimen/_80sdp"
         style="@style/btn"
         android:stateListAnimator="@null"
         android:textSize="@dimen/_9ssp"
-        android:layout_width="@dimen/_170sdp"
-        android:layout_height="@dimen/_27sdp"
-        android:layout_centerHorizontal="true"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_26sdp"
+        android:layout_marginHorizontal="@dimen/_75sdp"
         android:text="@string/next"
 
         />

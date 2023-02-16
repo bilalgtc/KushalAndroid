@@ -34,6 +34,7 @@ public class SignIn extends AppCompatActivity {
     ImageView password_eye;
     Button sing_in;
     MaterialDivider divi1, divi2;
+    Drawable dr;
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
     @SuppressLint("MissingInflatedId")
@@ -41,20 +42,9 @@ public class SignIn extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_in);
-        registration = findViewById(R.id.signIn_registration);
-        back_button = findViewById(R.id.singIn_back_button);
-        mail = findViewById(R.id.e_mail);
-        pass = findViewById(R.id.pwd);
-        divi1 = findViewById(R.id.email_id_divider);
-        divi2 = findViewById(R.id.pass_divider);
-        password_eye = findViewById(R.id.signIn_pass_eye);
-        password = findViewById(R.id.signIn_password);
-        email = findViewById(R.id.email_id);
-        sing_in = findViewById(R.id.sign_in);
 
-        Drawable dr = ContextCompat.getDrawable(SignIn.this, R.drawable.success_icon);
-        dr.setBounds(0,0,30,30);
-
+        init();
+        imageSizeSet();
         changeStatusBarColor();
         email.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -157,6 +147,26 @@ public class SignIn extends AppCompatActivity {
             }
         });
     }
+
+    private void imageSizeSet() {
+        dr = ContextCompat.getDrawable(SignIn.this, R.drawable.success_icon);
+        assert dr != null;
+        dr.setBounds(0,0,30,30);
+    }
+
+    private void init() {
+        registration = findViewById(R.id.signIn_registration);
+        back_button = findViewById(R.id.singIn_back_button);
+        mail = findViewById(R.id.e_mail);
+        pass = findViewById(R.id.pwd);
+        divi1 = findViewById(R.id.email_id_divider);
+        divi2 = findViewById(R.id.pass_divider);
+        password_eye = findViewById(R.id.signIn_pass_eye);
+        password = findViewById(R.id.signIn_password);
+        email = findViewById(R.id.email_id);
+        sing_in = findViewById(R.id.sign_in);
+    }
+
     private void changeStatusBarColor() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
