@@ -1,12 +1,19 @@
 package com.example.petcare;
 
+
+
+
+
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -49,7 +56,51 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.quality3.setText(details.get(position).quality3);
         holder.quality4.setText(details.get(position).quality4);
 
+        holder.delete_pet.setOnClickListener(new View.OnClickListener() {
 
+            @Override
+            public void onClick(View v) {
+                Dialog dialog = new Dialog(context);
+                dialog.setContentView(R.layout.delete_dialoge_box);
+                ImageView close_btn = dialog.findViewById(R.id.close_btn);
+                Button del_yes = dialog.findViewById(R.id.delete_yes);
+                Button del_no = dialog.findViewById(R.id.delete_no);
+
+
+
+                close_btn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+
+                del_yes.setOnClickListener(new View.OnClickListener() {
+
+                    @SuppressLint("ResourceAsColor")
+                    @Override
+                    public void onClick(View v) {
+
+
+                        details.remove(position);
+                        notifyItemChanged(position);
+                        notifyItemRangeChanged(position,details.size());
+                        dialog.dismiss();
+
+                    }
+                });
+
+                del_no.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+                dialog.show();
+                Window window = dialog.getWindow();
+                window.setLayout(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            }
+        });
     }
 
     @Override
@@ -79,4 +130,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         }
     }
+
+
 }

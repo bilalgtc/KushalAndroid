@@ -1,5 +1,6 @@
 package com.example.petcare;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,12 +10,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 
 
 public class HomeFragment extends Fragment {
-
+    ImageView addBtn;
     RecyclerView recyclerView;
     RecyclerViewAdapter adapter;
     ArrayList<RecyclerViewModel> details = new ArrayList<>();
@@ -26,6 +28,15 @@ public class HomeFragment extends Fragment {
         View view= inflater.inflate(R.layout.fragment_home, container, false);
 
         recyclerView= view.findViewById(R.id.recy_view_home);
+        addBtn = view.findViewById(R.id.addPet);
+
+        addBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity().getApplication(), AddPetDetails.class);
+                startActivity(intent);
+            }
+        });
 
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         details.add(new RecyclerViewModel(R.drawable.troy_dog,"Troy","dog","German Shepherd","male", "80inch","Neutered","Vaccinated","Friendly with dogs","Friendly with cats"));
