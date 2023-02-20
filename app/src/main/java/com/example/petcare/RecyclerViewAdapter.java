@@ -9,10 +9,13 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -20,6 +23,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.helper.widget.Layer;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -56,8 +60,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.quality3.setText(details.get(position).quality3);
         holder.quality4.setText(details.get(position).quality4);
 
-        holder.delete_pet.setOnClickListener(new View.OnClickListener() {
+        holder.pet_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent( context, VeterinaryCard.class);
+                context.startActivity(intent);
+            }
+        });
 
+        holder.delete_pet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Dialog dialog = new Dialog(context);
@@ -65,8 +76,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 ImageView close_btn = dialog.findViewById(R.id.close_btn);
                 Button del_yes = dialog.findViewById(R.id.delete_yes);
                 Button del_no = dialog.findViewById(R.id.delete_no);
-
-
 
                 close_btn.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -80,13 +89,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     @SuppressLint("ResourceAsColor")
                     @Override
                     public void onClick(View v) {
-
-
+                        del_yes.setBackgroundResource(R.drawable.yes_no_btn_selector);
                         details.remove(position);
                         notifyItemChanged(position);
                         notifyItemRangeChanged(position,details.size());
                         dialog.dismiss();
-
                     }
                 });
 
@@ -98,7 +105,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 });
                 dialog.show();
                 Window window = dialog.getWindow();
-                window.setLayout(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                WindowManager.LayoutParams wlp = window.getAttributes();
+
+                wlp.gravity = Gravity.BOTTOM;
+                wlp.flags &= ~WindowManager.LayoutParams.FLAG_DIM_BEHIND;
+                window.setAttributes(wlp);
             }
         });
     }

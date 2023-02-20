@@ -142,7 +142,7 @@
                     android:layout_marginStart="@dimen/_5sdp"
                     android:layout_width="@dimen/_10sdp"
                     android:layout_height="@dimen/_10sdp"
-                    android:src="@drawable/male_icon"/>
+                    android:src="@drawable/male_icon_blue"/>
                 <TextView
                     android:id="@+id/pet_gender"
                     android:layout_marginStart="@dimen/_11sdp"

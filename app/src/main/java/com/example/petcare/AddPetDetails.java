@@ -1,6 +1,8 @@
 package com.example.petcare;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.graphics.Color;
 import android.os.Build;
@@ -8,18 +10,26 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.android.material.divider.MaterialDivider;
 
-import org.w3c.dom.Text;
+import java.util.ArrayList;
 
 public class AddPetDetails extends AppCompatActivity {
-    TextView p_name, species, breed, size;
+    TextView p_name, species, breed, size, txt_male,txt_female;
     EditText pet_name, pet_species, pet_breed,pet_size;
+    ImageView icon_male, icon_female, back_btn;
     MaterialDivider div1 , div2 , div3 ,div4;
-
+    LinearLayout male , female;
+    Button submit;
+    RecyclerViewAdapter adapter;
+    ArrayList<RecyclerViewModel> details = new ArrayList<>();
+    RecyclerView recyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,6 +93,52 @@ public class AddPetDetails extends AppCompatActivity {
             }
         });
 
+        male.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (male.isPressed()){
+                    male.setBackgroundResource(R.drawable.male_female_chacked);
+                    txt_male.setTextColor(getResources().getColor(R.color.white));
+                    icon_male.setImageResource(R.drawable.male_icon_white);
+
+                    txt_female.setTextColor(getResources().getColor(R.color.black));
+                    female.setBackgroundResource(R.drawable.male_female_bg_unchecked);
+                    icon_female.setImageResource(R.drawable.female_icon);
+                }
+            }
+        });
+
+        female.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (female.isPressed()){
+                    female.setBackgroundResource(R.drawable.male_female_chacked);
+                    txt_male.setTextColor(getResources().getColor(R.color.black));
+                    icon_male.setImageResource(R.drawable.male_icon);
+
+                    txt_female.setTextColor(getResources().getColor(R.color.white));
+                    male.setBackgroundResource(R.drawable.male_female_bg_unchecked);
+                    icon_female.setImageResource(R.drawable.female_icon_white);
+                }
+            }
+        });
+
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+
+
     }
 
     private void changeStatusBarColor() {
@@ -106,6 +162,15 @@ public class AddPetDetails extends AppCompatActivity {
         size = findViewById(R.id.size);
         pet_size = findViewById(R.id.pet_size);
         div4 = findViewById(R.id.pet_size_div);
+        male = findViewById(R.id.male_btn);
+        female = findViewById(R.id.female_btn);
+        txt_male = findViewById(R.id.txt_male);
+        txt_female = findViewById(R.id.txt_female);
+        icon_male = findViewById(R.id.male_icon);
+        icon_female = findViewById(R.id.female_icon);
+        back_btn = findViewById(R.id.back_btn);
+        submit = findViewById(R.id.submit);
+        recyclerView = findViewById(R.id.recy_view_home);
 
 
     }

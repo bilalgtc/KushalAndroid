@@ -20,8 +20,10 @@
         android:layout_height="@dimen/_50sdp"
         android:background="#FFFFFF"
         android:layout_alignParentBottom="true"
+        app:itemIconSize="@dimen/_18sdp"
         app:itemIconTint="@drawable/nav_item_color_state"
         app:itemTextColor="@drawable/nav_item_color_state"
+        app:labelVisibilityMode="labeled"
         app:menu="@menu/nav_items"
         />
 
