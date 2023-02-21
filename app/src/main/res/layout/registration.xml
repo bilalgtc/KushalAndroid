@@ -390,6 +390,7 @@
                 android:layout_centerHorizontal="true"
                 android:gravity="center_vertical|center_horizontal"
                 android:layout_marginTop="@dimen/_24sdp"
+                android:layout_marginBottom="@dimen/_7sdp"
                 android:text="@string/sign_up"
                 android:stateListAnimator="@null"
 

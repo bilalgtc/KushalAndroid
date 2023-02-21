@@ -30,6 +30,8 @@ public class AddPetDetails extends AppCompatActivity {
     RecyclerViewAdapter adapter;
     ArrayList<RecyclerViewModel> details = new ArrayList<>();
     RecyclerView recyclerView;
+
+    MyDbHelper db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -133,11 +135,53 @@ public class AddPetDetails extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                addPet(v);
 
             }
         });
 
 
+
+    }
+
+    public void addPet(View view){
+        String petNameTxt = pet_name.getText().toString();
+        String petSpeciesTxt = pet_species.getText().toString();
+        String petBreedTxt = pet_breed.getText().toString();
+        String petSizeTxt = pet_size.getText().toString();
+        String maleS = "male";
+        String femaleS = "female";
+
+        if (male.isPressed()){
+
+        }
+        else {
+            female.isPressed();
+        }
+
+        if(petNameTxt.isEmpty() || petSpeciesTxt.isEmpty() || petBreedTxt.isEmpty() || petSizeTxt.isEmpty() )
+        {
+            Message.message(getApplicationContext(),"Enter Both Name and Password");
+        }
+        else
+        {
+            long id = db.insertPetDetail(petNameTxt,petSpeciesTxt,petBreedTxt,petSizeTxt);
+            if(id<=0)
+            {
+                Message.message(getApplicationContext(),"Insertion Unsuccessful");
+                pet_name.setText("");
+                pet_species.setText("");
+                pet_breed.setText("");
+                pet_size.setText("");
+            } else
+            {
+                Message.message(getApplicationContext(),"Insertion Successful");
+                pet_name.setText("");
+                pet_species.setText("");
+                pet_breed.setText("");
+                pet_size.setText("");
+            }
+        }
 
     }
 
@@ -172,6 +216,8 @@ public class AddPetDetails extends AppCompatActivity {
         submit = findViewById(R.id.submit);
         recyclerView = findViewById(R.id.recy_view_home);
 
-
+        db = new MyDbHelper(this);
     }
+
+
 }

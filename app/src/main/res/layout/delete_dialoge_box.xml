@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/delete_dialog_bg"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+ >
+
+    <RelativeLayout
+        android:elevation="@dimen/_15sdp"
+        android:outlineAmbientShadowColor="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/delete_dialog_bg">
         <LinearLayout
+            android:layout_marginHorizontal="@dimen/_8sdp"
             android:id="@+id/r1"
             android:layout_width="match_parent"
-            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_15sdp"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             >
@@ -24,25 +31,25 @@
                 />
             <TextView
                 android:layout_weight="8"
-                android:paddingEnd="@dimen/_25sdp"
+                android:paddingEnd="@dimen/_30sdp"
                 android:gravity="center_horizontal"
                 android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/_24sdp"
                 android:text="@string/Delete"
                 android:textColor="#070821"
-                android:textSize="@dimen/_16ssp"
+                android:textSize="@dimen/_15ssp"
                 android:fontFamily="@font/encode_sans_bold"/>
         </LinearLayout>
 
         <TextView
             android:id="@+id/text_warning"
             android:layout_below="@+id/r1"
-            android:layout_marginTop="@dimen/_28sdp"
+            android:layout_marginTop="@dimen/_24sdp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/_30sdp"
-            android:textSize="@dimen/_14ssp"
+            android:textSize="@dimen/_13ssp"
             android:fontFamily="@font/encode_sans"
             android:textColor="#070821"
             android:text="@string/are_you_sure_want_to"
@@ -54,17 +61,19 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center"
-            android:layout_marginTop="@dimen/_34sdp"
-            android:layout_marginBottom="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_28sdp"
+            android:layout_marginBottom="@dimen/_29sdp"
             >
 
             <Button
                 android:id="@+id/delete_yes"
                 android:layout_marginEnd="@dimen/_20sdp"
                 android:layout_width="@dimen/_110sdp"
-                android:layout_height="@dimen/_38sdp"
+                android:layout_height="@dimen/_34sdp"
                 android:background="@drawable/yes_no_btn_selector"
                 android:text="@string/yes"
+                android:textSize="@dimen/_14ssp"
+                android:textAllCaps="false"
                 android:textColor="@drawable/yes_no_btn_selector"
                 android:fontFamily="@font/encode_sans_bold"
                 />
@@ -73,10 +82,18 @@
                 android:id="@+id/delete_no"
                 android:background="@drawable/yes_no_btn_selector"
                 android:layout_width="@dimen/_110sdp"
-                android:layout_height="@dimen/_38sdp"
+                android:layout_height="@dimen/_34sdp"
                 android:text="@string/no"
+                android:textSize="@dimen/_14ssp"
+                android:textAllCaps="false"
                 android:textColor="@drawable/yes_no_btn_selector"
                 android:fontFamily="@font/encode_sans_bold"
                 />
         </LinearLayout>
+
+    </RelativeLayout>
+
+
+
 </RelativeLayout>
+

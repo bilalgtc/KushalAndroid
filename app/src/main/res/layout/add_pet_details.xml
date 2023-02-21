@@ -22,7 +22,6 @@
             android:layout_marginStart="@dimen/_16sdp"
             android:layout_marginBottom="@dimen/_13sdp"
             android:src="@drawable/back_icon_blue"
-
             />
 
         <TextView
@@ -143,9 +142,7 @@
                 android:text="@string/species_of_your_pet"
                 android:textColor="@color/text_gray"
                 android:fontFamily="@font/encode_sans_semibold"
-                android:textSize="@dimen/_11ssp"
-
-                />
+                android:textSize="@dimen/_11ssp" />
             <EditText
                 android:id="@+id/species_of_pet"
                 android:layout_below="@id/species"

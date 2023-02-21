@@ -1,6 +1,7 @@
 package com.example.petcare;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -20,6 +21,8 @@ public class HomeFragment extends Fragment {
     RecyclerView recyclerView;
     RecyclerViewAdapter adapter;
     ArrayList<RecyclerViewModel> details = new ArrayList<>();
+    MyDbHelper db;
+    ArrayList<String> name , species , breed;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -29,6 +32,10 @@ public class HomeFragment extends Fragment {
 
         recyclerView= view.findViewById(R.id.recy_view_home);
         addBtn = view.findViewById(R.id.addPet);
+//        db = new MyDbHelper(getContext());
+//        name = new ArrayList<>();
+//        species = new ArrayList<>();
+//        breed = new ArrayList<>();
 
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,5 +56,18 @@ public class HomeFragment extends Fragment {
 
         return view;
     }
+
+//    private void displayData(){
+//        Cursor cursor = db.getData();
+//        if (cursor.getCount() == 0){
+//            Message.message(getContext(),"no data exists");
+//            return;
+//        }
+//        else {
+//            while (cursor.moveToNext()){
+////                details.add(R.drawable.troy_dog,);
+//            }
+//        }
+//    }
 
 }

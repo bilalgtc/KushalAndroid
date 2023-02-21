@@ -26,6 +26,8 @@ import androidx.constraintlayout.helper.widget.Layer;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+
 import java.util.ArrayList;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>{
@@ -71,8 +73,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.delete_pet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Dialog dialog = new Dialog(context);
-                dialog.setContentView(R.layout.delete_dialoge_box);
+
+                View modelBottomSheet = LayoutInflater.from(context).inflate(R.layout.delete_dialoge_box,null);
+                BottomSheetDialog dialog = new BottomSheetDialog(context, R.style.SheetDialog);
+                dialog.setContentView(modelBottomSheet);
+
+//                Dialog dialog = new Dialog(context);
+//                dialog.setContentView(R.layout.delete_dialoge_box);
                 ImageView close_btn = dialog.findViewById(R.id.close_btn);
                 Button del_yes = dialog.findViewById(R.id.delete_yes);
                 Button del_no = dialog.findViewById(R.id.delete_no);
