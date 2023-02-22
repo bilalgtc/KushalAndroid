@@ -10,6 +10,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,13 +34,17 @@ import java.util.ArrayList;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>{
 
     private int lastPosition = -1;
+
     Context context;
     ArrayList<RecyclerViewModel> details;
+
 
     RecyclerViewAdapter(Context context,ArrayList<RecyclerViewModel> details){
         this.context = context;
         this.details = details;
     }
+
+
 
     @NonNull
     @Override
@@ -51,6 +56,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
+
+
         holder.pet_img.setImageResource(details.get(position).image);
         holder.name.setText(details.get(position).name);
         holder.pet_type.setText(details.get(position).pet_type);
@@ -61,6 +68,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.quality2.setText(details.get(position).quality2);
         holder.quality3.setText(details.get(position).quality3);
         holder.quality4.setText(details.get(position).quality4);
+
+
 
         holder.pet_img.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,6 +139,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView name,pet_type,pet_verity,pet_gender,pet_size,quality1,quality2,quality3,quality4;
         ImageView pet_img, edit_petDetails, delete_pet;
+        MyDbHelper db = new MyDbHelper(context);
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

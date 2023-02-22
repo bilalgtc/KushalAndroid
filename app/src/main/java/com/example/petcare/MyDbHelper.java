@@ -12,9 +12,10 @@ import androidx.annotation.Nullable;
 public class MyDbHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "petCare";    // Database Name
-    private static final String TABLE_NAME = "petDetails";   // Table Name
-    private static final int DATABASE_Version = 3;    // Database Version
-    private static final String UID="_id";     // Column I (Primary Key)
+    public static final String TABLE_NAME = "petDetails";   // Table Name
+    private static final int DATABASE_Version = 5;    // Database Version
+    private static final String UID="_id";          // Column I (Primary Key)
+    public static final String IMAGE = "pet_image";
     private static final String PET_NAME = "pet_name";    //Column II
     private static final String PET_SPECIES= "pet_species";    // Column III
     private static final String BREED= "pet_breed";    // Column IV
@@ -22,7 +23,7 @@ public class MyDbHelper extends SQLiteOpenHelper {
     private static final String GENDER= "pet_gender";    // Column V
 
     private static final String CREATE_TABLE = "CREATE TABLE "+TABLE_NAME+
-            " ("+UID+" INTEGER PRIMARY KEY AUTOINCREMENT, "+PET_NAME+" VARCHAR(255) ,"+ PET_SPECIES+" VARCHAR(225),"+BREED+" VARCHAR(225) ,"+SIZE+" VARCHAR(225),"+GENDER+" VARCHAR(225));";
+            " ("+UID+" INTEGER PRIMARY KEY AUTOINCREMENT, "+PET_NAME+" VARCHAR(255) ,"+IMAGE+ ","+ PET_SPECIES+" VARCHAR(225),"+BREED+" VARCHAR(225) ,"+SIZE+" VARCHAR(225),"+GENDER+" VARCHAR(225));";
     private static final String DROP_TABLE ="DROP TABLE IF EXISTS "+TABLE_NAME;
     private Context context;
 
@@ -51,16 +52,17 @@ public class MyDbHelper extends SQLiteOpenHelper {
         }
     }
 
-    public long insertPetDetail(String petName , String petSpecies , String petBreed , String petSize ){
+    public long insertPetDetail(String petName ,  String petSpecies , String petBreed , String petSize , String petGender ){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("pet_name",petName);
+//        contentValues.put("pet_image",petImage);
         contentValues.put("pet_species",petSpecies);
         contentValues.put("pet_breed",petBreed);
         contentValues.put("pet_size",petSize);
-//        contentValues.put("pet_gender",petGender);
+        contentValues.put("pet_gender",petGender);
         long result =db.insert(MyDbHelper.TABLE_NAME,null,contentValues);
-        return result;
+       return result;
     }
 
     public String getData(){
@@ -71,12 +73,15 @@ public class MyDbHelper extends SQLiteOpenHelper {
         while (cursor.moveToNext())
         {
             @SuppressLint("Range") int cid =cursor.getInt(cursor.getColumnIndex(MyDbHelper.UID));
-            @SuppressLint("Range") String pet_name =cursor.getString(cursor.getColumnIndex(MyDbHelper.PET_NAME));
+//            @SuppressLint("Range") String pet_name =cursor.getString(cursor.getColumnIndex(MyDbHelper.PET_NAME));
+            @SuppressLint("Range") String pet_image =cursor.getString(cursor.getColumnIndex(MyDbHelper.IMAGE));
             @SuppressLint("Range") String  pet_species =cursor.getString(cursor.getColumnIndex(MyDbHelper.PET_SPECIES));
             @SuppressLint("Range") String  pet_size =cursor.getString(cursor.getColumnIndex(MyDbHelper.SIZE));
-//            @SuppressLint("Range") String  pet_gender =cursor.getString(cursor.getColumnIndex(MyDbHelper.GENDER));
-            buffer.append(cid+ "   " + pet_name + "   " + pet_species +" \n");
+            @SuppressLint("Range") String  pet_gender =cursor.getString(cursor.getColumnIndex(MyDbHelper.GENDER));
+            buffer.append(cid+ "    "+ pet_image + "   "+ pet_species +"  " +pet_size+ "  " +pet_gender+ "  \n");
         }
         return buffer.toString();
+
+
     }
 }

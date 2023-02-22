@@ -77,6 +77,7 @@
                     tools:layout_editor_absoluteY="0dp" />
 
                 <ImageView
+                    android:id="@+id/add_img"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -234,8 +235,34 @@
                 android:textSize="@dimen/_11ssp"
 
                 />
-            
-           <LinearLayout
+<!--            <RadioGroup-->
+<!--                android:id="@+id/gender_btns"-->
+<!--                android:layout_below="@+id/gender"-->
+<!--                android:layout_marginTop="@dimen/_11sdp"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:gravity="center"-->
+<!--                android:orientation="horizontal">-->
+
+<!--                   <RadioButton-->
+<!--                       android:layout_weight="1"-->
+<!--                       android:layout_width="wrap_content"-->
+<!--                       android:layout_height="wrap_content"-->
+<!--                       android:button="@drawable/custom_radio_btn"-->
+<!--                      />-->
+
+<!--                   <RadioButton-->
+<!--                       android:layout_weight="1"-->
+<!--                       android:button="@drawable/custom_radio_btn"-->
+<!--                       android:layout_width="wrap_content"-->
+<!--                       android:layout_height="wrap_content"/>-->
+
+
+
+<!--            </RadioGroup>-->
+
+
+            <LinearLayout
                android:id="@+id/gender_btns"
                android:layout_below="@+id/gender"
                android:layout_marginTop="@dimen/_11sdp"
@@ -300,8 +327,7 @@
                        android:textColor="@color/black"
                        android:text="@string/female"/>
                </LinearLayout>
-
-           </LinearLayout>
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/addi_info"
