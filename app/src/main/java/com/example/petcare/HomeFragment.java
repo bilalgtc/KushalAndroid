@@ -1,7 +1,9 @@
 package com.example.petcare;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -14,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class HomeFragment extends Fragment {
@@ -22,7 +25,7 @@ public class HomeFragment extends Fragment {
     RecyclerViewAdapter adapter;
     ArrayList<RecyclerViewModel> details = new ArrayList<>();
     MyDbHelper db;
-    ArrayList<String> name, pet_type, pet_verity, pet_gender, pet_size, quality1, quality2, quality3, quality4;
+    ArrayList<String> name, image, pet_type, pet_verity, pet_gender, pet_size, quality1, quality2, quality3, quality4;
 
 
     @Override
@@ -36,6 +39,7 @@ public class HomeFragment extends Fragment {
         db = new MyDbHelper(getContext());
 
         name = new ArrayList<>();
+        image = new ArrayList<>();
         pet_type = new ArrayList<>();
         pet_verity = new ArrayList<>();
         pet_gender = new ArrayList<>();
@@ -54,18 +58,25 @@ public class HomeFragment extends Fragment {
             }
         });
 
+
+
+
+
+
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         details.add(new RecyclerViewModel(R.drawable.troy_dog, "Troy", "dog", "German Shepherd", "male", "80inch", "Neutered", "Vaccinated", "Friendly with dogs", "Friendly with cats"));
         details.add(new RecyclerViewModel(R.drawable.oscar_dog, "Oscar", "dog", "Labrador Retriever", "male", "80inch", "Neutered", "Vaccinated", "Friendly with dogs", "Friendly with cats"));
         details.add(new RecyclerViewModel(R.drawable.light_dog, "Light", "dog", "Poodle", "male", "80inch", "Neutered", "Vaccinated", "Friendly with dogs", "Friendly with cats"));
         details.add(new RecyclerViewModel(R.drawable.bosco_dog, "Bosco", "dog", "Rottweiler", "male", "80inch", "Neutered", "Vaccinated", "Friendly with dogs", "Friendly with cats"));
-
         adapter = new RecyclerViewAdapter(view.getContext(), details);
         recyclerView.setAdapter(adapter);
 
         return view;
     }
+
+
 }
+
 
 //    private void displayData(){
 ////        Cursor cursor = db.getData();
@@ -85,7 +96,7 @@ public class HomeFragment extends Fragment {
 //            return;
 //        }
 //        else {
-////            details.add(new RecyclerViewModel(R.drawable.troy_dog,name.add(data.getString(0).toString()),pet_type.add(data.getString(1)),pet_verity.add(data.getString(2)),pet_size.add(data.getString(3)),pet_gender.add(data.getString(4)),"Neutered","Vaccinated","Friendly with dogs","Friendly with cats"));
+//            details.add(new RecyclerViewModel(R.drawable.troy_dog,name.add(data.getString(0).toString()),pet_type.add(data.getString(1)),pet_verity.add(data.getString(2)),pet_size.add(data.getString(3)),pet_gender.add(data.getString(4)),"Neutered","Vaccinated","Friendly with dogs","Friendly with cats"));
 //            }
 //        }
 //    }

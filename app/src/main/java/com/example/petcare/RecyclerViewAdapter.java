@@ -11,6 +11,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,13 +32,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>{
 
     private int lastPosition = -1;
 
     Context context;
-    ArrayList<RecyclerViewModel> details;
+   private ArrayList<RecyclerViewModel> details;
 
 
     RecyclerViewAdapter(Context context,ArrayList<RecyclerViewModel> details){
@@ -57,17 +60,21 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
+        RecyclerViewModel item = details.get(position);
 
-        holder.pet_img.setImageResource(details.get(position).image);
-        holder.name.setText(details.get(position).name);
-        holder.pet_type.setText(details.get(position).pet_type);
-        holder.pet_verity.setText(details.get(position).pet_verity);
-        holder.pet_gender.setText(details.get(position).pet_gender);
-        holder.pet_size.setText(details.get(position).pet_size);
-        holder.quality1.setText(details.get(position).quality1);
-        holder.quality2.setText(details.get(position).quality2);
-        holder.quality3.setText(details.get(position).quality3);
-        holder.quality4.setText(details.get(position).quality4);
+//        byte[] imageBytes = item.getImage();
+//        Bitmap bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
+//        holder.pet_img.setImageBitmap(bitmap);
+        holder.pet_img.setImageResource(item.getImage());
+        holder.name.setText(item.getName());
+        holder.pet_type.setText(item.getPet_type());
+        holder.pet_verity.setText(item.getPet_verity());
+        holder.pet_gender.setText(item.getPet_gender());
+        holder.pet_size.setText(item.getPet_size());
+        holder.quality1.setText(item.getQuality1());
+        holder.quality2.setText(item.getQuality2());
+        holder.quality3.setText(item.getQuality3());
+        holder.quality4.setText(item.getQuality4());
 
 
 
