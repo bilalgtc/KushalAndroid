@@ -13,9 +13,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 
+import com.example.petcare.fragments.AppointmanetFragment;
+import com.example.petcare.fragments.ExploreFragment;
+import com.example.petcare.fragments.HomeFragment;
+import com.example.petcare.fragments.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Home extends AppCompatActivity {

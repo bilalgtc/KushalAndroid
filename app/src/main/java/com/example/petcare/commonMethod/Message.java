@@ -1,4 +1,4 @@
-package com.example.petcare;
+package com.example.petcare.commonMethod;
 
 import android.content.Context;
 import android.widget.Toast;

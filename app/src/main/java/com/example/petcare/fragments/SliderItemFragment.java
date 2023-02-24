@@ -1,4 +1,4 @@
-package com.example.petcare;
+package com.example.petcare.fragments;
 
 import android.os.Bundle;
 
@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.petcare.R;
 
 
 public class SliderItemFragment extends Fragment {

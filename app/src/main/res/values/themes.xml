@@ -57,6 +57,9 @@
     <style name="ImageView.Circle" parent="">
         <item name="cornerSize">50%</item>
     </style>
+    <style name="ImageView.style" parent="">
+        <item name="cornerSize">8%</item>
+    </style>
     
     <style name="text_15_encoded_sans_bold" parent="Widget.AppCompat.TextView">
         <item name="android:textSize">@dimen/_15ssp</item>

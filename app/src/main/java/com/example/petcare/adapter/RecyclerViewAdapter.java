@@ -1,16 +1,12 @@
-package com.example.petcare;
+package com.example.petcare.adapter;
 
 
 
 
 
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.view.Gravity;
@@ -21,18 +17,20 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.helper.widget.Layer;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.petcare.AddPetDetails;
+import com.example.petcare.MyDbHelper;
+import com.example.petcare.R;
+import com.example.petcare.RecyclerViewModel;
+import com.example.petcare.VeterinaryCard;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>{
 
@@ -42,12 +40,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
    private ArrayList<RecyclerViewModel> details;
 
 
-    RecyclerViewAdapter(Context context,ArrayList<RecyclerViewModel> details){
+    public RecyclerViewAdapter(Context context, ArrayList<RecyclerViewModel> details){
         this.context = context;
         this.details = details;
     }
-
-
 
     @NonNull
     @Override
@@ -61,11 +57,18 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(@NonNull RecyclerViewAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
         RecyclerViewModel item = details.get(position);
+        byte[] imageBytes = item.getImage();
+        if (imageBytes != null && imageBytes.length > 0) {
+            // decode the byte array and set the image
+            Bitmap bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
+            holder.pet_img.setImageBitmap(bitmap);
+        }
+//        else {
+////            Toast.makeText(context, "something went wrong!!", Toast.LENGTH_SHORT).show();
+//            // handle the case where the byte array is null or empty
+//        }
 
-//        byte[] imageBytes = item.getImage();
-//        Bitmap bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
-//        holder.pet_img.setImageBitmap(bitmap);
-        holder.pet_img.setImageResource(item.getImage());
+        
         holder.name.setText(item.getName());
         holder.pet_type.setText(item.getPet_type());
         holder.pet_verity.setText(item.getPet_verity());
@@ -76,13 +79,27 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.quality3.setText(item.getQuality3());
         holder.quality4.setText(item.getQuality4());
 
-
-
         holder.pet_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent( context, VeterinaryCard.class);
                 context.startActivity(intent);
+            }
+        });
+
+        holder.edit_petDetails.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent( v.getContext(), AddPetDetails.class);
+
+                intent.putExtra("_id",item.getId());
+                intent.putExtra("pet_image",item.getImage());
+                intent.putExtra("pet_name",item.getName());
+                intent.putExtra("pet_species",item.getPet_type());
+                intent.putExtra("pet_breed",item.getPet_verity());
+                intent.putExtra("pet_size",item.getPet_size());
+                v.getContext().startActivity(intent);
             }
         });
 
@@ -112,6 +129,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     @SuppressLint("ResourceAsColor")
                     @Override
                     public void onClick(View v) {
+//                        int id = getItemCount();
+//                        MyDbHelper database = new MyDbHelper(context);
+//                        database.deleteEntry(id);
+////                        details.remove(id);
+//                        notifyItemRemoved(id);
+//                        notifyDataSetChanged();
+//                        notifyItemRangeChanged(position,details.size());
+//                        database.close();
                         del_yes.setBackgroundResource(R.drawable.yes_no_btn_selector);
                         details.remove(position);
                         notifyItemChanged(position);
@@ -137,6 +162,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             }
         });
     }
+
 
     @Override
     public int getItemCount() {
@@ -166,6 +192,18 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         }
     }
+
+//    private void showEditDialog(RecyclerViewModel data) {
+//        AddPetDetails fragment = new AddPetDetails();
+//        Bundle args = new Bundle();
+////        args.putString("pet_image", data.getName());
+//        args.putString("pet_name", data.getName());
+//        args.putString("pet_species", data.getPet_type());
+//        args.putString("pet_breed", data.getPet_verity());
+//        args.putString("pet_size", data.getPet_size());
+//        fragment.setArguments(args);
+//        fragment.show(getSupportFragmentManager(), "edit_dialog");
+//    }
 
 
 }

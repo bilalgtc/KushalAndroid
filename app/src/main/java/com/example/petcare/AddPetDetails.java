@@ -1,34 +1,21 @@
 package com.example.petcare;
 
+import static android.webkit.ConsoleMessage.MessageLevel.LOG;
 import static com.example.petcare.MyDbHelper.TABLE_NAME;
-
-import androidx.annotation.ContentView;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SwitchCompat;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
 import android.content.ContentValues;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -38,12 +25,20 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.google.android.material.divider.MaterialDivider;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.petcare.commonMethod.Message;
+import com.google.android.material.divider.MaterialDivider;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class AddPetDetails extends AppCompatActivity  {
     TextView p_name, species, breed, size, txt_male,txt_female;
@@ -58,13 +53,17 @@ public class AddPetDetails extends AppCompatActivity  {
     Button submit;
     RecyclerView recyclerView;
     SwitchCompat toggle1,toggle2,toggle3,toggle4,toggle5,toggle6;
+    Bitmap imgToStore;
+    Boolean isEditMode = true;
+
+   private String petNameTxt;
+   private String petSpeciesTxt ;
+   private String petBreedTxt ;
+   private String petSizeTxt ;
 
     Boolean flag;
     byte[] profile_img_byte;
     MyDbHelper db = new MyDbHelper(this);
-
-
-
 
     //PERMISSION CONSTANTS
     private static final int CAMERA_REQUEST_CODE = 100 ;
@@ -190,15 +189,25 @@ public class AddPetDetails extends AppCompatActivity  {
             }
         });
 
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addPet(v);
+        if (isEditMode){
+            submit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    addPet(v);
+                }
+            });
+        }
+        else {
+            submit.setText("Submit");
+            submit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    updatePet();
 
-            }
-        });
+                }
+            });
+        }
     }
-
     private void imagePickDialog() {
         //options to display in dialog
         String[] options = {"Camera","Gallery"};
@@ -236,20 +245,13 @@ public class AddPetDetails extends AppCompatActivity  {
 
     private void pickFromGallery() {
         //intent to pick image from gallery,the image will be returned in onActivityResult method
-        Intent galleryIntent = new Intent(Intent.ACTION_PICK);
-        galleryIntent.setData(MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        galleryIntent.setType("image/*");
-        startActivityForResult(galleryIntent,IMAGE_PICK_GALLERY_CODE);
+        Intent i=new Intent(Intent.ACTION_PICK);
+        i.setType("image/*");
+        startActivityIfNeeded(i,IMAGE_PICK_GALLERY_CODE);
     }
 
     private void pickFromCamera() {
         //intent to pick image from camera,the image will be returned in onActivityResult method
-//        ContentValues values = new ContentValues();
-//        values.put(MediaStore.Images.Media.TITLE,"Image_Title");
-//        values.put(MediaStore.Images.Media.DESCRIPTION,"Image_Description");
-//        // put image uri;
-//        imageUri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,values);
-
         //intent to open camera for image
         Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT,imageUri);
@@ -349,8 +351,43 @@ public class AddPetDetails extends AppCompatActivity  {
 //                    profile_img.setImageResource(R.drawable.troy_dog);
         }
     }
+    private void updatePet() {
+
+        Bundle i = getIntent().getExtras();
+        if (i != null){
+            petNameTxt = i.getString("pet_name");
+            petSpeciesTxt= i.getString("pet_species");
+            petBreedTxt = i.getString("pet_breed");
+            petSizeTxt = i.getString("pet_size");
+        }
 
 
+
+        pet_name.setText(petNameTxt);
+        pet_species.setText(petSpeciesTxt);
+        pet_breed.setText(petBreedTxt);
+        pet_size.setText(petSizeTxt);
+
+
+
+
+//        if (male.isPressed()){
+//            flag = true;
+//        }
+//        else if (female.isPressed()){
+//            flag = false;
+//        }
+//        else if(petNameTxt.isEmpty() || petSpeciesTxt.isEmpty() || petBreedTxt.isEmpty() || petSizeTxt.isEmpty())
+//        {
+//            Message.message(getApplicationContext(),"Enter details");
+//        }
+//        else {
+//            SQLiteDatabase database = db.getWritableDatabase();
+//            ContentValues contentValues = new ContentValues();
+//
+//        }
+
+    }
     private void changeStatusBarColor() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
@@ -410,13 +447,18 @@ public class AddPetDetails extends AppCompatActivity  {
                 profile_img_byte = stream.toByteArray();
                 profile_img.setImageBitmap(img);
             }
-            else if (requestCode == IMAGE_PICK_GALLERY_CODE){
-//                profile_img.setImageURI(data.getData());
-                Bitmap img = (Bitmap)(data.getExtras().get("data"));
-                ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                img.compress(Bitmap.CompressFormat.PNG, 100, stream);
-                profile_img_byte = stream.toByteArray();
-                profile_img.setImageBitmap(img);
+            else if (requestCode == IMAGE_PICK_GALLERY_CODE && data!= null && data.getData()!= null){
+
+                imageUri=data.getData();
+                try {
+                    imgToStore = MediaStore.Images.Media.getBitmap(getContentResolver(),imageUri);
+                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                    imgToStore.compress(Bitmap.CompressFormat.PNG,100,stream);
+                    profile_img_byte = stream.toByteArray();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                profile_img.setImageBitmap(imgToStore);
             }
         }
         else {
@@ -426,10 +468,16 @@ public class AddPetDetails extends AppCompatActivity  {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    public Boolean setStatusOfToggle(Boolean statusOfToggle){
-        return statusOfToggle;
-    }
-
+//    private void editData(){
+//        if (getIntent().getBundleExtra("data")!= null){
+//            Bundle bundle =getIntent().getBundleExtra("data");
+//            pet_name.setText(bundle.getString("pet_name"));
+//            pet_species.setText(bundle.getString("pet_species"));
+//            pet_breed.setText(bundle.getString("pet_breed"));
+//            pet_size.setText(bundle.getString("pet_size"));
+//            submit.setText("submit");
+//        }
+//    }
 
     public void init(){
         p_name = findViewById(R.id.petname);

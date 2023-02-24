@@ -1,24 +1,17 @@
 package com.example.petcare;
 
-import static java.sql.Types.BOOLEAN;
-
-import android.annotation.SuppressLint;
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.graphics.Bitmap;
 
-import androidx.annotation.Nullable;
-
-import java.sql.Blob;
+import com.example.petcare.commonMethod.Message;
 
 public class MyDbHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "petCare";    // Database Name
     public static final String TABLE_NAME = "petDetails";   // Table Name
-    private static final int DATABASE_Version = 9;    // Database Version
+    private static final int DATABASE_Version = 11;    // Database Version
     private static final String UID="_id";          // Column I (Primary Key)
     private static final String IMAGE = "pet_image";// Column II
     public static final String PET_NAME = "pet_name";    //Column III
@@ -87,5 +80,10 @@ public class MyDbHelper extends SQLiteOpenHelper {
         String qry=" select * from petDetails";
         Cursor cursor=db.rawQuery(qry, null);
         return cursor;
+    }
+
+    public void deleteEntry(long row) {
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        sqLiteDatabase.delete(TABLE_NAME, UID + "=" + row, null);
     }
 }

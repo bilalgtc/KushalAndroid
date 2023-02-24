@@ -15,6 +15,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.petcare.adapter.sliderPagerAdapter;
 import com.tbuonomo.viewpagerdotsindicator.DotsIndicator;
 
 public class welcomeActivity extends AppCompatActivity {
