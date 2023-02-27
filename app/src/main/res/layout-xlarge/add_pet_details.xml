@@ -6,21 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".AddPetDetails"
     android:background="#F5F5F5">
-    
+
     <LinearLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_70sdp"
+        android:layout_height="@dimen/_44sdp"
         android:orientation="horizontal"
         android:background="@color/white">
 
         <ImageView
             android:id="@+id/back_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/_14sdp"
+            android:layout_width="@dimen/_12sdp"
+            android:layout_height="@dimen/_13sdp"
             android:layout_gravity="bottom"
             android:layout_marginStart="@dimen/_16sdp"
-            android:layout_marginBottom="@dimen/_13sdp"
+            android:layout_marginBottom="@dimen/_6sdp"
             android:src="@drawable/back_icon_blue"
             />
 
@@ -29,11 +29,12 @@
             android:gravity="center_horizontal"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:layout_marginBottom="@dimen/_5sdp"
+            android:layout_marginBottom="@dimen/_3sdp"
             android:fontFamily="@font/encode_sans_bold"
             android:text="@string/add_pet_details"
             android:textColor="#070821"
-            android:textSize="@dimen/_17sdp" />
+            android:textFontWeight="700"
+            android:textSize="@dimen/_10ssp" />
 
 
 
@@ -59,10 +60,10 @@
 
             <RelativeLayout
                 android:id="@+id/img_section"
-                android:layout_width="@dimen/_113sdp"
-                android:layout_height="@dimen/_113sdp"
+                android:layout_width="@dimen/_82sdp"
+                android:layout_height="@dimen/_82sdp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/_9sdp">
+                android:layout_marginTop="@dimen/_4sdp">
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/profile_pic"
@@ -78,8 +79,8 @@
 
                 <ImageView
                     android:id="@+id/add_img"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_height="@dimen/_15sdp"
                     android:layout_alignParentEnd="true"
                     android:src="@drawable/add_icon"
                     android:layout_marginEnd="@dimen/_15sdp"
@@ -94,12 +95,12 @@
 
 
             <TextView
+                android:layout_marginTop="-2dp"
                 android:id="@+id/general_info"
                 android:layout_below="@+id/img_section"
-                android:layout_marginTop="@dimen/_13sdp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/_15sdp"
+                android:textSize="@dimen/_10ssp"
                 android:fontFamily="@font/encode_sans_bold"
                 android:textFontWeight="700"
                 android:textColor="#070821"
@@ -114,8 +115,8 @@
                 android:text="@string/pet_name"
                 android:textColor="@color/text_gray"
                 android:fontFamily="@font/encode_sans_semibold"
-                android:textSize="@dimen/_11ssp"
-                android:layout_marginTop="@dimen/_14sdp"
+                android:textSize="@dimen/_7ssp"
+                android:layout_marginTop="@dimen/_11sdp"
                 />
             <EditText
                 android:id="@+id/pet_name"
@@ -123,7 +124,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:textSize="@dimen/_13ssp"
+                android:textSize="@dimen/_8ssp"
                 android:backgroundTint="@color/white"
                 android:textColor="@color/black"/>
             <com.google.android.material.divider.MaterialDivider
@@ -143,7 +144,7 @@
                 android:text="@string/species_of_your_pet"
                 android:textColor="@color/text_gray"
                 android:fontFamily="@font/encode_sans_semibold"
-                android:textSize="@dimen/_11ssp" />
+                android:textSize="@dimen/_7ssp" />
             <EditText
                 android:id="@+id/species_of_pet"
                 android:layout_below="@id/species"
@@ -152,7 +153,7 @@
                 android:inputType="text"
                 android:backgroundTint="@color/white"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_13ssp"
+                android:textSize="@dimen/_8ssp"
                 />
             <com.google.android.material.divider.MaterialDivider
                 android:id="@+id/species_of_pet_div"
@@ -171,7 +172,7 @@
                 android:text="@string/Breed"
                 android:textColor="@color/text_gray"
                 android:fontFamily="@font/encode_sans_semibold"
-                android:textSize="@dimen/_11ssp"
+                android:textSize="@dimen/_7ssp"
 
                 />
             <EditText
@@ -183,7 +184,7 @@
                 android:inputType="text"
                 android:backgroundTint="@color/white"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_13ssp"
+                android:textSize="@dimen/_8ssp"
                 />
             <com.google.android.material.divider.MaterialDivider
                 android:id="@+id/breed_div"
@@ -202,7 +203,7 @@
                 android:text="@string/Size_optional"
                 android:textColor="@color/text_gray"
                 android:fontFamily="@font/encode_sans_semibold"
-                android:textSize="@dimen/_11ssp"
+                android:textSize="@dimen/_7ssp"
 
                 />
             <EditText
@@ -214,7 +215,7 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/white"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_13ssp"
+                android:textSize="@dimen/_8ssp"
                 tools:ignore="TextFields" />
             <com.google.android.material.divider.MaterialDivider
                 android:id="@+id/pet_size_div"
@@ -223,111 +224,112 @@
                 android:layout_below="@+id/pet_size"
                 android:layout_marginTop="-10dp"
                 app:dividerColor="#F0F0F8" />
-
             <TextView
                 android:id="@+id/gender"
                 android:layout_below="@+id/pet_size"
-                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_7sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/Gender"
                 android:textColor="@color/text_gray"
                 android:fontFamily="@font/encode_sans_semibold"
-                android:textSize="@dimen/_11ssp"
+                android:textSize="@dimen/_7ssp"
 
                 />
-<!--            <RadioGroup-->
-<!--                android:id="@+id/gender_btns"-->
-<!--                android:layout_below="@+id/gender"-->
-<!--                android:layout_marginTop="@dimen/_11sdp"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:gravity="center"-->
-<!--                android:orientation="horizontal">-->
 
-<!--                   <RadioButton-->
-<!--                       android:layout_weight="1"-->
-<!--                       android:layout_width="wrap_content"-->
-<!--                       android:layout_height="wrap_content"-->
-<!--                       android:button="@drawable/custom_radio_btn"-->
-<!--                      />-->
+            <!--            <RadioGroup-->
+            <!--                android:id="@+id/gender_btns"-->
+            <!--                android:layout_below="@+id/gender"-->
+            <!--                android:layout_marginTop="@dimen/_11sdp"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:gravity="center"-->
+            <!--                android:orientation="horizontal">-->
 
-<!--                   <RadioButton-->
-<!--                       android:layout_weight="1"-->
-<!--                       android:button="@drawable/custom_radio_btn"-->
-<!--                       android:layout_width="wrap_content"-->
-<!--                       android:layout_height="wrap_content"/>-->
+            <!--                   <RadioButton-->
+            <!--                       android:layout_weight="1"-->
+            <!--                       android:layout_width="wrap_content"-->
+            <!--                       android:layout_height="wrap_content"-->
+            <!--                       android:button="@drawable/custom_radio_btn"-->
+            <!--                      />-->
+
+            <!--                   <RadioButton-->
+            <!--                       android:layout_weight="1"-->
+            <!--                       android:button="@drawable/custom_radio_btn"-->
+            <!--                       android:layout_width="wrap_content"-->
+            <!--                       android:layout_height="wrap_content"/>-->
 
 
 
-<!--            </RadioGroup>-->
+            <!--            </RadioGroup>-->
 
 
             <LinearLayout
-               android:id="@+id/gender_btns"
-               android:layout_below="@+id/gender"
-               android:layout_marginTop="@dimen/_11sdp"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:gravity="center"
-               android:orientation="horizontal">
-               <LinearLayout
-                   android:id="@+id/male_btn"
-                   android:clickable="true"
-                   android:background="@drawable/male_female_bg_unchecked"
-                   android:layout_weight="1"
-                   android:layout_width="match_parent"
-                   android:layout_height="@dimen/_26sdp"
-                   android:gravity="center"
-                   android:layout_marginEnd="@dimen/_8sdp"
-                   android:orientation="horizontal">
-                   <ImageView
-                       android:id="@+id/male_icon"
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:src="@drawable/male_icon"
-                       android:paddingEnd="@dimen/_5sdp"
-                       />
-                   <TextView
-                       android:id="@+id/txt_male"
-                       android:layout_gravity="center_vertical"
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:text="@string/male"
-                       android:textSize="@dimen/_12ssp"
-                       android:textColor="@color/black"
-                       android:fontFamily="@font/encode_sans_bold"
-                       android:paddingEnd="@dimen/_11sdp"/>
-               </LinearLayout>
+                android:id="@+id/gender_btns"
+                android:layout_below="@+id/gender"
+                android:layout_marginTop="@dimen/_9sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginHorizontal="@dimen/_41sdp"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:id="@+id/male_btn"
+                    android:clickable="true"
+                    android:background="@drawable/male_female_bg_unchecked"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_16sdp"
+                    android:gravity="center"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:id="@+id/male_icon"
+                        android:layout_width="@dimen/_16sdp"
+                        android:layout_height="@dimen/_13sdp"
+                        android:src="@drawable/male_icon"
+                        android:paddingEnd="@dimen/_2sdp"
+                        />
+                    <TextView
+                        android:id="@+id/txt_male"
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/male"
+                        android:textSize="@dimen/_7ssp"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/encode_sans_semibold"
+                        android:paddingEnd="@dimen/_11sdp"/>
+                </LinearLayout>
 
-               <LinearLayout
-                   android:id="@+id/female_btn"
-                   android:clickable="true"
-                   android:background="@drawable/male_female_bg_unchecked"
-                   android:layout_weight="1"
-                   android:layout_width="match_parent"
-                   android:layout_height="@dimen/_26sdp"
-                   android:layout_marginStart="@dimen/_8sdp"
-                   android:gravity="center"
-                   android:orientation="horizontal">
-                   <ImageView
-                       android:id="@+id/female_icon"
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:src="@drawable/female_icon"
-                       android:paddingEnd="@dimen/_5sdp"
-                       />
-                   <TextView
-                       android:id="@+id/txt_female"
-                       android:paddingEnd="@dimen/_10sdp"
-                       android:layout_gravity="center_vertical"
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:textSize="@dimen/_12ssp"
-                       android:fontFamily="@font/encode_sans_bold"
-                       android:textColor="@color/black"
-                       android:text="@string/female"/>
-               </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/female_btn"
+                    android:clickable="true"
+                    android:background="@drawable/male_female_bg_unchecked"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_16sdp"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:id="@+id/female_icon"
+                        android:layout_width="@dimen/_16sdp"
+                        android:layout_height="@dimen/_13sdp"
+                        android:src="@drawable/female_icon"
+                        android:paddingEnd="@dimen/_2sdp"
+                        />
+                    <TextView
+                        android:id="@+id/txt_female"
+                        android:paddingEnd="@dimen/_10sdp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/_7ssp"
+                        android:fontFamily="@font/encode_sans_semibold"
+                        android:textColor="@color/black"
+                        android:text="@string/female"/>
+                </LinearLayout>
             </LinearLayout>
 
             <TextView
@@ -335,11 +337,11 @@
                 android:layout_below="@id/gender_btns"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/_15sdp"
+                android:textSize="@dimen/_10ssp"
                 android:fontFamily="@font/encode_sans_bold"
                 android:textFontWeight="700"
                 android:textColor="#070821"
-                android:layout_marginTop="@dimen/_34sdp"
+                android:layout_marginTop="@dimen/_21sdp"
                 android:text="@string/Additional_Information"
                 />
 
@@ -349,26 +351,26 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_below="@id/addi_info"
-                android:layout_marginTop="@dimen/_27sdp"
+                android:layout_marginTop="@dimen/_12sdp"
                 >
                 <TextView
                     android:gravity="center_vertical"
                     android:layout_weight="8"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:text="@string/neutered"
-                    android:textSize="@dimen/_13sdp"
+                    android:textSize="@dimen/_8ssp"
                     android:textColor="@color/black"
                     android:fontFamily="@font/encode_sans"
                     android:textFontWeight="400"
                     />
-                
+
                 <androidx.appcompat.widget.SwitchCompat
                     android:id="@+id/toggle1"
                     android:layout_width="@dimen/_45sdp"
                     android:layout_height="@dimen/_26sdp"
                     android:layout_gravity="center"
-                    android:thumb="@drawable/toggle_thumb_selector"
+                    android:thumb="@drawable/toggle_thumb_selector_xlarge"
                     android:elevation="@dimen/_5sdp"
                     app:track="@drawable/toggle_track_selector"
                     />
@@ -382,7 +384,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_2sdp"
                 >
                 <TextView
                     android:gravity="center_vertical"
@@ -390,7 +392,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="@string/Vaccinated"
-                    android:textSize="@dimen/_13sdp"
+                    android:textSize="@dimen/_8sdp"
                     android:textColor="@color/black"
                     android:fontFamily="@font/encode_sans"
                     android:textFontWeight="400"
@@ -401,7 +403,7 @@
                     android:layout_width="@dimen/_45sdp"
                     android:layout_height="@dimen/_26sdp"
                     android:layout_gravity="center"
-                    android:thumb="@drawable/toggle_thumb_selector"
+                    android:thumb="@drawable/toggle_thumb_selector_xlarge"
                     app:track="@drawable/toggle_track_selector"
                     />
 
@@ -412,7 +414,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_2sdp"
                 >
                 <TextView
                     android:gravity="center_vertical"
@@ -420,7 +422,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="@string/Friendly_with_dogs"
-                    android:textSize="@dimen/_13sdp"
+                    android:textSize="@dimen/_8sdp"
                     android:textColor="@color/black"
                     android:fontFamily="@font/encode_sans"
                     android:textFontWeight="400"
@@ -431,7 +433,7 @@
                     android:layout_width="@dimen/_45sdp"
                     android:layout_height="@dimen/_26sdp"
                     android:layout_gravity="center"
-                    android:thumb="@drawable/toggle_thumb_selector"
+                    android:thumb="@drawable/toggle_thumb_selector_xlarge"
                     app:track="@drawable/toggle_track_selector"
                     />
 
@@ -442,7 +444,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_2sdp"
                 >
                 <TextView
                     android:gravity="center_vertical"
@@ -450,7 +452,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="@string/Friendly_with_cats"
-                    android:textSize="@dimen/_13sdp"
+                    android:textSize="@dimen/_8sdp"
                     android:textColor="@color/black"
                     android:fontFamily="@font/encode_sans"
                     android:textFontWeight="400"
@@ -461,7 +463,7 @@
                     android:layout_width="@dimen/_45sdp"
                     android:layout_height="@dimen/_26sdp"
                     android:layout_gravity="center"
-                    android:thumb="@drawable/toggle_thumb_selector"
+                    android:thumb="@drawable/toggle_thumb_selector_xlarge"
                     app:track="@drawable/toggle_track_selector"
                     />
 
@@ -472,7 +474,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_2sdp"
                 >
                 <TextView
                     android:gravity="center_vertical"
@@ -480,7 +482,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="@string/friendly_with_kids_lt_10"
-                    android:textSize="@dimen/_13sdp"
+                    android:textSize="@dimen/_8sdp"
                     android:textColor="@color/black"
                     android:fontFamily="@font/encode_sans"
                     android:textFontWeight="400"
@@ -491,7 +493,7 @@
                     android:layout_width="@dimen/_45sdp"
                     android:layout_height="@dimen/_26sdp"
                     android:layout_gravity="center"
-                    android:thumb="@drawable/toggle_thumb_selector"
+                    android:thumb="@drawable/toggle_thumb_selector_xlarge"
                     app:track="@drawable/toggle_track_selector"
                     />
 
@@ -502,7 +504,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_2sdp"
                 >
                 <TextView
                     android:gravity="center_vertical"
@@ -510,7 +512,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:text="@string/friendly_with_kids_gt_10"
-                    android:textSize="@dimen/_13sdp"
+                    android:textSize="@dimen/_8sdp"
                     android:textColor="@color/black"
                     android:fontFamily="@font/encode_sans"
                     android:textFontWeight="400"
@@ -521,7 +523,7 @@
                     android:layout_width="@dimen/_45sdp"
                     android:layout_height="@dimen/_26sdp"
                     android:layout_gravity="center"
-                    android:thumb="@drawable/toggle_thumb_selector"
+                    android:thumb="@drawable/toggle_thumb_selector_xlarge"
                     app:track="@drawable/toggle_track_selector"
                     />
             </LinearLayout>
@@ -530,13 +532,14 @@
                 android:layout_below="@+id/addi_info6"
                 android:id="@+id/submit"
                 style="@style/btn"
+                android:layout_marginHorizontal="@dimen/_41sdp"
                 android:layout_width="match_parent"
-                android:textSize="@dimen/_13sdp"
-                android:layout_height="@dimen/_36sdp"
+                android:textSize="@dimen/_8sdp"
+                android:layout_height="@dimen/_23sdp"
                 android:gravity="center_vertical|center_horizontal"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/_40sdp"
-                android:layout_marginBottom="@dimen/_100sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginBottom="@dimen/_74sdp"
                 android:stateListAnimator="@null"
                 android:text="@string/Submit"
 

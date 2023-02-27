@@ -4,11 +4,14 @@ package com.example.petcare.adapter;
 
 
 
+import static android.webkit.ConsoleMessage.MessageLevel.LOG;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -56,6 +59,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
+
         RecyclerViewModel item = details.get(position);
         byte[] imageBytes = item.getImage();
         if (imageBytes != null && imageBytes.length > 0) {
@@ -79,11 +83,20 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.quality3.setText(item.getQuality3());
         holder.quality4.setText(item.getQuality4());
 
+
+
         holder.pet_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent( context, VeterinaryCard.class);
-                context.startActivity(intent);
+
+                intent.putExtra("pet_image",item.getImage());
+                intent.putExtra("pet_name",item.getName());
+                intent.putExtra("pet_species",item.getPet_type());
+                intent.putExtra("pet_breed",item.getPet_verity());
+                intent.putExtra("pet_gender",item.getPet_gender());
+                intent.putExtra("pet_size",item.getPet_size());
+                v.getContext().startActivity(intent);
             }
         });
 
@@ -99,6 +112,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 intent.putExtra("pet_species",item.getPet_type());
                 intent.putExtra("pet_breed",item.getPet_verity());
                 intent.putExtra("pet_size",item.getPet_size());
+                intent.putExtra("pet_gender",item.getPet_gender());
+
+                intent.putExtra("editmode",false);
                 v.getContext().startActivity(intent);
             }
         });

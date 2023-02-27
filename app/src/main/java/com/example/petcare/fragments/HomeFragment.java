@@ -58,13 +58,14 @@ public class HomeFragment extends Fragment {
             if (cursor.moveToFirst())
             {
                 do {                                            //cursor.getBlob(1),cursor.getString(2),cursor.getString(3), cursor.getString(4)
-                    RecyclerViewModel obj = new RecyclerViewModel(cursor.getBlob(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getString(5),cursor.getString(6),cursor.getString(7),cursor.getString(8),cursor.getString(9),cursor.getString(10), cursor.getString(11), cursor.getString(12));
+                    RecyclerViewModel obj = new RecyclerViewModel(cursor.getBlob(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getString(6),cursor.getString(5),cursor.getString(7),cursor.getString(8),cursor.getString(9),cursor.getString(10), cursor.getString(11), cursor.getString(12));
                     details.add(obj);
                 } while (cursor.moveToNext());
             }
         }
         adapter = new RecyclerViewAdapter(view.getContext(), details);
         recyclerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
 
         return view;
     }
