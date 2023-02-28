@@ -11,9 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scrollIndicators="none"
-        android:scrollbars="none"
-        >
-
+        android:scrollbars="none">
 
 
         <RelativeLayout
@@ -23,21 +21,21 @@
             <RelativeLayout
                 android:id="@+id/layout_1"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_327sdp"
-                >
+                android:layout_height="@dimen/_327sdp">
+
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:scaleType="fitXY"
-                    android:src="@drawable/dog_img"/>
+                    android:src="@drawable/dog_img" />
             </RelativeLayout>
+
             <LinearLayout
                 android:id="@+id/header"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_70sdp"
                 android:orientation="horizontal"
-                android:verticalScrollbarPosition="defaultPosition"
-                >
+                android:verticalScrollbarPosition="defaultPosition">
 
                 <ImageView
                     android:id="@+id/back_btn"
@@ -52,28 +50,28 @@
                     android:id="@+id/share_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/share"
                     android:layout_gravity="bottom|center_vertical"
-                    android:layout_marginBottom="@dimen/_13sdp"
                     android:layout_marginStart="@dimen/_210sdp"
-                    />
+                    android:layout_marginBottom="@dimen/_13sdp"
+                    android:src="@drawable/share" />
+
                 <ImageView
                     android:id="@+id/like_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/heart_favourite_like"
                     android:layout_gravity="bottom"
+                    android:layout_marginStart="@dimen/_10sdp"
                     android:layout_marginBottom="@dimen/_13sdp"
-                    android:layout_marginStart="@dimen/_10sdp" />
+                    android:src="@drawable/heart_favourite_like" />
             </LinearLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/card"
-                android:layout_width="match_parent"
-                android:layout_marginHorizontal="@dimen/_15sdp"
-                android:layout_height="@dimen/_85sdp"
-                android:layout_marginTop="@dimen/_273sdp"
                 style="@style/registration_card"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_85sdp"
+                android:layout_marginHorizontal="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_273sdp"
                 android:elevation="@dimen/_5sdp"
                 android:outlineAmbientShadowColor="@color/black">
 
@@ -84,152 +82,154 @@
                     tools:ignore="MissingConstraints">
 
                     <RelativeLayout
-                        android:layout_marginStart="@dimen/_15sdp"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/_15sdp"
                         android:layout_weight="2">
 
                         <LinearLayout
                             android:id="@+id/r1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_marginTop="@dimen/_15sdp">
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:orientation="horizontal">
+
                             <TextView
                                 android:id="@+id/pet_name"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:fontFamily="@font/encode_sans_bold"
                                 android:text="@string/troy"
                                 android:textColor="#070821"
-                                android:fontFamily="@font/encode_sans_bold"
-                                android:textSize="@dimen/_15ssp"
-                                />
+                                android:textSize="@dimen/_15ssp" />
                         </LinearLayout>
 
                         <LinearLayout
                             android:id="@+id/r2"
-                            android:layout_marginTop="@dimen/_5sdp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/r1"
-                            android:orientation="horizontal"
-                            >
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:orientation="horizontal">
+
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="@dimen/_15sdp"
-                                android:orientation="horizontal"
                                 android:background="@drawable/card_bg"
-                                >
+                                android:orientation="horizontal">
+
                                 <ImageView
-                                    android:layout_gravity="center_vertical"
-                                    android:layout_marginStart="@dimen/_5sdp"
                                     android:layout_width="@dimen/_10sdp"
                                     android:layout_height="@dimen/_10sdp"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginStart="@dimen/_5sdp"
 
-                                    android:src="@drawable/dog_print_icon"/>
+                                    android:src="@drawable/dog_print_icon" />
+
                                 <TextView
                                     android:id="@+id/pet_type"
-                                    android:layout_marginStart="@dimen/_10sdp"
-                                    android:layout_marginEnd="@dimen/_5sdp"
-                                    android:textFontWeight="400"
-                                    android:textColor="@color/black"
-                                    android:fontFamily="@font/encode_sans"
-                                    android:textSize="@dimen/_8ssp"
-                                    android:layout_gravity="center_vertical"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/dog"/>
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginStart="@dimen/_10sdp"
+                                    android:layout_marginEnd="@dimen/_5sdp"
+                                    android:fontFamily="@font/encode_sans"
+                                    android:text="@string/dog"
+                                    android:textColor="@color/black"
+                                    android:textFontWeight="400"
+                                    android:textSize="@dimen/_8ssp" />
                             </LinearLayout>
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="@dimen/_15sdp"
-                                android:orientation="horizontal"
-                                android:background="@drawable/card_bg"
                                 android:layout_marginStart="@dimen/_8sdp"
-                                >
+                                android:background="@drawable/card_bg"
+                                android:orientation="horizontal">
+
                                 <ImageView
-                                    android:layout_gravity="center_vertical"
                                     android:layout_width="@dimen/_10sdp"
                                     android:layout_height="@dimen/_10sdp"
+                                    android:layout_gravity="center_vertical"
                                     android:layout_marginStart="@dimen/_5sdp"
-                                    android:src="@drawable/dog_icon"/>
+                                    android:src="@drawable/dog_icon" />
 
                                 <TextView
                                     android:id="@+id/pet_verity"
-                                    android:layout_marginEnd="@dimen/_5sdp"
-                                    android:layout_marginStart="@dimen/_10sdp"
-                                    android:textFontWeight="400"
-                                    android:textColor="@color/black"
-                                    android:fontFamily="@font/encode_sans"
-                                    android:textSize="@dimen/_8ssp"
-                                    android:layout_gravity="center_vertical"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/german_shepherd"/>
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginStart="@dimen/_10sdp"
+                                    android:layout_marginEnd="@dimen/_5sdp"
+                                    android:fontFamily="@font/encode_sans"
+                                    android:text="@string/german_shepherd"
+                                    android:textColor="@color/black"
+                                    android:textFontWeight="400"
+                                    android:textSize="@dimen/_8ssp" />
                             </LinearLayout>
                         </LinearLayout>
 
                         <LinearLayout
                             android:id="@+id/r3"
-                            android:layout_marginTop="@dimen/_3sdp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/r2"
-                            android:orientation="horizontal"
-                            >
+                            android:layout_marginTop="@dimen/_3sdp"
+                            android:orientation="horizontal">
+
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="@dimen/_15sdp"
-                                android:orientation="horizontal"
                                 android:background="@drawable/card_bg"
-                                >
+                                android:orientation="horizontal">
+
                                 <ImageView
-                                    android:layout_gravity="center_vertical"
-                                    android:layout_marginStart="@dimen/_5sdp"
                                     android:layout_width="@dimen/_10sdp"
                                     android:layout_height="@dimen/_10sdp"
-                                    android:src="@drawable/male_icon_blue"/>
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginStart="@dimen/_5sdp"
+                                    android:src="@drawable/male_icon_blue" />
+
                                 <TextView
                                     android:id="@+id/pet_gender"
-                                    android:layout_marginStart="@dimen/_11sdp"
-                                    android:layout_marginEnd="@dimen/_5sdp"
-                                    android:textFontWeight="400"
-                                    android:textColor="@color/black"
-                                    android:fontFamily="@font/encode_sans"
-                                    android:textSize="@dimen/_8ssp"
-                                    android:layout_gravity="center_vertical"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/male"/>
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginStart="@dimen/_11sdp"
+                                    android:layout_marginEnd="@dimen/_5sdp"
+                                    android:fontFamily="@font/encode_sans"
+                                    android:text="@string/male"
+                                    android:textColor="@color/black"
+                                    android:textFontWeight="400"
+                                    android:textSize="@dimen/_8ssp" />
                             </LinearLayout>
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="@dimen/_15sdp"
-                                android:orientation="horizontal"
-                                android:background="@drawable/card_bg"
                                 android:layout_marginStart="@dimen/_4sdp"
-                                >
+                                android:background="@drawable/card_bg"
+                                android:orientation="horizontal">
+
                                 <ImageView
-                                    android:layout_gravity="center_vertical"
                                     android:layout_width="@dimen/_10sdp"
                                     android:layout_height="@dimen/_10sdp"
+                                    android:layout_gravity="center_vertical"
                                     android:layout_marginStart="@dimen/_5sdp"
-                                    android:src="@drawable/sizeofdog_icon"/>
+                                    android:src="@drawable/sizeofdog_icon" />
 
                                 <TextView
                                     android:id="@+id/pet_size"
-                                    android:layout_marginEnd="@dimen/_5sdp"
-                                    android:layout_marginStart="@dimen/_10sdp"
-                                    android:textFontWeight="400"
-                                    android:textColor="@color/black"
-                                    android:fontFamily="@font/encode_sans"
-                                    android:textSize="@dimen/_8ssp"
-                                    android:layout_gravity="center_vertical"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/size"/>
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginStart="@dimen/_10sdp"
+                                    android:layout_marginEnd="@dimen/_5sdp"
+                                    android:fontFamily="@font/encode_sans"
+                                    android:text="@string/size"
+                                    android:textColor="@color/black"
+                                    android:textFontWeight="400"
+                                    android:textSize="@dimen/_8ssp" />
 
                             </LinearLayout>
                         </LinearLayout>
@@ -243,9 +243,9 @@
                             android:id="@+id/rate_card"
                             android:layout_width="@dimen/_50sdp"
                             android:layout_height="@dimen/_50sdp"
-                            android:background="@drawable/rate_card_bg"
+                            android:layout_centerHorizontal="true"
                             android:layout_marginTop="@dimen/_7sdp"
-                            android:layout_centerHorizontal="true">
+                            android:background="@drawable/rate_card_bg">
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -259,248 +259,244 @@
                         </RelativeLayout>
 
                         <TextView
-                            android:layout_below="@id/rate_card"
-                            android:layout_marginTop="@dimen/_3sdp"
-                            android:fontFamily="@font/encode_sans_semibold"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_below="@id/rate_card"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="@dimen/_3sdp"
+                            android:fontFamily="@font/encode_sans_semibold"
                             android:text="@string/review"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/_9ssp"
-                            android:layout_centerHorizontal="true"
-                            />
+                            android:textSize="@dimen/_9ssp" />
                     </RelativeLayout>
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-                        <RelativeLayout
-                            android:layout_below="@id/layout_1"
-                        android:layout_marginHorizontal="@dimen/_15sdp"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@color/white">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/layout_1"
+                android:layout_marginHorizontal="@dimen/_15sdp"
+                android:background="@color/white">
 
 
-                        <TextView
-                            android:id="@+id/intro"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_46sdp"
-                            android:text="@string/Introduction"
-                            style="@style/text_15_encoded_sans_bold"
-                            />
-                        <TextView
-                            android:id="@+id/description1"
-                            android:layout_below="@id/intro"
-                            android:layout_marginTop="@dimen/_14sdp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/intro_des"
-                            style="@style/text_11_encoded_sans"
-                            />
+                <TextView
+                    android:id="@+id/intro"
+                    style="@style/text_15_encoded_sans_bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_46sdp"
+                    android:text="@string/Introduction" />
 
-                        <TextView
-                            android:id="@+id/personality"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/description1"
-                            android:layout_marginTop="@dimen/_16ssp"
-                            style="@style/text_15_encoded_sans_bold"
-                            android:text="@string/Personality"
-                            />
+                <TextView
+                    android:id="@+id/description1"
+                    style="@style/text_11_encoded_sans"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/intro"
+                    android:layout_marginTop="@dimen/_14sdp"
+                    android:text="@string/intro_des" />
 
-                        <TextView
-                            android:id="@+id/description2"
-                            android:layout_below="@id/personality"
-                            android:layout_marginTop="@dimen/_14sdp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/personality_des"
-                            style="@style/text_11_encoded_sans"
-                            />
+                <TextView
+                    android:id="@+id/personality"
+                    style="@style/text_15_encoded_sans_bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/description1"
+                    android:layout_marginTop="@dimen/_16ssp"
+                    android:text="@string/Personality" />
 
-                        <TextView
-                            android:id="@+id/intelligence"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/description2"
-                            android:layout_marginTop="@dimen/_14ssp"
-                            style="@style/text_15_encoded_sans_bold"
-                            android:text="@string/Personality"
-                            />
+                <TextView
+                    android:id="@+id/description2"
+                    style="@style/text_11_encoded_sans"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/personality"
+                    android:layout_marginTop="@dimen/_14sdp"
+                    android:text="@string/personality_des" />
 
-                        <TextView
-                            android:id="@+id/description3"
-                            android:layout_below="@id/intelligence"
-                            android:layout_marginTop="@dimen/_12sdp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/intelligence_des"
-                            style="@style/text_11_encoded_sans"
-                            />
+                <TextView
+                    android:id="@+id/intelligence"
+                    style="@style/text_15_encoded_sans_bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/description2"
+                    android:layout_marginTop="@dimen/_14ssp"
+                    android:text="@string/Personality" />
 
-                        <TextView
-                            android:id="@+id/addi_info"
-                            android:layout_below="@id/description3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="@dimen/_15sdp"
-                            android:fontFamily="@font/encode_sans_bold"
-                            android:textFontWeight="700"
-                            android:textColor="#070821"
-                            android:layout_marginTop="@dimen/_25sdp"
-                            android:text="@string/Additional_Information"
-                            />
+                <TextView
+                    android:id="@+id/description3"
+                    style="@style/text_11_encoded_sans"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/intelligence"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:text="@string/intelligence_des" />
 
-                        <LinearLayout
-                            android:id="@+id/addi_info1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_below="@id/addi_info"
-                            android:layout_marginTop="@dimen/_29sdp"
-                            >
-                            <TextView
-                                android:gravity="center_vertical"
-                                android:layout_weight="8"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:text="@string/neutered"
-                                android:textSize="@dimen/_13sdp"
-                                android:textColor="@color/black"
-                                android:fontFamily="@font/encode_sans"
-                                android:textFontWeight="400"
-                                />
+                <TextView
+                    android:id="@+id/addi_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/description3"
+                    android:layout_marginTop="@dimen/_25sdp"
+                    android:fontFamily="@font/encode_sans_bold"
+                    android:text="@string/Additional_Information"
+                    android:textColor="#070821"
+                    android:textFontWeight="700"
+                    android:textSize="@dimen/_15ssp" />
 
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/success"/>
-                        </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/addi_info1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/addi_info"
+                    android:layout_marginTop="@dimen/_29sdp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="8"
+                        android:fontFamily="@font/encode_sans"
+                        android:gravity="center_vertical"
+                        android:text="@string/neutered"
+                        android:textColor="@color/black"
+                        android:textFontWeight="400"
+                        android:textSize="@dimen/_13ssp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/success" />
+                </LinearLayout>
 
 
-                        <LinearLayout
-                            android:id="@+id/addi_info2"
-                            android:layout_below="@+id/addi_info1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_marginTop="@dimen/_28sdp"
-                            >
-                            <TextView
-                                android:gravity="center_vertical"
-                                android:layout_weight="8"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/Vaccinated"
-                                android:textSize="@dimen/_13sdp"
-                                android:textColor="@color/black"
-                                android:fontFamily="@font/encode_sans"
-                                android:textFontWeight="400"
-                                />
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/success"/>
-                        </LinearLayout>
-                        <LinearLayout
-                            android:id="@+id/addi_info3"
-                            android:layout_below="@+id/addi_info2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_marginTop="@dimen/_28sdp"
-                            >
-                            <TextView
-                                android:gravity="center_vertical"
-                                android:layout_weight="8"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/Friendly_with_dogs"
-                                android:textSize="@dimen/_13sdp"
-                                android:textColor="@color/black"
-                                android:fontFamily="@font/encode_sans"
-                                android:textFontWeight="400"
-                                />
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/success"/>
-                        </LinearLayout>
-                        <LinearLayout
-                            android:id="@+id/addi_info4"
-                            android:layout_below="@+id/addi_info3"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_marginTop="@dimen/_28sdp"
-                            >
-                            <TextView
-                                android:gravity="center_vertical"
-                                android:layout_weight="8"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/Friendly_with_cats"
-                                android:textSize="@dimen/_13sdp"
-                                android:textColor="@color/black"
-                                android:fontFamily="@font/encode_sans"
-                                android:textFontWeight="400"
-                                />
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/success"/>
-                        </LinearLayout>
-                        <LinearLayout
-                            android:id="@+id/addi_info5"
-                            android:layout_below="@+id/addi_info4"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_marginTop="@dimen/_28sdp"
-                            >
-                            <TextView
-                                android:gravity="center_vertical"
-                                android:layout_weight="8"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/friendly_with_kids_lt_10"
-                                android:textSize="@dimen/_13sdp"
-                                android:textColor="@color/black"
-                                android:fontFamily="@font/encode_sans"
-                                android:textFontWeight="400"
-                                />
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/success"/>
-                        </LinearLayout>
-                        <LinearLayout
-                            android:id="@+id/addi_info6"
-                            android:layout_below="@+id/addi_info5"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_marginTop="@dimen/_28sdp"
-                            android:layout_marginBottom="@dimen/_35sdp"
-                            >
-                            <TextView
-                                android:gravity="center_vertical"
-                                android:layout_weight="8"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:text="@string/friendly_with_kids_gt_10"
-                                android:textSize="@dimen/_13sdp"
-                                android:textColor="@color/black"
-                                android:fontFamily="@font/encode_sans"
-                                android:textFontWeight="400"
-                                />
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/success"/>
-                        </LinearLayout>
-                    </RelativeLayout>
+                <LinearLayout
+                    android:id="@+id/addi_info2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/addi_info1"
+                    android:layout_marginTop="@dimen/_28sdp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="8"
+                        android:fontFamily="@font/encode_sans"
+                        android:gravity="center_vertical"
+                        android:text="@string/Vaccinated"
+                        android:textColor="@color/black"
+                        android:textFontWeight="400"
+                        android:textSize="@dimen/_13ssp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/success" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/addi_info3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/addi_info2"
+                    android:layout_marginTop="@dimen/_28sdp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="8"
+                        android:fontFamily="@font/encode_sans"
+                        android:gravity="center_vertical"
+                        android:text="@string/Friendly_with_dogs"
+                        android:textColor="@color/black"
+                        android:textFontWeight="400"
+                        android:textSize="@dimen/_13ssp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/success" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/addi_info4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/addi_info3"
+                    android:layout_marginTop="@dimen/_28sdp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="8"
+                        android:fontFamily="@font/encode_sans"
+                        android:gravity="center_vertical"
+                        android:text="@string/Friendly_with_cats"
+                        android:textColor="@color/black"
+                        android:textFontWeight="400"
+                        android:textSize="@dimen/_13ssp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/success" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/addi_info5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/addi_info4"
+                    android:layout_marginTop="@dimen/_28sdp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="8"
+                        android:fontFamily="@font/encode_sans"
+                        android:gravity="center_vertical"
+                        android:text="@string/friendly_with_kids_lt_10"
+                        android:textColor="@color/black"
+                        android:textFontWeight="400"
+                        android:textSize="@dimen/_13ssp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/success" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/addi_info6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/addi_info5"
+                    android:layout_marginTop="@dimen/_28sdp"
+                    android:layout_marginBottom="@dimen/_35sdp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="8"
+                        android:fontFamily="@font/encode_sans"
+                        android:gravity="center_vertical"
+                        android:text="@string/friendly_with_kids_gt_10"
+                        android:textColor="@color/black"
+                        android:textFontWeight="400"
+                        android:textSize="@dimen/_13ssp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/success" />
+                </LinearLayout>
+            </RelativeLayout>
         </RelativeLayout>
     </ScrollView>
 </RelativeLayout>

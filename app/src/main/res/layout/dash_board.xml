@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/welcome"
-            android:textSize="@dimen/_35sdp"
+            android:textSize="@dimen/_35ssp"
             android:fontFamily="@font/encode_sans_bold"
             android:textColor="@color/white"
             />
@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/to"
                 android:fontFamily="@font/encode_sans_bold"
-                android:textSize="@dimen/_35sdp"
+                android:textSize="@dimen/_35ssp"
                 android:layout_marginEnd="@dimen/_7sdp"
                 android:textColor="@color/white"
 
@@ -46,7 +46,7 @@
                 android:fontFamily="@font/encode_sans_bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/_35sdp"
+                android:textSize="@dimen/_35ssp"
                 android:text="@string/pet_care"
                 android:textColor="@color/text_yellow"
                 />
@@ -82,7 +82,7 @@
                 android:textColor="@color/text_blue"
                 android:layout_gravity="center_vertical"
                 android:gravity="center_vertical|center_horizontal"
-                android:textSize="@dimen/_13sdp"
+                android:textSize="@dimen/_13ssp"
                 android:layout_marginStart="@dimen/_10sdp"
                 />
             <TextView
@@ -93,7 +93,7 @@
                 android:textColor="@color/text_blue"
                 android:layout_gravity="center_vertical"
                 android:gravity="center_vertical|center_horizontal"
-                android:textSize="@dimen/_13sdp"
+                android:textSize="@dimen/_13ssp"
                 android:layout_marginStart="@dimen/_2sdp"
                 android:layout_marginEnd="@dimen/_20sdp"
                 />
@@ -127,7 +127,7 @@
             android:textColor="@color/text_blue"
             android:layout_gravity="center_vertical"
             android:gravity="center_vertical|center_horizontal"
-            android:textSize="@dimen/_12sdp"
+            android:textSize="@dimen/_12ssp"
             android:layout_marginStart="@dimen/_10sdp"
             />
         <TextView
@@ -138,7 +138,7 @@
             android:textColor="@color/text_blue"
             android:layout_gravity="center_vertical"
             android:gravity="center_vertical|center_horizontal"
-            android:textSize="@dimen/_13sdp"
+            android:textSize="@dimen/_13ssp"
             android:layout_marginStart="@dimen/_2sdp"
             android:layout_marginEnd="@dimen/_20sdp"
             />

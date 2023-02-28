@@ -11,9 +11,9 @@ public class MyDbHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "petCare";    // Database Name
     public static final String TABLE_NAME = "petDetails";   // Table Name
-    private static final int DATABASE_Version = 11;    // Database Version
-    private static final String UID="_id";          // Column I (Primary Key)
-    private static final String IMAGE = "pet_image";// Column II
+    private static final int DATABASE_Version = 13;    // Database Version
+    public static final String UID="_id";          // Column I (Primary Key)
+    public static final String IMAGE = "pet_image";// Column II
     public static final String PET_NAME = "pet_name";    //Column III
     private static final String PET_SPECIES= "pet_species";    // Column IV
     private static final String BREED= "pet_breed";    // Column V

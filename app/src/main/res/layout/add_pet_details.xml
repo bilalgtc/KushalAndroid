@@ -25,6 +25,7 @@
             />
 
         <TextView
+            android:id="@+id/header_text"
             android:layout_width="@dimen/_249sdp"
             android:gravity="center_horizontal"
             android:layout_height="wrap_content"
@@ -33,7 +34,7 @@
             android:fontFamily="@font/encode_sans_bold"
             android:text="@string/add_pet_details"
             android:textColor="#070821"
-            android:textSize="@dimen/_17sdp" />
+            android:textSize="@dimen/_17ssp" />
 
 
 
@@ -99,7 +100,7 @@
                 android:layout_marginTop="@dimen/_13sdp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/_15sdp"
+                android:textSize="@dimen/_15ssp"
                 android:fontFamily="@font/encode_sans_bold"
                 android:textFontWeight="700"
                 android:textColor="#070821"
@@ -335,7 +336,7 @@
                 android:layout_below="@id/gender_btns"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/_15sdp"
+                android:textSize="@dimen/_15ssp"
                 android:fontFamily="@font/encode_sans_bold"
                 android:textFontWeight="700"
                 android:textColor="#070821"
@@ -357,7 +358,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="@string/neutered"
-                    android:textSize="@dimen/_13sdp"
+                    android:textSize="@dimen/_13ssp"
                     android:textColor="@color/black"
                     android:fontFamily="@font/encode_sans"
                     android:textFontWeight="400"
@@ -390,7 +391,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="@string/Vaccinated"
-                    android:textSize="@dimen/_13sdp"
+                    android:textSize="@dimen/_13ssp"
                     android:textColor="@color/black"
                     android:fontFamily="@font/encode_sans"
                     android:textFontWeight="400"
@@ -420,7 +421,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="@string/Friendly_with_dogs"
-                    android:textSize="@dimen/_13sdp"
+                    android:textSize="@dimen/_13ssp"
                     android:textColor="@color/black"
                     android:fontFamily="@font/encode_sans"
                     android:textFontWeight="400"
@@ -450,7 +451,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="@string/Friendly_with_cats"
-                    android:textSize="@dimen/_13sdp"
+                    android:textSize="@dimen/_13ssp"
                     android:textColor="@color/black"
                     android:fontFamily="@font/encode_sans"
                     android:textFontWeight="400"
@@ -480,7 +481,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="@string/friendly_with_kids_lt_10"
-                    android:textSize="@dimen/_13sdp"
+                    android:textSize="@dimen/_13ssp"
                     android:textColor="@color/black"
                     android:fontFamily="@font/encode_sans"
                     android:textFontWeight="400"
@@ -510,7 +511,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:text="@string/friendly_with_kids_gt_10"
-                    android:textSize="@dimen/_13sdp"
+                    android:textSize="@dimen/_13ssp"
                     android:textColor="@color/black"
                     android:fontFamily="@font/encode_sans"
                     android:textFontWeight="400"
@@ -531,7 +532,7 @@
                 android:id="@+id/submit"
                 style="@style/btn"
                 android:layout_width="match_parent"
-                android:textSize="@dimen/_13sdp"
+                android:textSize="@dimen/_13ssp"
                 android:layout_height="@dimen/_36sdp"
                 android:gravity="center_vertical|center_horizontal"
                 android:layout_centerHorizontal="true"

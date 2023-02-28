@@ -1,17 +1,11 @@
 package com.example.petcare.adapter;
 
 
-
-
-
-import static android.webkit.ConsoleMessage.MessageLevel.LOG;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,16 +28,11 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.util.ArrayList;
 
-
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>{
-
-    private int lastPosition = -1;
-
+public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
     Context context;
-   private ArrayList<RecyclerViewModel> details;
+    private ArrayList<RecyclerViewModel> details;
 
-
-    public RecyclerViewAdapter(Context context, ArrayList<RecyclerViewModel> details){
+    public RecyclerViewAdapter(Context context, ArrayList<RecyclerViewModel> details) {
         this.context = context;
         this.details = details;
     }
@@ -51,7 +40,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @NonNull
     @Override
     public RecyclerViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.recyclerview_model,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.recyclerview_model, parent, false);
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }
@@ -72,7 +61,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 //            // handle the case where the byte array is null or empty
 //        }
 
-        
         holder.name.setText(item.getName());
         holder.pet_type.setText(item.getPet_type());
         holder.pet_verity.setText(item.getPet_verity());
@@ -84,18 +72,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.quality4.setText(item.getQuality4());
 
 
-
         holder.pet_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent( context, VeterinaryCard.class);
+                Intent intent = new Intent(context, VeterinaryCard.class);
 
-                intent.putExtra("pet_image",item.getImage());
-                intent.putExtra("pet_name",item.getName());
-                intent.putExtra("pet_species",item.getPet_type());
-                intent.putExtra("pet_breed",item.getPet_verity());
-                intent.putExtra("pet_gender",item.getPet_gender());
-                intent.putExtra("pet_size",item.getPet_size());
+                intent.putExtra("pet_image", item.getImage());
+                intent.putExtra("pet_name", item.getName());
+                intent.putExtra("pet_species", item.getPet_type());
+                intent.putExtra("pet_breed", item.getPet_verity());
+                intent.putExtra("pet_gender", item.getPet_gender());
+                intent.putExtra("pet_size", item.getPet_size());
                 v.getContext().startActivity(intent);
             }
         });
@@ -104,17 +91,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent( v.getContext(), AddPetDetails.class);
+                Intent intent = new Intent(v.getContext(), AddPetDetails.class);
 
-                intent.putExtra("_id",item.getId());
-                intent.putExtra("pet_image",item.getImage());
-                intent.putExtra("pet_name",item.getName());
-                intent.putExtra("pet_species",item.getPet_type());
-                intent.putExtra("pet_breed",item.getPet_verity());
-                intent.putExtra("pet_size",item.getPet_size());
-                intent.putExtra("pet_gender",item.getPet_gender());
-
-                intent.putExtra("editmode",false);
+                intent.putExtra("_id", item.getId());
+                intent.putExtra("pet_image", item.getImage());
+                intent.putExtra("pet_name", item.getName());
+                intent.putExtra("pet_species", item.getPet_type());
+                intent.putExtra("pet_breed", item.getPet_verity());
+                intent.putExtra("pet_size", item.getPet_size());
+                intent.putExtra("pet_gender", item.getPet_gender());
                 v.getContext().startActivity(intent);
             }
         });
@@ -123,7 +108,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             @Override
             public void onClick(View v) {
 
-                View modelBottomSheet = LayoutInflater.from(context).inflate(R.layout.delete_dialoge_box,null);
+                View modelBottomSheet = LayoutInflater.from(context).inflate(R.layout.delete_dialoge_box, null);
                 BottomSheetDialog dialog = new BottomSheetDialog(context, R.style.SheetDialog);
                 dialog.setContentView(modelBottomSheet);
 
@@ -145,18 +130,18 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     @SuppressLint("ResourceAsColor")
                     @Override
                     public void onClick(View v) {
-//                        int id = getItemCount();
-//                        MyDbHelper database = new MyDbHelper(context);
-//                        database.deleteEntry(id);
-////                        details.remove(id);
-//                        notifyItemRemoved(id);
-//                        notifyDataSetChanged();
-//                        notifyItemRangeChanged(position,details.size());
-//                        database.close();
+                        int id = getItemCount();
+                        MyDbHelper database = new MyDbHelper(context);
+                        database.deleteEntry(id);
+                        details.remove(id);
+                        notifyItemRemoved(id);
+                        notifyDataSetChanged();
+                        notifyItemRangeChanged(position, details.size());
+                        database.close();
                         del_yes.setBackgroundResource(R.drawable.yes_no_btn_selector);
                         details.remove(position);
                         notifyItemChanged(position);
-                        notifyItemRangeChanged(position,details.size());
+                        notifyItemRangeChanged(position, details.size());
                         dialog.dismiss();
                     }
                 });
@@ -186,14 +171,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView name,pet_type,pet_verity,pet_gender,pet_size,quality1,quality2,quality3,quality4;
+        TextView name, pet_type, pet_verity, pet_gender, pet_size, quality1, quality2, quality3, quality4;
         ImageView pet_img, edit_petDetails, delete_pet;
         MyDbHelper db = new MyDbHelper(context);
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             pet_img = itemView.findViewById(R.id.pet_img);
-            name =itemView.findViewById(R.id.pet_name);
+            name = itemView.findViewById(R.id.pet_name);
             pet_type = itemView.findViewById(R.id.pet_type);
             pet_verity = itemView.findViewById(R.id.pet_verity);
             pet_gender = itemView.findViewById(R.id.pet_gender);

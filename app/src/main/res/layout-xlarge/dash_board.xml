@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/welcome"
-            android:textSize="@dimen/_23sdp"
+            android:textSize="@dimen/_23ssp"
             android:fontFamily="@font/encode_sans_bold"
             android:textColor="@color/white"
             />
@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/to"
                 android:fontFamily="@font/encode_sans_bold"
-                android:textSize="@dimen/_23sdp"
+                android:textSize="@dimen/_23ssp"
                 android:layout_marginEnd="@dimen/_7sdp"
                 android:textColor="@color/white"
 
@@ -47,7 +47,7 @@
                 android:fontFamily="@font/encode_sans_bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/_23sdp"
+                android:textSize="@dimen/_23ssp"
                 android:text="@string/pet_care"
                 android:textColor="@color/text_yellow"
                 />
@@ -82,7 +82,7 @@
             android:fontFamily="@font/encode_sans"
             android:textColor="@color/text_blue"
             android:layout_gravity="center_vertical"
-            android:textSize="@dimen/_9sdp"
+            android:textSize="@dimen/_9ssp"
             android:layout_marginStart="@dimen/_5sdp"
             />
         <TextView
@@ -92,7 +92,7 @@
             android:fontFamily="@font/encode_sans_bold"
             android:textColor="@color/text_blue"
             android:layout_gravity="center_vertical"
-            android:textSize="@dimen/_9sdp"
+            android:textSize="@dimen/_9ssp"
             android:layout_marginStart="@dimen/_2sdp"
             />
     </LinearLayout>
@@ -124,7 +124,7 @@
             android:fontFamily="@font/encode_sans"
             android:textColor="@color/text_blue"
             android:layout_gravity="center_vertical"
-            android:textSize="@dimen/_9sdp"
+            android:textSize="@dimen/_9ssp"
             android:layout_marginStart="@dimen/_5sdp"
             />
         <TextView
@@ -134,7 +134,7 @@
             android:fontFamily="@font/encode_sans_bold"
             android:textColor="@color/text_blue"
             android:layout_gravity="center_vertical"
-            android:textSize="@dimen/_9sdp"
+            android:textSize="@dimen/_9ssp"
             android:layout_marginStart="@dimen/_2sdp"
             />
     </LinearLayout>

@@ -13,9 +13,6 @@
         android:scrollIndicators="none"
         android:scrollbars="none"
         >
-
-
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -26,6 +23,7 @@
                 android:layout_height="@dimen/_232sdp"
                 >
                 <ImageView
+                    android:id="@+id/profile_pic"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:scaleType="fitXY"

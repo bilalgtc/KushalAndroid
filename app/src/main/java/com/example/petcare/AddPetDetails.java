@@ -1,9 +1,12 @@
 package com.example.petcare;
 
 import static android.webkit.ConsoleMessage.MessageLevel.LOG;
+import static com.example.petcare.MyDbHelper.IMAGE;
 import static com.example.petcare.MyDbHelper.TABLE_NAME;
+import static com.example.petcare.MyDbHelper.UID;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -11,6 +14,7 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
@@ -42,7 +46,13 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 public class AddPetDetails extends AppCompatActivity {
-    TextView p_name, species, breed, size, txt_male, txt_female;
+    //PERMISSION CONSTANTS
+    private static final int CAMERA_REQUEST_CODE = 100;
+    private static final int STORAGE_REQUEST_CODE = 101;
+    //IMAGE PICK CONSTANTS
+    private static final int IMAGE_PICK_CAMERA_CODE = 102;
+    private static final int IMAGE_PICK_GALLERY_CODE = 103;
+    TextView p_name, species, breed, size, txt_male, txt_female, header_txt;
     EditText pet_name, pet_species, pet_breed, pet_size;
     ImageView icon_male;
     ImageView icon_female;
@@ -56,23 +66,10 @@ public class AddPetDetails extends AppCompatActivity {
     SwitchCompat toggle1, toggle2, toggle3, toggle4, toggle5, toggle6;
     Bitmap imgToStore;
     Boolean isEditMode;
-
-    private String petNameTxt;
-    private String petSpeciesTxt;
-    private String petBreedTxt;
-    private String petSizeTxt;
-    private String img;
-
+    String gender;
     Boolean flag;
     byte[] profile_img_byte;
     MyDbHelper db = new MyDbHelper(this);
-
-    //PERMISSION CONSTANTS
-    private static final int CAMERA_REQUEST_CODE = 100;
-    private static final int STORAGE_REQUEST_CODE = 101;
-    //IMAGE PICK CONSTANTS
-    private static final int IMAGE_PICK_CAMERA_CODE = 102;
-    private static final int IMAGE_PICK_GALLERY_CODE = 103;
     //ARRAYS OF PERMISSION
     private String[] cameraPermission;     //camera and storage
     private String[] storagePermission;    //only storage
@@ -87,23 +84,18 @@ public class AddPetDetails extends AppCompatActivity {
         init();
 
         Intent i = getIntent();
-        img = i.getStringExtra("pet_image");
+//        byte[] profile_img1 = i.getByteArrayExtra("pet_image");
         String petNameTxt = i.getStringExtra("pet_name");
         String petSpeciesTxt = i.getStringExtra("pet_species");
         String petBreedTxt = i.getStringExtra("pet_breed");
         String petSizeTxt = i.getStringExtra("pet_size");
-
-
 
         pet_name.setText(petNameTxt);
         pet_species.setText(petSpeciesTxt);
         pet_breed.setText(petBreedTxt);
         pet_size.setText(petSizeTxt);
 
-
-        isEditMode = i.getBooleanExtra("editmode",false);
-
-
+        isEditMode = i.getBooleanExtra("editmode", false);
 
         //init permission arrays
         cameraPermission = new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
@@ -179,7 +171,6 @@ public class AddPetDetails extends AppCompatActivity {
                 }
             }
         });
-
         female.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -195,14 +186,12 @@ public class AddPetDetails extends AppCompatActivity {
                 }
             }
         });
-
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();
             }
         });
-
         add_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -211,6 +200,8 @@ public class AddPetDetails extends AppCompatActivity {
         });
 
         if (isEditMode) {
+            header_txt.setText("update pet Details");
+            submit.setText("update");
             submit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -218,12 +209,10 @@ public class AddPetDetails extends AppCompatActivity {
                 }
             });
         } else {
-            submit.setText("Submit");
             submit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     addPet(v);
-
                 }
             });
         }
@@ -309,16 +298,15 @@ public class AddPetDetails extends AppCompatActivity {
         String petSizeTxt = pet_size.getText().toString();
 
 
-        if (male.isPressed()) {
-            flag = true;
-        } else if (female.isPressed()) {
-            flag = false;
-        }
-
         if (petNameTxt.isEmpty() || petSpeciesTxt.isEmpty() || petBreedTxt.isEmpty() || petSizeTxt.isEmpty()) {
             Message.message(getApplicationContext(), "Enter details");
-        } else {
 
+            if (male.isPressed()) {
+                flag = true;
+            } else if (female.isPressed()) {
+                flag = false;
+            }
+        } else {
             SQLiteDatabase database = db.getWritableDatabase();
             ContentValues contentValues = new ContentValues();
             contentValues.put("pet_image", profile_img_byte);
@@ -327,6 +315,8 @@ public class AddPetDetails extends AppCompatActivity {
             contentValues.put("pet_breed", petBreedTxt);
             contentValues.put("pet_size", petSizeTxt);
             contentValues.put("pet_gender", flag);
+
+
             if (toggle1.isChecked()) {
                 contentValues.put("neutered", "on");
             } else {
@@ -358,34 +348,29 @@ public class AddPetDetails extends AppCompatActivity {
                 contentValues.put("Friendly_with_kids_greater_then_10_year", "off");
             }
 
-           database.insert(TABLE_NAME, null, contentValues);
-           Intent i = new Intent(getApplicationContext(), HomeFragment.class);
-           startActivity(i);
+            database.insert(TABLE_NAME, null, contentValues);
+            Intent i = new Intent(getApplicationContext(), HomeFragment.class);
+            Message.message(this, "inserted");
+            startActivity(i);
 
-
-            Message.message(getApplicationContext(), "new entry inserted");
-//                    pet_name.setText("");
-//                    pet_species.setText("");
-//                    pet_breed.setText("");
-//                    pet_size.setText("");
-//                    profile_img.setImageResource(R.drawable.troy_dog);
         }
     }
 
     private void updatePet() {
 
-        Intent i = getIntent();
 
-        petNameTxt = i.getStringExtra("pet_name");
-        petSpeciesTxt = i.getStringExtra("pet_species");
-        petBreedTxt = i.getStringExtra("pet_breed");
-//           petSizeTxt = i.getString("pet_size");
-
-
-        pet_name.setText(petNameTxt);
-        pet_species.setText(petSpeciesTxt);
-        pet_breed.setText(petBreedTxt);
-        pet_size.setText(petSizeTxt);
+//        Intent i = getIntent();
+//
+//        petNameTxt = i.getStringExtra("pet_name");
+//        petSpeciesTxt = i.getStringExtra("pet_species");
+//        petBreedTxt = i.getStringExtra("pet_breed");
+////           petSizeTxt = i.getString("pet_size");
+//
+//
+//        pet_name.setText(petNameTxt);
+//        pet_species.setText(petSpeciesTxt);
+//        pet_breed.setText(petBreedTxt);
+//        pet_size.setText(petSizeTxt);
 
 
 //        if (male.isPressed()){
@@ -523,9 +508,9 @@ public class AddPetDetails extends AppCompatActivity {
         toggle4 = findViewById(R.id.toggle4);
         toggle5 = findViewById(R.id.toggle5);
         toggle6 = findViewById(R.id.toggle6);
+        header_txt = findViewById(R.id.header_text);
 
         db = new MyDbHelper(this);
     }
-
 
 }
