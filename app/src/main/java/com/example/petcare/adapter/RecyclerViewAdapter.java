@@ -4,8 +4,6 @@ package com.example.petcare.adapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,7 +18,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.petcare.AddPetDetails;
-import com.example.petcare.MyDbHelper;
 import com.example.petcare.R;
 import com.example.petcare.RecyclerViewModel;
 import com.example.petcare.VeterinaryCard;
@@ -50,17 +47,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
 
         RecyclerViewModel item = details.get(position);
-        byte[] imageBytes = item.getImage();
-        if (imageBytes != null && imageBytes.length > 0) {
-            // decode the byte array and set the image
-            Bitmap bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
-            holder.pet_img.setImageBitmap(bitmap);
-        }
+//        byte[] imageBytes = item.getImage();
+//        if (imageBytes != null && imageBytes.length > 0) {
+//            // decode the byte array and set the image
+//            Bitmap bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
+//            holder.pet_img.setImageBitmap(bitmap);
+//        }
 //        else {
 ////            Toast.makeText(context, "something went wrong!!", Toast.LENGTH_SHORT).show();
 //            // handle the case where the byte array is null or empty
 //        }
-
+        holder.pet_img.setImageResource(item.getImage());
         holder.name.setText(item.getName());
         holder.pet_type.setText(item.getPet_type());
         holder.pet_verity.setText(item.getPet_verity());
@@ -131,18 +128,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     @Override
                     public void onClick(View v) {
                         int id = getItemCount();
-                        MyDbHelper database = new MyDbHelper(context);
-                        database.deleteEntry(id);
-                        details.remove(id);
-                        notifyItemRemoved(id);
-                        notifyDataSetChanged();
-                        notifyItemRangeChanged(position, details.size());
-                        database.close();
-                        del_yes.setBackgroundResource(R.drawable.yes_no_btn_selector);
-                        details.remove(position);
-                        notifyItemChanged(position);
-                        notifyItemRangeChanged(position, details.size());
-                        dialog.dismiss();
+
                     }
                 });
 
@@ -173,7 +159,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView name, pet_type, pet_verity, pet_gender, pet_size, quality1, quality2, quality3, quality4;
         ImageView pet_img, edit_petDetails, delete_pet;
-        MyDbHelper db = new MyDbHelper(context);
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

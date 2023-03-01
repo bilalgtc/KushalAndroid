@@ -1,20 +1,10 @@
 package com.example.petcare;
 
-import static android.webkit.ConsoleMessage.MessageLevel.LOG;
-import static com.example.petcare.MyDbHelper.IMAGE;
-import static com.example.petcare.MyDbHelper.TABLE_NAME;
-import static com.example.petcare.MyDbHelper.UID;
-
 import android.Manifest;
-import android.annotation.SuppressLint;
-import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
@@ -39,7 +29,6 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.petcare.commonMethod.Message;
-import com.example.petcare.fragments.HomeFragment;
 import com.google.android.material.divider.MaterialDivider;
 
 import java.io.ByteArrayOutputStream;
@@ -65,11 +54,8 @@ public class AddPetDetails extends AppCompatActivity {
     RecyclerView recyclerView;
     SwitchCompat toggle1, toggle2, toggle3, toggle4, toggle5, toggle6;
     Bitmap imgToStore;
-    Boolean isEditMode;
-    String gender;
     Boolean flag;
-    byte[] profile_img_byte;
-    MyDbHelper db = new MyDbHelper(this);
+
     //ARRAYS OF PERMISSION
     private String[] cameraPermission;     //camera and storage
     private String[] storagePermission;    //only storage
@@ -80,11 +66,9 @@ public class AddPetDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_pet_details);
         changeStatusBarColor();
-
         init();
 
         Intent i = getIntent();
-//        byte[] profile_img1 = i.getByteArrayExtra("pet_image");
         String petNameTxt = i.getStringExtra("pet_name");
         String petSpeciesTxt = i.getStringExtra("pet_species");
         String petBreedTxt = i.getStringExtra("pet_breed");
@@ -95,7 +79,7 @@ public class AddPetDetails extends AppCompatActivity {
         pet_breed.setText(petBreedTxt);
         pet_size.setText(petSizeTxt);
 
-        isEditMode = i.getBooleanExtra("editmode", false);
+
 
         //init permission arrays
         cameraPermission = new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
@@ -199,23 +183,11 @@ public class AddPetDetails extends AppCompatActivity {
             }
         });
 
-        if (isEditMode) {
-            header_txt.setText("update pet Details");
-            submit.setText("update");
-            submit.setOnClickListener(new View.OnClickListener() {
+        submit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    updatePet();
                 }
-            });
-        } else {
-            submit.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    addPet(v);
-                }
-            });
-        }
+        });
     }
 
     private void imagePickDialog() {
@@ -278,7 +250,6 @@ public class AddPetDetails extends AppCompatActivity {
     private Boolean checkCameraPermission() {
 
         //check camera permission is enabled or not
-
         boolean result = ContextCompat.checkSelfPermission(this,
                 Manifest.permission.CAMERA) == (PackageManager.PERMISSION_GRANTED);
         boolean result1 = ContextCompat.checkSelfPermission(this,
@@ -290,106 +261,6 @@ public class AddPetDetails extends AppCompatActivity {
         ActivityCompat.requestPermissions(this, cameraPermission, CAMERA_REQUEST_CODE);
     }
 
-
-    public void addPet(View view) {
-        String petNameTxt = pet_name.getText().toString();
-        String petSpeciesTxt = pet_species.getText().toString();
-        String petBreedTxt = pet_breed.getText().toString();
-        String petSizeTxt = pet_size.getText().toString();
-
-
-        if (petNameTxt.isEmpty() || petSpeciesTxt.isEmpty() || petBreedTxt.isEmpty() || petSizeTxt.isEmpty()) {
-            Message.message(getApplicationContext(), "Enter details");
-
-            if (male.isPressed()) {
-                flag = true;
-            } else if (female.isPressed()) {
-                flag = false;
-            }
-        } else {
-            SQLiteDatabase database = db.getWritableDatabase();
-            ContentValues contentValues = new ContentValues();
-            contentValues.put("pet_image", profile_img_byte);
-            contentValues.put("pet_name", petNameTxt);
-            contentValues.put("pet_species", petSpeciesTxt);
-            contentValues.put("pet_breed", petBreedTxt);
-            contentValues.put("pet_size", petSizeTxt);
-            contentValues.put("pet_gender", flag);
-
-
-            if (toggle1.isChecked()) {
-                contentValues.put("neutered", "on");
-            } else {
-                contentValues.put("neutered", "off");
-            }
-            if (toggle2.isChecked()) {
-                contentValues.put("Vaccinated", "on");
-            } else {
-                contentValues.put("Vaccinated", "off");
-            }
-            if (toggle3.isChecked()) {
-                contentValues.put("Friendly_with_dogs", "on");
-            } else {
-                contentValues.put("Friendly_with_dogs", "off");
-            }
-            if (toggle4.isChecked()) {
-                contentValues.put("Friendly_with_cats", "on");
-            } else {
-                contentValues.put("Friendly_with_cats", "off");
-            }
-            if (toggle5.isChecked()) {
-                contentValues.put("Friendly_with_kids_less_then_10_year", "on");
-            } else {
-                contentValues.put("Friendly_with_kids_less_then_10_year", "off");
-            }
-            if (toggle6.isChecked()) {
-                contentValues.put("Friendly_with_kids_greater_then_10_year", "on");
-            } else {
-                contentValues.put("Friendly_with_kids_greater_then_10_year", "off");
-            }
-
-            database.insert(TABLE_NAME, null, contentValues);
-            Intent i = new Intent(getApplicationContext(), HomeFragment.class);
-            Message.message(this, "inserted");
-            startActivity(i);
-
-        }
-    }
-
-    private void updatePet() {
-
-
-//        Intent i = getIntent();
-//
-//        petNameTxt = i.getStringExtra("pet_name");
-//        petSpeciesTxt = i.getStringExtra("pet_species");
-//        petBreedTxt = i.getStringExtra("pet_breed");
-////           petSizeTxt = i.getString("pet_size");
-//
-//
-//        pet_name.setText(petNameTxt);
-//        pet_species.setText(petSpeciesTxt);
-//        pet_breed.setText(petBreedTxt);
-//        pet_size.setText(petSizeTxt);
-
-
-//        if (male.isPressed()){
-//            flag = true;
-//        }
-//        else if (female.isPressed()){
-//            flag = false;
-//        }
-//        else if(petNameTxt.isEmpty() || petSpeciesTxt.isEmpty() || petBreedTxt.isEmpty() || petSizeTxt.isEmpty())
-//        {
-//            Message.message(getApplicationContext(),"Enter details");
-//        }
-//        else {
-//            SQLiteDatabase database = db.getWritableDatabase();
-//            ContentValues contentValues = new ContentValues();
-//
-//        }
-
-    }
 
     private void changeStatusBarColor() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -445,7 +316,6 @@ public class AddPetDetails extends AppCompatActivity {
                 Bitmap img = (Bitmap) (data.getExtras().get("data"));
                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
                 img.compress(Bitmap.CompressFormat.PNG, 100, stream);
-                profile_img_byte = stream.toByteArray();
                 profile_img.setImageBitmap(img);
             } else if (requestCode == IMAGE_PICK_GALLERY_CODE && data != null && data.getData() != null) {
 
@@ -454,7 +324,6 @@ public class AddPetDetails extends AppCompatActivity {
                     imgToStore = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
                     ByteArrayOutputStream stream = new ByteArrayOutputStream();
                     imgToStore.compress(Bitmap.CompressFormat.PNG, 100, stream);
-                    profile_img_byte = stream.toByteArray();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -466,17 +335,6 @@ public class AddPetDetails extends AppCompatActivity {
 
         super.onActivityResult(requestCode, resultCode, data);
     }
-
-//    private void editData(){
-//        if (getIntent().getBundleExtra("data")!= null){
-//            Bundle bundle =getIntent().getBundleExtra("data");
-//            pet_name.setText(bundle.getString("pet_name"));
-//            pet_species.setText(bundle.getString("pet_species"));
-//            pet_breed.setText(bundle.getString("pet_breed"));
-//            pet_size.setText(bundle.getString("pet_size"));
-//            submit.setText("submit");
-//        }
-//    }
 
     public void init() {
         p_name = findViewById(R.id.petname);
@@ -509,8 +367,5 @@ public class AddPetDetails extends AppCompatActivity {
         toggle5 = findViewById(R.id.toggle5);
         toggle6 = findViewById(R.id.toggle6);
         header_txt = findViewById(R.id.header_text);
-
-        db = new MyDbHelper(this);
     }
-
 }
