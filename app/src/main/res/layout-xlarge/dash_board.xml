@@ -4,194 +4,183 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DashBoard"
-    android:background="@drawable/img">
+    android:background="@drawable/img"
+    tools:context=".DashBoard">
 
-
-
-
-    <LinearLayout
-        android:layout_centerHorizontal="true"
-        android:layout_width="match_parent"
+    <RelativeLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginHorizontal="@dimen/_75sdp"
-        android:layout_marginTop="@dimen/_62sdp"
-        android:id="@+id/l1"
-        >
-        <TextView
-            android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true">
+
+        <LinearLayout
+            android:id="@+id/l1"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/welcome"
-            android:textSize="@dimen/_23ssp"
-            android:fontFamily="@font/encode_sans_bold"
-            android:textColor="@color/white"
+            android:layout_centerHorizontal="true"
+            android:layout_marginHorizontal="@dimen/_65sdp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/encode_sans_bold"
+                android:text="@string/welcome"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_27ssp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_7sdp"
+                    android:fontFamily="@font/encode_sans_bold"
+                    android:text="@string/to"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_27ssp"
+
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/encode_sans_bold"
+                    android:text="@string/pet_care"
+                    android:textColor="@color/text_yellow"
+                    android:textSize="@dimen/_27ssp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/c_with_fb"
+            style="@style/dashboard_btn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_26sdp"
+            android:layout_below="@+id/l1"
+            android:layout_marginHorizontal="@dimen/_65sdp"
+            android:layout_marginTop="@dimen/_25sdp"
+            android:clickable="true"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/_15sdp"
+                android:layout_height="@dimen/_15sdp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/fb_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:fontFamily="@font/encode_sans"
+                android:text="@string/continue_with"
+                android:textColor="@color/text_blue"
+                android:textSize="@dimen/_10ssp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/_2sdp"
+                android:fontFamily="@font/encode_sans_bold"
+                android:text="@string/fb"
+                android:textColor="@color/text_blue"
+                android:textSize="@dimen/_10ssp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/c_with_google"
+            style="@style/dashboard_btn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_26sdp"
+            android:layout_below="@+id/c_with_fb"
+            android:layout_centerHorizontal="true"
+            android:layout_marginHorizontal="@dimen/_65sdp"
+            android:layout_marginTop="@dimen/_13sdp"
+            android:clickable="true"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/_15sdp"
+                android:layout_height="@dimen/_15sdp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/vector" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:fontFamily="@font/encode_sans"
+                android:text="@string/continue_with"
+                android:textColor="@color/text_blue"
+                android:textSize="@dimen/_10ssp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/_2sdp"
+                android:fontFamily="@font/encode_sans_bold"
+                android:text="@string/google"
+                android:textColor="@color/text_blue"
+                android:textSize="@dimen/_10ssp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/register_with_mail"
+            style="@style/dashboard_btn1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_26sdp"
+            android:layout_below="@+id/c_with_google"
+            android:layout_centerHorizontal="true"
+            android:layout_marginHorizontal="@dimen/_65sdp"
+            android:layout_marginTop="@dimen/_40sdp"
+            android:text="@string/register_with_gmail"
+
             />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/register_with_mail"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_45sdp"
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/to"
-                android:fontFamily="@font/encode_sans_bold"
-                android:textSize="@dimen/_23ssp"
-                android:layout_marginEnd="@dimen/_7sdp"
+                android:fontFamily="@font/encode_sans"
+                android:text="@string/login_descreption"
                 android:textColor="@color/white"
+                android:textSize="@dimen/_10ssp" />
 
-                />
+
             <TextView
-                android:fontFamily="@font/encode_sans_bold"
+                android:id="@+id/dashboard_sign_in"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/_23ssp"
-                android:text="@string/pet_care"
-                android:textColor="@color/text_yellow"
+                android:layout_marginStart="@dimen/_3sdp"
+                android:fontFamily="@font/encode_sans_semibold"
+                android:text="@string/sign_in"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_10ssp"
+
+
                 />
+
         </LinearLayout>
-    </LinearLayout>
 
-    <LinearLayout
-        android:clickable="true"
-        android:layout_below="@+id/l1"
-        android:id="@+id/c_with_fb"
-        style="@style/dashboard_btn"
-        android:layout_marginHorizontal="@dimen/_75sdp"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_23sdp"
-        android:layout_marginTop="@dimen/_22sdp"
-        android:orientation="horizontal"
-        android:gravity="center"
-        >
-
-        <ImageView
-            android:layout_width="@dimen/_13sdp"
-            android:layout_height="@dimen/_13sdp"
-            android:src="@drawable/fb_icon"
-            android:layout_gravity="center_vertical"
-
-
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/continue_with"
-            android:fontFamily="@font/encode_sans"
-            android:textColor="@color/text_blue"
-            android:layout_gravity="center_vertical"
-            android:textSize="@dimen/_9ssp"
-            android:layout_marginStart="@dimen/_5sdp"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/fb"
-            android:fontFamily="@font/encode_sans_bold"
-            android:textColor="@color/text_blue"
-            android:layout_gravity="center_vertical"
-            android:textSize="@dimen/_9ssp"
-            android:layout_marginStart="@dimen/_2sdp"
-            />
-    </LinearLayout>
-
-    <LinearLayout
-        android:clickable="true"
-        android:layout_below="@+id/c_with_fb"
-        android:id="@+id/c_with_google"
-        style="@style/dashboard_btn"
-        android:layout_marginHorizontal="@dimen/_75sdp"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_23sdp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:orientation="horizontal"
-        >
-
-        <ImageView
-            android:layout_width="@dimen/_13sdp"
-            android:layout_height="@dimen/_13sdp"
-            android:src="@drawable/vector"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="@dimen/_22sdp"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/continue_with"
-            android:fontFamily="@font/encode_sans"
-            android:textColor="@color/text_blue"
-            android:layout_gravity="center_vertical"
-            android:textSize="@dimen/_9ssp"
-            android:layout_marginStart="@dimen/_5sdp"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/google"
-            android:fontFamily="@font/encode_sans_bold"
-            android:textColor="@color/text_blue"
-            android:layout_gravity="center_vertical"
-            android:textSize="@dimen/_9ssp"
-            android:layout_marginStart="@dimen/_2sdp"
-            />
-    </LinearLayout>
-
-    <Button
-        android:layout_below="@+id/c_with_google"
-        android:id="@+id/register_with_mail"
-        style="@style/dashboard_btn1"
-        android:layout_width="match_parent"
-        android:layout_marginHorizontal="@dimen/_75sdp"
-        android:layout_height="@dimen/_23sdp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/_27sdp"
-        android:text="@string/register_with_gmail"
-
-        />
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/register_with_mail"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/_35sdp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/login_descreption"
-            android:textColor="@color/white"
-            android:fontFamily="@font/encode_sans"
-            android:textSize="@dimen/_9ssp" />
-
-
-        <TextView
-            android:id="@+id/dashboard_sign_in"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_3sdp"
-            android:fontFamily="@font/encode_sans_semibold"
-            android:text="@string/sign_in"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_9ssp"
-
-
-            />
-
-    </LinearLayout>
-
-
-
-
-
-
-
-
-
+    </RelativeLayout>
 
 
 </RelativeLayout>

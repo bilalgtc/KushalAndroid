@@ -10,9 +10,8 @@
         android:id="@+id/scrollview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:scrollIndicators="none"
-        android:scrollbars="none">
-
+        android:scrollbars="none"
+        tools:ignore="UselessParent">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -26,7 +25,7 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:scaleType="fitXY"
+                    android:scaleType="centerCrop"
                     android:src="@drawable/dog_img" />
             </RelativeLayout>
 
@@ -322,7 +321,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/description2"
                     android:layout_marginTop="@dimen/_14ssp"
-                    android:text="@string/Personality" />
+                    android:text="@string/Intelligence" />
 
                 <TextView
                     android:id="@+id/description3"

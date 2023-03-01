@@ -26,14 +26,14 @@
         android:id="@+id/pagerIntroSlider"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/_500sdp"
-        android:layout_marginTop="@dimen/_45sdp">
+        android:layout_marginTop="@dimen/_55sdp">
     </androidx.viewpager.widget.ViewPager>
 
 
     <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
         android:id="@+id/dots_indicator"
         android:layout_below="@id/welcome_sign_in"
-        android:layout_marginTop="@dimen/_250sdp"
+        android:layout_marginTop="@dimen/_270sdp"
         android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -50,13 +50,13 @@
     <Button
         android:id="@+id/next_btn"
         android:layout_below="@id/dots_indicator"
-        android:layout_marginTop="@dimen/_65sdp"
+        android:layout_marginTop="@dimen/_110sdp"
         style="@style/btn"
         android:stateListAnimator="@null"
         android:textSize="@dimen/_9ssp"
-        android:layout_width="@dimen/_130sdp"
+        android:layout_marginHorizontal="@dimen/_70sdp"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/_23sdp"
-        android:layout_centerHorizontal="true"
         android:text="@string/next"
 
         />

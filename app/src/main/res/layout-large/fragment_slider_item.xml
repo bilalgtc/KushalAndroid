@@ -16,14 +16,14 @@
    <TextView
        android:layout_centerHorizontal="true"
        android:layout_below="@+id/imageView"
-       android:layout_marginTop="@dimen/_10sdp"
+       android:layout_marginTop="@dimen/_40sdp"
        android:id="@+id/text_dis1"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
        android:textStyle="bold"
        android:textColor="@color/black"
        android:fontFamily="@font/encode_sans_bold"
-       android:textSize="@dimen/_13ssp"
+       android:textSize="@dimen/_14ssp"
        android:layout_gravity="center_horizontal"
        android:text="@string/hello_blank_fragment" />
 
@@ -32,13 +32,13 @@
        android:layout_below="@+id/text_dis1"
        android:textAlignment="center"
        android:id="@+id/text_dis2"
-       android:layout_marginHorizontal="@dimen/_70sdp"
+       android:layout_marginHorizontal="@dimen/_60sdp"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
        android:fontFamily="@font/encode_sans"
        android:layout_marginTop="@dimen/_5sdp"
        android:textColor="@color/black"
-       android:textSize="@dimen/_9ssp"
+       android:textSize="@dimen/_10ssp"
        android:text="@string/hello_blank_fragment" />
 
 </RelativeLayout>

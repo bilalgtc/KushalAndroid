@@ -50,7 +50,6 @@ public class HomeFragment extends Fragment {
 
         adapter = new RecyclerViewAdapter(view.getContext(), details);
         recyclerView.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
 
         return view;
     }

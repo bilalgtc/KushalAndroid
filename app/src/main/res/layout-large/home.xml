@@ -12,7 +12,7 @@
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="@dimen/_50sdp"/>
+       />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav_bar"
@@ -20,8 +20,9 @@
         android:layout_height="@dimen/_45sdp"
         android:background="#FFFFFF"
         android:layout_alignParentBottom="true"
-        app:itemPaddingBottom="@dimen/_19sdp"
-        app:itemIconSize="@dimen/_12sdp"
+        app:itemPaddingTop="@dimen/_10sdp"
+        app:itemPaddingBottom="@dimen/_12sdp"
+        app:itemIconSize="@dimen/_13sdp"
         app:itemIconTint="@drawable/nav_item_color_state"
         app:itemTextColor="@drawable/nav_item_color_state"
         app:labelVisibilityMode="labeled"
