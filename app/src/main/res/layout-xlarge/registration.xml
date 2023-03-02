@@ -9,13 +9,13 @@
     <RelativeLayout
         android:id="@+id/r1"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_168sdp"
+        android:layout_height="@dimen/_176sdp"
         android:background="@drawable/img"
         >
         <ImageView
             android:id="@+id/registration_back_button"
-            android:layout_width="@dimen/_18sdp"
-            android:layout_height="@dimen/_18sdp"
+            android:layout_width="@dimen/_19sdp"
+            android:layout_height="@dimen/_19sdp"
             android:src="@drawable/arrow_left"
             android:layout_marginTop="@dimen/_20sdp"
             android:layout_marginStart="@dimen/_9sdp"
@@ -27,10 +27,10 @@
             android:layout_height="wrap_content"
             android:text="@string/registration"
             android:layout_below="@+id/registration_back_button"
-            android:textSize="@dimen/_19sdp"
+            android:textSize="@dimen/_20ssp"
             android:textColor="@color/white"
             android:fontFamily="@font/encode_sans_bold"
-            android:layout_marginStart="@dimen/_75sdp"/>
+            android:layout_marginStart="@dimen/_35sdp"/>
 
     </RelativeLayout>
 
@@ -41,12 +41,12 @@
         android:background="#F5F5F5"
         >
         <LinearLayout
-            android:layout_marginHorizontal="@dimen/_65sdp"
+            android:layout_marginHorizontal="@dimen/_20sdp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:id="@+id/text_ocw"
-            android:layout_marginTop="@dimen/_150sdp"
+            android:layout_marginTop="@dimen/_170sdp"
             >
             <View
                 android:layout_weight="1"
@@ -63,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/or_continue_with"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_8ssp"
+                android:textSize="@dimen/_9ssp"
                 android:textFontWeight="400"
                 android:fontFamily="@font/encode_sans"
                 android:gravity="center_horizontal"
@@ -118,12 +118,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
                 android:text="@string/login_descreption"
                 android:textColor="@color/black"
                 android:textFontWeight="400"
                 android:fontFamily="@font/encode_sans"
-                android:textSize="@dimen/_8ssp" />
+                android:textSize="@dimen/_9ssp" />
 
 
             <TextView
@@ -134,7 +133,7 @@
                 android:fontFamily="@font/encode_sans_semibold"
                 android:text="@string/sign_in"
                 android:textColor="@color/text_blue"
-                android:textSize="@dimen/_8ssp"
+                android:textSize="@dimen/_9ssp"
 
 
                 />
@@ -147,12 +146,12 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_marginHorizontal="@dimen/_65sdp"
-        android:layout_height="@dimen/_220sdp"
+        android:layout_marginHorizontal="@dimen/_20sdp"
+        android:layout_height="@dimen/_235sdp"
         android:layout_marginTop="@dimen/_86sdp"
         style="@style/registration_card"
         android:elevation="@dimen/_5sdp"
-        android:outlineAmbientShadowColor="@color/black">
+        android:outlineAmbientShadowColor="@color/text_gray">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -166,7 +165,7 @@
                 android:text="@string/full_name"
                 android:textColor="@color/text_gray"
                 android:fontFamily="@font/encode_sans_semibold"
-                android:textSize="@dimen/_7ssp"
+                android:textSize="@dimen/_9ssp"
                 android:layout_marginTop="@dimen/_12sdp"
                 />
             <EditText
@@ -175,7 +174,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:textSize="@dimen/_8ssp"
+                android:textSize="@dimen/_9ssp"
                 android:backgroundTint="#F0F0F8"
                 android:textColor="@color/black"/>
             <com.google.android.material.divider.MaterialDivider
@@ -195,7 +194,7 @@
                 android:textColor="@color/text_gray"
                 android:layout_marginTop="@dimen/_5sdp"
                 android:fontFamily="@font/encode_sans_semibold"
-                android:textSize="@dimen/_7ssp"
+                android:textSize="@dimen/_8ssp"
 
                 />
             <EditText
@@ -204,7 +203,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
-                android:textSize="@dimen/_8ssp"
+                android:textSize="@dimen/_9ssp"
                 android:backgroundTint="#F0F0F8"
                 android:textColor="@color/black"/>
             <com.google.android.material.divider.MaterialDivider
@@ -224,7 +223,7 @@
                 android:textColor="@color/text_gray"
                 android:layout_marginTop="@dimen/_5sdp"
                 android:fontFamily="@font/encode_sans_semibold"
-                android:textSize="@dimen/_7ssp"
+                android:textSize="@dimen/_8ssp"
                 />
             <EditText
                 android:id="@+id/mobile_no"
@@ -259,7 +258,7 @@
                     android:text="@string/password"
                     android:textColor="@color/text_gray"
                     android:fontFamily="@font/encode_sans_semibold"
-                    android:textSize="@dimen/_7ssp"
+                    android:textSize="@dimen/_8ssp"
                     />
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -269,20 +268,20 @@
                     <EditText
                         android:layout_weight="8"
                         android:id="@+id/registration_password"
-                        android:layout_width="@dimen/_150sdp"
+                        android:layout_width="@dimen/_250sdp"
                         android:layout_height="wrap_content"
                         android:inputType="textPassword"
                         tools:ignore="InefficientWeight,MissingConstraints"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/_8ssp"
+                        android:textSize="@dimen/_9ssp"
                         android:backgroundTint="@color/white"
                         />
 
                     <ImageView
                         android:id="@+id/registration_pass_eye"
-                        android:layout_width="@dimen/_8sdp"
+                        android:layout_width="@dimen/_10sdp"
                         android:layout_height="match_parent"
-                        android:src="@drawable/password_visible_eye"
+                        android:src="@drawable/password_visible_off_eye"
                         tools:layout_editor_absoluteX="280dp"
                         tools:layout_editor_absoluteY="21dp"
                         android:layout_gravity="center_vertical"
@@ -301,33 +300,34 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_10sdp"
                 android:layout_below="@id/pass"
-                android:layout_marginTop="@dimen/_7sdp"
+                android:layout_marginTop="@dimen/_6sdp"
                 android:orientation="horizontal"
                 >
                 <CheckBox
                     android:layout_gravity="center_vertical"
                     android:id="@+id/checkBox1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/_11sdp"
+                    android:layout_height="@dimen/_11sdp"
                     android:button="@drawable/checkbox_selcetor"
                     android:stateListAnimator="@null"
                     android:background="@null"
                     />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="@string/i_agree_with"
+                    android:layout_marginStart="@dimen/_4sdp"
                     android:fontFamily="@font/encode_sans"
-                    android:textSize="@dimen/_6sdp"
+                    android:text="@string/i_agree_with"
                     android:textColor="@color/black"
-                    android:layout_marginStart="@dimen/_8sdp"/>
+                    android:textSize="@dimen/_8ssp" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/_4sdp"
                     android:text="@string/the_rules"
                     android:textColor="#4552CB"
-                    android:textSize="@dimen/_6sdp"
-                    android:layout_marginStart="@dimen/_2sdp"
+                    android:textSize="@dimen/_8ssp"
                     android:fontFamily="@font/encode_sans"
                     android:textStyle=""
                     />
@@ -340,14 +340,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_10sdp"
                 android:layout_below="@id/check1"
-                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_3sdp"
                 android:orientation="horizontal"
                 >
                 <CheckBox
                     android:layout_gravity="center_vertical"
                     android:id="@+id/checkBox2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/_11sdp"
+                    android:layout_height="@dimen/_11sdp"
                     android:button="@drawable/checkbox_selcetor"
                     android:background="@null"
                     />
@@ -356,20 +356,21 @@
                     android:layout_height="match_parent"
                     android:text="@string/i_do_not_want"
                     android:fontFamily="@font/encode_sans"
-                    android:textSize="@dimen/_6sdp"
+                    android:textSize="@dimen/_8ssp"
                     android:textColor="@color/black"
-                    android:layout_marginStart="@dimen/_8sdp"/>
+                    android:layout_marginStart="@dimen/_4sdp"/>
             </LinearLayout>
 
             <Button
                 android:stateListAnimator="@null"
                 android:layout_below="@+id/check2"
-                android:layout_marginTop="@dimen/_13sdp"
+                android:layout_marginTop="@dimen/_11sdp"
                 android:id="@+id/sign_up"
                 style="@style/btn"
-                android:textSize="@dimen/_8ssp"
+                android:textSize="@dimen/_10ssp"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_23sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:layout_marginHorizontal="@dimen/_32sdp"
                 android:layout_centerHorizontal="true"
                 android:text="@string/sign_up"
 

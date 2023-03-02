@@ -12,8 +12,8 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="@dimen/_28sdp"
         android:layout_marginEnd="@dimen/_15sdp"
-        android:layout_width="@dimen/_9sdp"
-        android:layout_height="@dimen/_9sdp"
+        android:layout_width="@dimen/_10sdp"
+        android:layout_height="@dimen/_10sdp"
         android:src="@drawable/plus_icon"
         />
     <LinearLayout
@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginHorizontal="@dimen/_20sdp"
-        android:layout_marginTop="@dimen/_11sdp"
+        android:layout_marginTop="@dimen/_7sdp"
         android:id="@+id/l1"
         android:layout_below="@+id/addPet"
         >
@@ -30,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/what_are_you"
-            android:textSize="@dimen/_18ssp"
+            android:textSize="@dimen/_20ssp"
             android:fontFamily="@font/encode_sans_bold"
             android:textColor="#070821"
             />
@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/looking_for"
                 android:fontFamily="@font/encode_sans_bold"
-                android:textSize="@dimen/_18ssp"
+                android:textSize="@dimen/_20ssp"
                 android:layout_marginEnd="@dimen/_7sdp"
                 android:textColor="#070821"
 
@@ -53,7 +53,7 @@
                 android:fontFamily="@font/encode_sans_bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/_18sdp"
+                android:textSize="@dimen/_20sdp"
                 android:text="@string/maria"
                 android:textColor="@color/text_yellow"
                 />

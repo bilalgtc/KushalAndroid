@@ -228,7 +228,7 @@
                         android:id="@+id/signIn_pass_eye"
                         android:layout_width="@dimen/_12sdp"
                         android:layout_height="match_parent"
-                        android:src="@drawable/password_visible_eye"
+                        android:src="@drawable/password_visible_off_eye"
                         android:layout_gravity="center_vertical"
                         />
                 </LinearLayout>

@@ -11,8 +11,9 @@
     <FrameLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="@dimen/_50sdp"/>
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_40sdp"
+        />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav_bar"
@@ -20,9 +21,9 @@
         android:layout_height="@dimen/_40sdp"
         android:background="#FFFFFF"
         android:layout_alignParentBottom="true"
-        app:itemIconSize="@dimen/_11sdp"
+        app:itemIconSize="@dimen/_12sdp"
         app:itemPaddingTop="@dimen/_10sdp"
-        app:itemPaddingBottom="@dimen/_12sdp"
+        app:itemPaddingBottom="@dimen/_11sdp"
         app:itemIconTint="@drawable/nav_item_color_state"
         app:itemTextColor="@drawable/nav_item_color_state"
         app:labelVisibilityMode="labeled"

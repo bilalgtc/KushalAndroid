@@ -267,8 +267,8 @@ public class Registration extends AppCompatActivity {
         sign_up = findViewById(R.id.sign_up);
     }
     private void imageSizeSet() {
-        dr = ContextCompat.getDrawable(Registration.this, R.drawable.success_icon);
+        dr = ContextCompat.getDrawable(Registration.this, R.drawable.success);
         assert dr != null;
-        dr.setBounds(0,0,35,35);
+        dr.setBounds(0,0,25,25);
     }
 }

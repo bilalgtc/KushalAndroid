@@ -9,13 +9,13 @@
     <RelativeLayout
         android:id="@+id/r1"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_168sdp"
+        android:layout_height="@dimen/_172sdp"
         android:background="@drawable/img"
         >
         <ImageView
             android:id="@+id/singIn_back_button"
-            android:layout_width="@dimen/_18sdp"
-            android:layout_height="@dimen/_18sdp"
+            android:layout_width="@dimen/_19sdp"
+            android:layout_height="@dimen/_19sdp"
             android:src="@drawable/arrow_left"
             android:layout_marginTop="@dimen/_23sdp"
             android:layout_marginStart="@dimen/_9sdp"
@@ -27,10 +27,10 @@
             android:layout_height="wrap_content"
             android:text="@string/sign_in"
             android:layout_below="@+id/singIn_back_button"
-            android:textSize="@dimen/_18sdp"
+            android:textSize="@dimen/_20ssp"
             android:textColor="@color/white"
             android:fontFamily="@font/encode_sans_bold"
-            android:layout_marginStart="@dimen/_75sdp"/>
+            android:layout_marginStart="@dimen/_35sdp"/>
 
     </RelativeLayout>
 
@@ -41,7 +41,7 @@
         android:background="#F5F5F5"
         >
         <LinearLayout
-            android:layout_marginHorizontal="@dimen/_65sdp"
+            android:layout_marginHorizontal="@dimen/_20sdp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -63,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/or_continue_with"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_8ssp"
+                android:textSize="@dimen/_9ssp"
                 android:textFontWeight="400"
                 android:fontFamily="@font/encode_sans"
                 android:gravity="center_horizontal"
@@ -138,8 +138,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_marginHorizontal="@dimen/_65sdp"
-        android:layout_height="@dimen/_136sdp"
+        android:layout_marginHorizontal="@dimen/_20sdp"
+        android:layout_height="@dimen/_150sdp"
         android:layout_marginTop="@dimen/_88sdp"
         style="@style/registration_card"
         android:elevation="@dimen/_5sdp"
@@ -157,7 +157,7 @@
                 android:text="@string/email"
                 android:textColor="@color/text_gray"
                 android:fontFamily="@font/encode_sans_semibold"
-                android:textSize="@dimen/_7ssp"
+                android:textSize="@dimen/_9ssp"
                 android:layout_marginTop="@dimen/_8sdp"
                 />
             <EditText
@@ -166,7 +166,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
-                android:textSize="@dimen/_8ssp"
+                android:textSize="@dimen/_9ssp"
                 android:backgroundTint="#F0F0F8"
                 android:textColor="@color/black"/>
             <com.google.android.material.divider.MaterialDivider
@@ -193,7 +193,7 @@
                     android:text="@string/password"
                     android:textColor="@color/text_gray"
                     android:fontFamily="@font/encode_sans_semibold"
-                    android:textSize="@dimen/_7ssp"
+                    android:textSize="@dimen/_9ssp"
                     />
 
 
@@ -210,17 +210,16 @@
                         android:inputType="textPassword"
                         tools:ignore="MissingConstraints"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/_8ssp"
+                        android:textSize="@dimen/_9ssp"
                         android:backgroundTint="@color/white"
                         />
 
                     <ImageView
                         android:id="@+id/signIn_pass_eye"
-                        android:layout_width="@dimen/_8sdp"
+                        android:layout_width="@dimen/_10sdp"
                         android:layout_height="match_parent"
-                        android:src="@drawable/password_visible_eye"
-                        tools:layout_editor_absoluteX="280dp"
-                        tools:layout_editor_absoluteY="21dp"
+                        android:src="@drawable/password_visible_off_eye"
+
                         android:layout_gravity="center_vertical"
                         />
                 </LinearLayout>
@@ -242,18 +241,17 @@
                 android:layout_alignParentEnd="true"
                 android:textColor="@color/text_blue"
                 android:fontFamily="@font/encode_sans"
-                android:textSize="@dimen/_6ssp" />
-
+                android:textSize="@dimen/_8ssp" />
 
             <Button
                 android:stateListAnimator="@null"
                 android:layout_below="@+id/singIn_forgot_pass"
                 android:id="@+id/sign_in"
                 style="@style/btn"
-                android:textSize="@dimen/_8ssp"
+                android:textSize="@dimen/_10ssp"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_23sdp"
-                android:layout_centerHorizontal="true"
+                android:layout_height="@dimen/_25sdp"
+                android:layout_marginHorizontal="@dimen/_32sdp"
                 android:layout_marginTop="@dimen/_16sdp"
                 android:text="@string/sign_in"
 

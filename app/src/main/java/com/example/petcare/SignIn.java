@@ -149,9 +149,9 @@ public class SignIn extends AppCompatActivity {
     }
 
     private void imageSizeSet() {
-        dr = ContextCompat.getDrawable(SignIn.this, R.drawable.success_icon);
+        dr = ContextCompat.getDrawable(SignIn.this, R.drawable.success);
         assert dr != null;
-        dr.setBounds(0,0,30,30);
+        dr.setBounds(0,0,20,20);
     }
 
     private void init() {
