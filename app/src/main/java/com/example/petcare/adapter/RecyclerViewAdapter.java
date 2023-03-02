@@ -4,6 +4,8 @@ package com.example.petcare.adapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +20,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.petcare.AddPetDetails;
+import com.example.petcare.MyDbHelper;
 import com.example.petcare.R;
 import com.example.petcare.RecyclerViewModel;
 import com.example.petcare.VeterinaryCard;
@@ -47,26 +50,55 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
 
         RecyclerViewModel item = details.get(position);
-//        byte[] imageBytes = item.getImage();
-//        if (imageBytes != null && imageBytes.length > 0) {
-//            // decode the byte array and set the image
-//            Bitmap bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
-//            holder.pet_img.setImageBitmap(bitmap);
-//        }
-//        else {
-////            Toast.makeText(context, "something went wrong!!", Toast.LENGTH_SHORT).show();
-//            // handle the case where the byte array is null or empty
-//        }
-        holder.pet_img.setImageResource(item.getImage());
+        byte[] imageBytes = item.getImage();
+        if (imageBytes != null && imageBytes.length > 0) {
+            // decode the byte array and set the image
+            Bitmap bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
+            holder.pet_img.setImageBitmap(bitmap);
+        }
+
         holder.name.setText(item.getName());
         holder.pet_type.setText(item.getPet_type());
         holder.pet_verity.setText(item.getPet_verity());
-        holder.pet_gender.setText(item.getPet_gender());
+
+        if (item.getPet_gender().equals("1")){
+            holder.pet_gender.setText("Male");
+        }
+        else if (item.getPet_gender().equals("0")){
+            holder.pet_gender.setText("Female");
+        }
         holder.pet_size.setText(item.getPet_size());
-        holder.quality1.setText(item.getQuality1());
-        holder.quality2.setText(item.getQuality2());
-        holder.quality3.setText(item.getQuality3());
-        holder.quality4.setText(item.getQuality4());
+
+        if (item.getQuality1().equals("on")) {
+            holder.quality1.setText("Neutured");
+        }else {
+            holder.quality1.setText("");
+        }
+        if (item.getQuality2().equals("on")) {
+            holder.quality2.setText("Vaccinated");
+        }else {
+            holder.quality2.setText("");
+        }
+        if (item.getQuality3().equals("on")) {
+            holder.quality3.setText("Friendly with dogs");
+        }else {
+            holder.quality3.setText("");
+        }
+        if (item.getQuality4().equals("on")) {
+            holder.quality4.setText("Friendly with cats");
+        }else {
+            holder.quality4.setText("");
+        }
+//        if (item.getQuality5().equals("on")) {
+//            holder.quality5.setText("Friendly with kids <10 year");
+//        }else {
+//            holder.quality5.setText("");
+//        }
+//        if (item.getQuality6().equals("on")) {
+//            holder.quality6.setText("Friendly with kids >10 year");
+//        }else {
+//            holder.quality6.setText("");
+//        }
 
 
         holder.pet_img.setOnClickListener(new View.OnClickListener() {
@@ -97,6 +129,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 intent.putExtra("pet_breed", item.getPet_verity());
                 intent.putExtra("pet_size", item.getPet_size());
                 intent.putExtra("pet_gender", item.getPet_gender());
+                intent.putExtra("isEditMode", true);
                 v.getContext().startActivity(intent);
             }
         });
@@ -127,8 +160,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     @SuppressLint("ResourceAsColor")
                     @Override
                     public void onClick(View v) {
-                        int id = getItemCount();
-
+                        String id = item.getId();
+                        MyDbHelper database = new MyDbHelper(context);
+                        database.deleteData(id);
+                        notifyDataSetChanged();
+                        del_yes.setBackgroundResource(R.drawable.yes_no_btn_selector);
+                        details.remove(position);
+                        notifyItemChanged(position);
+                        notifyItemRangeChanged(position, details.size());
+                        dialog.dismiss();
                     }
                 });
 
@@ -157,8 +197,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView name, pet_type, pet_verity, pet_gender, pet_size, quality1, quality2, quality3, quality4;
+        TextView name, pet_type, pet_verity, pet_gender, pet_size, quality1, quality2, quality3, quality4,quality5,quality6;
         ImageView pet_img, edit_petDetails, delete_pet;
+        MyDbHelper db = new MyDbHelper(context);
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -172,6 +213,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             quality2 = itemView.findViewById(R.id.pet_quality2);
             quality3 = itemView.findViewById(R.id.pet_quality3);
             quality4 = itemView.findViewById(R.id.pet_quality4);
+//            quality5 = itemView.findViewById(R.id.pet_quality5);
+//            quality6 = itemView.findViewById(R.id.pet_quality6);
             edit_petDetails = itemView.findViewById(R.id.edit_pet_details);
             delete_pet = itemView.findViewById(R.id.delete_pet);
 
