@@ -20,13 +20,223 @@
             <RelativeLayout
                 android:id="@+id/layout_1"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_327sdp">
+                android:layout_height="@dimen/_367sdp">
 
                 <ImageView
+                    android:id="@+id/profile_pic"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/_329sdp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/dog_img" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/card"
+                    style="@style/registration_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_85sdp"
+                    android:layout_marginHorizontal="@dimen/_15sdp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="@dimen/_7sdp"
+                    android:elevation="@dimen/_3sdp"
+                    android:outlineAmbientShadowColor="@color/black">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_80sdp"
+                        android:orientation="horizontal"
+                        tools:ignore="MissingConstraints">
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/_15sdp"
+                            android:layout_weight="2">
+
+                            <LinearLayout
+                                android:id="@+id/r1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/pet_name"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/encode_sans_bold"
+                                    android:text="@string/troy"
+                                    android:textColor="#070821"
+                                    android:textSize="@dimen/_15ssp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/r2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/r1"
+                                android:layout_marginTop="@dimen/_7sdp"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="@dimen/_15sdp"
+                                    android:background="@drawable/card_bg"
+                                    android:orientation="horizontal">
+
+                                    <ImageView
+                                        android:layout_width="@dimen/_10sdp"
+                                        android:layout_height="@dimen/_10sdp"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_marginStart="@dimen/_5sdp"
+
+                                        android:src="@drawable/dog_print_icon" />
+
+                                    <TextView
+                                        android:id="@+id/pet_type"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_marginStart="@dimen/_10sdp"
+                                        android:layout_marginEnd="@dimen/_5sdp"
+                                        android:fontFamily="@font/encode_sans"
+                                        android:text="@string/dog"
+                                        android:textColor="@color/black"
+                                        android:textFontWeight="400"
+                                        android:textSize="@dimen/_8ssp" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="@dimen/_15sdp"
+                                    android:layout_marginStart="@dimen/_8sdp"
+                                    android:background="@drawable/card_bg"
+                                    android:orientation="horizontal">
+
+                                    <ImageView
+                                        android:layout_width="@dimen/_10sdp"
+                                        android:layout_height="@dimen/_10sdp"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_marginStart="@dimen/_5sdp"
+                                        android:src="@drawable/dog_icon" />
+
+                                    <TextView
+                                        android:id="@+id/pet_verity"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_marginStart="@dimen/_10sdp"
+                                        android:layout_marginEnd="@dimen/_5sdp"
+                                        android:fontFamily="@font/encode_sans"
+                                        android:text="@string/german_shepherd"
+                                        android:textColor="@color/black"
+                                        android:textFontWeight="400"
+                                        android:textSize="@dimen/_8ssp" />
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/r3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/r2"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="@dimen/_15sdp"
+                                    android:background="@drawable/card_bg"
+                                    android:orientation="horizontal">
+
+                                    <ImageView
+                                        android:layout_width="@dimen/_10sdp"
+                                        android:layout_height="@dimen/_10sdp"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_marginStart="@dimen/_5sdp"
+                                        android:src="@drawable/male_icon_blue" />
+
+                                    <TextView
+                                        android:id="@+id/pet_gender"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_marginStart="@dimen/_11sdp"
+                                        android:layout_marginEnd="@dimen/_5sdp"
+                                        android:fontFamily="@font/encode_sans"
+                                        android:text="@string/male"
+                                        android:textColor="@color/black"
+                                        android:textFontWeight="400"
+                                        android:textSize="@dimen/_8ssp" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="@dimen/_15sdp"
+                                    android:layout_marginStart="@dimen/_4sdp"
+                                    android:background="@drawable/card_bg"
+                                    android:orientation="horizontal">
+
+                                    <ImageView
+                                        android:layout_width="@dimen/_10sdp"
+                                        android:layout_height="@dimen/_10sdp"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_marginStart="@dimen/_5sdp"
+                                        android:src="@drawable/sizeofdog_icon" />
+
+                                    <TextView
+                                        android:id="@+id/pet_size"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_marginStart="@dimen/_10sdp"
+                                        android:layout_marginEnd="@dimen/_5sdp"
+                                        android:fontFamily="@font/encode_sans"
+                                        android:text="@string/size"
+                                        android:textColor="@color/black"
+                                        android:textFontWeight="400"
+                                        android:textSize="@dimen/_8ssp" />
+
+                                </LinearLayout>
+                            </LinearLayout>
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="@dimen/_66sdp"
+                            android:layout_height="match_parent">
+
+                            <RelativeLayout
+                                android:id="@+id/rate_card"
+                                android:layout_width="@dimen/_50sdp"
+                                android:layout_height="@dimen/_50sdp"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="@dimen/_7sdp"
+                                android:background="@drawable/rate_card_bg">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:fontFamily="@font/montserrat_semibold"
+                                    android:text="@string/rate"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/_20ssp"
+                                    android:textStyle="bold" />
+                            </RelativeLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/rate_card"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="@dimen/_3sdp"
+                                android:fontFamily="@font/encode_sans_semibold"
+                                android:text="@string/review"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_9ssp" />
+                        </RelativeLayout>
+                    </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
             </RelativeLayout>
 
             <LinearLayout
@@ -64,212 +274,7 @@
                     android:src="@drawable/heart_favourite_like" />
             </LinearLayout>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/card"
-                style="@style/registration_card"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_85sdp"
-                android:layout_marginHorizontal="@dimen/_15sdp"
-                android:layout_marginTop="@dimen/_273sdp"
-                android:elevation="@dimen/_5sdp"
-                android:outlineAmbientShadowColor="@color/black">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_80sdp"
-                    android:orientation="horizontal"
-                    tools:ignore="MissingConstraints">
-
-                    <RelativeLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="@dimen/_15sdp"
-                        android:layout_weight="2">
-
-                        <LinearLayout
-                            android:id="@+id/r1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_15sdp"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:id="@+id/pet_name"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/encode_sans_bold"
-                                android:text="@string/troy"
-                                android:textColor="#070821"
-                                android:textSize="@dimen/_15ssp" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/r2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/r1"
-                            android:layout_marginTop="@dimen/_5sdp"
-                            android:orientation="horizontal">
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="@dimen/_15sdp"
-                                android:background="@drawable/card_bg"
-                                android:orientation="horizontal">
-
-                                <ImageView
-                                    android:layout_width="@dimen/_10sdp"
-                                    android:layout_height="@dimen/_10sdp"
-                                    android:layout_gravity="center_vertical"
-                                    android:layout_marginStart="@dimen/_5sdp"
-
-                                    android:src="@drawable/dog_print_icon" />
-
-                                <TextView
-                                    android:id="@+id/pet_type"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_vertical"
-                                    android:layout_marginStart="@dimen/_10sdp"
-                                    android:layout_marginEnd="@dimen/_5sdp"
-                                    android:fontFamily="@font/encode_sans"
-                                    android:text="@string/dog"
-                                    android:textColor="@color/black"
-                                    android:textFontWeight="400"
-                                    android:textSize="@dimen/_8ssp" />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="@dimen/_15sdp"
-                                android:layout_marginStart="@dimen/_8sdp"
-                                android:background="@drawable/card_bg"
-                                android:orientation="horizontal">
-
-                                <ImageView
-                                    android:layout_width="@dimen/_10sdp"
-                                    android:layout_height="@dimen/_10sdp"
-                                    android:layout_gravity="center_vertical"
-                                    android:layout_marginStart="@dimen/_5sdp"
-                                    android:src="@drawable/dog_icon" />
-
-                                <TextView
-                                    android:id="@+id/pet_verity"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_vertical"
-                                    android:layout_marginStart="@dimen/_10sdp"
-                                    android:layout_marginEnd="@dimen/_5sdp"
-                                    android:fontFamily="@font/encode_sans"
-                                    android:text="@string/german_shepherd"
-                                    android:textColor="@color/black"
-                                    android:textFontWeight="400"
-                                    android:textSize="@dimen/_8ssp" />
-                            </LinearLayout>
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/r3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/r2"
-                            android:layout_marginTop="@dimen/_3sdp"
-                            android:orientation="horizontal">
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="@dimen/_15sdp"
-                                android:background="@drawable/card_bg"
-                                android:orientation="horizontal">
-
-                                <ImageView
-                                    android:layout_width="@dimen/_10sdp"
-                                    android:layout_height="@dimen/_10sdp"
-                                    android:layout_gravity="center_vertical"
-                                    android:layout_marginStart="@dimen/_5sdp"
-                                    android:src="@drawable/male_icon_blue" />
-
-                                <TextView
-                                    android:id="@+id/pet_gender"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_vertical"
-                                    android:layout_marginStart="@dimen/_11sdp"
-                                    android:layout_marginEnd="@dimen/_5sdp"
-                                    android:fontFamily="@font/encode_sans"
-                                    android:text="@string/male"
-                                    android:textColor="@color/black"
-                                    android:textFontWeight="400"
-                                    android:textSize="@dimen/_8ssp" />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="@dimen/_15sdp"
-                                android:layout_marginStart="@dimen/_4sdp"
-                                android:background="@drawable/card_bg"
-                                android:orientation="horizontal">
-
-                                <ImageView
-                                    android:layout_width="@dimen/_10sdp"
-                                    android:layout_height="@dimen/_10sdp"
-                                    android:layout_gravity="center_vertical"
-                                    android:layout_marginStart="@dimen/_5sdp"
-                                    android:src="@drawable/sizeofdog_icon" />
-
-                                <TextView
-                                    android:id="@+id/pet_size"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_vertical"
-                                    android:layout_marginStart="@dimen/_10sdp"
-                                    android:layout_marginEnd="@dimen/_5sdp"
-                                    android:fontFamily="@font/encode_sans"
-                                    android:text="@string/size"
-                                    android:textColor="@color/black"
-                                    android:textFontWeight="400"
-                                    android:textSize="@dimen/_8ssp" />
-
-                            </LinearLayout>
-                        </LinearLayout>
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_width="@dimen/_66sdp"
-                        android:layout_height="match_parent">
-
-                        <RelativeLayout
-                            android:id="@+id/rate_card"
-                            android:layout_width="@dimen/_50sdp"
-                            android:layout_height="@dimen/_50sdp"
-                            android:layout_centerHorizontal="true"
-                            android:layout_marginTop="@dimen/_7sdp"
-                            android:background="@drawable/rate_card_bg">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerInParent="true"
-                                android:fontFamily="@font/montserrat_semibold"
-                                android:text="@string/rate"
-                                android:textColor="@color/white"
-                                android:textSize="@dimen/_20ssp"
-                                android:textStyle="bold" />
-                        </RelativeLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/rate_card"
-                            android:layout_centerHorizontal="true"
-                            android:layout_marginTop="@dimen/_3sdp"
-                            android:fontFamily="@font/encode_sans_semibold"
-                            android:text="@string/review"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/_9ssp" />
-                    </RelativeLayout>
-                </LinearLayout>
-            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -284,7 +289,7 @@
                     style="@style/text_15_encoded_sans_bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_46sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
                     android:text="@string/Introduction" />
 
                 <TextView
@@ -364,6 +369,7 @@
                         android:textSize="@dimen/_13ssp" />
 
                     <ImageView
+                        android:id="@+id/statusIcon1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/success" />
@@ -390,6 +396,7 @@
                         android:textSize="@dimen/_13ssp" />
 
                     <ImageView
+                        android:id="@+id/statusIcon2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/success" />
@@ -415,6 +422,7 @@
                         android:textSize="@dimen/_13ssp" />
 
                     <ImageView
+                        android:id="@+id/statusIcon3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/success" />
@@ -440,6 +448,7 @@
                         android:textSize="@dimen/_13ssp" />
 
                     <ImageView
+                        android:id="@+id/statusIcon4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/success" />
@@ -465,6 +474,7 @@
                         android:textSize="@dimen/_13ssp" />
 
                     <ImageView
+                        android:id="@+id/statusIcon5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/success" />
@@ -491,6 +501,7 @@
                         android:textSize="@dimen/_13ssp" />
 
                     <ImageView
+                        android:id="@+id/statusIcon6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/success" />

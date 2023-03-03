@@ -1,5 +1,9 @@
 package com.example.petcare;
 
+import static com.example.petcare.dataBase.DbHelper.E_MAIL;
+import static com.example.petcare.dataBase.DbHelper.PASSWORD;
+import static com.example.petcare.dataBase.DbHelper.TABLE_NAME;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
@@ -7,10 +11,14 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.BaseColumns;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.method.PasswordTransformationMethod;
@@ -24,18 +32,22 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.petcare.dataBase.DbHelper;
+import com.example.petcare.fragments.HomeFragment;
+import com.example.petcare.utils.Message;
 import com.google.android.material.divider.MaterialDivider;
 
 public class SignIn extends AppCompatActivity {
 
     EditText email, password;
-    TextView registration,mail,pass;
+    TextView registration, mail, pass;
     ImageView back_button;
     ImageView password_eye;
     Button sing_in;
     MaterialDivider divi1, divi2;
     Drawable dr;
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+    DbHelper dbHelper = new DbHelper(this);
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -49,11 +61,10 @@ public class SignIn extends AppCompatActivity {
         email.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                if (!email.hasFocus()){
+                if (!email.hasFocus()) {
                     mail.setTextColor(getColor(R.color.text_gray));
                     divi1.setDividerColor(getColor(R.color.text_gray));
-                }
-                else {
+                } else {
                     mail.setTextColor(getColor(R.color.text_blue));
                     divi1.setDividerColor(getColor(R.color.text_blue));
                 }
@@ -63,11 +74,10 @@ public class SignIn extends AppCompatActivity {
         password.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                if (!password.hasFocus()){
+                if (!password.hasFocus()) {
                     pass.setTextColor(getColor(R.color.text_gray));
                     divi2.setDividerColor(getColor(R.color.text_gray));
-                }
-                else {
+                } else {
                     pass.setTextColor(getColor(R.color.text_blue));
                     divi2.setDividerColor(getColor(R.color.text_blue));
                 }
@@ -79,15 +89,16 @@ public class SignIn extends AppCompatActivity {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
             }
+
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(!email.getText().toString().matches(emailPattern) ) {
-                    email.setCompoundDrawablesRelativeWithIntrinsicBounds(null,null,null,null);
-                }
-                else if (email.getText().toString().matches(emailPattern)){
-                    email.setCompoundDrawables(null, null,dr, null);
+                if (!email.getText().toString().matches(emailPattern)) {
+                    email.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, null, null);
+                } else if (email.getText().toString().matches(emailPattern)) {
+                    email.setCompoundDrawables(null, null, dr, null);
                 }
             }
+
             @Override
             public void afterTextChanged(Editable s) {
 
@@ -97,15 +108,48 @@ public class SignIn extends AppCompatActivity {
         sing_in.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if( email.getText().toString().trim().equalsIgnoreCase("")) {
+                if (email.getText().toString().trim().equalsIgnoreCase("")) {
                     Toast.makeText(SignIn.this, "email is empty!", Toast.LENGTH_SHORT).show();
-                }
-                else if(!email.getText().toString().trim().matches(emailPattern) ) {
+                } else if (!email.getText().toString().trim().matches(emailPattern)) {
                     Toast.makeText(SignIn.this, "email not found", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    //pass intent
-                    Toast.makeText(SignIn.this, "if id&pass match do something", Toast.LENGTH_SHORT).show();
+                } else {
+                    SharedPreferences.Editor editor = getSharedPreferences("login", MODE_PRIVATE).edit();
+                    editor.putBoolean("flag",true);
+                    editor.putString("username", email.toString());
+                    editor.putString("password", password.toString());
+                    editor.apply();
+
+                    SQLiteDatabase db = dbHelper.getReadableDatabase();
+                    String[] projection = {
+                            BaseColumns._ID,
+                            E_MAIL,
+                            PASSWORD
+                    };
+                    String selection = E_MAIL + " = ? AND " + PASSWORD + " = ?";
+                    String[] selectionArgs = {email.getText().toString(), password.getText().toString()};
+                    Cursor cursor = db.query(
+                            TABLE_NAME,
+                            projection,
+                            selection,
+                            selectionArgs,
+                            null,
+                            null,
+                            null
+                    );
+
+                    int count = cursor.getCount();
+
+                    if (count > 0) {
+                        //login success
+                        Message.message(getApplicationContext(), "login Successful");
+                        Intent i = new Intent(SignIn.this, Home.class);
+                        startActivity(i);
+                    } else {
+                        // login failed
+                        Message.message(getApplicationContext(), "pls check id and password");
+                    }
+                    cursor.close();
+
                 }
             }
         });
@@ -118,13 +162,10 @@ public class SignIn extends AppCompatActivity {
         password_eye.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (password.getTransformationMethod().getClass().getSimpleName().equals("PasswordTransformationMethod"))
-                {
+                if (password.getTransformationMethod().getClass().getSimpleName().equals("PasswordTransformationMethod")) {
                     password.setTransformationMethod(new SingleLineTransformationMethod());
                     password_eye.setImageResource(R.drawable.password_visible_eye);
-                }
-                else
-                {
+                } else {
                     password.setTransformationMethod(new PasswordTransformationMethod());
                     password_eye.setImageResource(R.drawable.password_visible_off_eye);
                 }
@@ -135,7 +176,7 @@ public class SignIn extends AppCompatActivity {
         registration.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SignIn.this,Registration.class);
+                Intent intent = new Intent(SignIn.this, Registration.class);
                 startActivity(intent);
             }
         });
@@ -151,7 +192,7 @@ public class SignIn extends AppCompatActivity {
     private void imageSizeSet() {
         dr = ContextCompat.getDrawable(SignIn.this, R.drawable.success);
         assert dr != null;
-        dr.setBounds(0,0,20,20);
+        dr.setBounds(0, 0, 25, 25);
     }
 
     private void init() {

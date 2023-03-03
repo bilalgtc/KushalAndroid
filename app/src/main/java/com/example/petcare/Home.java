@@ -53,11 +53,10 @@ public class Home extends AppCompatActivity {
                 else if(id == R.id.nav_explore){
                     loadFragment(new ExploreFragment(), false);
                 }
-                else {  // for profile
-                    loadFragment(new ProfileFragment(), true);
+                else if (id == R.id.nav_profile){  // for profile
+                    loadFragment(new ProfileFragment(), false);
                 }
                 return true;
-
             }
         });
         bnView.setSelectedItemId(R.id.nav_home);

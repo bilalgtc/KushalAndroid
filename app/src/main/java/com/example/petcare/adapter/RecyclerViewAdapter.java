@@ -20,7 +20,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.petcare.AddPetDetails;
-import com.example.petcare.MyDbHelper;
+import com.example.petcare.dataBase.MyDbHelper;
 import com.example.petcare.R;
 import com.example.petcare.RecyclerViewModel;
 import com.example.petcare.VeterinaryCard;
@@ -50,6 +50,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
 
         RecyclerViewModel item = details.get(position);
+
+        String id = item.getId();
+
         byte[] imageBytes = item.getImage();
         if (imageBytes != null && imageBytes.length > 0) {
             // decode the byte array and set the image
@@ -58,8 +61,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         }
 
         holder.name.setText(item.getName());
-        holder.pet_type.setText(item.getPet_type());
-        holder.pet_verity.setText(item.getPet_verity());
+        holder.pet_type.setText(item.getPet_breed());
+        holder.pet_verity.setText(item.getPet_species());
 
         if (item.getPet_gender().equals("1")){
             holder.pet_gender.setText("Male");
@@ -73,21 +76,25 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             holder.quality1.setText("Neutured");
         }else {
             holder.quality1.setText("");
+            holder.quality1.setBackground(null);
         }
         if (item.getQuality2().equals("on")) {
             holder.quality2.setText("Vaccinated");
         }else {
             holder.quality2.setText("");
+            holder.quality2.setBackground(null);
         }
         if (item.getQuality3().equals("on")) {
             holder.quality3.setText("Friendly with dogs");
         }else {
             holder.quality3.setText("");
+            holder.quality3.setBackground(null);
         }
         if (item.getQuality4().equals("on")) {
             holder.quality4.setText("Friendly with cats");
         }else {
             holder.quality4.setText("");
+            holder.quality4.setBackground(null);
         }
 //        if (item.getQuality5().equals("on")) {
 //            holder.quality5.setText("Friendly with kids <10 year");
@@ -108,10 +115,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
                 intent.putExtra("pet_image", item.getImage());
                 intent.putExtra("pet_name", item.getName());
-                intent.putExtra("pet_species", item.getPet_type());
-                intent.putExtra("pet_breed", item.getPet_verity());
+                intent.putExtra("pet_species", item.getPet_species());
+                intent.putExtra("pet_breed", item.getPet_breed());
                 intent.putExtra("pet_gender", item.getPet_gender());
                 intent.putExtra("pet_size", item.getPet_size());
+                intent.putExtra("quality1", item.getQuality1());
+                intent.putExtra("quality2", item.getQuality2());
+                intent.putExtra("quality3", item.getQuality3());
+                intent.putExtra("quality4", item.getQuality4());
                 v.getContext().startActivity(intent);
             }
         });
@@ -121,14 +132,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             public void onClick(View v) {
 
                 Intent intent = new Intent(v.getContext(), AddPetDetails.class);
-
-                intent.putExtra("_id", item.getId());
+                intent.putExtra("_id", id);
                 intent.putExtra("pet_image", item.getImage());
                 intent.putExtra("pet_name", item.getName());
-                intent.putExtra("pet_species", item.getPet_type());
-                intent.putExtra("pet_breed", item.getPet_verity());
+                intent.putExtra("pet_species", item.getPet_species());
+                intent.putExtra("pet_breed", item.getPet_breed());
                 intent.putExtra("pet_size", item.getPet_size());
                 intent.putExtra("pet_gender", item.getPet_gender());
+                intent.putExtra("quality1", item.getQuality1());
+                intent.putExtra("quality2", item.getQuality2());
+                intent.putExtra("quality3", item.getQuality3());
+                intent.putExtra("quality4", item.getQuality4());
                 intent.putExtra("isEditMode", true);
                 v.getContext().startActivity(intent);
             }
@@ -141,9 +155,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 View modelBottomSheet = LayoutInflater.from(context).inflate(R.layout.delete_dialoge_box, null);
                 BottomSheetDialog dialog = new BottomSheetDialog(context, R.style.SheetDialog);
                 dialog.setContentView(modelBottomSheet);
-
-//                Dialog dialog = new Dialog(context);
-//                dialog.setContentView(R.layout.delete_dialoge_box);
                 ImageView close_btn = dialog.findViewById(R.id.close_btn);
                 Button del_yes = dialog.findViewById(R.id.delete_yes);
                 Button del_no = dialog.findViewById(R.id.delete_no);
@@ -160,14 +171,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     @SuppressLint("ResourceAsColor")
                     @Override
                     public void onClick(View v) {
-                        String id = item.getId();
                         MyDbHelper database = new MyDbHelper(context);
                         database.deleteData(id);
                         notifyDataSetChanged();
-                        del_yes.setBackgroundResource(R.drawable.yes_no_btn_selector);
+
                         details.remove(position);
-                        notifyItemChanged(position);
-                        notifyItemRangeChanged(position, details.size());
+                        del_yes.setBackgroundResource(R.drawable.yes_no_btn_selector);
                         dialog.dismiss();
                     }
                 });
@@ -221,18 +230,4 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         }
     }
-
-//    private void showEditDialog(RecyclerViewModel data) {
-//        AddPetDetails fragment = new AddPetDetails();
-//        Bundle args = new Bundle();
-////        args.putString("pet_image", data.getName());
-//        args.putString("pet_name", data.getName());
-//        args.putString("pet_species", data.getPet_type());
-//        args.putString("pet_breed", data.getPet_verity());
-//        args.putString("pet_size", data.getPet_size());
-//        fragment.setArguments(args);
-//        fragment.show(getSupportFragmentManager(), "edit_dialog");
-//    }
-
-
 }

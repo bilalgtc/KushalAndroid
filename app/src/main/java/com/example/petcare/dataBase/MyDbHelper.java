@@ -1,11 +1,12 @@
-package com.example.petcare;
+package com.example.petcare.dataBase;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.petcare.commonMethod.Message;
+import com.example.petcare.utils.Message;
 
 public class MyDbHelper extends SQLiteOpenHelper {
 
@@ -57,23 +58,15 @@ public class MyDbHelper extends SQLiteOpenHelper {
     }
 
 
-//    public Boolean insertPetDetail( /*byte[] petImage,*/String petName , String petSpecies , String petBreed , String petSize , Boolean petGender ){
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        ContentValues contentValues = new ContentValues();
-////        contentValues.put("pet_img",petImage);
-//        contentValues.put("pet_name",petName);
-//        contentValues.put("pet_species",petSpecies);
-//        contentValues.put("pet_breed",petBreed);
-//        contentValues.put("pet_size",petSize);
-//        contentValues.put("pet_gender",petGender);
-//        long result =db.insert(MyDbHelper.TABLE_NAME,null,contentValues);
-//      if (result == -1){
-//          return false;
-//      }
-//      else {
-//          return true;
-//      }
-//    }
+public boolean updateRecord(ContentValues contentValues, String id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+    long i = db.update(TABLE_NAME, contentValues, UID + " = ? ", new String[]{id});
+    if (i == -1) {
+        return false;
+    } else {
+        return true;
+    }
+}
 
     public Cursor getData(){
         SQLiteDatabase db=this.getWritableDatabase();

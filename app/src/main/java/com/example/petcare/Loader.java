@@ -20,30 +20,38 @@ public class Loader extends AppCompatActivity {
         setContentView(R.layout.loader);
 
         if (Build.VERSION.SDK_INT >= 21) {
-            getWindow().getDecorView()
-                    .setSystemUiVisibility(
-                            View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         }
         changeStatusBarColor();
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                SharedPreferences preferences = getSharedPreferences("login",MODE_PRIVATE);
-                Boolean check = preferences.getBoolean("flag",false);
-
-                Intent i_next;
-
-                if (check ){ // for true (when user logged in)
-                    i_next = new Intent(Loader.this, DashBoard.class);
+                SharedPreferences preferences = getSharedPreferences("login", MODE_PRIVATE);
+                Boolean check = preferences.getBoolean("flag", false);
+                if (preferences.contains("username") && preferences.contains("password")) {
+                    // User has already logged in, redirect to home page
+                    Intent i_home = new Intent(Loader.this, Home.class);
+                    startActivity(i_home);
+                    finish();
+                } else {
+                    // User has not logged in yet, show login screen
+                    Intent intent = new Intent(Loader.this, Registration.class);
+                    startActivity(intent);
+                    finish();
                 }
-                else {     // for true (for either first time or user is logged out)
-                    i_next = new Intent(Loader.this, welcomeActivity.class);
-                }
-                startActivity(i_next);
+//                Intent i_next;
+//
+//                if (check) { // for true (when user logged in)
+//                    i_next = new Intent(Loader.this, DashBoard.class);
+//                } else {     // for true (for either first time or user is logged out)
+//                    i_next = new Intent(Loader.this, welcomeActivity.class);
+//                }
+//                startActivity(i_next);
             }
-        },2000    );
+        }, 2000);
 
     }
+
     private void changeStatusBarColor() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();

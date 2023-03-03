@@ -5,28 +5,14 @@ import android.graphics.Bitmap;
 public class RecyclerViewModel {
     //    int image1;
     byte[] image;
-    String id, name,pet_type,pet_verity,pet_gender,pet_size,quality1,quality2,quality3,quality4,quality5,quality6;
+    String id, name,pet_species,pet_breed,pet_gender,pet_size,quality1,quality2,quality3,quality4,quality5,quality6;
 
-    public RecyclerViewModel( String id, byte[] image,  String name, String pet_type, String pet_verity, String pet_gender, String pet_size, String quality1, String quality2, String quality3, String quality4){
+    public RecyclerViewModel( String id, byte[] image,  String name, String pet_species, String pet_breed, String pet_size, String pet_gender, String quality1, String quality2, String quality3, String quality4 , String quality5, String quality6){
         this.id = id;
         this.image = image;
         this.name = name;
-        this.pet_type = pet_type;
-        this.pet_verity = pet_verity;
-        this.pet_gender = pet_gender;
-        this.pet_size = pet_size;
-        this.quality1 = quality1;
-        this.quality2 = quality2;
-        this.quality3 = quality3;
-        this.quality4 = quality4;
-    }
-
-    public RecyclerViewModel(byte[] image, String name, String pet_type, String pet_verity, String pet_gender, String pet_size, String quality1, String quality2, String quality3, String quality4, String quality5, String quality6) {
-
-        this.image = image;
-        this.name = name;
-        this.pet_type = pet_type;
-        this.pet_verity = pet_verity;
+        this.pet_species = pet_species;
+        this.pet_breed = pet_breed;
         this.pet_gender = pet_gender;
         this.pet_size = pet_size;
         this.quality1 = quality1;
@@ -35,6 +21,23 @@ public class RecyclerViewModel {
         this.quality4 = quality4;
         this.quality5 = quality5;
         this.quality6 = quality6;
+
+    }
+
+    public String getPet_species() {
+        return pet_species;
+    }
+
+    public void setPet_species(String pet_species) {
+        this.pet_species = pet_species;
+    }
+
+    public String getPet_breed() {
+        return pet_breed;
+    }
+
+    public void setPet_breed(String pet_breed) {
+        this.pet_breed = pet_breed;
     }
 
     public String getId() {
@@ -61,21 +64,6 @@ public class RecyclerViewModel {
         this.name = name;
     }
 
-    public String getPet_type() {
-        return pet_type;
-    }
-
-    public void setPet_type(String pet_type) {
-        this.pet_type = pet_type;
-    }
-
-    public String getPet_verity() {
-        return pet_verity;
-    }
-
-    public void setPet_verity(String pet_verity) {
-        this.pet_verity = pet_verity;
-    }
 
     public String getPet_gender() {
         return pet_gender;
