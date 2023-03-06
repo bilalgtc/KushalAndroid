@@ -424,7 +424,6 @@ public class AddPetDetails extends AppCompatActivity {
             contentValues.put("pet_size", petSizeTxt);
             contentValues.put("pet_gender", flag);
 
-
             if (toggle1.isChecked()) {
                 contentValues.put("neutered", "on");
             } else {
@@ -460,8 +459,6 @@ public class AddPetDetails extends AppCompatActivity {
             Message.message(this,"pet added");
             Intent i_to_home = new Intent(getApplicationContext(), HomeFragment.class);
             startActivity(i_to_home);
-
-
         }
     }
 
@@ -537,7 +534,6 @@ public class AddPetDetails extends AppCompatActivity {
         } else {
             Message.message(this, "error");
         }
-
         super.onActivityResult(requestCode, resultCode, data);
     }
 
@@ -572,8 +568,6 @@ public class AddPetDetails extends AppCompatActivity {
         toggle5 = findViewById(R.id.toggle5);
         toggle6 = findViewById(R.id.toggle6);
         header_txt = findViewById(R.id.header_text);
-
         db = new MyDbHelper(this);
     }
-
 }

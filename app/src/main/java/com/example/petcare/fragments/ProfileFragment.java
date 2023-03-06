@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.petcare.DashBoard;
 import com.example.petcare.Home;
 import com.example.petcare.R;
 import com.example.petcare.Registration;
@@ -42,15 +43,14 @@ public class ProfileFragment extends Fragment {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences pref =getActivity().getApplication().getSharedPreferences("login",MODE_PRIVATE);
+                SharedPreferences pref =getActivity().getSharedPreferences("login",MODE_PRIVATE);
                 SharedPreferences.Editor editor = pref.edit();
                 editor.putBoolean("flag",false);
                 editor.apply();
 
-                Intent i_logout = new Intent(getActivity().getApplication(), Registration.class);
+                Intent i_logout = new Intent(getActivity().getApplication(), DashBoard.class);
                 startActivity(i_logout);
                 getActivity().finish();
-
             }
         });
 

@@ -59,13 +59,14 @@ public class welcomeActivity extends AppCompatActivity {
                     viewPager.setCurrentItem(viewPager.getCurrentItem() + 1);
                 }
                 else {
-                    SharedPreferences pref = getSharedPreferences("login", MODE_PRIVATE);
+                    SharedPreferences pref = getSharedPreferences("splash", MODE_PRIVATE);
                     SharedPreferences.Editor editor = pref.edit();
                     editor.putBoolean("flag",true);
                     editor.apply();
 
                     Intent i_home = new Intent(welcomeActivity.this , DashBoard.class);
                     startActivity(i_home);
+                    finish();
                 }
             }
         });

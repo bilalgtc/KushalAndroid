@@ -148,7 +148,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_marginHorizontal="@dimen/_15sdp"
-        android:layout_height="@dimen/_347sdp"
+        android:layout_height="@dimen/_355sdp"
         android:layout_marginTop="@dimen/_133sdp"
         style="@style/registration_card"
         android:elevation="@dimen/_5sdp"

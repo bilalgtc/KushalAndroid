@@ -12,6 +12,8 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.example.petcare.utils.Message;
+
 public class Loader extends AppCompatActivity {
 
     @Override
@@ -26,27 +28,34 @@ public class Loader extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                SharedPreferences preferences = getSharedPreferences("login", MODE_PRIVATE);
+                SharedPreferences preferences = getSharedPreferences("splash", MODE_PRIVATE);
                 Boolean check = preferences.getBoolean("flag", false);
-                if (preferences.contains("username") && preferences.contains("password")) {
-                    // User has already logged in, redirect to home page
-                    Intent i_home = new Intent(Loader.this, Home.class);
-                    startActivity(i_home);
+
+                SharedPreferences sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
+                Boolean loginCheck = sharedPreferences.getBoolean("flag", false);
+
+
+                Intent i_next;
+
+                if (check) {
+                    i_next = new Intent(Loader.this, DashBoard.class);
+                    startActivity(i_next);
                     finish();
+
+                    if (loginCheck) {
+                        Intent i_home = new Intent(Loader.this, Home.class);
+                        startActivity(i_home);
+                        finish();
+                    } else {
+                        Intent i_dash = new Intent(Loader.this, DashBoard.class);
+                        startActivity(i_dash);
+                        finish();
+                    }
                 } else {
-                    // User has not logged in yet, show login screen
-                    Intent intent = new Intent(Loader.this, Registration.class);
-                    startActivity(intent);
+                    i_next = new Intent(Loader.this, welcomeActivity.class);
+                    startActivity(i_next);
                     finish();
                 }
-//                Intent i_next;
-//
-//                if (check) { // for true (when user logged in)
-//                    i_next = new Intent(Loader.this, DashBoard.class);
-//                } else {     // for true (for either first time or user is logged out)
-//                    i_next = new Intent(Loader.this, welcomeActivity.class);
-//                }
-//                startActivity(i_next);
             }
         }, 2000);
 

@@ -44,16 +44,13 @@ public class Home extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
-                if(id == R.id.nav_home ){
+                if (id == R.id.nav_home) {
                     loadFragment(new HomeFragment(), false);
-                }
-                else if (id == R.id.nav_appointments){
+                } else if (id == R.id.nav_appointments) {
                     loadFragment(new AppointmanetFragment(), false);
-                }
-                else if(id == R.id.nav_explore){
+                } else if (id == R.id.nav_explore) {
                     loadFragment(new ExploreFragment(), false);
-                }
-                else if (id == R.id.nav_profile){  // for profile
+                } else if (id == R.id.nav_profile) {  // for profile
                     loadFragment(new ProfileFragment(), false);
                 }
                 return true;
@@ -71,20 +68,20 @@ public class Home extends AppCompatActivity {
         }
     }
 
-    public void init(){
+    public void init() {
         addPet = findViewById(R.id.addPet);
         bnView = findViewById(R.id.bottom_nav_bar);
 
     }
-    public void loadFragment(Fragment fragment , boolean flag){
-        FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction ft =  fm.beginTransaction();
 
-        if (flag){
-            ft.add(R.id.container,fragment);
-        }
-        else {
-            ft.replace(R.id.container,fragment);
+    public void loadFragment(Fragment fragment, boolean flag) {
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+
+        if (flag) {
+            ft.add(R.id.container, fragment);
+        } else {
+            ft.replace(R.id.container, fragment);
         }
         ft.commit();
 

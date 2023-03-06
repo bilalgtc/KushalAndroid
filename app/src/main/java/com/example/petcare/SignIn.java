@@ -113,11 +113,6 @@ public class SignIn extends AppCompatActivity {
                 } else if (!email.getText().toString().trim().matches(emailPattern)) {
                     Toast.makeText(SignIn.this, "email not found", Toast.LENGTH_SHORT).show();
                 } else {
-                    SharedPreferences.Editor editor = getSharedPreferences("login", MODE_PRIVATE).edit();
-                    editor.putBoolean("flag",true);
-                    editor.putString("username", email.toString());
-                    editor.putString("password", password.toString());
-                    editor.apply();
 
                     SQLiteDatabase db = dbHelper.getReadableDatabase();
                     String[] projection = {
@@ -141,9 +136,15 @@ public class SignIn extends AppCompatActivity {
 
                     if (count > 0) {
                         //login success
+                        SharedPreferences pref = getSharedPreferences("login", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = pref.edit();
+                        editor.putBoolean("flag",true);
+                        editor.apply();
+
                         Message.message(getApplicationContext(), "login Successful");
                         Intent i = new Intent(SignIn.this, Home.class);
                         startActivity(i);
+                        finish();
                     } else {
                         // login failed
                         Message.message(getApplicationContext(), "pls check id and password");

@@ -27,6 +27,8 @@ import com.example.petcare.dataBase.DbHelper;
 import com.example.petcare.utils.Message;
 import com.google.android.material.divider.MaterialDivider;
 
+import java.util.Locale;
+
 public class Registration extends AppCompatActivity {
     ImageView back_btn, password_eye;
     EditText password, email, phone_no, full_name;
@@ -123,7 +125,6 @@ public class Registration extends AppCompatActivity {
 
             }
         });
-
         email.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -144,7 +145,6 @@ public class Registration extends AppCompatActivity {
 
             }
         });
-
         phone_no.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -171,10 +171,10 @@ public class Registration extends AppCompatActivity {
         sign_up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String mail = email.getText().toString();
+                String mail = email.getText().toString().toLowerCase().trim();
                 if (full_name.getText().toString().trim().equalsIgnoreCase("")) {
                     Toast.makeText(Registration.this, "pls enter name", Toast.LENGTH_SHORT).show();
-                } else if (email.getText().toString().trim().equalsIgnoreCase("")) {
+                } else if (mail.equalsIgnoreCase("")) {
                     Toast.makeText(Registration.this, "email is empty!", Toast.LENGTH_SHORT).show();
                 } else if (!mail.matches(emailPattern)) {
                     Toast.makeText(Registration.this, "enter a valid email address", Toast.LENGTH_SHORT).show();
@@ -192,8 +192,9 @@ public class Registration extends AppCompatActivity {
                     Toast.makeText(Registration.this, "pls check the terms", Toast.LENGTH_SHORT).show();
                 } else {
                     addUser(v);
-                    Intent i_to_home = new Intent(Registration.this, Home.class);
+                    Intent i_to_home = new Intent(Registration.this, SignIn.class);
                     startActivity(i_to_home);
+                    finish();
                 }
             }
         });
@@ -217,6 +218,7 @@ public class Registration extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Registration.this, SignIn.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -230,7 +232,7 @@ public class Registration extends AppCompatActivity {
 
     private void addUser(View v) {
         String name = full_name.getText().toString();
-        String emil = email.getText().toString();
+        String emil = email.getText().toString().toLowerCase(Locale.ROOT);
         String m_no = phone_no.getText().toString();
         String pwd = password.getText().toString();
 

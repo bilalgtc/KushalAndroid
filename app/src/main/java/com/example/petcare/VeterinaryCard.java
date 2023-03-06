@@ -33,8 +33,6 @@ public class VeterinaryCard extends AppCompatActivity {
         init();
         changeStatusBarColor();
 
-//        focusonview();
-
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().getDecorView()
                     .setSystemUiVisibility(

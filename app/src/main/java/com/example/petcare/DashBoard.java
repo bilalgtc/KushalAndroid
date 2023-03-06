@@ -38,6 +38,7 @@ public class DashBoard extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(DashBoard.this,Registration.class);
                 startActivity(intent);
+
             }
         });
 
