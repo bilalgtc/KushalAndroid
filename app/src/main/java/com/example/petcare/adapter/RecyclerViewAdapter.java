@@ -14,9 +14,11 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.petcare.AddPetDetails;
@@ -108,7 +110,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 //        }
 
 
-        holder.pet_img.setOnClickListener(new View.OnClickListener() {
+        holder.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, VeterinaryCard.class);
@@ -123,6 +125,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 intent.putExtra("quality2", item.getQuality2());
                 intent.putExtra("quality3", item.getQuality3());
                 intent.putExtra("quality4", item.getQuality4());
+                intent.putExtra("quality5", item.getQuality5());
+                intent.putExtra("quality6", item.getQuality6());
                 v.getContext().startActivity(intent);
             }
         });
@@ -143,6 +147,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 intent.putExtra("quality2", item.getQuality2());
                 intent.putExtra("quality3", item.getQuality3());
                 intent.putExtra("quality4", item.getQuality4());
+                intent.putExtra("quality5", item.getQuality5());
+                intent.putExtra("quality6", item.getQuality6());
                 intent.putExtra("isEditMode", true);
                 v.getContext().startActivity(intent);
             }
@@ -208,6 +214,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView name, pet_type, pet_verity, pet_gender, pet_size, quality1, quality2, quality3, quality4,quality5,quality6;
         ImageView pet_img, edit_petDetails, delete_pet;
+        LinearLayout card;
         MyDbHelper db = new MyDbHelper(context);
 
         public ViewHolder(@NonNull View itemView) {
@@ -226,6 +233,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 //            quality6 = itemView.findViewById(R.id.pet_quality6);
             edit_petDetails = itemView.findViewById(R.id.edit_pet_details);
             delete_pet = itemView.findViewById(R.id.delete_pet);
+            card = itemView.findViewById(R.id.card);
 
 
         }

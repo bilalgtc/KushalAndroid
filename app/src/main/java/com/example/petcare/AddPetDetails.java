@@ -57,7 +57,7 @@ public class AddPetDetails extends AppCompatActivity {
     SwitchCompat toggle1, toggle2, toggle3, toggle4, toggle5, toggle6;
     Bitmap imgToStore;
     public Boolean isEditMode = false;
-    Boolean flag;
+    Boolean[] flag = {true, false};
     byte[] profile_img_byte;
     MyDbHelper db = new MyDbHelper(this);
     String id, petNameTxt, petSpeciesTxt, petBreedTxt, petSizeTxt;
@@ -145,37 +145,38 @@ public class AddPetDetails extends AppCompatActivity {
         male.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (male.isPressed()) {
-                    male.setBackgroundResource(R.drawable.male_female_chacked);
-                    txt_male.setTextColor(getResources().getColor(R.color.white));
-                    icon_male.setImageResource(R.drawable.male_icon_white);
+                flag[1] = male.isEnabled();
+                male.setBackgroundResource(R.drawable.male_female_chacked);
+                txt_male.setTextColor(getResources().getColor(R.color.white));
+                icon_male.setImageResource(R.drawable.male_icon_white);
 
-                    txt_female.setTextColor(getResources().getColor(R.color.black));
-                    female.setBackgroundResource(R.drawable.male_female_bg_unchecked);
-                    icon_female.setImageResource(R.drawable.female_icon);
-                    flag = true;
-                }
+                txt_female.setTextColor(getResources().getColor(R.color.black));
+                female.setBackgroundResource(R.drawable.male_female_bg_unchecked);
+                icon_female.setImageResource(R.drawable.female_icon);
+
             }
         });
         female.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (female.isPressed()) {
-                    female.setBackgroundResource(R.drawable.male_female_chacked);
-                    txt_male.setTextColor(getResources().getColor(R.color.black));
-                    icon_male.setImageResource(R.drawable.male_icon);
+                flag[0] = female.isEnabled();
+                female.setBackgroundResource(R.drawable.male_female_chacked);
+                txt_male.setTextColor(getResources().getColor(R.color.black));
+                icon_male.setImageResource(R.drawable.male_icon);
 
-                    txt_female.setTextColor(getResources().getColor(R.color.white));
-                    male.setBackgroundResource(R.drawable.male_female_bg_unchecked);
-                    icon_female.setImageResource(R.drawable.female_icon_white);
-                    flag = false;
-                }
+                txt_female.setTextColor(getResources().getColor(R.color.white));
+                male.setBackgroundResource(R.drawable.male_female_bg_unchecked);
+                icon_female.setImageResource(R.drawable.female_icon_white);
+
+
             }
         });
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onBackPressed();
+                Intent i_to_back = new Intent(getApplicationContext(), Home.class);
+                startActivity(i_to_back);
+                finish();
             }
         });
         add_img.setOnClickListener(new View.OnClickListener() {
@@ -197,6 +198,8 @@ public class AddPetDetails extends AppCompatActivity {
             String qyality2 = i.getStringExtra("quality2");
             String qyality3 = i.getStringExtra("quality3");
             String qyality4 = i.getStringExtra("quality4");
+            String qyality5 = i.getStringExtra("quality5");
+            String qyality6 = i.getStringExtra("quality6");
 
 
             if (img == null) {
@@ -215,10 +218,12 @@ public class AddPetDetails extends AppCompatActivity {
                 male.setBackgroundResource(R.drawable.male_female_chacked);
                 txt_male.setTextColor(getResources().getColor(R.color.white));
                 icon_male.setImageResource(R.drawable.male_icon_white);
+
             } else if (petGender.equals("0")) {
                 female.setBackgroundResource(R.drawable.male_female_chacked);
                 txt_female.setTextColor(getResources().getColor(R.color.white));
                 icon_female.setImageResource(R.drawable.female_icon_white);
+
             }
 
             if (qyality1.equals("on")) {
@@ -241,8 +246,20 @@ public class AddPetDetails extends AppCompatActivity {
             } else if (qyality4.equals("off")) {
                 toggle4.setChecked(false);
             }
-            header_txt.setText("update pet Details");
-            submit.setText("update");
+            if (qyality5.equals("on")) {
+                toggle5.setChecked(true);
+            } else if (qyality4.equals("off")) {
+                toggle5.setChecked(false);
+            }
+            if (qyality6.equals("on")) {
+                toggle6.setChecked(true);
+            } else if (qyality4.equals("off")) {
+                toggle6.setChecked(false);
+            }
+            String header = "update pet Details";
+            String update = "update";
+            header_txt.setText(header);
+            submit.setText(update);
 
             submit.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -261,24 +278,24 @@ public class AddPetDetails extends AppCompatActivity {
     }
 
     private void updatePet(View view) {
-        SQLiteDatabase database = db.getWritableDatabase();
         petNameTxt = pet_name.getText().toString();
         petSpeciesTxt = pet_species.getText().toString();
         petBreedTxt = pet_breed.getText().toString();
         petSizeTxt = pet_size.getText().toString();
         ContentValues contentValues = new ContentValues();
 
-        if (male.isPressed()) {
-            flag = true;
-        } else if (female.isPressed()) {
-            flag = false;
-        }
+//        if (male.isPressed()) {
+//            flag = true;
+//        } else if (female.isPressed()) {
+//            flag = false;
+//        }
         contentValues.put("pet_image", profile_img_byte);
         contentValues.put("pet_name", petNameTxt);
         contentValues.put("pet_species", petSpeciesTxt);
         contentValues.put("pet_breed", petBreedTxt);
         contentValues.put("pet_size", petSizeTxt);
-        contentValues.put("pet_gender", flag);
+        contentValues.put("pet_gender", flag[0]);
+        contentValues.put("pet_gender", flag[1]);
 
         if (toggle1.isChecked()) {
             contentValues.put("neutered", "on");
@@ -310,16 +327,10 @@ public class AddPetDetails extends AppCompatActivity {
         } else {
             contentValues.put("Friendly_with_kids_greater_then_10_year", "off");
         }
-
-//       database.update(TABLE_NAME,contentValues,UID + " = ? ",new String[]{id});
-//        Intent i_to_home = new Intent(getApplicationContext(), HomeFragment.class);
-//        startActivity(i_to_home);
-//        finish();
-
-        Boolean b = db.updateRecord(contentValues,id);
-        if (b == true) {
+        boolean b = db.updateRecord(contentValues, id);
+        if (b) {
             Message.message(this, "pet updated");
-            Intent i_to_home = new Intent(getApplicationContext(), HomeFragment.class);
+            Intent i_to_home = new Intent(getApplicationContext(), Home.class);
             startActivity(i_to_home);
             finish();
         } else {
@@ -406,15 +417,15 @@ public class AddPetDetails extends AppCompatActivity {
         petBreedTxt = pet_breed.getText().toString();
         petSizeTxt = pet_size.getText().toString();
 
-        if (petNameTxt.isEmpty() || petSpeciesTxt.isEmpty() || petBreedTxt.isEmpty() || petSizeTxt.isEmpty()) {
-            Message.message(getApplicationContext(), "Enter details");
-
-            if (male.isPressed()) {
-                flag = true;
-            } else if (female.isPressed()) {
-                flag = false;
-            }
-        } else {
+        if (petNameTxt.isEmpty()) {
+            Message.message(getApplicationContext(), "pls enter name");
+        } else if (petSpeciesTxt.isEmpty()) {
+            Message.message(getApplicationContext(), "pls enter pet species");
+        } else if (petBreedTxt.isEmpty()) {
+            Message.message(getApplicationContext(), "pls enter pet breed");
+        } else if (petSizeTxt.isEmpty()) {
+            Message.message(getApplicationContext(), "pls enter pet size");
+        }  else {
             SQLiteDatabase database = db.getWritableDatabase();
             ContentValues contentValues = new ContentValues();
             contentValues.put("pet_image", profile_img_byte);
@@ -422,7 +433,8 @@ public class AddPetDetails extends AppCompatActivity {
             contentValues.put("pet_species", petSpeciesTxt);
             contentValues.put("pet_breed", petBreedTxt);
             contentValues.put("pet_size", petSizeTxt);
-            contentValues.put("pet_gender", flag);
+            contentValues.put("pet_gender", flag[0]);
+            contentValues.put("pet_gender", flag[1]);
 
             if (toggle1.isChecked()) {
                 contentValues.put("neutered", "on");
@@ -456,9 +468,10 @@ public class AddPetDetails extends AppCompatActivity {
             }
 
             database.insert(TABLE_NAME, null, contentValues);
-            Message.message(this,"pet added");
-            Intent i_to_home = new Intent(getApplicationContext(), HomeFragment.class);
+            Message.message(this, "pet added");
+            Intent i_to_home = new Intent(getApplicationContext(), Home.class);
             startActivity(i_to_home);
+            finish();
         }
     }
 

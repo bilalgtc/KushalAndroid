@@ -225,7 +225,9 @@ public class Registration extends AppCompatActivity {
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onBackPressed();
+                Intent intent = new Intent(Registration.this, DashBoard.class);
+                startActivity(intent);
+                finish();
             }
         });
     }

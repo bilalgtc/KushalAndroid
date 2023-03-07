@@ -23,8 +23,9 @@ public class VeterinaryCard extends AppCompatActivity {
     ScrollView scrollView;
     ConstraintLayout card;
     LinearLayout header;
-    ImageView profile_pic,statusIcon1,statusIcon2,statusIcon3,statusIcon4;
-    TextView pet_name,pet_type, pet_breed, pet_gender, pet_size;
+    ImageView profile_pic, statusIcon1, statusIcon2, statusIcon3, statusIcon4, statusIcon5, statusIcon6;
+    ImageView backbtn;
+    TextView pet_name, pet_type, pet_breed, pet_gender, pet_size;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,11 +51,13 @@ public class VeterinaryCard extends AppCompatActivity {
         String qyality2 = i.getStringExtra("quality2");
         String qyality3 = i.getStringExtra("quality3");
         String qyality4 = i.getStringExtra("quality4");
+        String qyality5 = i.getStringExtra("quality5");
+        String qyality6 = i.getStringExtra("quality6");
 
-        if (img == null){
+        if (img == null) {
             profile_pic.setImageResource(R.drawable.dog_img);
 
-        }else {
+        } else {
             Bitmap bitmap = BitmapFactory.decodeByteArray(img, 0, img.length);
             profile_pic.setImageBitmap(bitmap);
         }
@@ -64,36 +67,50 @@ public class VeterinaryCard extends AppCompatActivity {
         pet_breed.setText(petBreedTxt);
         pet_size.setText(petSizeTxt);
 
-        if (petGender.equals("1")){
+        if (petGender.equals("1")) {
             pet_gender.setText("Male");
-        }
-        else if (petGender.equals("0")){
+        } else if (petGender.equals("0")) {
             pet_gender.setText("Female");
         }
 
-        if (qyality1.equals("on")){
+        if (qyality1.equals("on")) {
             statusIcon1.setImageResource(R.drawable.success);
-        }
-        else if (qyality1.equals("off")){
+        } else if (qyality1.equals("off")) {
             statusIcon1.setImageResource(R.drawable.unsucess_icon);
         }
-        if (qyality2.equals("on")){
+        if (qyality2.equals("on")) {
             statusIcon2.setImageResource(R.drawable.success);
-        }
-        else if (qyality2.equals("off")){
+        } else if (qyality2.equals("off")) {
             statusIcon2.setImageResource(R.drawable.unsucess_icon);
         }
-        if (qyality3.equals("on")){
-            statusIcon3.setImageResource(R.drawable.success);        }
-        else if (qyality3.equals("off")){
+        if (qyality3.equals("on")) {
+            statusIcon3.setImageResource(R.drawable.success);
+        } else if (qyality3.equals("off")) {
             statusIcon3.setImageResource(R.drawable.unsucess_icon);
         }
-        if (qyality4.equals("on")){
+        if (qyality4.equals("on")) {
             statusIcon4.setImageResource(R.drawable.success);
-        }
-        else if (qyality4.equals("off")){
+        } else if (qyality4.equals("off")) {
             statusIcon4.setImageResource(R.drawable.unsucess_icon);
         }
+        if (qyality5.equals("on")) {
+            statusIcon5.setImageResource(R.drawable.success);
+        } else if (qyality5.equals("off")) {
+            statusIcon5.setImageResource(R.drawable.unsucess_icon);
+        }
+        if (qyality6.equals("on")) {
+            statusIcon6.setImageResource(R.drawable.success);
+        } else if (qyality6.equals("off")) {
+            statusIcon6.setImageResource(R.drawable.unsucess_icon);
+        }
+        backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(VeterinaryCard.this, Home.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
     }
 
@@ -119,5 +136,8 @@ public class VeterinaryCard extends AppCompatActivity {
         statusIcon2 = findViewById(R.id.statusIcon2);
         statusIcon3 = findViewById(R.id.statusIcon3);
         statusIcon4 = findViewById(R.id.statusIcon4);
+        statusIcon5 = findViewById(R.id.statusIcon5);
+        statusIcon6 = findViewById(R.id.statusIcon6);
+        backbtn = findViewById(R.id.back_btn);
     }
 }

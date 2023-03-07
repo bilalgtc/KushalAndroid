@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:background="@drawable/registration_card_border"
+    android:clickable="true"
+    android:focusable="true"
     android:layout_marginHorizontal="@dimen/_8sdp"
     android:layout_marginBottom="@dimen/_7sdp">
     

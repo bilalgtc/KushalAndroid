@@ -37,10 +37,10 @@ public class Loader extends AppCompatActivity {
 
                 Intent i_next;
 
-                if (check) {
-                    i_next = new Intent(Loader.this, DashBoard.class);
-                    startActivity(i_next);
-                    finish();
+//                if (check) {
+//                    i_next = new Intent(Loader.this, DashBoard.class);
+//                    startActivity(i_next);
+//                    finish();
 
                     if (loginCheck) {
                         Intent i_home = new Intent(Loader.this, Home.class);
@@ -51,11 +51,11 @@ public class Loader extends AppCompatActivity {
                         startActivity(i_dash);
                         finish();
                     }
-                } else {
-                    i_next = new Intent(Loader.this, welcomeActivity.class);
-                    startActivity(i_next);
-                    finish();
-                }
+//                } else {
+//                    i_next = new Intent(Loader.this, welcomeActivity.class);
+//                    startActivity(i_next);
+//                    finish();
+//                }
             }
         }, 2000);
 

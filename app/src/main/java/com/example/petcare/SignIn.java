@@ -179,13 +179,16 @@ public class SignIn extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(SignIn.this, Registration.class);
                 startActivity(intent);
+                finish();
             }
         });
 
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onBackPressed();
+                Intent intent = new Intent(SignIn.this, DashBoard.class);
+                startActivity(intent);
+                finish();
             }
         });
     }
