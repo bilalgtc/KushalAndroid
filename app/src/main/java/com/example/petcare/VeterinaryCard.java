@@ -1,7 +1,11 @@
 package com.example.petcare;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.core.widget.NestedScrollView;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -18,6 +22,8 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.appbar.AppBarLayout;
+
 public class VeterinaryCard extends AppCompatActivity {
 
     ScrollView scrollView;
@@ -27,12 +33,21 @@ public class VeterinaryCard extends AppCompatActivity {
     ImageView backbtn;
     TextView pet_name, pet_type, pet_breed, pet_gender, pet_size;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.veterinary_card);
         init();
         changeStatusBarColor();
+
+//        final Toolbar toolbar = findViewById(R.id.toolbar);
+//        toolbar.inflateMenu(R.menu.menu_main);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().getDecorView()
@@ -114,6 +129,8 @@ public class VeterinaryCard extends AppCompatActivity {
 
     }
 
+
+
     private void changeStatusBarColor() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
@@ -140,4 +157,8 @@ public class VeterinaryCard extends AppCompatActivity {
         statusIcon6 = findViewById(R.id.statusIcon6);
         backbtn = findViewById(R.id.back_btn);
     }
+
+
+
+
 }
