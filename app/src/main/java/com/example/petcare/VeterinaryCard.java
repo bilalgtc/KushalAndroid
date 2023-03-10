@@ -26,7 +26,7 @@ import com.google.android.material.appbar.AppBarLayout;
 
 public class VeterinaryCard extends AppCompatActivity {
 
-    ScrollView scrollView;
+
     ConstraintLayout card;
     LinearLayout header;
     ImageView profile_pic, statusIcon1, statusIcon2, statusIcon3, statusIcon4, statusIcon5, statusIcon6;
@@ -40,14 +40,13 @@ public class VeterinaryCard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.veterinary_card);
         init();
-        changeStatusBarColor();
 
-//        final Toolbar toolbar = findViewById(R.id.toolbar);
-//        toolbar.inflateMenu(R.menu.menu_main);
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
+//        ActionBar actionBar = getSupportActionBar();
+//        if (actionBar != null) {
+//            actionBar.setDisplayHomeAsUpEnabled(true);
+//        }
+//
+//        changeStatusBarColor();
 
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().getDecorView()
@@ -141,7 +140,6 @@ public class VeterinaryCard extends AppCompatActivity {
 
     public void init() {
         profile_pic = findViewById(R.id.profile_pic);
-        scrollView = findViewById(R.id.scrollview);
         card = findViewById(R.id.card);
         header = findViewById(R.id.header);
         pet_type = findViewById(R.id.pet_type);

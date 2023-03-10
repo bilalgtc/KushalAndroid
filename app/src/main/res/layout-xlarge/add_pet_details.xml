@@ -25,6 +25,7 @@
             />
 
         <TextView
+            android:id="@+id/header_text"
             android:layout_width="@dimen/_249sdp"
             android:gravity="center_horizontal"
             android:layout_height="wrap_content"

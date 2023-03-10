@@ -29,33 +29,24 @@ public class Loader extends AppCompatActivity {
             @Override
             public void run() {
                 SharedPreferences preferences = getSharedPreferences("splash", MODE_PRIVATE);
-                Boolean check = preferences.getBoolean("flag", false);
+                Boolean check = preferences.getBoolean("flag", true);
 
                 SharedPreferences sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
                 Boolean loginCheck = sharedPreferences.getBoolean("flag", false);
 
-
-                Intent i_next;
-
-//                if (check) {
-//                    i_next = new Intent(Loader.this, DashBoard.class);
-//                    startActivity(i_next);
-//                    finish();
-
-                    if (loginCheck) {
-                        Intent i_home = new Intent(Loader.this, Home.class);
+                if (loginCheck){
+                    Intent i_home = new Intent(Loader.this, Home.class);
                         startActivity(i_home);
                         finish();
-                    } else {
-                        Intent i_dash = new Intent(Loader.this, DashBoard.class);
-                        startActivity(i_dash);
-                        finish();
-                    }
-//                } else {
-//                    i_next = new Intent(Loader.this, welcomeActivity.class);
-//                    startActivity(i_next);
-//                    finish();
-//                }
+                } else if (check){
+                    Intent i_next = new Intent(Loader.this, welcomeActivity.class);
+                    startActivity(i_next);
+                    finish();
+                } else  {
+                   Intent i_next = new Intent(Loader.this, DashBoard.class);
+                    startActivity(i_next);
+                    finish();
+                }
             }
         }, 2000);
 

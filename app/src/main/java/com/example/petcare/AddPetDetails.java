@@ -55,7 +55,7 @@ public class AddPetDetails extends AppCompatActivity {
     Button submit;
     RecyclerView recyclerView;
     SwitchCompat toggle1, toggle2, toggle3, toggle4, toggle5, toggle6;
-    Bitmap imgToStore;
+    Bitmap imgToStore, bitmap;
     public Boolean isEditMode = false;
     Boolean[] flag = {true, false};
     byte[] profile_img_byte;
@@ -205,8 +205,12 @@ public class AddPetDetails extends AppCompatActivity {
             if (img == null) {
                 profile_img.setImageResource(R.drawable.dog_img);
 
-            } else {
-                Bitmap bitmap = BitmapFactory.decodeByteArray(img, 0, img.length);
+            } else if (img.equals(img)){
+                bitmap = BitmapFactory.decodeByteArray(img, 0, img.length);
+                profile_img.setImageBitmap(bitmap);
+            }
+            else {
+                bitmap = BitmapFactory.decodeByteArray(img, 0, img.length);
                 profile_img.setImageBitmap(bitmap);
             }
             pet_name.setText(petNameTxt);
@@ -289,6 +293,16 @@ public class AddPetDetails extends AppCompatActivity {
 //        } else if (female.isPressed()) {
 //            flag = false;
 //        }
+
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+
+        if (imgToStore == null) {
+            profile_img.setImageResource(R.drawable.dog_img);
+        } else {
+            imgToStore.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+            profile_img_byte = outputStream.toByteArray();
+        }
+
         contentValues.put("pet_image", profile_img_byte);
         contentValues.put("pet_name", petNameTxt);
         contentValues.put("pet_species", petSpeciesTxt);
@@ -425,7 +439,16 @@ public class AddPetDetails extends AppCompatActivity {
             Message.message(getApplicationContext(), "pls enter pet breed");
         } else if (petSizeTxt.isEmpty()) {
             Message.message(getApplicationContext(), "pls enter pet size");
-        }  else {
+        } else {
+
+            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+            if (imgToStore ==null){
+                profile_img.setImageResource(R.drawable.dog_img);
+            }else {
+                imgToStore.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+                profile_img_byte = outputStream.toByteArray();
+            }
+
             SQLiteDatabase database = db.getWritableDatabase();
             ContentValues contentValues = new ContentValues();
             contentValues.put("pet_image", profile_img_byte);
@@ -526,19 +549,17 @@ public class AddPetDetails extends AppCompatActivity {
         if (resultCode == RESULT_OK) {
             //image is picked
             if (requestCode == IMAGE_PICK_CAMERA_CODE) {
-                Bitmap img = (Bitmap) (data.getExtras().get("data"));
+                 bitmap = (Bitmap) (data.getExtras().get("data"));
                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                img.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
                 profile_img_byte = stream.toByteArray();
-                profile_img.setImageBitmap(img);
+                profile_img.setImageBitmap(bitmap);
             } else if (requestCode == IMAGE_PICK_GALLERY_CODE && data != null && data.getData() != null) {
 
                 imageUri = data.getData();
                 try {
                     imgToStore = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
-                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                    imgToStore.compress(Bitmap.CompressFormat.PNG, 100, stream);
-                    profile_img_byte = stream.toByteArray();
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

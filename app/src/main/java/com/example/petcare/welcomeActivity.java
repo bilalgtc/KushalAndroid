@@ -61,7 +61,7 @@ public class welcomeActivity extends AppCompatActivity {
                 else {
                     SharedPreferences pref = getSharedPreferences("splash", MODE_PRIVATE);
                     SharedPreferences.Editor editor = pref.edit();
-                    editor.putBoolean("flag",true);
+                    editor.putBoolean("flag",false);
                     editor.apply();
 
                     Intent i_home = new Intent(welcomeActivity.this , DashBoard.class);
