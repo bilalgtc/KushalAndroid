@@ -1,9 +1,6 @@
 package com.example.petcare;
 
-import android.graphics.Bitmap;
-
 public class RecyclerViewModel {
-    //    int image1;
     byte[] image;
     String id, name,pet_species,pet_breed,pet_gender,pet_size,quality1,quality2,quality3,quality4,quality5,quality6;
 
@@ -21,7 +18,6 @@ public class RecyclerViewModel {
         this.quality4 = quality4;
         this.quality5 = quality5;
         this.quality6 = quality6;
-
     }
 
     public String getPet_species() {
@@ -63,7 +59,6 @@ public class RecyclerViewModel {
     public void setName(String name) {
         this.name = name;
     }
-
 
     public String getPet_gender() {
         return pet_gender;

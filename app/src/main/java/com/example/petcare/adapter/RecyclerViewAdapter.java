@@ -49,10 +49,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
-
-
         RecyclerViewModel item = details.get(position);
-
         String id = item.getId();
 
         byte[] imageBytes = item.getImage();
@@ -77,26 +74,22 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         if (item.getQuality1().equals("on")) {
             holder.quality1.setText("Neutured");
         }else {
-            holder.quality1.setText("");
-            holder.quality1.setBackground(null);
+            holder.quality1.setVisibility(View.GONE);
         }
         if (item.getQuality2().equals("on")) {
             holder.quality2.setText("Vaccinated");
         }else {
-            holder.quality2.setText("");
-            holder.quality2.setBackground(null);
+            holder.quality2.setVisibility(View.GONE);
         }
         if (item.getQuality3().equals("on")) {
             holder.quality3.setText("Friendly with dogs");
         }else {
-            holder.quality3.setText("");
-            holder.quality3.setBackground(null);
+            holder.quality3.setVisibility(View.GONE);
         }
         if (item.getQuality4().equals("on")) {
             holder.quality4.setText("Friendly with cats");
         }else {
-            holder.quality4.setText("");
-            holder.quality4.setBackground(null);
+            holder.quality4.setVisibility(View.GONE);
         }
 //        if (item.getQuality5().equals("on")) {
 //            holder.quality5.setText("Friendly with kids <10 year");
@@ -108,7 +101,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 //        }else {
 //            holder.quality6.setText("");
 //        }
-
 
         holder.card.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -173,7 +165,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 });
 
                 del_yes.setOnClickListener(new View.OnClickListener() {
-
                     @SuppressLint("ResourceAsColor")
                     @Override
                     public void onClick(View v) {
@@ -197,7 +188,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 Window window = dialog.getWindow();
                 window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                 WindowManager.LayoutParams wlp = window.getAttributes();
-
                 wlp.gravity = Gravity.BOTTOM;
                 wlp.flags &= ~WindowManager.LayoutParams.FLAG_DIM_BEHIND;
                 window.setAttributes(wlp);
@@ -234,8 +224,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             edit_petDetails = itemView.findViewById(R.id.edit_pet_details);
             delete_pet = itemView.findViewById(R.id.delete_pet);
             card = itemView.findViewById(R.id.card);
-
-
         }
     }
 }

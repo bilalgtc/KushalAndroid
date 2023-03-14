@@ -49,7 +49,6 @@ public class Loader extends AppCompatActivity {
                 }
             }
         }, 2000);
-
     }
 
     private void changeStatusBarColor() {

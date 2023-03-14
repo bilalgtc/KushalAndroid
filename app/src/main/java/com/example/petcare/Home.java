@@ -25,12 +25,10 @@ public class Home extends AppCompatActivity {
     ImageView addPet;
     BottomNavigationView bnView;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
-
         changeStatusBarColor();
         init();
 
@@ -57,7 +55,6 @@ public class Home extends AppCompatActivity {
             }
         });
         bnView.setSelectedItemId(R.id.nav_home);
-
     }
 
     private void changeStatusBarColor() {
@@ -71,7 +68,6 @@ public class Home extends AppCompatActivity {
     public void init() {
         addPet = findViewById(R.id.addPet);
         bnView = findViewById(R.id.bottom_nav_bar);
-
     }
 
     public void loadFragment(Fragment fragment, boolean flag) {
@@ -84,6 +80,5 @@ public class Home extends AppCompatActivity {
             ft.replace(R.id.container, fragment);
         }
         ft.commit();
-
     }
 }

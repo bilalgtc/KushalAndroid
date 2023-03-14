@@ -87,7 +87,6 @@ public class SignIn extends AppCompatActivity {
         email.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override
@@ -131,9 +130,7 @@ public class SignIn extends AppCompatActivity {
                             null,
                             null
                     );
-
                     int count = cursor.getCount();
-
                     if (count > 0) {
                         //login success
                         SharedPreferences pref = getSharedPreferences("login", MODE_PRIVATE);
@@ -150,7 +147,6 @@ public class SignIn extends AppCompatActivity {
                         Message.message(getApplicationContext(), "pls check id and password");
                     }
                     cursor.close();
-
                 }
             }
         });

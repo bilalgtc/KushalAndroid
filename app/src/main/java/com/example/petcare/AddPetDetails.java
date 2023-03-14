@@ -206,8 +206,8 @@ public class AddPetDetails extends AppCompatActivity {
                 profile_img.setImageResource(R.drawable.dog_img);
 
             } else if (img.equals(img)){
-                bitmap = BitmapFactory.decodeByteArray(img, 0, img.length);
-                profile_img.setImageBitmap(bitmap);
+                imgToStore = BitmapFactory.decodeByteArray(img, 0, img.length);
+                profile_img.setImageBitmap(imgToStore);
             }
             else {
                 bitmap = BitmapFactory.decodeByteArray(img, 0, img.length);
@@ -227,7 +227,6 @@ public class AddPetDetails extends AppCompatActivity {
                 female.setBackgroundResource(R.drawable.male_female_chacked);
                 txt_female.setTextColor(getResources().getColor(R.color.white));
                 icon_female.setImageResource(R.drawable.female_icon_white);
-
             }
 
             if (qyality1.equals("on")) {
@@ -298,7 +297,8 @@ public class AddPetDetails extends AppCompatActivity {
 
         if (imgToStore == null) {
             profile_img.setImageResource(R.drawable.dog_img);
-        } else {
+        }
+        else {
             imgToStore.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
             profile_img_byte = outputStream.toByteArray();
         }

@@ -1,39 +1,38 @@
 package com.example.petcare;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
-import androidx.core.widget.NestedScrollView;
 
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.google.android.material.appbar.AppBarLayout;
 
+import java.lang.ref.WeakReference;
+
 public class VeterinaryCard extends AppCompatActivity {
 
-
-    ConstraintLayout card;
+    private ConstraintLayout card;
     LinearLayout header;
     ImageView profile_pic, statusIcon1, statusIcon2, statusIcon3, statusIcon4, statusIcon5, statusIcon6;
     ImageView backbtn;
     TextView pet_name, pet_type, pet_breed, pet_gender, pet_size;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,20 +40,45 @@ public class VeterinaryCard extends AppCompatActivity {
         setContentView(R.layout.veterinary_card);
         init();
 
+
+        Animation pop_up = AnimationUtils.loadAnimation(VeterinaryCard.this, R.anim.pop);
+        AppBarLayout appBarLayout = findViewById(R.id.appbar);
+
+        card.setTranslationY(-card.getHeight());
+
+        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+            @Override
+            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+                if (Math.abs(verticalOffset) == appBarLayout.getTotalScrollRange()) {
+
+                    card.setVisibility(View.GONE);
+//                    card.setAnimation(pop_up);
+
+                } else if (verticalOffset == 0) {
+                    card.setVisibility(View.VISIBLE);
+//                    card.setAnimation(pop_up);
+                }
+            }
+        });
+
 //        ActionBar actionBar = getSupportActionBar();
 //        if (actionBar != null) {
 //            actionBar.setDisplayHomeAsUpEnabled(true);
 //        }
 //
-//        changeStatusBarColor();
+        changeStatusBarColor();
 
         if (Build.VERSION.SDK_INT >= 21) {
-            getWindow().getDecorView()
-                    .setSystemUiVisibility(
-                            View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+//            getWindow().getDecorView()
+//                    .setSystemUiVisibility(
+//                            View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+                    WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+//            getWindow().getDecorView()
+//                    .setSystemUiVisibility(
+//                            View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
         Intent i = getIntent();
-
         byte[] img = i.getByteArrayExtra("pet_image");
         String petNameTxt = i.getStringExtra("pet_name");
         String petSpeciesTxt = i.getStringExtra("pet_species");
@@ -125,10 +149,7 @@ public class VeterinaryCard extends AppCompatActivity {
                 finish();
             }
         });
-
     }
-
-
 
     private void changeStatusBarColor() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -155,8 +176,4 @@ public class VeterinaryCard extends AppCompatActivity {
         statusIcon6 = findViewById(R.id.statusIcon6);
         backbtn = findViewById(R.id.back_btn);
     }
-
-
-
-
 }

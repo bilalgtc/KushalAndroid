@@ -208,6 +208,7 @@
                 android:background="@drawable/card_bg_2"
                 android:fontFamily="@font/encode_sans"
                 android:gravity="center"
+                android:layout_marginEnd="@dimen/_5sdp"
                 android:paddingHorizontal="@dimen/_5sdp"
                 android:text="@string/neutered"
                 android:textColor="@color/black"
@@ -215,7 +216,7 @@
 
             <TextView
                 android:id="@+id/pet_quality2"
-                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
                 android:paddingHorizontal="@dimen/_5sdp"
                 android:gravity="center"
                 android:background="@drawable/card_bg_2"
