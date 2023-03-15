@@ -21,15 +21,12 @@ import com.example.petcare.adapter.RecyclerViewAdapter;
 
 import java.util.ArrayList;
 
-
 public class HomeFragment extends Fragment {
     ImageView addBtn;
     RecyclerView recyclerView;
     RecyclerViewAdapter adapter;
     ArrayList<RecyclerViewModel> details = new ArrayList<>();
     MyDbHelper db;
-    ArrayList<String> name, image, pet_type, pet_verity, pet_gender, pet_size, quality1, quality2, quality3, quality4;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -46,6 +43,7 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity().getApplication(), AddPetDetails.class);
                 startActivity(intent);
+                getActivity().finish();
             }
         });
 
@@ -57,7 +55,7 @@ public class HomeFragment extends Fragment {
         {
             if (cursor.moveToFirst())
             {
-                do {                                            //cursor.getBlob(1),cursor.getString(2),cursor.getString(3), cursor.getString(4)
+                do {
                     RecyclerViewModel obj = new RecyclerViewModel(cursor.getString(0),cursor.getBlob(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getString(5),cursor.getString(6),cursor.getString(7),cursor.getString(8),cursor.getString(9),cursor.getString(10), cursor.getString(11), cursor.getString(12));
                     details.add(obj);
                 } while (cursor.moveToNext());
@@ -66,10 +64,8 @@ public class HomeFragment extends Fragment {
         adapter = new RecyclerViewAdapter(view.getContext(), details);
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
-
         return view;
     }
-
 }
 
 

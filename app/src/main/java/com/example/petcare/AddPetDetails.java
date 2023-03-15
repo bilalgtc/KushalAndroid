@@ -259,7 +259,7 @@ public class AddPetDetails extends AppCompatActivity {
             } else if (qyality4.equals("off")) {
                 toggle6.setChecked(false);
             }
-            String header = "update pet Details";
+            String header = "Update pet details";
             String update = "update";
             header_txt.setText(header);
             submit.setText(update);
@@ -352,78 +352,6 @@ public class AddPetDetails extends AppCompatActivity {
         }
     }
 
-    private void imagePickDialog() {
-        //options to display in dialog
-        String[] options = {"Camera", "Gallery"};
-        //alert dialog
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("pick Image From");
-        builder.setItems(options, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                //handel clicks
-                if (which == 0) {
-                    //camera clicked
-                    if (!checkCameraPermission()) {
-                        requestCameraPermission();
-                    } else {
-                        //permission already granted
-                        pickFromCamera();
-                    }
-                } else if (which == 1) {
-                    if (!checkStoragePermission()) {
-                        requestStoragePermission();
-                    } else {
-                        //permission already granted
-                        pickFromGallery();
-                    }
-                }
-            }
-        });
-        //show dialog
-        builder.create().show();
-    }
-
-    private void pickFromGallery() {
-        //intent to pick image from gallery,the image will be returned in onActivityResult method
-        Intent i = new Intent(Intent.ACTION_PICK);
-        i.setType("image/*");
-        startActivityIfNeeded(i, IMAGE_PICK_GALLERY_CODE);
-    }
-
-    private void pickFromCamera() {
-        //intent to pick image from camera,the image will be returned in onActivityResult method
-        //intent to open camera for image
-        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
-        startActivityForResult(cameraIntent, IMAGE_PICK_CAMERA_CODE);
-    }
-
-    private Boolean checkStoragePermission() {
-        //check storage permission is enabled or not
-        boolean result = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == (PackageManager.PERMISSION_GRANTED);
-        return result;
-    }
-
-    private void requestStoragePermission() {
-        ActivityCompat.requestPermissions(this, storagePermission, STORAGE_REQUEST_CODE);
-    }
-
-    private Boolean checkCameraPermission() {
-
-        //check camera permission is enabled or not
-
-        boolean result = ContextCompat.checkSelfPermission(this,
-                Manifest.permission.CAMERA) == (PackageManager.PERMISSION_GRANTED);
-        boolean result1 = ContextCompat.checkSelfPermission(this,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE) == (PackageManager.PERMISSION_GRANTED);
-        return result && result1;
-    }
-
-    private void requestCameraPermission() {
-        ActivityCompat.requestPermissions(this, cameraPermission, CAMERA_REQUEST_CODE);
-    }
-
     public void addPet(View view) {
 
         petNameTxt = pet_name.getText().toString();
@@ -496,6 +424,78 @@ public class AddPetDetails extends AppCompatActivity {
             startActivity(i_to_home);
             finish();
         }
+    }
+
+    private void imagePickDialog() {
+        //options to display in dialog
+        String[] options = {"Camera", "Gallery"};
+        //alert dialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("pick Image From");
+        builder.setItems(options, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //handel clicks
+                if (which == 0) {
+                    //camera clicked
+                    if (!checkCameraPermission()) {
+                        requestCameraPermission();
+                    } else {
+                        //permission already granted
+                        pickFromCamera();
+                    }
+                } else if (which == 1) {
+                    if (!checkStoragePermission()) {
+                        requestStoragePermission();
+                    } else {
+                        //permission already granted
+                        pickFromGallery();
+                    }
+                }
+            }
+        });
+        //show dialog
+        builder.create().show();
+    }
+
+    private void pickFromGallery() {
+        //intent to pick image from gallery,the image will be returned in onActivityResult method
+        Intent i = new Intent(Intent.ACTION_PICK);
+        i.setType("image/*");
+        startActivityIfNeeded(i, IMAGE_PICK_GALLERY_CODE);
+    }
+
+    private void pickFromCamera() {
+        //intent to pick image from camera,the image will be returned in onActivityResult method
+        //intent to open camera for image
+        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+        startActivityForResult(cameraIntent, IMAGE_PICK_CAMERA_CODE);
+    }
+
+    private Boolean checkStoragePermission() {
+        //check storage permission is enabled or not
+        boolean result = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == (PackageManager.PERMISSION_GRANTED);
+        return result;
+    }
+
+    private void requestStoragePermission() {
+        ActivityCompat.requestPermissions(this, storagePermission, STORAGE_REQUEST_CODE);
+    }
+
+    private Boolean checkCameraPermission() {
+
+        //check camera permission is enabled or not
+
+        boolean result = ContextCompat.checkSelfPermission(this,
+                Manifest.permission.CAMERA) == (PackageManager.PERMISSION_GRANTED);
+        boolean result1 = ContextCompat.checkSelfPermission(this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE) == (PackageManager.PERMISSION_GRANTED);
+        return result && result1;
+    }
+
+    private void requestCameraPermission() {
+        ActivityCompat.requestPermissions(this, cameraPermission, CAMERA_REQUEST_CODE);
     }
 
     private void changeStatusBarColor() {

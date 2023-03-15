@@ -189,7 +189,7 @@ public class Registration extends AppCompatActivity {
                     addUser(v);
                     Intent i_to_home = new Intent(Registration.this, SignIn.class);
                     startActivity(i_to_home);
-                    finish();
+//                    finish();
                 }
             }
         });

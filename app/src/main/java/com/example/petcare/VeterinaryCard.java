@@ -61,11 +61,6 @@ public class VeterinaryCard extends AppCompatActivity {
             }
         });
 
-//        ActionBar actionBar = getSupportActionBar();
-//        if (actionBar != null) {
-//            actionBar.setDisplayHomeAsUpEnabled(true);
-//        }
-//
         changeStatusBarColor();
 
         if (Build.VERSION.SDK_INT >= 21) {

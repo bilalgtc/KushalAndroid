@@ -86,13 +86,7 @@
                     android:layout_marginEnd="@dimen/_15sdp"
                     android:layout_marginTop="@dimen/_10sdp"
                     tools:ignore="MissingConstraints" />
-
-
-
             </RelativeLayout>
-
-
-
 
             <TextView
                 android:id="@+id/general_info"

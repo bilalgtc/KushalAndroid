@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddPetDetails"
-    android:background="#F5F5F5">
+    android:background="#F5F5F5"
+    tools:context=".AddPetDetails">
 
     <LinearLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_44sdp"
-        android:orientation="horizontal"
-        android:background="@color/white">
+        android:background="@color/white"
+        android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/back_btn"
@@ -21,44 +21,41 @@
             android:layout_gravity="bottom"
             android:layout_marginStart="@dimen/_16sdp"
             android:layout_marginBottom="@dimen/_6sdp"
-            android:src="@drawable/back_icon_blue"
-            />
+            android:src="@drawable/back_icon_blue" />
 
         <TextView
             android:id="@+id/header_text"
             android:layout_width="@dimen/_249sdp"
-            android:gravity="center_horizontal"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_marginBottom="@dimen/_3sdp"
             android:fontFamily="@font/encode_sans_bold"
+            android:gravity="center_horizontal"
             android:text="@string/add_pet_details"
             android:textColor="#070821"
             android:textFontWeight="700"
             android:textSize="@dimen/_12ssp" />
-
-
-
     </LinearLayout>
+
     <com.google.android.material.divider.MaterialDivider
         android:id="@+id/divider"
-        android:layout_below="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:dividerColor="#F0F0F8"/>
+        android:layout_below="@+id/header"
+        app:dividerColor="#F0F0F8" />
 
     <ScrollView
-        android:layout_below="@+id/divider"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="none"
-        android:background="@color/white">
+        android:layout_below="@+id/divider"
+        android:background="@color/white"
+        android:scrollbars="none">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:layout_marginHorizontal="@dimen/_16sdp">
+            android:layout_marginHorizontal="@dimen/_16sdp"
+            android:background="@color/white">
 
             <RelativeLayout
                 android:id="@+id/img_section"
@@ -84,51 +81,45 @@
                     android:layout_width="@dimen/_20sdp"
                     android:layout_height="@dimen/_20sdp"
                     android:layout_alignParentEnd="true"
-                    android:src="@drawable/add_icon"
-                    android:layout_marginEnd="@dimen/_16sdp"
                     android:layout_marginTop="@dimen/_9sdp"
+                    android:layout_marginEnd="@dimen/_16sdp"
+                    android:src="@drawable/add_icon"
                     tools:ignore="MissingConstraints" />
-
-
-
             </RelativeLayout>
 
-
-
-
             <TextView
-                android:layout_marginTop="-2dp"
                 android:id="@+id/general_info"
-                android:layout_below="@+id/img_section"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/_12ssp"
+                android:layout_below="@+id/img_section"
+                android:layout_marginTop="-2dp"
                 android:fontFamily="@font/encode_sans_bold"
-                android:textFontWeight="700"
-                android:textColor="#070821"
                 android:text="@string/general_info"
-                />
+                android:textColor="#070821"
+                android:textFontWeight="700"
+                android:textSize="@dimen/_12ssp" />
 
             <TextView
-                android:layout_below="@+id/general_info"
                 android:id="@+id/petname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/general_info"
+                android:layout_marginTop="@dimen/_11sdp"
+                android:fontFamily="@font/encode_sans_semibold"
                 android:text="@string/pet_name"
                 android:textColor="@color/text_gray"
-                android:fontFamily="@font/encode_sans_semibold"
-                android:textSize="@dimen/_9ssp"
-                android:layout_marginTop="@dimen/_11sdp"
-                />
+                android:textSize="@dimen/_9ssp" />
+
             <EditText
                 android:id="@+id/pet_name"
-                android:layout_below="@id/petname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"
-                android:textSize="@dimen/_9ssp"
+                android:layout_below="@id/petname"
                 android:backgroundTint="@color/white"
-                android:textColor="@color/black"/>
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_9ssp" />
+
             <com.google.android.material.divider.MaterialDivider
                 android:id="@+id/pet_name_div"
                 android:layout_width="match_parent"
@@ -139,24 +130,25 @@
 
             <TextView
                 android:id="@+id/species"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/pet_name"
                 android:layout_marginTop="@dimen/_8sdp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:fontFamily="@font/encode_sans_semibold"
                 android:text="@string/species_of_your_pet"
                 android:textColor="@color/text_gray"
-                android:fontFamily="@font/encode_sans_semibold"
                 android:textSize="@dimen/_9ssp" />
+
             <EditText
                 android:id="@+id/species_of_pet"
-                android:layout_below="@id/species"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"
+                android:layout_below="@id/species"
                 android:backgroundTint="@color/white"
+                android:inputType="text"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_9ssp"
-                />
+                android:textSize="@dimen/_9ssp" />
+
             <com.google.android.material.divider.MaterialDivider
                 android:id="@+id/species_of_pet_div"
                 android:layout_width="match_parent"
@@ -167,27 +159,26 @@
 
             <TextView
                 android:id="@+id/breed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/species_of_pet"
                 android:layout_marginTop="@dimen/_8sdp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:fontFamily="@font/encode_sans_semibold"
                 android:text="@string/Breed"
                 android:textColor="@color/text_gray"
-                android:fontFamily="@font/encode_sans_semibold"
-                android:textSize="@dimen/_9ssp"
+                android:textSize="@dimen/_9ssp" />
 
-                />
             <EditText
                 android:id="@+id/breed_of_pet"
-                android:layout_below="@id/breed"
-                android:layout_marginTop="-1dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"
+                android:layout_below="@id/breed"
+                android:layout_marginTop="-1dp"
                 android:backgroundTint="@color/white"
+                android:inputType="text"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_9ssp"
-                />
+                android:textSize="@dimen/_9ssp" />
+
             <com.google.android.material.divider.MaterialDivider
                 android:id="@+id/breed_div"
                 android:layout_width="match_parent"
@@ -198,27 +189,29 @@
 
             <TextView
                 android:id="@+id/size"
-                android:layout_below="@+id/breed_of_pet"
-                android:layout_marginTop="@dimen/_7sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/breed_of_pet"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:fontFamily="@font/encode_sans_semibold"
                 android:text="@string/Size_optional"
                 android:textColor="@color/text_gray"
-                android:fontFamily="@font/encode_sans_semibold"
                 android:textSize="@dimen/_9ssp"
 
                 />
+
             <EditText
                 android:id="@+id/pet_size"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_below="@id/size"
                 android:layout_marginTop="-1dp"
-                android:layout_width="match_parent"
-                android:inputType="text"
-                android:layout_height="wrap_content"
                 android:backgroundTint="@color/white"
+                android:inputType="text"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_9ssp"
                 tools:ignore="TextFields" />
+
             <com.google.android.material.divider.MaterialDivider
                 android:id="@+id/pet_size_div"
                 android:layout_width="match_parent"
@@ -226,91 +219,65 @@
                 android:layout_below="@+id/pet_size"
                 android:layout_marginTop="-10dp"
                 app:dividerColor="#F0F0F8" />
+
             <TextView
                 android:id="@+id/gender"
-                android:layout_below="@+id/pet_size"
-                android:layout_marginTop="@dimen/_7sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/pet_size"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:fontFamily="@font/encode_sans_semibold"
                 android:text="@string/Gender"
                 android:textColor="@color/text_gray"
-                android:fontFamily="@font/encode_sans_semibold"
-                android:textSize="@dimen/_9ssp"
-
-                />
-
-            <!--            <RadioGroup-->
-            <!--                android:id="@+id/gender_btns"-->
-            <!--                android:layout_below="@+id/gender"-->
-            <!--                android:layout_marginTop="@dimen/_11sdp"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:gravity="center"-->
-            <!--                android:orientation="horizontal">-->
-
-            <!--                   <RadioButton-->
-            <!--                       android:layout_weight="1"-->
-            <!--                       android:layout_width="wrap_content"-->
-            <!--                       android:layout_height="wrap_content"-->
-            <!--                       android:button="@drawable/custom_radio_btn"-->
-            <!--                      />-->
-
-            <!--                   <RadioButton-->
-            <!--                       android:layout_weight="1"-->
-            <!--                       android:button="@drawable/custom_radio_btn"-->
-            <!--                       android:layout_width="wrap_content"-->
-            <!--                       android:layout_height="wrap_content"/>-->
-
-
-
-            <!--            </RadioGroup>-->
-
+                android:textSize="@dimen/_9ssp" />
 
             <LinearLayout
                 android:id="@+id/gender_btns"
-                android:layout_below="@+id/gender"
-                android:layout_marginTop="@dimen/_9sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
+                android:layout_below="@+id/gender"
                 android:layout_marginHorizontal="@dimen/_41sdp"
+                android:layout_marginTop="@dimen/_9sdp"
+                android:gravity="center"
                 android:orientation="horizontal">
+
                 <LinearLayout
                     android:id="@+id/male_btn"
-                    android:clickable="true"
-                    android:background="@drawable/male_female_bg_unchecked"
-                    android:layout_weight="1"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_18sdp"
-                    android:gravity="center"
                     android:layout_marginEnd="@dimen/_8sdp"
+                    android:layout_weight="1"
+                    android:background="@drawable/male_female_bg_unchecked"
+                    android:clickable="true"
+                    android:gravity="center"
                     android:orientation="horizontal">
+
                     <ImageView
                         android:id="@+id/male_icon"
                         android:layout_width="@dimen/_18sdp"
                         android:layout_height="@dimen/_15sdp"
-                        android:src="@drawable/male_icon"
-                        />
+                        android:src="@drawable/male_icon" />
+
                     <TextView
                         android:id="@+id/txt_male"
-                        android:layout_gravity="center_vertical"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/male"
-                        android:textSize="@dimen/_9ssp"
-                        android:textColor="@color/black"
+                        android:layout_gravity="center_vertical"
                         android:fontFamily="@font/encode_sans_semibold"
-                        android:paddingEnd="@dimen/_11sdp"/>
+                        android:paddingEnd="@dimen/_11sdp"
+                        android:text="@string/male"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_9ssp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/female_btn"
-                    android:clickable="true"
-                    android:background="@drawable/male_female_bg_unchecked"
-                    android:layout_weight="1"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_18sdp"
                     android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_weight="1"
+                    android:background="@drawable/male_female_bg_unchecked"
+                    android:clickable="true"
                     android:gravity="center"
                     android:orientation="horizontal">
 
@@ -319,85 +286,80 @@
                         android:layout_width="@dimen/_18sdp"
                         android:layout_height="@dimen/_15sdp"
                         android:src="@drawable/female_icon" />
+
                     <TextView
                         android:id="@+id/txt_female"
-                        android:paddingEnd="@dimen/_10sdp"
-                        android:layout_gravity="center_vertical"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/_9ssp"
+                        android:layout_gravity="center_vertical"
                         android:fontFamily="@font/encode_sans_semibold"
-                        android:textColor="@color/black"
+                        android:paddingEnd="@dimen/_10sdp"
                         android:text="@string/female"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_9ssp"
                         tools:ignore="RtlSymmetry" />
                 </LinearLayout>
             </LinearLayout>
 
             <TextView
                 android:id="@+id/addi_info"
-                android:layout_below="@id/gender_btns"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/_12ssp"
-                android:fontFamily="@font/encode_sans_bold"
-                android:textFontWeight="700"
-                android:textColor="#070821"
+                android:layout_below="@id/gender_btns"
                 android:layout_marginTop="@dimen/_21sdp"
+                android:fontFamily="@font/encode_sans_bold"
                 android:text="@string/Additional_Information"
-                />
+                android:textColor="#070821"
+                android:textFontWeight="700"
+                android:textSize="@dimen/_12ssp" />
 
             <LinearLayout
                 android:id="@+id/addi_info1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_below="@id/addi_info"
                 android:layout_marginTop="@dimen/_12sdp"
-                >
+                android:orientation="horizontal">
+
                 <TextView
-                    android:gravity="center_vertical"
-                    android:layout_weight="8"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:text="@string/neutered"
-                    android:textSize="@dimen/_10ssp"
-                    android:textColor="@color/black"
+                    android:layout_weight="8"
                     android:fontFamily="@font/encode_sans"
+                    android:gravity="center_vertical"
+                    android:text="@string/neutered"
+                    android:textColor="@color/black"
                     android:textFontWeight="400"
-                    />
+                    android:textSize="@dimen/_10ssp" />
 
                 <androidx.appcompat.widget.SwitchCompat
                     android:id="@+id/toggle1"
                     android:layout_width="@dimen/_45sdp"
                     android:layout_height="@dimen/_26sdp"
                     android:layout_gravity="center"
-                    android:thumb="@drawable/toggle_thumb_selector_xlarge"
                     android:elevation="@dimen/_5sdp"
-                    app:track="@drawable/toggle_track_selector"
-                    />
-
+                    android:thumb="@drawable/toggle_thumb_selector_xlarge"
+                    app:track="@drawable/toggle_track_selector" />
             </LinearLayout>
-
 
             <LinearLayout
                 android:id="@+id/addi_info2"
-                android:layout_below="@+id/addi_info1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_below="@+id/addi_info1"
                 android:layout_marginTop="@dimen/_2sdp"
-                >
+                android:orientation="horizontal">
+
                 <TextView
-                    android:gravity="center_vertical"
-                    android:layout_weight="8"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:text="@string/Vaccinated"
-                    android:textSize="@dimen/_10ssp"
-                    android:textColor="@color/black"
+                    android:layout_weight="8"
                     android:fontFamily="@font/encode_sans"
+                    android:gravity="center_vertical"
+                    android:text="@string/Vaccinated"
+                    android:textColor="@color/black"
                     android:textFontWeight="400"
-                    />
+                    android:textSize="@dimen/_10ssp" />
 
                 <androidx.appcompat.widget.SwitchCompat
                     android:id="@+id/toggle2"
@@ -405,29 +367,28 @@
                     android:layout_height="@dimen/_26sdp"
                     android:layout_gravity="center"
                     android:thumb="@drawable/toggle_thumb_selector_xlarge"
-                    app:track="@drawable/toggle_track_selector"
-                    />
+                    app:track="@drawable/toggle_track_selector" />
 
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/addi_info3"
-                android:layout_below="@+id/addi_info2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_below="@+id/addi_info2"
                 android:layout_marginTop="@dimen/_2sdp"
-                >
+                android:orientation="horizontal">
+
                 <TextView
-                    android:gravity="center_vertical"
-                    android:layout_weight="8"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="@string/Friendly_with_dogs"
-                    android:textSize="@dimen/_10ssp"
-                    android:textColor="@color/black"
+                    android:layout_weight="8"
                     android:fontFamily="@font/encode_sans"
+                    android:gravity="center_vertical"
+                    android:text="@string/Friendly_with_dogs"
+                    android:textColor="@color/black"
                     android:textFontWeight="400"
-                    />
+                    android:textSize="@dimen/_10ssp" />
 
                 <androidx.appcompat.widget.SwitchCompat
                     android:id="@+id/toggle3"
@@ -435,29 +396,28 @@
                     android:layout_height="@dimen/_26sdp"
                     android:layout_gravity="center"
                     android:thumb="@drawable/toggle_thumb_selector_xlarge"
-                    app:track="@drawable/toggle_track_selector"
-                    />
+                    app:track="@drawable/toggle_track_selector" />
 
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/addi_info4"
-                android:layout_below="@+id/addi_info3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_below="@+id/addi_info3"
                 android:layout_marginTop="@dimen/_2sdp"
-                >
+                android:orientation="horizontal">
+
                 <TextView
-                    android:gravity="center_vertical"
-                    android:layout_weight="8"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="@string/Friendly_with_cats"
-                    android:textSize="@dimen/_10ssp"
-                    android:textColor="@color/black"
+                    android:layout_weight="8"
                     android:fontFamily="@font/encode_sans"
+                    android:gravity="center_vertical"
+                    android:text="@string/Friendly_with_cats"
+                    android:textColor="@color/black"
                     android:textFontWeight="400"
-                    />
+                    android:textSize="@dimen/_10ssp" />
 
                 <androidx.appcompat.widget.SwitchCompat
                     android:id="@+id/toggle4"
@@ -465,29 +425,28 @@
                     android:layout_height="@dimen/_26sdp"
                     android:layout_gravity="center"
                     android:thumb="@drawable/toggle_thumb_selector_xlarge"
-                    app:track="@drawable/toggle_track_selector"
-                    />
+                    app:track="@drawable/toggle_track_selector" />
 
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/addi_info5"
-                android:layout_below="@+id/addi_info4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_below="@+id/addi_info4"
                 android:layout_marginTop="@dimen/_2sdp"
-                >
+                android:orientation="horizontal">
+
                 <TextView
-                    android:gravity="center_vertical"
-                    android:layout_weight="8"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:text="@string/friendly_with_kids_lt_10"
-                    android:textSize="@dimen/_10ssp"
-                    android:textColor="@color/black"
+                    android:layout_weight="8"
                     android:fontFamily="@font/encode_sans"
+                    android:gravity="center_vertical"
+                    android:text="@string/friendly_with_kids_lt_10"
+                    android:textColor="@color/black"
                     android:textFontWeight="400"
-                    />
+                    android:textSize="@dimen/_10ssp" />
 
                 <androidx.appcompat.widget.SwitchCompat
                     android:id="@+id/toggle5"
@@ -495,29 +454,28 @@
                     android:layout_height="@dimen/_26sdp"
                     android:layout_gravity="center"
                     android:thumb="@drawable/toggle_thumb_selector_xlarge"
-                    app:track="@drawable/toggle_track_selector"
-                    />
+                    app:track="@drawable/toggle_track_selector" />
 
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/addi_info6"
-                android:layout_below="@+id/addi_info5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_below="@+id/addi_info5"
                 android:layout_marginTop="@dimen/_2sdp"
-                >
+                android:orientation="horizontal">
+
                 <TextView
-                    android:gravity="center_vertical"
-                    android:layout_weight="8"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:text="@string/friendly_with_kids_gt_10"
-                    android:textSize="@dimen/_10ssp"
-                    android:textColor="@color/black"
+                    android:layout_weight="8"
                     android:fontFamily="@font/encode_sans"
+                    android:gravity="center_vertical"
+                    android:text="@string/friendly_with_kids_gt_10"
+                    android:textColor="@color/black"
                     android:textFontWeight="400"
-                    />
+                    android:textSize="@dimen/_10ssp" />
 
                 <androidx.appcompat.widget.SwitchCompat
                     android:id="@+id/toggle6"
@@ -525,37 +483,23 @@
                     android:layout_height="@dimen/_26sdp"
                     android:layout_gravity="center"
                     android:thumb="@drawable/toggle_thumb_selector_xlarge"
-                    app:track="@drawable/toggle_track_selector"
-                    />
+                    app:track="@drawable/toggle_track_selector" />
             </LinearLayout>
 
             <Button
-                android:layout_below="@+id/addi_info6"
                 android:id="@+id/submit"
                 style="@style/btn"
-                android:layout_marginHorizontal="@dimen/_41sdp"
                 android:layout_width="match_parent"
-                android:textSize="@dimen/_10ssp"
                 android:layout_height="@dimen/_23sdp"
-                android:gravity="center_vertical|center_horizontal"
+                android:layout_below="@+id/addi_info6"
                 android:layout_centerHorizontal="true"
+                android:layout_marginHorizontal="@dimen/_41sdp"
                 android:layout_marginTop="@dimen/_20sdp"
                 android:layout_marginBottom="@dimen/_74sdp"
+                android:gravity="center_vertical|center_horizontal"
                 android:stateListAnimator="@null"
                 android:text="@string/Submit"
-
-                />
-
-
-
-
+                android:textSize="@dimen/_10ssp" />
         </RelativeLayout>
-
-
-
-
-
-
     </ScrollView>
-
 </RelativeLayout>

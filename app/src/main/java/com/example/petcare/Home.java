@@ -22,7 +22,6 @@ import com.example.petcare.fragments.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Home extends AppCompatActivity {
-    ImageView addPet;
     BottomNavigationView bnView;
 
     @Override
@@ -66,7 +65,6 @@ public class Home extends AppCompatActivity {
     }
 
     public void init() {
-        addPet = findViewById(R.id.addPet);
         bnView = findViewById(R.id.bottom_nav_bar);
     }
 
@@ -80,5 +78,10 @@ public class Home extends AppCompatActivity {
             ft.replace(R.id.container, fragment);
         }
         ft.commit();
+    }
+
+    @Override
+    public void onBackPressed() {
+        finishAffinity();
     }
 }

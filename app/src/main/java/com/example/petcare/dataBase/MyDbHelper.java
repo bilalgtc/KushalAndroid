@@ -57,7 +57,6 @@ public class MyDbHelper extends SQLiteOpenHelper {
         }
     }
 
-
     public boolean updateRecord(ContentValues contentValues, String id) {
         SQLiteDatabase db = this.getWritableDatabase();
         long i = db.update(TABLE_NAME, contentValues, UID + " = ? ", new String[]{id});

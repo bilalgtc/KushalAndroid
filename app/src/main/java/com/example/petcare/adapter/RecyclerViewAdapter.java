@@ -195,7 +195,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         });
     }
 
-
     @Override
     public int getItemCount() {
         return details.size();
@@ -205,7 +204,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         TextView name, pet_type, pet_verity, pet_gender, pet_size, quality1, quality2, quality3, quality4,quality5,quality6;
         ImageView pet_img, edit_petDetails, delete_pet;
         LinearLayout card;
-        MyDbHelper db = new MyDbHelper(context);
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
