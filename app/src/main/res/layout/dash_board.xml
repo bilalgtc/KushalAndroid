@@ -7,9 +7,7 @@
     tools:context=".DashBoard"
     android:background="@drawable/img">
 
-
-
-
+<!--firebase branch-->
     <LinearLayout
         android:layout_centerHorizontal="true"
         android:layout_width="match_parent"
