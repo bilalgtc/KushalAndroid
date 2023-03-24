@@ -1,11 +1,9 @@
 package com.example.petcare.fragments;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -14,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.example.petcare.AddPetDetails;
-import com.example.petcare.dataBase.MyDbHelper;
 import com.example.petcare.R;
 import com.example.petcare.RecyclerViewModel;
 import com.example.petcare.adapter.RecyclerViewAdapter;
@@ -26,7 +23,7 @@ public class HomeFragment extends Fragment {
     RecyclerView recyclerView;
     RecyclerViewAdapter adapter;
     ArrayList<RecyclerViewModel> details = new ArrayList<>();
-    MyDbHelper db;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -36,7 +33,6 @@ public class HomeFragment extends Fragment {
 
         recyclerView = view.findViewById(R.id.recy_view_home);
         addBtn = view.findViewById(R.id.addPet);
-        db = new MyDbHelper(getContext());
 
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,20 +43,6 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        Cursor cursor = new MyDbHelper(getContext()).getData();
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
-
-        if(cursor!=null && cursor.getCount() > 0)
-        {
-            if (cursor.moveToFirst())
-            {
-                do {
-                    RecyclerViewModel obj = new RecyclerViewModel(cursor.getString(0),cursor.getBlob(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getString(5),cursor.getString(6),cursor.getString(7),cursor.getString(8),cursor.getString(9),cursor.getString(10), cursor.getString(11), cursor.getString(12));
-                    details.add(obj);
-                } while (cursor.moveToNext());
-            }
-        }
         adapter = new RecyclerViewAdapter(view.getContext(), details);
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 public class DashBoard extends AppCompatActivity {
 
     Button r_w_gmail;
+    LinearLayout google, facebook;
     TextView sign_in;
 
     @Override
@@ -42,6 +44,20 @@ public class DashBoard extends AppCompatActivity {
             }
         });
 
+        google.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences pref = getSharedPreferences("login", MODE_PRIVATE);
+                SharedPreferences.Editor editor = pref.edit();
+                editor.putBoolean("flag",true);
+                editor.apply();
+
+                Intent intent = new Intent(DashBoard.this, SignInWithGoogle.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(intent);
+            }
+        });
+
         sign_in.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,6 +79,7 @@ public class DashBoard extends AppCompatActivity {
     public void init(){
         r_w_gmail = findViewById(R.id.register_with_mail);
         sign_in = findViewById(R.id.dashboard_sign_in);
-
+        google =findViewById(R.id.c_with_google);
+        facebook = findViewById(R.id.c_with_fb);
     }
 }

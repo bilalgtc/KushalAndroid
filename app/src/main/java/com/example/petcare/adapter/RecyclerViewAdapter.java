@@ -18,11 +18,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.petcare.AddPetDetails;
-import com.example.petcare.dataBase.MyDbHelper;
 import com.example.petcare.R;
 import com.example.petcare.RecyclerViewModel;
 import com.example.petcare.VeterinaryCard;
@@ -168,11 +166,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     @SuppressLint("ResourceAsColor")
                     @Override
                     public void onClick(View v) {
-                        MyDbHelper database = new MyDbHelper(context);
-                        database.deleteData(id);
-                        notifyDataSetChanged();
 
-                        details.remove(position);
+
+
                         del_yes.setBackgroundResource(R.drawable.yes_no_btn_selector);
                         dialog.dismiss();
                     }

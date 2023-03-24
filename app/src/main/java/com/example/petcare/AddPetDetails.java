@@ -1,13 +1,9 @@
 package com.example.petcare;
 
-import static com.example.petcare.dataBase.MyDbHelper.TABLE_NAME;
-
 import android.Manifest;
-import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -33,9 +29,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.petcare.dataBase.MyDbHelper;
 import com.example.petcare.utils.Message;
-import com.example.petcare.fragments.HomeFragment;
 import com.google.android.material.divider.MaterialDivider;
 
 import java.io.ByteArrayOutputStream;
@@ -59,7 +53,6 @@ public class AddPetDetails extends AppCompatActivity {
     public Boolean isEditMode = false;
     Boolean[] flag = {true, false};
     byte[] profile_img_byte;
-    MyDbHelper db = new MyDbHelper(this);
     String id, petNameTxt, petSpeciesTxt, petBreedTxt, petSizeTxt;
 
     //PERMISSION CONSTANTS
@@ -267,20 +260,20 @@ public class AddPetDetails extends AppCompatActivity {
             submit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    updatePet(v);
+//                    updatePet(v);
                 }
             });
         } else {
             submit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    addPet(v);
+//                    addPet(v);
                 }
             });
         }
     }
 
-    private void updatePet(View view) {
+    /*private void updatePet(View view) {
         petNameTxt = pet_name.getText().toString();
         petSpeciesTxt = pet_species.getText().toString();
         petBreedTxt = pet_breed.getText().toString();
@@ -350,9 +343,9 @@ public class AddPetDetails extends AppCompatActivity {
         } else {
             Message.message(this, "failed to update");
         }
-    }
+    }*/
 
-    public void addPet(View view) {
+    /*public void addPet(View view) {
 
         petNameTxt = pet_name.getText().toString();
         petSpeciesTxt = pet_species.getText().toString();
@@ -424,7 +417,7 @@ public class AddPetDetails extends AppCompatActivity {
             startActivity(i_to_home);
             finish();
         }
-    }
+    }*/
 
     private void imagePickDialog() {
         //options to display in dialog
@@ -602,6 +595,6 @@ public class AddPetDetails extends AppCompatActivity {
         toggle5 = findViewById(R.id.toggle5);
         toggle6 = findViewById(R.id.toggle6);
         header_txt = findViewById(R.id.header_text);
-        db = new MyDbHelper(this);
+
     }
 }

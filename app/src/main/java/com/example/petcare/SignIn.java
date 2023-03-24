@@ -1,24 +1,11 @@
 package com.example.petcare;
 
-import static com.example.petcare.dataBase.DbHelper.E_MAIL;
-import static com.example.petcare.dataBase.DbHelper.PASSWORD;
-import static com.example.petcare.dataBase.DbHelper.TABLE_NAME;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-import androidx.core.graphics.drawable.DrawableCompat;
-import androidx.recyclerview.widget.DividerItemDecoration;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.BaseColumns;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.method.PasswordTransformationMethod;
@@ -32,9 +19,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.petcare.dataBase.DbHelper;
-import com.example.petcare.fragments.HomeFragment;
-import com.example.petcare.utils.Message;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+
 import com.google.android.material.divider.MaterialDivider;
 
 public class SignIn extends AppCompatActivity {
@@ -47,7 +34,7 @@ public class SignIn extends AppCompatActivity {
     MaterialDivider divi1, divi2;
     Drawable dr;
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-    DbHelper dbHelper = new DbHelper(this);
+
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -112,7 +99,7 @@ public class SignIn extends AppCompatActivity {
                     Toast.makeText(SignIn.this, "email not found", Toast.LENGTH_SHORT).show();
                 } else {
 
-                    SQLiteDatabase db = dbHelper.getReadableDatabase();
+                  /*  SQLiteDatabase db = dbHelper.getReadableDatabase();
                     String[] projection = {
                             BaseColumns._ID,
                             E_MAIL,
@@ -145,7 +132,7 @@ public class SignIn extends AppCompatActivity {
                         // login failed
                         Message.message(getApplicationContext(), "pls check id and password");
                     }
-                    cursor.close();
+                    cursor.close();*/
                 }
             }
         });

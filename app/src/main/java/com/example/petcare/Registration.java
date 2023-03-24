@@ -21,10 +21,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.petcare.dataBase.DbHelper;
-import com.example.petcare.utils.Message;
 import com.google.android.material.divider.MaterialDivider;
 
 import java.util.Locale;
@@ -38,7 +35,7 @@ public class Registration extends AppCompatActivity {
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     CheckBox check1, check2;
     Drawable dr;
-    DbHelper db = new DbHelper(this);
+
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -166,7 +163,14 @@ public class Registration extends AppCompatActivity {
         sign_up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String mail = email.getText().toString().toLowerCase().trim();
+
+                Intent i_to_home = new Intent(Registration.this, Home.class);
+                startActivity(i_to_home);
+
+
+                // validation part set properly after set of firebase
+
+               /* String mail = email.getText().toString().toLowerCase().trim();
                 if (full_name.getText().toString().trim().equalsIgnoreCase("")) {
                     Toast.makeText(Registration.this, "pls enter name", Toast.LENGTH_SHORT).show();
                 } else if (mail.equalsIgnoreCase("")) {
@@ -190,7 +194,7 @@ public class Registration extends AppCompatActivity {
                     Intent i_to_home = new Intent(Registration.this, SignIn.class);
                     startActivity(i_to_home);
 //                    finish();
-                }
+                }*/
             }
         });
 
@@ -233,7 +237,7 @@ public class Registration extends AppCompatActivity {
         String m_no = phone_no.getText().toString();
         String pwd = password.getText().toString();
 
-        long id = db.insertData(name, emil, m_no, pwd);
+       /* long id = db.insertData(name, emil, m_no, pwd);
         if (id <= 0) {
             Message.message(getApplicationContext(), "Insertion Unsuccessful");
             full_name.setText("");
@@ -247,7 +251,7 @@ public class Registration extends AppCompatActivity {
             email.setText("");
             phone_no.setText("");
             password.setText("");
-        }
+        }*/
     }
 
     private void changeStatusBarColor() {
