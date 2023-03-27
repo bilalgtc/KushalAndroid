@@ -1,5 +1,6 @@
 package com.example.petcare;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
@@ -21,8 +22,14 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.divider.MaterialDivider;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Locale;
 
@@ -35,6 +42,9 @@ public class Registration extends AppCompatActivity {
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     CheckBox check1, check2;
     Drawable dr;
+
+    FirebaseAuth firebaseAuth;
+    FirebaseUser user;
 
 
     @SuppressLint("MissingInflatedId")
@@ -164,13 +174,13 @@ public class Registration extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent i_to_home = new Intent(Registration.this, Home.class);
-                startActivity(i_to_home);
+//                Intent i_to_home = new Intent(Registration.this, Home.class);
+//                startActivity(i_to_home);
 
 
                 // validation part set properly after set of firebase
 
-               /* String mail = email.getText().toString().toLowerCase().trim();
+                String mail = email.getText().toString().toLowerCase().trim();
                 if (full_name.getText().toString().trim().equalsIgnoreCase("")) {
                     Toast.makeText(Registration.this, "pls enter name", Toast.LENGTH_SHORT).show();
                 } else if (mail.equalsIgnoreCase("")) {
@@ -190,11 +200,9 @@ public class Registration extends AppCompatActivity {
                 } else if (!check2.isChecked()) {
                     Toast.makeText(Registration.this, "pls check the terms", Toast.LENGTH_SHORT).show();
                 } else {
-                    addUser(v);
-                    Intent i_to_home = new Intent(Registration.this, SignIn.class);
-                    startActivity(i_to_home);
-//                    finish();
-                }*/
+                    performAuth();
+
+                }
             }
         });
 
@@ -262,6 +270,24 @@ public class Registration extends AppCompatActivity {
         }
     }
 
+    private void performAuth() {
+
+        firebaseAuth.createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    Intent i_to_home = new Intent(Registration.this, SignIn.class);
+                    i_to_home.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(i_to_home);
+                    Toast.makeText(Registration.this, "Registration successful", Toast.LENGTH_SHORT).show();
+
+                } else {
+                    Toast.makeText(Registration.this, "" + task.getException(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
     public void init() {
         f_name = findViewById(R.id.f_name);
         mail = findViewById(R.id.maill);
@@ -281,6 +307,9 @@ public class Registration extends AppCompatActivity {
         phone_no = findViewById(R.id.mobile_no);
         full_name = findViewById(R.id.fullName);
         sign_up = findViewById(R.id.sign_up);
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        user = firebaseAuth.getCurrentUser();
     }
 
     private void imageSizeSet() {

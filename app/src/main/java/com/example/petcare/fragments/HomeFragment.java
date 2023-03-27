@@ -3,7 +3,9 @@ package com.example.petcare.fragments;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -12,9 +14,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.example.petcare.AddPetDetails;
+import com.example.petcare.DBOpreation;
 import com.example.petcare.R;
 import com.example.petcare.RecyclerViewModel;
 import com.example.petcare.adapter.RecyclerViewAdapter;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -22,6 +28,8 @@ public class HomeFragment extends Fragment {
     ImageView addBtn;
     RecyclerView recyclerView;
     RecyclerViewAdapter adapter;
+    DBOpreation dao;
+    String id = null;
     ArrayList<RecyclerViewModel> details = new ArrayList<>();
 
 
@@ -33,6 +41,12 @@ public class HomeFragment extends Fragment {
 
         recyclerView = view.findViewById(R.id.recy_view_home);
         addBtn = view.findViewById(R.id.addPet);
+        dao = new DBOpreation();
+        LinearLayoutManager manager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(manager);
+        recyclerView.setHasFixedSize(true);
+        adapter = new RecyclerViewAdapter(getContext());
+        recyclerView.setAdapter(adapter);
 
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,10 +57,38 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        adapter = new RecyclerViewAdapter(view.getContext(), details);
+        loadData();
+
+
+       /* adapter = new RecyclerViewAdapter(view.getContext(), details);
         recyclerView.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
+        adapter.notifyDataSetChanged();*/
         return view;
+    }
+
+    public void loadData() {
+
+        dao.get(id).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                ArrayList<RecyclerViewModel> data = new ArrayList<>();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    RecyclerViewModel m =  dataSnapshot.getValue(RecyclerViewModel.class);
+                    m.setId(dataSnapshot.getKey());
+                    data.add(m);
+                    id = dataSnapshot.getKey();
+                }
+                adapter.setitems(data);
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
     }
 }
 

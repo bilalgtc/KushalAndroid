@@ -15,11 +15,16 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class DashBoard extends AppCompatActivity {
 
     Button r_w_gmail;
     LinearLayout google, facebook;
     TextView sign_in;
+    FirebaseAuth firebaseAuth;
+    FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +43,7 @@ public class DashBoard extends AppCompatActivity {
         r_w_gmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DashBoard.this,Registration.class);
+                Intent intent = new Intent(DashBoard.this, Registration.class);
                 startActivity(intent);
                 finish();
             }
@@ -49,7 +54,7 @@ public class DashBoard extends AppCompatActivity {
             public void onClick(View v) {
                 SharedPreferences pref = getSharedPreferences("login", MODE_PRIVATE);
                 SharedPreferences.Editor editor = pref.edit();
-                editor.putBoolean("flag",true);
+                editor.putBoolean("flag", true);
                 editor.apply();
 
                 Intent intent = new Intent(DashBoard.this, SignInWithGoogle.class);
@@ -58,10 +63,25 @@ public class DashBoard extends AppCompatActivity {
             }
         });
 
+        facebook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //login success
+                SharedPreferences pref = getSharedPreferences("login", MODE_PRIVATE);
+                SharedPreferences.Editor editor = pref.edit();
+                editor.putBoolean("flag", true);
+                editor.apply();
+
+                Intent intent = new Intent(DashBoard.this, SignInWithFb.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(intent);
+            }
+        });
+
         sign_in.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DashBoard.this,SignIn.class);
+                Intent intent = new Intent(DashBoard.this, SignIn.class);
                 startActivity(intent);
                 finish();
             }
@@ -76,10 +96,13 @@ public class DashBoard extends AppCompatActivity {
         }
     }
 
-    public void init(){
+    public void init() {
         r_w_gmail = findViewById(R.id.register_with_mail);
         sign_in = findViewById(R.id.dashboard_sign_in);
-        google =findViewById(R.id.c_with_google);
+        google = findViewById(R.id.c_with_google);
         facebook = findViewById(R.id.c_with_fb);
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        user = firebaseAuth.getCurrentUser();
     }
 }

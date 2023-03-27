@@ -80,4 +80,8 @@ who used the service.</string>
     <string name="Update">Update</string>
     <string name="Logout">logout</string>
 
+    <string name="facebook_app_id">759667162416301</string>
+    <string name="fb_login_protocol_scheme">fb759667162416301</string>
+    <string name="facebook_client_token">27e6ac8f499be3a9fddc688ceed51b16</string>
+
 </resources>

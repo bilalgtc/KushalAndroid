@@ -16,25 +16,32 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.petcare.AddPetDetails;
+import com.example.petcare.DBOpreation;
 import com.example.petcare.R;
 import com.example.petcare.RecyclerViewModel;
 import com.example.petcare.VeterinaryCard;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
     Context context;
-    private ArrayList<RecyclerViewModel> details;
+    private ArrayList<RecyclerViewModel> details = new ArrayList<>();
 
-    public RecyclerViewAdapter(Context context, ArrayList<RecyclerViewModel> details) {
+    public RecyclerViewAdapter(Context context/*, ArrayList<RecyclerViewModel> details*/) {
         this.context = context;
-        this.details = details;
+//        this.details = details;
+    }
+
+    public void setitems(ArrayList<RecyclerViewModel> data) {
+        details.addAll(data);
     }
 
     @NonNull
@@ -48,26 +55,26 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         RecyclerViewModel item = details.get(position);
-        String id = item.getId();
 
-        byte[] imageBytes = item.getImage();
+        /*byte[] imageBytes = item.getImage();
         if (imageBytes != null && imageBytes.length > 0) {
             // decode the byte array and set the image
             Bitmap bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
             holder.pet_img.setImageBitmap(bitmap);
-        }
+        }*/
 
-        holder.name.setText(item.getName());
+        holder.pet_name.setText(item.getPet_name());
         holder.pet_type.setText(item.getPet_breed());
         holder.pet_verity.setText(item.getPet_species());
+        holder.pet_size.setText(item.getPet_size());
 
-        if (item.getPet_gender().equals("1")){
+       /* if (item.getPet_gender().equals("true")){
             holder.pet_gender.setText("Male");
         }
-        else if (item.getPet_gender().equals("0")){
+        else if (item.getPet_gender().equals("false")){
             holder.pet_gender.setText("Female");
         }
-        holder.pet_size.setText(item.getPet_size());
+
 
         if (item.getQuality1().equals("on")) {
             holder.quality1.setText("Neutured");
@@ -88,17 +95,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             holder.quality4.setText("Friendly with cats");
         }else {
             holder.quality4.setVisibility(View.GONE);
+        }*/
+      /*  if (item.getQuality5().equals("on")) {
+            holder.quality5.setText("Friendly with kids <10 year");
+        }else {
+            holder.quality5.setText("");
         }
-//        if (item.getQuality5().equals("on")) {
-//            holder.quality5.setText("Friendly with kids <10 year");
-//        }else {
-//            holder.quality5.setText("");
-//        }
-//        if (item.getQuality6().equals("on")) {
-//            holder.quality6.setText("Friendly with kids >10 year");
-//        }else {
-//            holder.quality6.setText("");
-//        }
+        if (item.getQuality6().equals("on")) {
+            holder.quality6.setText("Friendly with kids >10 year");
+        }else {
+            holder.quality6.setText("");
+        }*/
 
         holder.card.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,7 +113,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 Intent intent = new Intent(context, VeterinaryCard.class);
 
                 intent.putExtra("pet_image", item.getImage());
-                intent.putExtra("pet_name", item.getName());
+                intent.putExtra("pet_name", item.getPet_name());
                 intent.putExtra("pet_species", item.getPet_species());
                 intent.putExtra("pet_breed", item.getPet_breed());
                 intent.putExtra("pet_gender", item.getPet_gender());
@@ -125,21 +132,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(v.getContext(), AddPetDetails.class);
-                intent.putExtra("_id", id);
-                intent.putExtra("pet_image", item.getImage());
-                intent.putExtra("pet_name", item.getName());
-                intent.putExtra("pet_species", item.getPet_species());
-                intent.putExtra("pet_breed", item.getPet_breed());
-                intent.putExtra("pet_size", item.getPet_size());
-                intent.putExtra("pet_gender", item.getPet_gender());
-                intent.putExtra("quality1", item.getQuality1());
-                intent.putExtra("quality2", item.getQuality2());
-                intent.putExtra("quality3", item.getQuality3());
-                intent.putExtra("quality4", item.getQuality4());
-                intent.putExtra("quality5", item.getQuality5());
-                intent.putExtra("quality6", item.getQuality6());
-                intent.putExtra("isEditMode", true);
+                Intent intent = new Intent(context, AddPetDetails.class);
+                intent.putExtra("EDIT", item);
                 v.getContext().startActivity(intent);
             }
         });
@@ -166,11 +160,19 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     @SuppressLint("ResourceAsColor")
                     @Override
                     public void onClick(View v) {
+                        DBOpreation dao = new DBOpreation();
+                        dao.remove(item.getId()).addOnSuccessListener(suc ->
+                        {
+                            Toast.makeText(context, "Record is removed", Toast.LENGTH_SHORT).show();
+                            notifyItemRemoved(position);
+                            details.remove(item);
+                            del_yes.setBackgroundResource(R.drawable.yes_no_btn_selector);
+                            dialog.dismiss();
 
-
-
-                        del_yes.setBackgroundResource(R.drawable.yes_no_btn_selector);
-                        dialog.dismiss();
+                        }).addOnFailureListener(er ->
+                        {
+                            Toast.makeText(context, "" + er.getMessage(), Toast.LENGTH_SHORT).show();
+                        });
                     }
                 });
 
@@ -197,14 +199,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView name, pet_type, pet_verity, pet_gender, pet_size, quality1, quality2, quality3, quality4,quality5,quality6;
+        TextView pet_name, pet_type, pet_verity, pet_gender, pet_size, quality1, quality2, quality3, quality4,quality5,quality6;
         ImageView pet_img, edit_petDetails, delete_pet;
         LinearLayout card;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             pet_img = itemView.findViewById(R.id.pet_img);
-            name = itemView.findViewById(R.id.pet_name);
+            pet_name = itemView.findViewById(R.id.pet_name);
             pet_type = itemView.findViewById(R.id.pet_type);
             pet_verity = itemView.findViewById(R.id.pet_verity);
             pet_gender = itemView.findViewById(R.id.pet_gender);

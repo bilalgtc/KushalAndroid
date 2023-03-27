@@ -2,6 +2,7 @@ package com.example.petcare;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -19,10 +20,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.divider.MaterialDivider;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class SignIn extends AppCompatActivity {
 
@@ -34,6 +41,8 @@ public class SignIn extends AppCompatActivity {
     MaterialDivider divi1, divi2;
     Drawable dr;
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+    FirebaseAuth firebaseAuth;
+    FirebaseUser user;
 
 
     @SuppressLint("MissingInflatedId")
@@ -98,6 +107,12 @@ public class SignIn extends AppCompatActivity {
                 } else if (!email.getText().toString().trim().matches(emailPattern)) {
                     Toast.makeText(SignIn.this, "email not found", Toast.LENGTH_SHORT).show();
                 } else {
+
+                    SharedPreferences pref = getSharedPreferences("login", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = pref.edit();
+                    editor.putBoolean("flag",true);
+                    editor.apply();
+                    performLogin();
 
                   /*  SQLiteDatabase db = dbHelper.getReadableDatabase();
                     String[] projection = {
@@ -175,6 +190,24 @@ public class SignIn extends AppCompatActivity {
         });
     }
 
+    private void performLogin() {
+        firebaseAuth.signInWithEmailAndPassword(email.getText().toString(), password.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    Intent i_to_home = new Intent(SignIn.this, Home.class);
+                    i_to_home.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(i_to_home);
+                    Toast.makeText(SignIn.this, "Login successful", Toast.LENGTH_SHORT).show();
+
+                } else {
+
+                    Toast.makeText(SignIn.this, "pls check id && pass", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
     private void imageSizeSet() {
         dr = ContextCompat.getDrawable(SignIn.this, R.drawable.success);
         assert dr != null;
@@ -192,6 +225,8 @@ public class SignIn extends AppCompatActivity {
         password = findViewById(R.id.signIn_password);
         email = findViewById(R.id.email_id);
         sing_in = findViewById(R.id.sign_in);
+        firebaseAuth = FirebaseAuth.getInstance();
+        user = firebaseAuth.getCurrentUser();
     }
 
     private void changeStatusBarColor() {

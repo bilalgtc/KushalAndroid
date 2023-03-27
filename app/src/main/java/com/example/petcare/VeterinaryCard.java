@@ -129,7 +129,7 @@ public class VeterinaryCard extends AppCompatActivity {
         pet_breed.setText(petBreedTxt);
         pet_size.setText(petSizeTxt);
 
-        if (petGender.equals("1")) {
+        /*if (petGender.equals("1")) {
             pet_gender.setText("Male");
         } else if (petGender.equals("0")) {
             pet_gender.setText("Female");
@@ -164,7 +164,7 @@ public class VeterinaryCard extends AppCompatActivity {
             statusIcon6.setImageResource(R.drawable.success);
         } else if (qyality6.equals("off")) {
             statusIcon6.setImageResource(R.drawable.unsucess_icon);
-        }
+        }*/
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -1,23 +1,32 @@
 package com.example.petcare;
 
-public class RecyclerViewModel {
-    byte[] image;
-    String id, name,pet_species,pet_breed,pet_gender,pet_size,quality1,quality2,quality3,quality4,quality5,quality6;
+import com.google.firebase.database.Exclude;
 
-    public RecyclerViewModel( String id, byte[] image,  String name, String pet_species, String pet_breed, String pet_size, String pet_gender, String quality1, String quality2, String quality3, String quality4 , String quality5, String quality6){
-        this.id = id;
-        this.image = image;
-        this.name = name;
+import java.io.Serializable;
+
+public class RecyclerViewModel implements Serializable {
+
+    @Exclude
+    byte[] image;
+   private String id, pet_name,pet_species,pet_breed,pet_gender,pet_size,quality1,quality2,quality3,quality4,quality5,quality6;
+
+    public RecyclerViewModel( /*String id, byte[] image,  */String pet_name, String pet_species, String pet_breed, String pet_size, String pet_gender, String quality1, String quality2, String quality3, String quality4 , String quality5, String quality6){
+       /* this.id = id;
+        this.image = image;*/
+        this.pet_name = pet_name;
         this.pet_species = pet_species;
         this.pet_breed = pet_breed;
-        this.pet_gender = pet_gender;
         this.pet_size = pet_size;
+        this.pet_gender = pet_gender;
         this.quality1 = quality1;
         this.quality2 = quality2;
         this.quality3 = quality3;
         this.quality4 = quality4;
         this.quality5 = quality5;
         this.quality6 = quality6;
+    }
+
+    public RecyclerViewModel() {
     }
 
     public String getPet_species() {
@@ -52,12 +61,12 @@ public class RecyclerViewModel {
         this.image = image;
     }
 
-    public String getName() {
-        return name;
+    public String getPet_name() {
+        return pet_name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPet_name(String pet_name) {
+        this.pet_name = pet_name;
     }
 
     public String getPet_gender() {

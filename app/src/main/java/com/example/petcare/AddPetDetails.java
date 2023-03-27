@@ -19,6 +19,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -30,10 +31,13 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.petcare.utils.Message;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.divider.MaterialDivider;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.HashMap;
 
 public class AddPetDetails extends AppCompatActivity {
 
@@ -73,8 +77,8 @@ public class AddPetDetails extends AppCompatActivity {
         changeStatusBarColor();
         init();
 
-        Intent i = getIntent();
-        isEditMode = i.getBooleanExtra("isEditMode", false);
+       /* Intent i = getIntent();
+        isEditMode = i.getBooleanExtra("isEditMode", false);*/
 
         //init permission arrays
         cameraPermission = new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
@@ -179,7 +183,106 @@ public class AddPetDetails extends AppCompatActivity {
             }
         });
 
-        if (isEditMode) {
+        DBOpreation op = new DBOpreation();
+        RecyclerViewModel pet_data = (RecyclerViewModel) getIntent().getSerializableExtra("EDIT");
+        if (pet_data != null) {
+            header_txt.setText("Update Pet Details");
+            submit.setText("Update");
+            pet_name.setText(pet_data.getPet_name());
+            pet_species.setText(pet_data.getPet_species());
+            pet_breed.setText(pet_data.getPet_breed());
+            pet_size.setText(pet_data.getPet_size());
+
+        } else {
+            submit.setText("submit");
+        }
+
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HashMap<String, Object> map = new HashMap<>();
+                map.put("pet_name", pet_name.getText().toString());
+                map.put("pet_species", pet_species.getText().toString());
+                map.put("pet_breed", pet_breed.getText().toString());
+                map.put("pet_size", pet_size.getText().toString());
+
+               /* map.put("pet_gender", flag[0]);
+                map.put("pet_gender", flag[1]);
+
+                if (toggle1.isChecked()) {
+                    map.put("neutered", "on");
+                } else {
+                    map.put("neutered", "off");
+                }
+                if (toggle2.isChecked()) {
+                    map.put("Vaccinated", "on");
+                } else {
+                    map.put("Vaccinated", "off");
+                }
+                if (toggle3.isChecked()) {
+                    map.put("Friendly_with_dogs", "on");
+                } else {
+                    map.put("Friendly_with_dogs", "off");
+                }
+                if (toggle4.isChecked()) {
+                    map.put("Friendly_with_cats", "on");
+                } else {
+                    map.put("Friendly_with_cats", "off");
+                }
+                if (toggle5.isChecked()) {
+                    map.put("Friendly_with_kids_less_then_10_year", "on");
+                } else {
+                    map.put("Friendly_with_kids_less_then_10_year", "off");
+                }
+                if (toggle6.isChecked()) {
+                    map.put("Friendly_with_kids_greater_then_10_year", "on");
+                } else {
+                    map.put("Friendly_with_kids_greater_then_10_year", "off");
+                }*/
+
+                if (pet_data == null) {
+                    op.add(map).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
+                            Toast.makeText(AddPetDetails.this, "pet added", Toast.LENGTH_SHORT).show();
+                            Intent i = new Intent(AddPetDetails.this,Home.class);
+                            startActivity(i);
+                            finish();
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(AddPetDetails.this, "failed to add...", Toast.LENGTH_SHORT).show();
+
+                        }
+                    });
+                } else {
+                    HashMap<String, Object> map11 = new HashMap<>();
+                    map11.put("pet_name", pet_name.getText().toString());
+                    map11.put("pet_species", pet_species.getText().toString());
+                    map11.put("pet_breed", pet_breed.getText().toString());
+                    map11.put("pet_size", pet_size.getText().toString());
+
+                    op.update(pet_data.getId(), map11).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
+                            Toast.makeText(AddPetDetails.this, "pet updated", Toast.LENGTH_SHORT).show();
+                            Intent i = new Intent(AddPetDetails.this,Home.class);
+                            startActivity(i);
+                            finish();
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(AddPetDetails.this, "failed to update...", Toast.LENGTH_SHORT).show();
+
+                        }
+                    });
+                }
+            }
+        });
+
+        /*if (isEditMode) {
             id = i.getStringExtra("_id");
             byte[] img = i.getByteArrayExtra("pet_image");
             String petNameTxt = i.getStringExtra("pet_name");
@@ -270,7 +373,7 @@ public class AddPetDetails extends AppCompatActivity {
 //                    addPet(v);
                 }
             });
-        }
+        }*/
     }
 
     /*private void updatePet(View view) {
