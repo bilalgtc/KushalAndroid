@@ -7,23 +7,24 @@ import java.io.Serializable;
 public class RecyclerViewModel implements Serializable {
 
     @Exclude
-    byte[] image;
-   private String id, pet_name,pet_species,pet_breed,pet_gender,pet_size,quality1,quality2,quality3,quality4,quality5,quality6;
+    String pet_img;
+   private String id, pet_name,pet_species,pet_breed,pet_size;
+   Boolean pet_gender,Neutered,Vaccinated,Friendly_with_dogs,Friendly_with_cats,Friendly_with_kids_less_then_10_year,Friendly_with_kids_greater_then_10_year;
 
-    public RecyclerViewModel( /*String id, byte[] image,  */String pet_name, String pet_species, String pet_breed, String pet_size, String pet_gender, String quality1, String quality2, String quality3, String quality4 , String quality5, String quality6){
-       /* this.id = id;
-        this.image = image;*/
+    public RecyclerViewModel(String pet_img,  String pet_name, String pet_species, String pet_breed, String pet_size, Boolean pet_gender, Boolean Neutered, Boolean Vaccinated, Boolean Friendly_with_dogs, Boolean Friendly_with_cats , Boolean Friendly_with_kids_less_then_10_year, Boolean Friendly_with_kids_greater_then_10_year){
+
+        this.pet_img = pet_img;
         this.pet_name = pet_name;
         this.pet_species = pet_species;
         this.pet_breed = pet_breed;
         this.pet_size = pet_size;
         this.pet_gender = pet_gender;
-        this.quality1 = quality1;
-        this.quality2 = quality2;
-        this.quality3 = quality3;
-        this.quality4 = quality4;
-        this.quality5 = quality5;
-        this.quality6 = quality6;
+        this.Neutered = Neutered;
+        this.Vaccinated = Vaccinated;
+        this.Friendly_with_dogs = Friendly_with_dogs;
+        this.Friendly_with_cats = Friendly_with_cats;
+        this.Friendly_with_kids_less_then_10_year = Friendly_with_kids_less_then_10_year;
+        this.Friendly_with_kids_greater_then_10_year = Friendly_with_kids_greater_then_10_year;
     }
 
     public RecyclerViewModel() {
@@ -53,12 +54,12 @@ public class RecyclerViewModel implements Serializable {
         this.id = id;
     }
 
-    public byte[] getImage() {
-        return image;
+    public String getPet_img() {
+        return pet_img;
     }
 
-    public void setImage(byte[] image) {
-        this.image = image;
+    public void setPet_img(String pet_img) {
+        this.pet_img = pet_img;
     }
 
     public String getPet_name() {
@@ -69,11 +70,11 @@ public class RecyclerViewModel implements Serializable {
         this.pet_name = pet_name;
     }
 
-    public String getPet_gender() {
+    public Boolean getPet_gender() {
         return pet_gender;
     }
 
-    public void setPet_gender(String pet_gender) {
+    public void setPet_gender(Boolean pet_gender) {
         this.pet_gender = pet_gender;
     }
 
@@ -85,50 +86,51 @@ public class RecyclerViewModel implements Serializable {
         this.pet_size = pet_size;
     }
 
-    public String getQuality1() {
-        return quality1;
+    public Boolean getNeutered() {
+        return Neutered;
     }
 
-    public void setQuality1(String quality1) {
-        this.quality1 = quality1;
+    public void setNeutered(Boolean neutered) {
+        Neutered = neutered;
     }
 
-    public String getQuality2() {
-        return quality2;
+    public Boolean getVaccinated() {
+        return Vaccinated;
     }
 
-    public void setQuality2(String quality2) {
-        this.quality2 = quality2;
+    public void setVaccinated(Boolean vaccinated) {
+        Vaccinated = vaccinated;
     }
 
-    public String getQuality3() {
-        return quality3;
+    public Boolean getFriendly_with_dogs() {
+        return Friendly_with_dogs;
     }
 
-    public void setQuality3(String quality3) {
-        this.quality3 = quality3;
+    public void setFriendly_with_dogs(Boolean friendly_with_dogs) {
+        Friendly_with_dogs = friendly_with_dogs;
     }
 
-    public String getQuality4() {
-        return quality4;
-    }
-    public void setQuality4(String quality4) {
-        this.quality4 = quality4;
+    public Boolean getFriendly_with_cats() {
+        return Friendly_with_cats;
     }
 
-    public String getQuality5() {
-        return quality5;
+    public void setFriendly_with_cats(Boolean friendly_with_cats) {
+        Friendly_with_cats = friendly_with_cats;
     }
 
-    public void setQuality5(String quality5) {
-        this.quality5 = quality5;
+    public Boolean getFriendly_with_kids_less_then_10_year() {
+        return Friendly_with_kids_less_then_10_year;
     }
 
-    public String getQuality6() {
-        return quality6;
+    public void setFriendly_with_kids_less_then_10_year(Boolean friendly_with_kids_less_then_10_year) {
+        Friendly_with_kids_less_then_10_year = friendly_with_kids_less_then_10_year;
     }
 
-    public void setQuality6(String quality6) {
-        this.quality6 = quality6;
+    public Boolean getFriendly_with_kids_greater_then_10_year() {
+        return Friendly_with_kids_greater_then_10_year;
+    }
+
+    public void setFriendly_with_kids_greater_then_10_year(Boolean friendly_with_kids_greater_then_10_year) {
+        Friendly_with_kids_greater_then_10_year = friendly_with_kids_greater_then_10_year;
     }
 }

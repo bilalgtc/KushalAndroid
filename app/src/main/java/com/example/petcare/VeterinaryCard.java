@@ -23,6 +23,7 @@ import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.google.android.material.appbar.AppBarLayout;
+import com.squareup.picasso.Picasso;
 
 import java.lang.ref.WeakReference;
 
@@ -68,9 +69,6 @@ public class VeterinaryCard extends AppCompatActivity {
         Animation pop_up = AnimationUtils.loadAnimation(VeterinaryCard.this, R.anim.pop);
         AppBarLayout appBarLayout = findViewById(R.id.appbar);
 
-
-
-
         appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
@@ -102,69 +100,78 @@ public class VeterinaryCard extends AppCompatActivity {
 //                    .setSystemUiVisibility(
 //                            View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
-        Intent i = getIntent();
-        byte[] img = i.getByteArrayExtra("pet_image");
-        String petNameTxt = i.getStringExtra("pet_name");
-        String petSpeciesTxt = i.getStringExtra("pet_species");
-        String petBreedTxt = i.getStringExtra("pet_breed");
-        String petSizeTxt = i.getStringExtra("pet_size");
-        String petGender = i.getStringExtra("pet_gender");
-        String qyality1 = i.getStringExtra("quality1");
-        String qyality2 = i.getStringExtra("quality2");
-        String qyality3 = i.getStringExtra("quality3");
-        String qyality4 = i.getStringExtra("quality4");
-        String qyality5 = i.getStringExtra("quality5");
-        String qyality6 = i.getStringExtra("quality6");
 
-        if (img == null) {
+        RecyclerViewModel pet_data = (RecyclerViewModel) getIntent().getSerializableExtra("EDIT");
+
+        String img = pet_data.getPet_img();
+        if (img != null){
+            Picasso.get().load(img).into(profile_pic);
+        }
+        else {
+            profile_pic.setImageResource(R.drawable.dog_img);
+        }
+
+        String petNameTxt = pet_data.getPet_name();
+        String petSpeciesTxt = pet_data.getPet_species();
+        String petBreedTxt = pet_data.getPet_breed();
+        String petSizeTxt = pet_data.getPet_size();
+        Boolean petGender = pet_data.getPet_gender();
+        Boolean quality1 = pet_data.getNeutered();
+        Boolean quality2 = pet_data.getVaccinated();
+        Boolean quality3 = pet_data.getFriendly_with_dogs();
+        Boolean quality4 = pet_data.getFriendly_with_cats();
+        Boolean quality5 = pet_data.getFriendly_with_kids_less_then_10_year();
+        Boolean quality6 = pet_data.getFriendly_with_kids_greater_then_10_year();
+
+        /*if (img == null) {
             profile_pic.setImageResource(R.drawable.dog_img);
 
         } else {
             Bitmap bitmap = BitmapFactory.decodeByteArray(img, 0, img.length);
             profile_pic.setImageBitmap(bitmap);
-        }
+        }*/
 
         pet_name.setText(petNameTxt);
         pet_type.setText(petSpeciesTxt);
         pet_breed.setText(petBreedTxt);
         pet_size.setText(petSizeTxt);
 
-        /*if (petGender.equals("1")) {
+        if (petGender == true) {
             pet_gender.setText("Male");
-        } else if (petGender.equals("0")) {
+        } else if (petGender == false) {
             pet_gender.setText("Female");
         }
 
-        if (qyality1.equals("on")) {
+        if (quality1 == true) {
             statusIcon1.setImageResource(R.drawable.success);
-        } else if (qyality1.equals("off")) {
+        } else if (quality1 == false) {
             statusIcon1.setImageResource(R.drawable.unsucess_icon);
         }
-        if (qyality2.equals("on")) {
+        if (quality2 == true) {
             statusIcon2.setImageResource(R.drawable.success);
-        } else if (qyality2.equals("off")) {
+        } else if (quality2 == false) {
             statusIcon2.setImageResource(R.drawable.unsucess_icon);
         }
-        if (qyality3.equals("on")) {
+        if (quality3 == true) {
             statusIcon3.setImageResource(R.drawable.success);
-        } else if (qyality3.equals("off")) {
+        } else if (quality3 == false) {
             statusIcon3.setImageResource(R.drawable.unsucess_icon);
         }
-        if (qyality4.equals("on")) {
+        if (quality4 == true) {
             statusIcon4.setImageResource(R.drawable.success);
-        } else if (qyality4.equals("off")) {
+        } else if (quality4 == false) {
             statusIcon4.setImageResource(R.drawable.unsucess_icon);
         }
-        if (qyality5.equals("on")) {
+        if (quality5 == true) {
             statusIcon5.setImageResource(R.drawable.success);
-        } else if (qyality5.equals("off")) {
+        } else if (quality5 == false) {
             statusIcon5.setImageResource(R.drawable.unsucess_icon);
         }
-        if (qyality6.equals("on")) {
+        if (quality6 == true) {
             statusIcon6.setImageResource(R.drawable.success);
-        } else if (qyality6.equals("off")) {
+        } else if (quality6 == false) {
             statusIcon6.setImageResource(R.drawable.unsucess_icon);
-        }*/
+        }
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

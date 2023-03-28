@@ -27,8 +27,12 @@ import com.example.petcare.R;
 import com.example.petcare.RecyclerViewModel;
 import com.example.petcare.VeterinaryCard;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.squareup.picasso.Picasso;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.Serializable;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
@@ -52,79 +56,70 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return viewHolder;
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         RecyclerViewModel item = details.get(position);
 
-        /*byte[] imageBytes = item.getImage();
-        if (imageBytes != null && imageBytes.length > 0) {
-            // decode the byte array and set the image
-            Bitmap bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
-            holder.pet_img.setImageBitmap(bitmap);
-        }*/
+        String  imageBytes = item.getPet_img();
+        if (imageBytes != null){
+            Picasso.get().load(imageBytes).into(holder.pet_img);
+        }
+        else {
+            holder.pet_img.setImageResource(R.drawable.dog_img);
+        }
 
         holder.pet_name.setText(item.getPet_name());
         holder.pet_type.setText(item.getPet_breed());
         holder.pet_verity.setText(item.getPet_species());
         holder.pet_size.setText(item.getPet_size());
 
-       /* if (item.getPet_gender().equals("true")){
+        if (item.getPet_gender() == true){
             holder.pet_gender.setText("Male");
         }
-        else if (item.getPet_gender().equals("false")){
+        else if (item.getPet_gender() == false){
             holder.pet_gender.setText("Female");
         }
 
-
-        if (item.getQuality1().equals("on")) {
-            holder.quality1.setText("Neutured");
-        }else {
+        if (item.getNeutered() == true) {
+            holder.quality1.setText("Neutered");
+        }else if (item.getNeutered() == false){
             holder.quality1.setVisibility(View.GONE);
         }
-        if (item.getQuality2().equals("on")) {
+        if (item.getVaccinated() == true) {
             holder.quality2.setText("Vaccinated");
-        }else {
+        }else if (item.getVaccinated() == false){
             holder.quality2.setVisibility(View.GONE);
         }
-        if (item.getQuality3().equals("on")) {
+        if (item.getFriendly_with_dogs() == true) {
             holder.quality3.setText("Friendly with dogs");
-        }else {
+        }else if (item.getFriendly_with_dogs() == false) {
             holder.quality3.setVisibility(View.GONE);
         }
-        if (item.getQuality4().equals("on")) {
+        if (item.getFriendly_with_cats()== true) {
             holder.quality4.setText("Friendly with cats");
-        }else {
+        }else if (item.getFriendly_with_cats()== false) {
             holder.quality4.setVisibility(View.GONE);
-        }*/
-      /*  if (item.getQuality5().equals("on")) {
+        }
+
+      /*  if (item.getQuality5() == true) {
             holder.quality5.setText("Friendly with kids <10 year");
         }else {
             holder.quality5.setText("");
         }
-        if (item.getQuality6().equals("on")) {
+        if (item.getQuality6() == true) {
             holder.quality6.setText("Friendly with kids >10 year");
         }else {
             holder.quality6.setText("");
         }*/
-
         holder.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, VeterinaryCard.class);
+                Intent i = new Intent(context, VeterinaryCard.class);
 
-                intent.putExtra("pet_image", item.getImage());
-                intent.putExtra("pet_name", item.getPet_name());
-                intent.putExtra("pet_species", item.getPet_species());
-                intent.putExtra("pet_breed", item.getPet_breed());
-                intent.putExtra("pet_gender", item.getPet_gender());
-                intent.putExtra("pet_size", item.getPet_size());
-                intent.putExtra("quality1", item.getQuality1());
-                intent.putExtra("quality2", item.getQuality2());
-                intent.putExtra("quality3", item.getQuality3());
-                intent.putExtra("quality4", item.getQuality4());
-                intent.putExtra("quality5", item.getQuality5());
-                intent.putExtra("quality6", item.getQuality6());
-                v.getContext().startActivity(intent);
+                i.putExtra("EDIT", item);
+                v.getContext().startActivity(i);
+
             }
         });
 
