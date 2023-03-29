@@ -1,6 +1,7 @@
 package com.example.petcare;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -40,12 +41,14 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Random;
+import java.util.UUID;
 
 public class AddPetDetails extends AppCompatActivity {
 
@@ -61,11 +64,13 @@ public class AddPetDetails extends AppCompatActivity {
     Button submit;
     RecyclerView recyclerView;
     SwitchCompat toggle1, toggle2, toggle3, toggle4, toggle5, toggle6;
-    Bitmap imgToStore, bitmap;
+    Bitmap imgToStore;
     Boolean[] flag = {true, false};
-    byte[] profile_img_byte;
-    Boolean quality1, quality2, quality3, quality4, quality5, quality6;
-    String path , img;
+    Boolean petGender, quality1, quality2, quality3, quality4, quality5, quality6;
+    String img;
+    int Temp;
+    FirebaseStorage storage;
+    StorageReference uploader;
 
     //PERMISSION CONSTANTS
     private static final int CAMERA_REQUEST_CODE = 100;
@@ -86,14 +91,15 @@ public class AddPetDetails extends AppCompatActivity {
         changeStatusBarColor();
         init();
 
+        storage = FirebaseStorage.getInstance();
+        uploader = storage.getReference("img" + UUID.randomUUID().toString());
+
         //init permission arrays
         cameraPermission = new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
         storagePermission = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
         if (Build.VERSION.SDK_INT >= 21) {
-            getWindow().getDecorView()
-                    .setSystemUiVisibility(
-                            View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
 
         pet_name.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -148,6 +154,7 @@ public class AddPetDetails extends AppCompatActivity {
         male.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Temp = 1;
                 flag[1] = male.isEnabled();
                 male.setBackgroundResource(R.drawable.male_female_chacked);
                 txt_male.setTextColor(getResources().getColor(R.color.white));
@@ -162,6 +169,7 @@ public class AddPetDetails extends AppCompatActivity {
         female.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Temp = 1;
                 flag[0] = female.isEnabled();
                 female.setBackgroundResource(R.drawable.male_female_chacked);
                 txt_male.setTextColor(getResources().getColor(R.color.black));
@@ -197,23 +205,22 @@ public class AddPetDetails extends AppCompatActivity {
             header_txt.setText("Update Pet Details");
             submit.setText("Update");
             img = pet_data.getPet_img();
-            if (img != null){
+            if (img != null) {
                 Picasso.get().load(img).into(profile_img);
-            }
-            else {
+            } else {
                 profile_img.setImageResource(R.drawable.dog_img);
             }
             pet_name.setText(pet_data.getPet_name());
             pet_species.setText(pet_data.getPet_species());
             pet_breed.setText(pet_data.getPet_breed());
             pet_size.setText(pet_data.getPet_size());
-            Boolean petGender = pet_data.getPet_gender();
-             quality1 = pet_data.getNeutered();
-             quality2 = pet_data.getVaccinated();
-             quality3 = pet_data.getFriendly_with_dogs();
-             quality4 = pet_data.getFriendly_with_cats();
-             quality5 = pet_data.getFriendly_with_kids_less_then_10_year();
-             quality6 = pet_data.getFriendly_with_kids_greater_then_10_year();
+            petGender = pet_data.getPet_gender();
+            quality1 = pet_data.getNeutered();
+            quality2 = pet_data.getVaccinated();
+            quality3 = pet_data.getFriendly_with_dogs();
+            quality4 = pet_data.getFriendly_with_cats();
+            quality5 = pet_data.getFriendly_with_kids_less_then_10_year();
+            quality6 = pet_data.getFriendly_with_kids_greater_then_10_year();
 
             if (petGender == true) {
                 male.setBackgroundResource(R.drawable.male_female_chacked);
@@ -265,93 +272,93 @@ public class AddPetDetails extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
                 if (pet_data == null) {
                     // Add pet to firebase realtime database on btn click
 
-                    FirebaseStorage storage = FirebaseStorage.getInstance();
-                    StorageReference uploader = storage.getReference("img" + new Random().nextInt(50));
+                    if (imageUri == null){
+                        Toast.makeText(AddPetDetails.this, "pls select image...", Toast.LENGTH_SHORT).show();
+                    }else if (pet_name.getText().toString().isEmpty() || pet_species.getText().toString().isEmpty() || pet_breed.getText().toString().isEmpty() || pet_size.getText().toString().isEmpty() ){
+                        Toast.makeText(AddPetDetails.this, "Fields are empty..", Toast.LENGTH_SHORT).show();
+                    }else if (Temp != 1){
+                        Toast.makeText(AddPetDetails.this, "pls select gender", Toast.LENGTH_SHORT).show();
+                    }
+                    else
+                    {
+                        
 
-                    uploader.putFile(imageUri)
-                            .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                                @Override
-                                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                    uploader.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                        @Override
-                                        public void onSuccess(Uri uri) {
+                        //add pet details to fire base
+                        HashMap<String, Object> map = new HashMap<>();
 
-                                            HashMap<String, Object> map = new HashMap<>();
-                                            map.put("pet_img",uri.toString());
-                                            map.put("pet_name", pet_name.getText().toString());
-                                            map.put("pet_species", pet_species.getText().toString());
-                                            map.put("pet_breed", pet_breed.getText().toString());
-                                            map.put("pet_size", pet_size.getText().toString());
+                        // upload img to storage
+                        uploader.putFile(imageUri);
+                        map.put("pet_img", imageUri.toString());
+                        map.put("pet_name", pet_name.getText().toString());
+                        map.put("pet_species", pet_species.getText().toString());
+                        map.put("pet_breed", pet_breed.getText().toString());
+                        map.put("pet_size", pet_size.getText().toString());
 
-                                            map.put("pet_gender", flag[0]);
-                                            map.put("pet_gender", flag[1]);
+                        map.put("pet_gender", flag[0]);
+                        map.put("pet_gender", flag[1]);
 
-                                            if (toggle1.isChecked()) {
-                                                map.put("Neutered", flag[0]);
-                                            } else {
-                                                map.put("Neutered", flag[1]);
-                                            }
-                                            if (toggle2.isChecked()) {
-                                                map.put("Vaccinated", flag[0]);
-                                            } else {
-                                                map.put("Vaccinated", flag[1]);
-                                            }
-                                            if (toggle3.isChecked()) {
-                                                map.put("Friendly_with_dogs", flag[0]);
-                                            } else {
-                                                map.put("Friendly_with_dogs", flag[1]);
-                                            }
-                                            if (toggle4.isChecked()) {
-                                                map.put("Friendly_with_cats", flag[0]);
-                                            } else {
-                                                map.put("Friendly_with_cats", flag[1]);
-                                            }
-                                            if (toggle5.isChecked()) {
-                                                map.put("Friendly_with_kids_less_then_10_year", flag[0]);
-                                            } else {
-                                                map.put("Friendly_with_kids_less_then_10_year", flag[1]);
-                                            }
-                                            if (toggle6.isChecked()) {
-                                                map.put("Friendly_with_kids_greater_then_10_year", flag[0]);
-                                            } else {
-                                                map.put("Friendly_with_kids_greater_then_10_year", flag[1]);
-                                            }
+                        if (toggle1.isChecked()) {
+                            map.put("Neutered", true);
+                        } else {
+                            map.put("Neutered", false);
+                        }
+                        if (toggle2.isChecked()) {
+                            map.put("Vaccinated", true);
+                        } else {
+                            map.put("Vaccinated", false);
+                        }
+                        if (toggle3.isChecked()) {
+                            map.put("Friendly_with_dogs", true);
+                        } else {
+                            map.put("Friendly_with_dogs", false);
+                        }
+                        if (toggle4.isChecked()) {
+                            map.put("Friendly_with_cats", true);
+                        } else {
+                            map.put("Friendly_with_cats", false);
+                        }
+                        if (toggle5.isChecked()) {
+                            map.put("Friendly_with_kids_less_then_10_year", true);
+                        } else {
+                            map.put("Friendly_with_kids_less_then_10_year", false);
+                        }
+                        if (toggle6.isChecked()) {
+                            map.put("Friendly_with_kids_greater_then_10_year", true);
+                        } else {
+                            map.put("Friendly_with_kids_greater_then_10_year", false);
+                        }
 
-                                            op.add(map).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                @Override
-                                                public void onSuccess(Void unused) {
-                                                    Toast.makeText(AddPetDetails.this, "pet added", Toast.LENGTH_SHORT).show();
-                                                    Intent i = new Intent(AddPetDetails.this, Home.class);
-                                                    startActivity(i);
-                                                    finish();
-                                                }
-                                            }).addOnFailureListener(new OnFailureListener() {
-                                                @Override
-                                                public void onFailure(@NonNull Exception e) {
-                                                    Toast.makeText(AddPetDetails.this, "failed to add...", Toast.LENGTH_SHORT).show();
+                        op.add(map).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                Toast.makeText(AddPetDetails.this, "pet added", Toast.LENGTH_SHORT).show();
+                                Intent i = new Intent(AddPetDetails.this, Home.class);
+                                startActivity(i);
+                                finish();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(AddPetDetails.this, "failed to add...", Toast.LENGTH_SHORT).show();
 
-                                                }
-                                            });
-                                        }
-                                    });
-                                }
-                            })
-                            .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                                @Override
-                                public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
-                                    Toast.makeText(AddPetDetails.this, "uploading", Toast.LENGTH_SHORT).show();
-                                }
-                            });
-
+                            }
+                        });
+                    }
                 } else {
-                    // Update pet to firebase realtime database on btn click
-
+                    // Update pet detail to firebase realtime database on btn click
                     HashMap<String, Object> map_update = new HashMap<>();
-                    map_update.put("pet_img",imageUri);
+                    if (imageUri!= null){
+                        uploader.putFile(imageUri);
+                        map_update.put("pet_img", imageUri.toString());
+                    }else {
+                        Uri my = Uri.parse(img);
+                        uploader.putFile(my);
+                        map_update.put("pet_img",my.toString());
+                    }
+
                     map_update.put("pet_name", pet_name.getText().toString());
                     map_update.put("pet_species", pet_species.getText().toString());
                     map_update.put("pet_breed", pet_breed.getText().toString());
@@ -360,34 +367,34 @@ public class AddPetDetails extends AppCompatActivity {
                     map_update.put("pet_gender", flag[1]);
 
                     if (toggle1.isChecked()) {
-                        map_update.put("Neutered", flag[0]);
+                        map_update.put("Neutered", true);
                     } else {
-                        map_update.put("Neutered", flag[1]);
+                        map_update.put("Neutered", false);
                     }
                     if (toggle2.isChecked()) {
-                        map_update.put("Vaccinated", flag[0]);
+                        map_update.put("Vaccinated", true);
                     } else {
-                        map_update.put("Vaccinated", flag[1]);
+                        map_update.put("Vaccinated", false);
                     }
                     if (toggle3.isChecked()) {
-                        map_update.put("Friendly_with_dogs", flag[0]);
+                        map_update.put("Friendly_with_dogs", true);
                     } else {
-                        map_update.put("Friendly_with_dogs", flag[1]);
+                        map_update.put("Friendly_with_dogs", false);
                     }
                     if (toggle4.isChecked()) {
-                        map_update.put("Friendly_with_cats", flag[0]);
+                        map_update.put("Friendly_with_cats", true);
                     } else {
-                        map_update.put("Friendly_with_cats", flag[1]);
+                        map_update.put("Friendly_with_cats", false);
                     }
                     if (toggle5.isChecked()) {
-                        map_update.put("Friendly_with_kids_less_then_10_year", flag[0]);
+                        map_update.put("Friendly_with_kids_less_then_10_year", true);
                     } else {
-                        map_update.put("Friendly_with_kids_less_then_10_year", flag[1]);
+                        map_update.put("Friendly_with_kids_less_then_10_year", false);
                     }
                     if (toggle6.isChecked()) {
-                        map_update.put("Friendly_with_kids_greater_then_10_year", flag[0]);
+                        map_update.put("Friendly_with_kids_greater_then_10_year", true);
                     } else {
-                        map_update.put("Friendly_with_kids_greater_then_10_year", flag[1]);
+                        map_update.put("Friendly_with_kids_greater_then_10_year", false);
                     }
 
                     op.update(pet_data.getId(), map_update).addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -408,245 +415,7 @@ public class AddPetDetails extends AppCompatActivity {
                 }
             }
         });
-        /*if (isEditMode) {
-            id = i.getStringExtra("_id");
-            byte[] img = i.getByteArrayExtra("pet_image");
-            String petNameTxt = i.getStringExtra("pet_name");
-            String petSpeciesTxt = i.getStringExtra("pet_species");
-            String petBreedTxt = i.getStringExtra("pet_breed");
-            String petSizeTxt = i.getStringExtra("pet_size");
-            String petGender = i.getStringExtra("pet_gender");
-            String qyality1 = i.getStringExtra("quality1");
-            String qyality2 = i.getStringExtra("quality2");
-            String qyality3 = i.getStringExtra("quality3");
-            String qyality4 = i.getStringExtra("quality4");
-            String qyality5 = i.getStringExtra("quality5");
-            String qyality6 = i.getStringExtra("quality6");
-
-
-            if (img == null) {
-                profile_img.setImageResource(R.drawable.dog_img);
-
-            } else if (img.equals(img)){
-                imgToStore = BitmapFactory.decodeByteArray(img, 0, img.length);
-                profile_img.setImageBitmap(imgToStore);
-            }
-            else {
-                bitmap = BitmapFactory.decodeByteArray(img, 0, img.length);
-                profile_img.setImageBitmap(bitmap);
-            }
-            pet_name.setText(petNameTxt);
-            pet_species.setText(petSpeciesTxt);
-            pet_breed.setText(petBreedTxt);
-            pet_size.setText(petSizeTxt);
-
-            if (petGender.equals("1")) {
-                male.setBackgroundResource(R.drawable.male_female_chacked);
-                txt_male.setTextColor(getResources().getColor(R.color.white));
-                icon_male.setImageResource(R.drawable.male_icon_white);
-
-            } else if (petGender.equals("0")) {
-                female.setBackgroundResource(R.drawable.male_female_chacked);
-                txt_female.setTextColor(getResources().getColor(R.color.white));
-                icon_female.setImageResource(R.drawable.female_icon_white);
-            }
-
-            if (qyality1.equals("on")) {
-                toggle1.setChecked(true);
-            } else if (qyality1.equals("off")) {
-                toggle1.setChecked(false);
-            }
-            if (qyality2.equals("on")) {
-                toggle2.setChecked(true);
-            } else if (qyality2.equals("off")) {
-                toggle2.setChecked(false);
-            }
-            if (qyality3.equals("on")) {
-                toggle3.setChecked(true);
-            } else if (qyality3.equals("off")) {
-                toggle3.setChecked(false);
-            }
-            if (qyality4.equals("on")) {
-                toggle4.setChecked(true);
-            } else if (qyality4.equals("off")) {
-                toggle4.setChecked(false);
-            }
-            if (qyality5.equals("on")) {
-                toggle5.setChecked(true);
-            } else if (qyality4.equals("off")) {
-                toggle5.setChecked(false);
-            }
-            if (qyality6.equals("on")) {
-                toggle6.setChecked(true);
-            } else if (qyality4.equals("off")) {
-                toggle6.setChecked(false);
-            }
-            String header = "Update pet details";
-            String update = "update";
-            header_txt.setText(header);
-            submit.setText(update);
-
-            submit.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-//                    updatePet(v);
-                }
-            });
-        } else {
-            submit.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-//                    addPet(v);
-                }
-            });
-        }*/
     }
-    /*private void updatePet(View view) {
-        petNameTxt = pet_name.getText().toString();
-        petSpeciesTxt = pet_species.getText().toString();
-        petBreedTxt = pet_breed.getText().toString();
-        petSizeTxt = pet_size.getText().toString();
-        ContentValues contentValues = new ContentValues();
-
-//        if (male.isPressed()) {
-//            flag = true;
-//        } else if (female.isPressed()) {
-//            flag = false;
-//        }
-
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-
-        if (imgToStore == null) {
-            profile_img.setImageResource(R.drawable.dog_img);
-        }
-        else {
-            imgToStore.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
-            profile_img_byte = outputStream.toByteArray();
-        }
-
-        contentValues.put("pet_image", profile_img_byte);
-        contentValues.put("pet_name", petNameTxt);
-        contentValues.put("pet_species", petSpeciesTxt);
-        contentValues.put("pet_breed", petBreedTxt);
-        contentValues.put("pet_size", petSizeTxt);
-        contentValues.put("pet_gender", flag[0]);
-        contentValues.put("pet_gender", flag[1]);
-
-        if (toggle1.isChecked()) {
-            contentValues.put("neutered", "on");
-        } else {
-            contentValues.put("neutered", "off");
-        }
-        if (toggle2.isChecked()) {
-            contentValues.put("Vaccinated", "on");
-        } else {
-            contentValues.put("Vaccinated", "off");
-        }
-        if (toggle3.isChecked()) {
-            contentValues.put("Friendly_with_dogs", "on");
-        } else {
-            contentValues.put("Friendly_with_dogs", "off");
-        }
-        if (toggle4.isChecked()) {
-            contentValues.put("Friendly_with_cats", "on");
-        } else {
-            contentValues.put("Friendly_with_cats", "off");
-        }
-        if (toggle5.isChecked()) {
-            contentValues.put("Friendly_with_kids_less_then_10_year", "on");
-        } else {
-            contentValues.put("Friendly_with_kids_less_then_10_year", "off");
-        }
-        if (toggle6.isChecked()) {
-            contentValues.put("Friendly_with_kids_greater_then_10_year", "on");
-        } else {
-            contentValues.put("Friendly_with_kids_greater_then_10_year", "off");
-        }
-        boolean b = db.updateRecord(contentValues, id);
-        if (b) {
-            Message.message(this, "pet updated");
-            Intent i_to_home = new Intent(getApplicationContext(), Home.class);
-            startActivity(i_to_home);
-            finish();
-        } else {
-            Message.message(this, "failed to update");
-        }
-    }*/
-
-    /*public void addPet(View view) {
-
-        petNameTxt = pet_name.getText().toString();
-        petSpeciesTxt = pet_species.getText().toString();
-        petBreedTxt = pet_breed.getText().toString();
-        petSizeTxt = pet_size.getText().toString();
-
-        if (petNameTxt.isEmpty()) {
-            Message.message(getApplicationContext(), "pls enter name");
-        } else if (petSpeciesTxt.isEmpty()) {
-            Message.message(getApplicationContext(), "pls enter pet species");
-        } else if (petBreedTxt.isEmpty()) {
-            Message.message(getApplicationContext(), "pls enter pet breed");
-        } else if (petSizeTxt.isEmpty()) {
-            Message.message(getApplicationContext(), "pls enter pet size");
-        } else {
-
-            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-            if (imgToStore ==null){
-                profile_img.setImageResource(R.drawable.dog_img);
-            }else {
-                imgToStore.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
-                profile_img_byte = outputStream.toByteArray();
-            }
-
-            SQLiteDatabase database = db.getWritableDatabase();
-            ContentValues contentValues = new ContentValues();
-            contentValues.put("pet_image", profile_img_byte);
-            contentValues.put("pet_name", petNameTxt);
-            contentValues.put("pet_species", petSpeciesTxt);
-            contentValues.put("pet_breed", petBreedTxt);
-            contentValues.put("pet_size", petSizeTxt);
-            contentValues.put("pet_gender", flag[0]);
-            contentValues.put("pet_gender", flag[1]);
-
-            if (toggle1.isChecked()) {
-                contentValues.put("neutered", "on");
-            } else {
-                contentValues.put("neutered", "off");
-            }
-            if (toggle2.isChecked()) {
-                contentValues.put("Vaccinated", "on");
-            } else {
-                contentValues.put("Vaccinated", "off");
-            }
-            if (toggle3.isChecked()) {
-                contentValues.put("Friendly_with_dogs", "on");
-            } else {
-                contentValues.put("Friendly_with_dogs", "off");
-            }
-            if (toggle4.isChecked()) {
-                contentValues.put("Friendly_with_cats", "on");
-            } else {
-                contentValues.put("Friendly_with_cats", "off");
-            }
-            if (toggle5.isChecked()) {
-                contentValues.put("Friendly_with_kids_less_then_10_year", "on");
-            } else {
-                contentValues.put("Friendly_with_kids_less_then_10_year", "off");
-            }
-            if (toggle6.isChecked()) {
-                contentValues.put("Friendly_with_kids_greater_then_10_year", "on");
-            } else {
-                contentValues.put("Friendly_with_kids_greater_then_10_year", "off");
-            }
-
-            database.insert(TABLE_NAME, null, contentValues);
-            Message.message(this, "pet added");
-            Intent i_to_home = new Intent(getApplicationContext(), Home.class);
-            startActivity(i_to_home);
-            finish();
-        }
-    }*/
-
     private void imagePickDialog() {
         //options to display in dialog
         String[] options = {"Camera", "Gallery"};
@@ -708,10 +477,8 @@ public class AddPetDetails extends AppCompatActivity {
 
         //check camera permission is enabled or not
 
-        boolean result = ContextCompat.checkSelfPermission(this,
-                Manifest.permission.CAMERA) == (PackageManager.PERMISSION_GRANTED);
-        boolean result1 = ContextCompat.checkSelfPermission(this,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE) == (PackageManager.PERMISSION_GRANTED);
+        boolean result = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == (PackageManager.PERMISSION_GRANTED);
+        boolean result1 = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == (PackageManager.PERMISSION_GRANTED);
         return result && result1;
     }
 
@@ -770,8 +537,15 @@ public class AddPetDetails extends AppCompatActivity {
         if (resultCode == RESULT_OK) {
             //image is picked
             if (requestCode == IMAGE_PICK_CAMERA_CODE) {
-                bitmap = (Bitmap) (data.getExtras().get("data"));
-                profile_img.setImageBitmap(bitmap);
+
+                Bundle extras = data.getExtras();
+                imgToStore = (Bitmap) extras.get("data");
+                profile_img.setImageBitmap(imgToStore);
+                imageUri = getImageUri(getApplicationContext(), imgToStore);
+
+
+                /*bitmap = (Bitmap) (data.getExtras().get("data"));
+                profile_img.setImageBitmap(bitmap);*/
 
 
             } else if (requestCode == IMAGE_PICK_GALLERY_CODE && data != null && data.getData() != null) {
@@ -789,6 +563,13 @@ public class AddPetDetails extends AppCompatActivity {
             Message.message(this, "error");
         }
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    private Uri getImageUri(Context context, Bitmap bitmap) {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        String path = MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, "title", null);
+        return Uri.parse(path);
     }
 
     public void init() {

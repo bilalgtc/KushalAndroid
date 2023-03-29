@@ -1,11 +1,11 @@
 package com.example.petcare.adapter;
 
 
+import static androidx.core.app.ActivityCompat.recreate;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,16 +23,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.petcare.AddPetDetails;
 import com.example.petcare.DBOpreation;
+import com.example.petcare.Home;
 import com.example.petcare.R;
 import com.example.petcare.RecyclerViewModel;
 import com.example.petcare.VeterinaryCard;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.squareup.picasso.Picasso;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.Serializable;
-import java.net.URL;
 import java.util.ArrayList;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
@@ -61,11 +58,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(@NonNull RecyclerViewAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         RecyclerViewModel item = details.get(position);
 
-        String  imageBytes = item.getPet_img();
-        if (imageBytes != null){
+        String imageBytes = item.getPet_img();
+        if (imageBytes != null) {
             Picasso.get().load(imageBytes).into(holder.pet_img);
-        }
-        else {
+        } else {
             holder.pet_img.setImageResource(R.drawable.dog_img);
         }
 
@@ -74,31 +70,30 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.pet_verity.setText(item.getPet_species());
         holder.pet_size.setText(item.getPet_size());
 
-        if (item.getPet_gender() == true){
+        if (item.getPet_gender() == true) {
             holder.pet_gender.setText("Male");
-        }
-        else if (item.getPet_gender() == false){
+        } else if (item.getPet_gender() == false) {
             holder.pet_gender.setText("Female");
         }
 
         if (item.getNeutered() == true) {
             holder.quality1.setText("Neutered");
-        }else if (item.getNeutered() == false){
+        } else {
             holder.quality1.setVisibility(View.GONE);
         }
         if (item.getVaccinated() == true) {
             holder.quality2.setText("Vaccinated");
-        }else if (item.getVaccinated() == false){
+        } else {
             holder.quality2.setVisibility(View.GONE);
         }
         if (item.getFriendly_with_dogs() == true) {
             holder.quality3.setText("Friendly with dogs");
-        }else if (item.getFriendly_with_dogs() == false) {
+        } else {
             holder.quality3.setVisibility(View.GONE);
         }
-        if (item.getFriendly_with_cats()== true) {
+        if (item.getFriendly_with_cats() == true) {
             holder.quality4.setText("Friendly with cats");
-        }else if (item.getFriendly_with_cats()== false) {
+        } else {
             holder.quality4.setVisibility(View.GONE);
         }
 
@@ -162,7 +157,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                             notifyItemRemoved(position);
                             details.remove(item);
                             del_yes.setBackgroundResource(R.drawable.yes_no_btn_selector);
+
+                            Intent i = new Intent(context, Home.class);
+                            context.startActivity(i);
                             dialog.dismiss();
+
 
                         }).addOnFailureListener(er ->
                         {
@@ -194,7 +193,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView pet_name, pet_type, pet_verity, pet_gender, pet_size, quality1, quality2, quality3, quality4,quality5,quality6;
+        TextView pet_name, pet_type, pet_verity, pet_gender, pet_size, quality1, quality2, quality3, quality4, quality5, quality6;
         ImageView pet_img, edit_petDetails, delete_pet;
         LinearLayout card;
 
