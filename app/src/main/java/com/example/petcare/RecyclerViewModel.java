@@ -1,7 +1,6 @@
 package com.example.petcare;
 
 import com.google.firebase.database.Exclude;
-
 import java.io.Serializable;
 
 public class RecyclerViewModel implements Serializable {

@@ -1,11 +1,5 @@
 package com.example.petcare;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -13,8 +7,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.ImageView;
-
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import com.example.petcare.fragments.AppointmanetFragment;
 import com.example.petcare.fragments.ExploreFragment;
 import com.example.petcare.fragments.HomeFragment;

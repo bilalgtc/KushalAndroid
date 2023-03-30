@@ -3,7 +3,6 @@ package com.example.petcare;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -14,7 +13,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
-
 import com.example.petcare.adapter.sliderPagerAdapter;
 import com.tbuonomo.viewpagerdotsindicator.DotsIndicator;
 

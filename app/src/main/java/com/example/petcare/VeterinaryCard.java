@@ -41,31 +41,6 @@ public class VeterinaryCard extends AppCompatActivity {
         setContentView(R.layout.veterinary_card);
         init();
 
-
-//        Animation pop_up = AnimationUtils.loadAnimation(VeterinaryCard.this, R.anim.pop);
-//        AppBarLayout appBarLayout = findViewById(R.id.appbar);
-//
-//        card.setTranslationY(-card.getHeight());
-//
-//        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
-//
-//            int totalScrollRange = appBarLayout.getTotalScrollRange();
-//            float halfwayPoint = -totalScrollRange / 1.28f;
-//
-//            @Override
-//            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-//                if (verticalOffset <= halfwayPoint) {
-//
-//                    card.setVisibility(View.GONE);
-////                    card.setAnimation(pop_up);
-//
-//                } else if (verticalOffset == 0) {
-//                    card.setVisibility(View.VISIBLE);
-////                    card.setAnimation(pop_up);
-//                }
-//            }
-//        });
-
         Animation pop_up = AnimationUtils.loadAnimation(VeterinaryCard.this, R.anim.pop);
         AppBarLayout appBarLayout = findViewById(R.id.appbar);
 
@@ -77,7 +52,6 @@ public class VeterinaryCard extends AppCompatActivity {
                 float halfwayPoint = -totalScrollRange / 1.28f;
 
                 if (verticalOffset <= halfwayPoint) {
-
                     card.setVisibility(View.GONE);
 //                    card.setAnimation(pop_up);
 

@@ -1,11 +1,9 @@
 package com.example.petcare.fragments;
 
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +11,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.petcare.R;
-
 
 public class SliderItemFragment extends Fragment {
     private static final String ARG_PARAM1 = "slider-position";

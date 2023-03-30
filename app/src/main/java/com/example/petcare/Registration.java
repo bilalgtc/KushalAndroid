@@ -174,12 +174,6 @@ public class Registration extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-//                Intent i_to_home = new Intent(Registration.this, Home.class);
-//                startActivity(i_to_home);
-
-
-                // validation part set properly after set of firebase
-
                 String mail = email.getText().toString().toLowerCase().trim();
                 if (full_name.getText().toString().trim().equalsIgnoreCase("")) {
                     Toast.makeText(Registration.this, "pls enter name", Toast.LENGTH_SHORT).show();
@@ -307,7 +301,6 @@ public class Registration extends AppCompatActivity {
         phone_no = findViewById(R.id.mobile_no);
         full_name = findViewById(R.id.fullName);
         sign_up = findViewById(R.id.sign_up);
-
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
     }

@@ -1,8 +1,4 @@
 package com.example.petcare.adapter;
-
-
-import static androidx.core.app.ActivityCompat.recreate;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -36,9 +32,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     Context context;
     private ArrayList<RecyclerViewModel> details = new ArrayList<>();
 
-    public RecyclerViewAdapter(Context context/*, ArrayList<RecyclerViewModel> details*/) {
+    public RecyclerViewAdapter(Context context) {
         this.context = context;
-//        this.details = details;
     }
 
     public void setitems(ArrayList<RecyclerViewModel> data) {

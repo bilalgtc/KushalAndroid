@@ -114,40 +114,6 @@ public class SignIn extends AppCompatActivity {
                     editor.apply();
                     performLogin();
 
-                  /*  SQLiteDatabase db = dbHelper.getReadableDatabase();
-                    String[] projection = {
-                            BaseColumns._ID,
-                            E_MAIL,
-                            PASSWORD
-                    };
-                    String selection = E_MAIL + " = ? AND " + PASSWORD + " = ?";
-                    String[] selectionArgs = {email.getText().toString(), password.getText().toString()};
-                    Cursor cursor = db.query(
-                            TABLE_NAME,
-                            projection,
-                            selection,
-                            selectionArgs,
-                            null,
-                            null,
-                            null
-                    );
-                    int count = cursor.getCount();
-                    if (count > 0) {
-                        //login success
-                        SharedPreferences pref = getSharedPreferences("login", MODE_PRIVATE);
-                        SharedPreferences.Editor editor = pref.edit();
-                        editor.putBoolean("flag",true);
-                        editor.apply();
-
-                        Message.message(getApplicationContext(), "login Successful");
-                        Intent i = new Intent(SignIn.this, Home.class);
-                        startActivity(i);
-                        finish();
-                    } else {
-                        // login failed
-                        Message.message(getApplicationContext(), "pls check id and password");
-                    }
-                    cursor.close();*/
                 }
             }
         });

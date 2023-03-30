@@ -30,8 +30,6 @@ public class HomeFragment extends Fragment {
     RecyclerViewAdapter adapter;
     DBOpreation dao;
     String id = null;
-    ArrayList<RecyclerViewModel> details = new ArrayList<>();
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -59,15 +57,10 @@ public class HomeFragment extends Fragment {
 
         loadData();
 
-
-       /* adapter = new RecyclerViewAdapter(view.getContext(), details);
-        recyclerView.setAdapter(adapter);
-        adapter.notifyDataSetChanged();*/
         return view;
     }
 
     public void loadData() {
-
         dao.get(id).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -82,10 +75,8 @@ public class HomeFragment extends Fragment {
                 adapter.setitems(data);
                 adapter.notifyDataSetChanged();
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
 

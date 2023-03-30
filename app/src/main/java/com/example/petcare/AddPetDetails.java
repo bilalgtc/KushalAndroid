@@ -197,11 +197,9 @@ public class AddPetDetails extends AppCompatActivity {
             }
         });
 
-
         DBOpreation op = new DBOpreation();
         RecyclerViewModel pet_data = (RecyclerViewModel) getIntent().getSerializableExtra("EDIT");
         if (pet_data != null) {
-
             header_txt.setText("Update Pet Details");
             submit.setText("Update");
             img = pet_data.getPet_img();
@@ -271,21 +269,23 @@ public class AddPetDetails extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 if (pet_data == null) {
                     // Add pet to firebase realtime database on btn click
-
                     if (imageUri == null){
                         Toast.makeText(AddPetDetails.this, "pls select image...", Toast.LENGTH_SHORT).show();
-                    }else if (pet_name.getText().toString().isEmpty() || pet_species.getText().toString().isEmpty() || pet_breed.getText().toString().isEmpty() || pet_size.getText().toString().isEmpty() ){
-                        Toast.makeText(AddPetDetails.this, "Fields are empty..", Toast.LENGTH_SHORT).show();
+                    }else if (pet_name.getText().toString().isEmpty()){
+                        Toast.makeText(AddPetDetails.this, "pls enter name..", Toast.LENGTH_SHORT).show();
+                    }else if (pet_species.getText().toString().isEmpty()){
+                        Toast.makeText(AddPetDetails.this, "pls enter species..", Toast.LENGTH_SHORT).show();
+                    }else if (pet_breed.getText().toString().isEmpty()){
+                        Toast.makeText(AddPetDetails.this, "pls enter breed..", Toast.LENGTH_SHORT).show();
+                    }else if (pet_size.getText().toString().isEmpty() ){
+                        Toast.makeText(AddPetDetails.this, "pls enter size..", Toast.LENGTH_SHORT).show();
                     }else if (Temp != 1){
-                        Toast.makeText(AddPetDetails.this, "pls select gender", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AddPetDetails.this, "pls select gender..", Toast.LENGTH_SHORT).show();
                     }
                     else
                     {
-                        
-
                         //add pet details to fire base
                         HashMap<String, Object> map = new HashMap<>();
 
@@ -537,23 +537,16 @@ public class AddPetDetails extends AppCompatActivity {
         if (resultCode == RESULT_OK) {
             //image is picked
             if (requestCode == IMAGE_PICK_CAMERA_CODE) {
-
                 Bundle extras = data.getExtras();
                 imgToStore = (Bitmap) extras.get("data");
                 profile_img.setImageBitmap(imgToStore);
                 imageUri = getImageUri(getApplicationContext(), imgToStore);
-
-
-                /*bitmap = (Bitmap) (data.getExtras().get("data"));
-                profile_img.setImageBitmap(bitmap);*/
-
 
             } else if (requestCode == IMAGE_PICK_GALLERY_CODE && data != null && data.getData() != null) {
 
                 imageUri = data.getData();
                 try {
                     imgToStore = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
-
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
