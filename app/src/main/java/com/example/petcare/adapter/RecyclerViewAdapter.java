@@ -1,4 +1,5 @@
 package com.example.petcare.adapter;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -23,7 +24,13 @@ import com.example.petcare.Home;
 import com.example.petcare.R;
 import com.example.petcare.RecyclerViewModel;
 import com.example.petcare.VeterinaryCard;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -50,7 +57,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @SuppressLint("SetTextI18n")
     @Override
-    public void onBindViewHolder(@NonNull RecyclerViewAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
+    public void onBindViewHolder(@NonNull RecyclerViewAdapter.ViewHolder holder, @SuppressLint("RecyclerView") final int position) {
         RecyclerViewModel item = details.get(position);
 
         String imageBytes = item.getPet_img();
@@ -149,11 +156,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                         dao.remove(item.getId()).addOnSuccessListener(suc ->
                         {
                             Toast.makeText(context, "Record is removed", Toast.LENGTH_SHORT).show();
-                            notifyItemRemoved(position);
-                            details.remove(item);
-                            del_yes.setBackgroundResource(R.drawable.yes_no_btn_selector);
 
+                            details.remove(item);
+                            notifyItemRemoved(position);
+                            del_yes.setBackgroundResource(R.drawable.yes_no_btn_selector);
                             Intent i = new Intent(context, Home.class);
+                            i.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                             context.startActivity(i);
                             dialog.dismiss();
 
@@ -211,4 +219,5 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             card = itemView.findViewById(R.id.card);
         }
     }
+
 }

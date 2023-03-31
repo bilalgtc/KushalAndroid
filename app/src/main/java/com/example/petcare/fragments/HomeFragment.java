@@ -1,5 +1,6 @@
 package com.example.petcare.fragments;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -8,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,6 +48,7 @@ public class HomeFragment extends Fragment {
         adapter = new RecyclerViewAdapter(getContext());
         recyclerView.setAdapter(adapter);
 
+
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,18 +59,18 @@ public class HomeFragment extends Fragment {
         });
 
         loadData();
-
         return view;
     }
 
     public void loadData() {
         dao.get(id).addValueEventListener(new ValueEventListener() {
+            @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 ArrayList<RecyclerViewModel> data = new ArrayList<>();
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
-                    RecyclerViewModel m =  dataSnapshot.getValue(RecyclerViewModel.class);
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    RecyclerViewModel m = dataSnapshot.getValue(RecyclerViewModel.class);
                     m.setId(dataSnapshot.getKey());
                     data.add(m);
                     id = dataSnapshot.getKey();
@@ -75,12 +78,14 @@ public class HomeFragment extends Fragment {
                 adapter.setitems(data);
                 adapter.notifyDataSetChanged();
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
 
     }
+
 }
 
 
