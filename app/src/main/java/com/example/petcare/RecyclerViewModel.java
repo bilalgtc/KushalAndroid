@@ -10,6 +10,8 @@ public class RecyclerViewModel implements Serializable {
    private String id, pet_name,pet_species,pet_breed,pet_size;
    Boolean pet_gender,Neutered,Vaccinated,Friendly_with_dogs,Friendly_with_cats,Friendly_with_kids_less_then_10_year,Friendly_with_kids_greater_then_10_year;
 
+    public RecyclerViewModel() {
+    }
 
     public String getPet_species() {
         return pet_species;

@@ -12,6 +12,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -22,6 +23,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.LongDef;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -32,9 +34,14 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.petcare.utils.Message;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.divider.MaterialDivider;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -397,6 +404,24 @@ public class AddPetDetails extends AppCompatActivity {
                         map_update.put("Friendly_with_kids_greater_then_10_year", false);
                     }
 
+                   /* FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    FirebaseDatabase.getInstance().getReference().child("PetCare").child("Users").child(user.getUid()).child(pet_data.getId()).updateChildren(map_update).
+                            addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    Toast.makeText(AddPetDetails.this, "pet updated", Toast.LENGTH_SHORT).show();
+                                    Intent i = new Intent(AddPetDetails.this, Home.class);
+                                    startActivity(i);
+                                    finish();
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(AddPetDetails.this, "failed to update...", Toast.LENGTH_SHORT).show();
+                                }
+                            });*/
+
+                    Log.d("uid","update uid :-"+pet_data.getId());
                     op.update(pet_data.getId(), map_update).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void unused) {

@@ -360,7 +360,7 @@
                 
                 <androidx.appcompat.widget.SwitchCompat
                     android:id="@+id/toggle1"
-                    android:layout_width="@dimen/_45sdp"
+                    android:layout_width="wrap_content"
                     android:layout_height="@dimen/_26sdp"
                     android:layout_gravity="center"
                     android:thumb="@drawable/toggle_thumb_selector"
@@ -393,7 +393,7 @@
 
                 <androidx.appcompat.widget.SwitchCompat
                     android:id="@+id/toggle2"
-                    android:layout_width="@dimen/_45sdp"
+                    android:layout_width="wrap_content"
                     android:layout_height="@dimen/_26sdp"
                     android:layout_gravity="center"
                     android:thumb="@drawable/toggle_thumb_selector"
@@ -423,7 +423,7 @@
 
                 <androidx.appcompat.widget.SwitchCompat
                     android:id="@+id/toggle3"
-                    android:layout_width="@dimen/_45sdp"
+                    android:layout_width="wrap_content"
                     android:layout_height="@dimen/_26sdp"
                     android:layout_gravity="center"
                     android:thumb="@drawable/toggle_thumb_selector"
@@ -453,7 +453,7 @@
 
                 <androidx.appcompat.widget.SwitchCompat
                     android:id="@+id/toggle4"
-                    android:layout_width="@dimen/_45sdp"
+                    android:layout_width="wrap_content"
                     android:layout_height="@dimen/_26sdp"
                     android:layout_gravity="center"
                     android:thumb="@drawable/toggle_thumb_selector"
@@ -483,7 +483,7 @@
 
                 <androidx.appcompat.widget.SwitchCompat
                     android:id="@+id/toggle5"
-                    android:layout_width="@dimen/_45sdp"
+                    android:layout_width="wrap_content"
                     android:layout_height="@dimen/_26sdp"
                     android:layout_gravity="center"
                     android:thumb="@drawable/toggle_thumb_selector"
@@ -513,7 +513,7 @@
 
                 <androidx.appcompat.widget.SwitchCompat
                     android:id="@+id/toggle6"
-                    android:layout_width="@dimen/_45sdp"
+                    android:layout_width="wrap_content"
                     android:layout_height="@dimen/_26sdp"
                     android:layout_gravity="center"
                     android:thumb="@drawable/toggle_thumb_selector"

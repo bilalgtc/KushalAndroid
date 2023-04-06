@@ -1,14 +1,20 @@
 package com.example.petcare;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.Settings;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Loader extends AppCompatActivity {
@@ -46,6 +52,28 @@ public class Loader extends AppCompatActivity {
                 }
             }
         }, 2000);
+
+      /*  android.net.ConnectivityManager cm = (ConnectivityManager) getSystemService(this.CONNECTIVITY_SERVICE);
+
+        android.net.NetworkInfo activeNetworkInfo = cm.getActiveNetworkInfo();
+        if (activeNetworkInfo != null && activeNetworkInfo.isConnected()) {
+            Toast.makeText(Loader.this, "INTERNET is Available", Toast.LENGTH_SHORT).show();
+        } else {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setIcon(R.drawable.internet_logo);
+            builder.setTitle("NO INTERNET");
+            builder.setMessage("Please Check Your Internet Connection.");
+            builder.setPositiveButton("Enable INTERNET", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Intent intent = new Intent(Settings.ACTION_SETTINGS);
+                    startActivity(intent);
+
+                }
+            });
+            builder.show();
+
+        }*/
     }
 
     private void changeStatusBarColor() {

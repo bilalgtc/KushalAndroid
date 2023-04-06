@@ -1,8 +1,12 @@
 package com.example.petcare.adapter;
 
+import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
+import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,22 +28,33 @@ import com.example.petcare.Home;
 import com.example.petcare.R;
 import com.example.petcare.RecyclerViewModel;
 import com.example.petcare.VeterinaryCard;
+import com.example.petcare.fragments.HomeFragment;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
+import java.sql.Ref;
 import java.util.ArrayList;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
+public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>{
     Context context;
     private ArrayList<RecyclerViewModel> details = new ArrayList<>();
 
     public RecyclerViewAdapter(Context context) {
+
         this.context = context;
     }
 
@@ -152,24 +167,94 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     @SuppressLint("ResourceAsColor")
                     @Override
                     public void onClick(View v) {
-                        DBOpreation dao = new DBOpreation();
-                        dao.remove(item.getId()).addOnSuccessListener(suc ->
-                        {
-                            Toast.makeText(context, "Record is removed", Toast.LENGTH_SHORT).show();
+                        /*HomeFragment homeFragment = new HomeFragment();
 
-                            details.remove(item);
-                            notifyItemRemoved(position);
-                            del_yes.setBackgroundResource(R.drawable.yes_no_btn_selector);
+                        homeFragment.remove(item.getId()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                notifyItemRemoved(position);
+                                dialog.dismiss();
+                                del_yes.setBackgroundResource(R.drawable.yes_no_btn_selector);
+                            }
+                        });*/
+
+
+                        // main way to delete (do not remove this code!....)
+
+                        DBOpreation dao = new DBOpreation();
+//                        Log.d("TAG", "dao obj id: "+item.getId());
+//                        details.remove(position);
+                        dao.remove(item.getId()).addOnSuccessListener(unused -> {
+                            details.remove(position);
+                            notifyDataSetChanged();
+                            Toast.makeText(context, "Record is removed", Toast.LENGTH_SHORT).show();
                             Intent i = new Intent(context, Home.class);
                             i.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                             context.startActivity(i);
                             dialog.dismiss();
+                            del_yes.setBackgroundResource(R.drawable.yes_no_btn_selector);
+
+                        }).addOnFailureListener(e ->
+                                Toast.makeText(context, "" + e.getMessage(), Toast.LENGTH_SHORT).show());
+
+                       /* details.remove(position);
+                        notifyItemRemoved(position);
+                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("PetCare").child("Users").child(user.getUid()).child(item.getId());
+                        reference.removeValue().addOnCompleteListener(task -> {
+                            Toast.makeText(context, "removed", Toast.LENGTH_SHORT).show();
+                            notifyItemRemoved(position);
+                            dialog.dismiss();
+
+                        });*/
 
 
-                        }).addOnFailureListener(er ->
-                        {
-                            Toast.makeText(context, "" + er.getMessage(), Toast.LENGTH_SHORT).show();
-                        });
+                        /*ValueEventListener itemsListener = new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                // Loop through all items in the list
+                                for (int i = 0; i < details.size(); i++) {
+                                    // Get the ID of the current item
+                                    String itemId = details.get(i).getId();
+
+                                    // Check if the item still exists in Firebase
+                                    if (!dataSnapshot.hasChild(itemId)) {
+                                        // If the item no longer exists, remove it from the list
+                                        details.remove(i);
+                                        notifyItemRemoved(i);
+                                    }
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+                                // Handle errors
+                            }
+                        };
+*/
+                       /* FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                        FirebaseDatabase.getInstance().getReference().child("PetCare").child("Users").child(user.getUid()).child(item.getId()).addValueEventListener(itemsListener);
+                        FirebaseDatabase.getInstance().getReference().child("PetCare").child("Users").child(user.getUid()).child(item.getId()).removeValue();
+
+                        // Remove the item from your local data source
+                        for (int i = 0; i < details.size(); i++) {
+                            if (details.get(i).getId().equals(item.getId())) {
+                                details.remove(i);
+                                Log.d("TAG", "Item removed from local data source: " + details.toString());
+                                notifyItemRemoved(i);
+                                break;
+                            }
+                        }
+
+                        notifyDataSetChanged();
+                        *//*Intent i = new Intent(context, Home.class);
+                        i.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                        context.startActivity(i);*//*
+                        dialog.dismiss();
+*/
+
+
+
                     }
                 });
 
@@ -217,7 +302,85 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             edit_petDetails = itemView.findViewById(R.id.edit_pet_details);
             delete_pet = itemView.findViewById(R.id.delete_pet);
             card = itemView.findViewById(R.id.card);
+
+
+            /*delete_pet.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    View modelBottomSheet = LayoutInflater.from(context).inflate(R.layout.delete_dialoge_box, null);
+                    BottomSheetDialog dialog = new BottomSheetDialog(context, R.style.SheetDialog);
+                    dialog.setContentView(modelBottomSheet);
+                    ImageView close_btn = dialog.findViewById(R.id.close_btn);
+                    Button del_yes = dialog.findViewById(R.id.delete_yes);
+                    Button del_no = dialog.findViewById(R.id.delete_no);
+
+                    close_btn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog.dismiss();
+                        }
+                    });
+
+                    del_yes.setOnClickListener(new View.OnClickListener() {
+                        @SuppressLint("ResourceAsColor")
+                        @Override
+                        public void onClick(View v) {
+
+                            DBOpreation dao = new DBOpreation();
+                            dao.remove(item.getId()).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void unused) {
+
+                                    Toast.makeText(context, "Record is removed", Toast.LENGTH_SHORT).show();
+                                    details.remove(item);
+                                    Intent i = new Intent(context, Home.class);
+                                    i.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                                    context.startActivity(i);
+                                    dialog.dismiss();
+                                    del_yes.setBackgroundResource(R.drawable.yes_no_btn_selector);
+
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(context, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
+                    });
+
+                    del_no.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog.dismiss();
+                        }
+                    });
+                    dialog.show();
+                    Window window = dialog.getWindow();
+                    window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    WindowManager.LayoutParams wlp = window.getAttributes();
+                    wlp.gravity = Gravity.BOTTOM;
+                    wlp.flags &= ~WindowManager.LayoutParams.FLAG_DIM_BEHIND;
+                    window.setAttributes(wlp);
+                }
+            });*/
         }
     }
+
+    /*public void delete(){
+
+        DBOpreation dao = new DBOpreation();
+        dao.remove(item.getId()).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                Toast.makeText(context, "Record is removed", Toast.LENGTH_SHORT).show();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+            }
+        });
+    }*/
 
 }
