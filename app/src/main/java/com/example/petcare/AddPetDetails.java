@@ -1,5 +1,7 @@
 package com.example.petcare;
 
+import static android.content.ContentValues.TAG;
+
 import android.Manifest;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -41,7 +43,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.divider.MaterialDivider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -54,6 +60,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Objects;
 import java.util.Random;
 import java.util.UUID;
 
@@ -78,6 +85,8 @@ public class AddPetDetails extends AppCompatActivity {
     int Temp;
     FirebaseStorage storage;
     StorageReference uploader;
+    DatabaseReference reference;
+    String id;
 
     //PERMISSION CONSTANTS
     private static final int CAMERA_REQUEST_CODE = 100;
@@ -97,6 +106,9 @@ public class AddPetDetails extends AppCompatActivity {
         setContentView(R.layout.add_pet_details);
         changeStatusBarColor();
         init();
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        reference = FirebaseDatabase.getInstance().getReference().child("PetCare").child("Users").child(user.getUid());
 
         storage = FirebaseStorage.getInstance();
         uploader = storage.getReference("img" + UUID.randomUUID().toString());
@@ -293,11 +305,13 @@ public class AddPetDetails extends AppCompatActivity {
                     }
                     else
                     {
+                       /* id = reference.push().getKey();*/
                         //add pet details to fire base
                         HashMap<String, Object> map = new HashMap<>();
 
                         // upload img to storage
                         uploader.putFile(imageUri);
+                        /*map.put("id",id);*/
                         map.put("pet_img", imageUri.toString());
                         map.put("pet_name", pet_name.getText().toString());
                         map.put("pet_species", pet_species.getText().toString());
@@ -365,7 +379,6 @@ public class AddPetDetails extends AppCompatActivity {
                         uploader.putFile(my);
                         map_update.put("pet_img",my.toString());
                     }
-
                     map_update.put("pet_name", pet_name.getText().toString());
                     map_update.put("pet_species", pet_species.getText().toString());
                     map_update.put("pet_breed", pet_breed.getText().toString());
@@ -403,23 +416,6 @@ public class AddPetDetails extends AppCompatActivity {
                     } else {
                         map_update.put("Friendly_with_kids_greater_then_10_year", false);
                     }
-
-                   /* FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                    FirebaseDatabase.getInstance().getReference().child("PetCare").child("Users").child(user.getUid()).child(pet_data.getId()).updateChildren(map_update).
-                            addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    Toast.makeText(AddPetDetails.this, "pet updated", Toast.LENGTH_SHORT).show();
-                                    Intent i = new Intent(AddPetDetails.this, Home.class);
-                                    startActivity(i);
-                                    finish();
-                                }
-                            }).addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(AddPetDetails.this, "failed to update...", Toast.LENGTH_SHORT).show();
-                                }
-                            });*/
 
                     Log.d("uid","update uid :-"+pet_data.getId());
                     op.update(pet_data.getId(), map_update).addOnSuccessListener(new OnSuccessListener<Void>() {
