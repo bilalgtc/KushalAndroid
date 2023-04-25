@@ -34,7 +34,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class SignIn extends AppCompatActivity {
 
     EditText email, password;
-    TextView registration, mail, pass;
+    TextView registration, mail, pass, forgot_pass;
     ImageView back_button;
     ImageView password_eye;
     Button sing_in;
@@ -154,6 +154,14 @@ public class SignIn extends AppCompatActivity {
                 finish();
             }
         });
+
+        forgot_pass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(SignIn.this,ForgotPass.class);
+                startActivity(i);
+            }
+        });
     }
 
     private void performLogin() {
@@ -193,6 +201,7 @@ public class SignIn extends AppCompatActivity {
         sing_in = findViewById(R.id.sign_in);
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
+        forgot_pass = findViewById(R.id.singIn_forgot_pass);
     }
 
     private void changeStatusBarColor() {

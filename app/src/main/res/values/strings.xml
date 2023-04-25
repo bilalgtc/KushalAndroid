@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Pet Care</string>
     <string name="sign_in">Sign In</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="forgot_password">Forgot Password</string>
     <string name="sign_up">Sign Up</string>
     <string name="next">Next</string>
     <string name="getStarted">Get Started</string>

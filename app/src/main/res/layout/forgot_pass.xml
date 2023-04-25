@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ForgotPass">
+
+    <RelativeLayout
+        android:id="@+id/r1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_265sdp"
+        android:background="@drawable/img"
+        >
+        <ImageView
+            android:id="@+id/singIn_back_button"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:src="@drawable/arrow_left"
+            android:layout_marginTop="@dimen/_36sdp"
+            android:layout_marginStart="@dimen/_14sdp"
+            />
+
+        <TextView
+            android:layout_marginTop="@dimen/_13sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/forgot_password"
+            android:layout_below="@+id/singIn_back_button"
+            android:textSize="@dimen/_28sdp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:fontFamily="@font/encode_sans_bold"
+            android:layout_marginStart="@dimen/_38sdp"/>
+
+    </RelativeLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="@dimen/_15sdp"
+        android:layout_height="@dimen/_130sdp"
+        android:layout_marginTop="@dimen/_170sdp"
+        style="@style/registration_card"
+        android:elevation="@dimen/_5sdp"
+        android:outlineAmbientShadowColor="@color/black">
+
+        <RelativeLayout
+            android:layout_marginHorizontal="@dimen/_15sdp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/e_mail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/email"
+                android:textColor="@color/text_gray"
+                android:fontFamily="@font/encode_sans_bold"
+                android:textSize="@dimen/_11ssp"
+                android:layout_marginTop="@dimen/_10sdp"
+                />
+            <EditText
+                android:id="@+id/email_id"
+                android:layout_below="@id/e_mail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:textSize="@dimen/_11ssp"
+                android:backgroundTint="@color/white"
+                android:textColor="@color/black"/>
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/email_id_divider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/email_id"
+                android:layout_marginTop="-10dp"
+                app:dividerColor="#F0F0F8" />
+
+            <Button
+                android:layout_below="@+id/email_id"
+                android:id="@+id/reset_password"
+                style="@style/btn"
+                android:layout_width="match_parent"
+                android:textSize="@dimen/_13sdp"
+                android:layout_height="@dimen/_36sdp"
+                android:gravity="center_vertical|center_horizontal"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:stateListAnimator="@null"
+                android:text="@string/reset_password"
+
+                />
+
+
+
+        </RelativeLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</RelativeLayout>
