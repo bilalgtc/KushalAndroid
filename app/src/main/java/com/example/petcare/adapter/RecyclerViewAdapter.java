@@ -23,7 +23,15 @@ import com.example.petcare.DBOpreation;
 import com.example.petcare.R;
 import com.example.petcare.RecyclerViewModel;
 import com.example.petcare.VeterinaryCard;
+import com.example.petcare.fragments.HomeFragment;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.ktx.Firebase;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -31,8 +39,10 @@ import java.util.ArrayList;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
     Context context;
     private ArrayList<RecyclerViewModel> details;
+    HomeFragment home;
 
-    public RecyclerViewAdapter(Context context, ArrayList<RecyclerViewModel> details) {
+    public RecyclerViewAdapter(Context context, ArrayList<RecyclerViewModel> details,  HomeFragment home) {
+        this.home = home;
         this.context = context;
         this.details = details;
     }
@@ -132,39 +142,20 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 Button del_yes = dialog.findViewById(R.id.delete_yes);
                 Button del_no = dialog.findViewById(R.id.delete_no);
 
-                close_btn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
-                    }
+                close_btn.setOnClickListener(v12 ->
+                        dialog.dismiss());
+
+                del_yes.setOnClickListener(v1 -> {
+
+                    home.deleteData(position);
+                    /*notifyDataSetChanged();
+                    notifyItemRemoved(position);*/
+                    dialog.dismiss();
+                    del_yes.setBackgroundResource(R.drawable.yes_no_btn_selector);
                 });
 
-                del_yes.setOnClickListener(new View.OnClickListener() {
-                    @SuppressLint("ResourceAsColor")
-                    @Override
-                    public void onClick(View v) {
-
-                        // main way to delete (do not remove this code!....)
-
-                        DBOpreation dao = new DBOpreation();
-                        dao.remove(item.getId()).addOnSuccessListener(unused -> {
-                            Toast.makeText(context, "Record is removed", Toast.LENGTH_SHORT).show();
-                            notifyDataSetChanged();
-                            notifyItemRemoved(position);
-                            dialog.dismiss();
-                            del_yes.setBackgroundResource(R.drawable.yes_no_btn_selector);
-
-                        }).addOnFailureListener(e ->
-                                Toast.makeText(context, "" + e.getMessage(), Toast.LENGTH_SHORT).show());
-                    }
-                });
-
-                del_no.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
-                    }
-                });
+                del_no.setOnClickListener(
+                        v13 -> dialog.dismiss());
                 dialog.show();
                 Window window = dialog.getWindow();
                 window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
