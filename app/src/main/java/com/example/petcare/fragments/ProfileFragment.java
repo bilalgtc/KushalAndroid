@@ -19,11 +19,13 @@ import com.example.petcare.Home;
 import com.example.petcare.R;
 import com.example.petcare.Registration;
 import com.example.petcare.SignIn;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 
 public class ProfileFragment extends Fragment {
 
     Button logout;
+    FirebaseAnalytics analytics ;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,7 @@ public class ProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
+        analytics = FirebaseAnalytics.getInstance(getContext());
         logout = view.findViewById(R.id.log_out);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,6 +51,10 @@ public class ProfileFragment extends Fragment {
                 SharedPreferences.Editor editor = pref.edit();
                 editor.putBoolean("flag",false);
                 editor.apply();
+
+                Bundle bundle = new Bundle();
+                bundle.putString(FirebaseAnalytics.Param.METHOD, "logout");
+                analytics.logEvent("pet_add", bundle);
 
                 Intent i_logout = new Intent(getActivity().getApplication(), DashBoard.class);
                 startActivity(i_logout);

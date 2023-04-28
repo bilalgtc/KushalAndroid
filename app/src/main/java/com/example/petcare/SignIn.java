@@ -27,6 +27,7 @@ import androidx.core.content.ContextCompat;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.divider.MaterialDivider;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -43,6 +44,7 @@ public class SignIn extends AppCompatActivity {
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     FirebaseAuth firebaseAuth;
     FirebaseUser user;
+    FirebaseAnalytics mFirebaseAnalytics;
 
 
     @SuppressLint("MissingInflatedId")
@@ -54,6 +56,9 @@ public class SignIn extends AppCompatActivity {
         init();
         imageSizeSet();
         changeStatusBarColor();
+
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(getApplicationContext());
+
         email.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -113,6 +118,10 @@ public class SignIn extends AppCompatActivity {
                     editor.putBoolean("flag",true);
                     editor.apply();
                     performLogin();
+
+                    Bundle bundle = new Bundle();
+                    bundle.putString(FirebaseAnalytics.Param.METHOD, email.getText().toString());
+                    mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.LOGIN, bundle);
 
                 }
             }

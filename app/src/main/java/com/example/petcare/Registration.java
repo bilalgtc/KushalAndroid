@@ -27,6 +27,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.divider.MaterialDivider;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -45,6 +46,7 @@ public class Registration extends AppCompatActivity {
 
     FirebaseAuth firebaseAuth;
     FirebaseUser user;
+    FirebaseAnalytics mFirebaseAnalytics;
 
 
     @SuppressLint("MissingInflatedId")
@@ -56,6 +58,8 @@ public class Registration extends AppCompatActivity {
         init();
         changeStatusBarColor();
         imageSizeSet();
+
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().getDecorView()
@@ -233,29 +237,6 @@ public class Registration extends AppCompatActivity {
         });
     }
 
-    private void addUser(View v) {
-        String name = full_name.getText().toString();
-        String emil = email.getText().toString().toLowerCase(Locale.ROOT);
-        String m_no = phone_no.getText().toString();
-        String pwd = password.getText().toString();
-
-       /* long id = db.insertData(name, emil, m_no, pwd);
-        if (id <= 0) {
-            Message.message(getApplicationContext(), "Insertion Unsuccessful");
-            full_name.setText("");
-            email.setText("");
-            phone_no.setText("");
-            password.setText("");
-
-        } else {
-            Message.message(getApplicationContext(), "Insertion Successful");
-            full_name.setText("");
-            email.setText("");
-            phone_no.setText("");
-            password.setText("");
-        }*/
-    }
-
     private void changeStatusBarColor() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
@@ -275,6 +256,9 @@ public class Registration extends AppCompatActivity {
                     startActivity(i_to_home);
                     Toast.makeText(Registration.this, "Registration successful", Toast.LENGTH_SHORT).show();
 
+                    Bundle bundle = new Bundle();
+                    bundle.putString(FirebaseAnalytics.Param.METHOD, email.getText().toString());
+                    mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SIGN_UP, bundle);
                 } else {
                     Toast.makeText(Registration.this, "" + task.getException(), Toast.LENGTH_SHORT).show();
                 }

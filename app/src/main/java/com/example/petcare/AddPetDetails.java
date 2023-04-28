@@ -41,6 +41,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.divider.MaterialDivider;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -87,6 +88,7 @@ public class AddPetDetails extends AppCompatActivity {
     int Temp;
     FirebaseStorage storage;
     StorageReference uploader;
+    FirebaseAnalytics mFirebaseAnalytics;
     DatabaseReference reference;
     FirebaseFirestore db;
     FirebaseUser user;
@@ -117,6 +119,9 @@ public class AddPetDetails extends AppCompatActivity {
 
         storage = FirebaseStorage.getInstance();
         uploader = storage.getReference("img" + UUID.randomUUID().toString());
+
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(getApplicationContext());
+        FirebaseAnalytics.getInstance(this).setAnalyticsCollectionEnabled(true);
 
         //init permission arrays
         cameraPermission = new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
@@ -345,7 +350,12 @@ public class AddPetDetails extends AppCompatActivity {
                                 Toast.makeText(AddPetDetails.this, "pet added", Toast.LENGTH_SHORT).show();
                                 Intent i = new Intent(AddPetDetails.this, Home.class);
                                 startActivity(i);
+
+                                Bundle bundle = new Bundle();
+                                bundle.putString("pet_name", pet_name.getText().toString());
+                                mFirebaseAnalytics.logEvent("pet_add", bundle);
                                 finish();
+
                             }).addOnFailureListener(e -> {
                                 Toast.makeText(AddPetDetails.this, "failed to add...", Toast.LENGTH_SHORT).show();
                                 Log.e(TAG, "onFailure: " + e);
@@ -405,12 +415,12 @@ public class AddPetDetails extends AppCompatActivity {
 
                 db.collection(user.getUid()).document(pet_data.getId()).update(map_update).
                         addOnCompleteListener(task -> {
-                            Toast.makeText(AddPetDetails.this, "pet Update", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AddPetDetails.this, "pet updated", Toast.LENGTH_SHORT).show();
                             Intent i = new Intent(AddPetDetails.this, Home.class);
                             startActivity(i);
                             finish();
                         }).addOnFailureListener(e -> {
-                            Toast.makeText(AddPetDetails.this, "failed to add...", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AddPetDetails.this, "failed to update...", Toast.LENGTH_SHORT).show();
                             Log.e(TAG, "onFailure: " + e);
 
                         });
